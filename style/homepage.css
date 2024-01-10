@@ -10,6 +10,35 @@
   }
 
 
+  
+  /* some repeated classes*/ 
+.buttonshape{
+    background-color: transparent;
+    border: 1px solid black;
+    padding: 5px 10px;
+    transition: all 0.5s;
+    font-size: 12px;
+    font-weight: 600;
+}
+.buttonshape:hover{
+    background-color: black;
+    color: white;
+}
+.headfont{
+    line-height: 1em;
+    font-family: 'Yeseva One', serif;
+    color: black;
+}
+.textfont{
+    font-size: 12px;
+    color: #585858;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+}
+
+/* end of some repeated classes*/ 
+
+
 
 /* section two abdellatief */
 
@@ -22,28 +51,6 @@
 }
 #sectiontwo div:first-of-type div{
    padding: 20% 7% 20% 20%;
-}
-#sectiontwo div h1{
-    line-height: 1em;
-    font-family: 'Yeseva One', serif;
-}
-#sectiontwo div p{
-    font-size: 12px;
-    color: #7A7A7A;
-    font-family: 'Roboto Slab', serif;
-    font-weight: 300;
-
-}
-#sectiontwo div button{
-    background-color: transparent;
-    border: 1px solid black;
-    padding: 5px 10px;
-    transition: all 0.5s;
-
-}
-#sectiontwo div button:hover{
-    background-color: black;
-    color: white;
 }
 
 #sectiontwo div:nth-child(2){
@@ -77,3 +84,20 @@
 
 /* section three abdellatief */
 
+#sectionthree{
+    height: 80vh;
+    background-image: url(../images/homepage/bg-01.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#sectionthree div:first-of-type div{
+    padding: 20% 10%;
+}
+@media screen and (max-width: 767px)  {
+    
+    #sectionthree{
+        background-position: center left;
+    }
+
+}
