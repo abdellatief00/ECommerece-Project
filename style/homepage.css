@@ -1,0 +1,79 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+::selection {
+    background-color: black;
+    color: white;
+  }
+
+
+
+/* section two abdellatief */
+
+#sectiontwo{
+    padding: .5rem;
+}
+
+#sectiontwo div:first-of-type{
+    margin: 0 0 -10px;
+}
+#sectiontwo div:first-of-type div{
+   padding: 20% 7% 20% 20%;
+}
+#sectiontwo div h1{
+    line-height: 1em;
+    font-family: 'Yeseva One', serif;
+}
+#sectiontwo div p{
+    font-size: 12px;
+    color: #7A7A7A;
+    font-family: 'Roboto Slab', serif;
+    font-weight: 300;
+
+}
+#sectiontwo div button{
+    background-color: transparent;
+    border: 1px solid black;
+    padding: 5px 10px;
+    transition: all 0.5s;
+
+}
+#sectiontwo div button:hover{
+    background-color: black;
+    color: white;
+}
+
+#sectiontwo div:nth-child(2){
+    height: 80vh;
+    background-image: url(../images/homepage/about-02.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+}
+#sectiontwo div:nth-child(3){
+    height: 80vh;
+    background-image: url(../images/homepage/about-01.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 767px)  {
+    #sectiontwo div:nth-child(2),#sectiontwo div:nth-child(3){
+        height: 45vh;
+    }
+    #sectiontwo div:first-of-type div{
+        padding: 20% 7% 20% 0%;
+     }
+}
+
+
+
+/* the end of section two abdellatief */
+
+/* section three abdellatief */
+
