@@ -92,12 +92,73 @@
     background-repeat: no-repeat;
 }
 #sectionthree div:first-of-type div{
-    padding: 20% 10%;
+    padding: 20% 14%;
 }
 @media screen and (max-width: 767px)  {
     
     #sectionthree{
         background-position: center left;
+        height: 45vh;
     }
 
 }
+/* end of section three abdellatief */
+
+/* section four abdellatief */
+
+#sectionfour{
+    padding: .5rem 0px;
+}
+#sectionfour>div:first-of-type{
+    background-image: url(../images/homepage/bg-02.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+#sectionfour>div:nth-child(2){
+}
+#sectionfour>div:nth-child(2) div{
+    padding: 20% 20% 15%;
+}
+#sectionfour>div:nth-child(2) div>div:first-of-type{
+    text-align: center;
+    padding: 0 0 20px;
+    margin: 0 0 10px;
+}
+#sectionfour>div:nth-child(2) div>div img{
+    max-width: 100%;
+    vertical-align: middle;
+    height: auto;
+    display: inline-block;
+}
+#sectionfour>div:nth-child(2) div h4{
+    font-weight: 700;
+    color: black;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+#sectionfour .textfont{
+    margin-bottom: 20px;
+}
+@media screen and (max-width: 1024px)  {
+    
+    #sectionfour>div:nth-child(2) div{
+        padding: 0;
+    }
+}
+@media screen and (max-width: 767px)  {
+    
+    #sectionfour>div:first-of-type{
+        height: 45vh;
+    }
+    #sectionfour>div:nth-child(2)>div {
+        margin: -80px 0 0 0;
+        padding: 0 15% 0% 15%;
+    }
+}
+
+/* end of section four abdellatief*/
+
+
+/* section five abdellatief */
+
