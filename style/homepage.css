@@ -1,3 +1,4 @@
+
 *{
     margin: 0;
     padding: 0;
@@ -203,3 +204,127 @@ body{
 }
 
 /* end of section five abdellatief*/
+
+
+html{
+    font-size: 14px;
+}
+
+.bg-body-tertiary{
+    background-color: transparent !important;
+}
+
+#homepage-header{
+    background: linear-gradient(to left, #DEB8B8, #e7d5d5);
+    height: 100vh;
+    position: relative;
+    
+}
+
+#imgContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-image: url("../images/bg-header.png");
+    z-index: 0 !important;
+}
+
+#imgContainer img{
+    width: 30vw;
+    height: 25vw;
+}
+
+#header-text{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 20px;
+    
+    margin-left: 80px;
+}
+
+#header-text::selection{
+    color: white;
+    background: #000;
+}
+
+#header-text h2{
+    font-size: 6vw;
+    width: 60%;
+    font-family: 'Yeseva One', serif;
+    line-height: .9;
+}
+
+#header-text p{
+    width: 60%;
+    font-size: 1.5vw;
+    
+}
+
+#header-text button{
+    width: 120px;
+    padding: 10px;
+}
+
+#cart-icon{
+    position: relative;
+}
+
+#cart-items-count{
+    position: absolute;
+    top: -15px;
+    right: -5px;
+    
+    
+}
+
+*::selection{
+    color: white;
+    background: #000;
+}
+
+#header-logo{
+    margin-left: 140px;
+}
+
+@media ( max-width:950px) {
+    #header-text h2{
+    font-size: 60px;
+}
+
+#header-text p{
+    font-size: 20px;
+}
+}
+
+@media ( max-width:768px) {
+    #header-logo{
+    margin: auto;
+}
+}
+
+@media ( max-width:500px) {
+    #header-text h2{
+    font-size: 30px;
+}
+
+#header-text p{
+    font-size: 10px;
+}
+
+#imgContainer img{
+    display: none;
+}
+}
+
+@media ( max-width:768px) {
+    #header-text {
+    top: 80%;
+}
+}
+
