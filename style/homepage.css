@@ -355,9 +355,12 @@ html {
 
 @media screen and (max-width: 767.99px) {
     #sectionfive {
-        padding: 0% 0;
+        padding: 0% 0% 10% 0%;
     }
 }
+
+
+/* end of section five */
 
 /* start of footer */
 
@@ -365,14 +368,9 @@ html {
     --lightGray: rgba(0, 0, 0, 0.6);
 }
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
 .ProductFeatures {
     text-align: center;
+    margin: -.7rem;
 }
 
 .ProductFeatures .feature {
@@ -397,6 +395,8 @@ html {
 
 footer {
     background-color: #f1f1f1;
+    margin: -.7rem;
+
 }
 
 footer ul {
