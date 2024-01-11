@@ -93,7 +93,7 @@ html{
     transform: translateY(-50%);
     padding: 20px;
     
-    margin-left: 80px;
+    margin-left: 5%;
 }
 
 #header-text::selection{
@@ -167,7 +167,9 @@ html{
 
 @media ( max-width:768px) {
     #header-text {
-    top: 80%;
+    /* top: 80%; */
+    margin-left: 0;
+    margin-top: 25%;
 }
 }
 
@@ -179,7 +181,7 @@ html{
 /* section two abdellatief */
 
 #sectiontwo{
-    padding: .7rem;
+    padding: .7rem; 
 }
 
 #sectiontwo div:first-of-type{
