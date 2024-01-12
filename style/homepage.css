@@ -32,7 +32,7 @@ html {
 .buttonshape {
     background-color: transparent;
     border: 1px solid var(--fontcolor);
-    padding: 5px 10px;
+    padding: 5px 20px;
     transition: all 0.5s;
     font-size: 12px;
     font-weight: 600;
@@ -322,9 +322,7 @@ html {
 
 /* section five abdellatief */
 
-#sectionfive {
-    padding: 10%;
-}
+
 
 #sectionfive h6 {
     font-family: 'Poppins', sans-serif;
@@ -459,4 +457,4 @@ footer .contacts li {
     color: var(--lightGray);
 }
 
-/* end of section five abdellatief*/
+/* end of aya parts*/
