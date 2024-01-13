@@ -83,7 +83,7 @@
                         <span id="cart-items-count">0</span>
                     </div>
 
-                    <button class="btn">LOG IN</button>
+                    <button class="btn" data-bs-toggle="modal" data-bs-target="#LoginScreen" data-bs-whatever="@mdo">LOG IN</button>
                 </div>
             </header>
 
@@ -340,8 +340,41 @@
                 </div> <!-- copyright -->
             </div>
         </footer>
+
+
+
+        <div class="modal fade " id="LoginScreen" tabindex="-1" aria-labelledby="Login_form" aria-hidden="true" data-bs-backdrop="static"  >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="Login_form">Login</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="">
+                            <div class="mb-3">
+                                <label for="Email" class="col-form-label">Email:</label>
+                                <input type="email" class="form-control" id="Email" name="Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="Password" class="col-form-label">Password:</label>
+                                <input type="password" class="form-control" id="Password" name="Password" required></textarea>
+                            </div>
+                     
+                    </div>
+                    <div class="modal-footer">
+                            <input type="submit" value="Login" class="btn btn-primary">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </form>
+                </div>
+            </div>
+        </div>
     
     </div><!-- the end of the container -->
+    <!-- login Start -->
+
+
+<!-- end login -->
 
 
 
