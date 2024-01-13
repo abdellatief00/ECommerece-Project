@@ -212,6 +212,7 @@ header .navbar-toggler {
     height: auto;
     max-width: 50px;
     width: auto;
+    vertical-align: middle;
 }
 #content>div table:first-of-type tbody td{
     padding: 25px 10px;
@@ -227,6 +228,7 @@ header .navbar-toggler {
     padding: 5px 10px;
     color: var(--paragrahcolor);
     transition: all .5s;
+    cursor: pointer;
 }
 #content>div table:first-of-type .counter output:not(.number):hover{
     background-color: var(--fontcolor);
@@ -273,6 +275,9 @@ S
     padding-top: 15px;
     cursor: pointer;
 }
+#tableparts .secondtable:hover p{
+    cursor: pointer;
+}
 #tableparts .secondtable button{
     margin: 0 auto;
     width: 100%;
@@ -284,7 +289,62 @@ S
 
 
 @media all and (max-width:768px){
+ 
+    #content>div>div:first-of-type a{
+        display: none !important;
+    }
+    #content>div>div:first-of-type #shopping-card{
+        display: block !important;
+        color: red;
+    }
+    #content>div>div:first-of-type #shopping-card p:first-of-type,
+    #content>div>div:first-of-type #shopping-card p:last-of-type{
+        display: none;
+    }
+    #content #tableparts{
+        flex-direction: column;
+    }
     
+    #content #tableparts>table thead{
+        display: none !important;
+    }
+
+    #content #tableparts>table tbody th{
+        width: 100%;
+        display: block;
+        text-align: center !important;
+    }
+
+    #content #tableparts>table tbody td{
+        width: 100%;
+        display: block;
+        text-align: right;
+        padding: 10px 10px;
+    }
+    #content #tableparts>table tbody td::before{
+        content: attr(data-title) " ";
+        font-weight: 700;
+        float: left;
+    }
+
+    #content #tableparts>table tbody td .counter{
+        margin: auto;
+    }
+    #content #tableparts>table tbody tr td:last-of-type{
+        text-align: center;
+    }
+
+
+
+
+
+
+    #tableparts .secondtable{
+        width: 100%;
+    }
+    #tableparts .secondtable tbody tr td:last-of-type{
+        text-align: right;
+    }
 }
 
 
