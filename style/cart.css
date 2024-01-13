@@ -198,6 +198,11 @@ header .navbar-toggler {
         color: #fff; /* Set the text color */
         margin-right: 5px;
 }
+/*end of content */
+
+
+/* first table */
+
 #content>div table:first-of-type{
     border: 1px solid var(--backgroundhead);
 }
@@ -244,6 +249,8 @@ header .navbar-toggler {
     color: #424242;
 }
 
+
+/* seconed div */
 #tableparts .secondtable{
     width: 30%;
     margin-left: 2%;
@@ -301,6 +308,8 @@ S
     #content>div>div:first-of-type #shopping-card p:last-of-type{
         display: none;
     }
+
+    /* begging of first atble */ 
     #content #tableparts{
         flex-direction: column;
     }
@@ -333,12 +342,7 @@ S
     #content #tableparts>table tbody tr td:last-of-type{
         text-align: center;
     }
-
-
-
-
-
-
+     /* end of first table */
     #tableparts .secondtable{
         width: 100%;
     }
@@ -349,7 +353,7 @@ S
 
 
 
-
+/* end of main part */
 
 
 
