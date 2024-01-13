@@ -18,6 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style/all.min.css">
     <link rel="stylesheet" href="style/homepage.css">
+    <script src="javascript/test.js"></script>
   </head>
     
 </head>
@@ -73,12 +74,15 @@
                 <div id = "header-right-section" class="d-flex  justify-content-between align-items-center">
 
                     <i class="fa-solid fa-magnifying-glass"></i>
-                        
-                    <div id="cart-icon" class="me-3 ms-3">
-                        <span>$0.00</span>
+                    
+                        <div class="btn" data-bs-toggle="modal" data-bs-target="#ShoppingCart" data-bs-whatever="@mdo">
+                    <div id="cart-icon" class="me-3 ms-3" >
+                        <span>$135.00</span>
                         <i class="fa-solid fa-cart-shopping"></i>
-                        <span id="cart-items-count">0</span>
+                        <span id="cart-items-count">1</span>
                     </div>
+
+                </div>
 
                     <button class="btn" data-bs-toggle="modal" data-bs-target="#LoginScreen" data-bs-whatever="@mdo">LOG IN</button>
                 </div>
@@ -170,9 +174,9 @@
 
 
 <!-- login Start -->
-
+<div>
 <div class="modal fade " id="LoginScreen" tabindex="-1" aria-labelledby="Login_form" aria-hidden="true" data-bs-backdrop="static"  >
-        <div class="modal-dialog">
+        <div class="modal-dialog  modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
                     <h1 class="modal-title fs-5" id="Login_form">Login</h1>
@@ -180,13 +184,20 @@
                 </div>
                 <div class="modal-body">
                     <form action="">
+
+                        
                         <div class="mb-3">
-                            <label for="Email" class="col-form-label">Email:</label>
+                            <label for="Email">Email:</label>
+                            <div class="input-group my-2">
+                            <span class="fa fa-user input-group-prepend input-group-text" style="padding: 10px;"></span>
                             <input type="email" class="form-control" id="Email" name="Email" required>
+                            </div>
                         </div>
                         <div class="mb-3">
                             <label for="Password" class="col-form-label">Password:</label>
-                            <input type="password" class="form-control" id="Password" name="Password" required></textarea>
+                            <div class="input-group my-2">
+                            <span class="fa fa-lock input-group-prepend input-group-text" style="padding: 10px;"></span>
+                            <input type="password" class="form-control" id="Password" name="Password" required>
                         </div>
                  
                 </div>
@@ -197,12 +208,122 @@
             </div>
         </div>
     </div>
+</div>
+</div>
+
 <!-- end login -->
 
 
 <!-- Cart start -->
+<div class="modal fade  " id="ShoppingCart" tabindex="-1" aria-labelledby="ShoppingCartModalLabel" aria-hidden="true" >
+    <div class="modal-dialog " style=" margin-right: 0; margin-top: 0;" >
+        <div class="modal-content " style="background-color: rgb(238, 231, 231);" >
+            <div class="modal-header ">
+                <h5 class="modal-title" id="ShoppingCartModalLabel">Shopping Cart</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                
+                <div class="CartItem">
+
+                        <div class="Item1">
+                              <img src="images/homepage/bg-04.jpg" alt="product" width="80px" height="80px">
+                                 <div class="CartItemDetails" style="display: inline-block;">
+                                     <h6>Sunglasses</h6>
 
 
-<!-- cart end -->
+                                     <div class="input-group">
+                                     <button class="btn btn-outline-secondary" type="button" onclick="decrementValue()">-</button>
+                                     <input type="number"  value="1" min="1" class="QuantityValue text-center flex-fill  "/>
+                                     <button class="btn btn-outline-secondary" type="button" onclick="incrementValue()">+</button>
+                                     </div>
+
+                                </div>
+
+                            <div class="float-end">
+                                <br>
+                                <span class="fs-5 text-secondary Price">$135.00</span>
+                                <i class="fa-solid fa-trash-can btn" data-bs-dismiss="Item1" aria-label="Close" onclick="removeItem('Item1')"></i>
+                             </div>
+
+                         </div>
+
+                         <div class="CartItem">
+
+                            <div class="Item1">
+                                  <img src="images/homepage/bg-04.jpg" alt="product" width="80px" height="80px">
+                                     <div class="CartItemDetails" style="display: inline-block;">
+                                         <h6>Sunglasses</h6>
+    
+    
+                                         <div class="input-group">
+                                         <button class="btn btn-outline-secondary" type="button" onclick="decrementValue()">-</button>
+                                         <input type="number"  value="1" min="1" class="QuantityValue text-center flex-fill  "/>
+                                         <button class="btn btn-outline-secondary" type="button" onclick="incrementValue()">+</button>
+                                         </div>
+    
+                                    </div>
+    
+                                <div class="float-end">
+                                    <br>
+                                    <span class="fs-5 text-secondary Price">$135.00</span>
+                                    <i class="fa-solid fa-trash-can btn" data-bs-dismiss="Item1" aria-label="Close" onclick="removeItem('Item1')"></i>
+                                 </div>
+    
+                             </div>
+
+                             <div class="CartItem">
+
+                                <div class="Item1">
+                                      <img src="images/homepage/bg-04.jpg" alt="product" width="80px" height="80px">
+                                         <div class="CartItemDetails" style="display: inline-block;">
+                                             <h6>Sunglasses</h6>
+        
+        
+                                             <div class="input-group">
+                                             <button class="btn btn-outline-secondary" type="button" onclick="decrementValue()">-</button>
+                                             <input type="number"  value="1" min="1" class="QuantityValue text-center flex-fill  "/>
+                                             <button class="btn btn-outline-secondary" type="button" onclick="incrementValue()">+</button>
+                                             </div>
+        
+                                        </div>
+        
+                                    <div class="float-end">
+                                        <br>
+                                        <span class="fs-5 text-secondary Price">$135.00</span>
+                                        <i class="fa-solid fa-trash-can btn" data-bs-dismiss="Item1" aria-label="Close" onclick="removeItem('Item1')"></i>
+                                     </div>
+        
+                                 </div>
+                   
+
+                    
+
+                    
+                </div>
+
+            </div>
+            <hr class="ms-3 me-3">
+
+            <div class="ms-5 me-5">
+                            <span class="fs-4 fw-bold float-start">Subtotal:</span>
+                            <span class="fs-5 fw-bold float-end text-secondary total">$135.00</span>
+                        </div>
+                        <br>
+            <br>
+            <div class="modal-footer mt-auto" style="margin: 10px;">
+                <button type="button" class="btn w-100 border-dark fw-bold fs-5 cartButton" >VIEW CART</button>
+                <button type="button" class="btn w-100 border-dark fw-bold fs-5 cartButton">CHECKOUT</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end Cart -->
+
+
+
+
+
+
 </body>
 </html>
