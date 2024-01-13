@@ -360,3 +360,14 @@ html{
 }
 
 .CartItemDetails{margin-left: 5%;}
+
+.counter output{
+    padding: 5px 10px;
+    color: var(--paragrahcolor);
+    transition: all .5s;
+    cursor: pointer;
+}
+.counter output:not(.number):hover{
+    background-color: var(--fontcolor);
+    color: white;
+}

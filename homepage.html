@@ -18,7 +18,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style/all.min.css">
     <link rel="stylesheet" href="style/homepage.css">
-    <script src="javascript/test.js"></script>
+    <script src="javascript/test.js" defer></script>
   </head>
     
 </head>
@@ -75,11 +75,11 @@
 
                     <i class="fa-solid fa-magnifying-glass"></i>
                     
-                        <div class="btn" data-bs-toggle="modal" data-bs-target="#ShoppingCart" data-bs-whatever="@mdo">
+                        <div class="btn CartMenu" data-bs-toggle="modal" data-bs-target="#ShoppingCart" data-bs-whatever="@mdo" onclick="totalprice()">
                     <div id="cart-icon" class="me-3 ms-3" >
-                        <span>$135.00</span>
+                        <span>$00.00</span>
                         <i class="fa-solid fa-cart-shopping"></i>
-                        <span id="cart-items-count">1</span>
+                        <span id="cart-items-count">0</span>
                     </div>
 
                 </div>
@@ -222,9 +222,9 @@
                 <h5 class="modal-title" id="ShoppingCartModalLabel">Shopping Cart</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" >
                 
-                <div class="CartItem">
+                <div class="CartItems" >
 
                         <div class="Item1">
                               <img src="images/homepage/bg-04.jpg" alt="product" width="80px" height="80px">
@@ -233,7 +233,7 @@
 
 
                                      <div class="input-group">
-                                     <button class="btn btn-outline-secondary" type="button" onclick="decrementValue()">-</button>
+                                     <button class="btn btn-outline-secondary" type="button" onclick="decrementValue() ">-</button>
                                      <input type="number"  value="1" min="1" class="QuantityValue text-center flex-fill  "/>
                                      <button class="btn btn-outline-secondary" type="button" onclick="incrementValue()">+</button>
                                      </div>
@@ -242,13 +242,13 @@
 
                             <div class="float-end">
                                 <br>
-                                <span class="fs-5 text-secondary Price">$135.00</span>
+                                <span class="fs-5 text-secondary Price">135.00 $</span>
                                 <i class="fa-solid fa-trash-can btn" data-bs-dismiss="Item1" aria-label="Close" onclick="removeItem('Item1')"></i>
                              </div>
 
                          </div>
 
-                         <div class="CartItem">
+                         
 
                             <div class="Item1">
                                   <img src="images/homepage/bg-04.jpg" alt="product" width="80px" height="80px">
@@ -266,13 +266,13 @@
     
                                 <div class="float-end">
                                     <br>
-                                    <span class="fs-5 text-secondary Price">$135.00</span>
+                                    <span class="fs-5 text-secondary Price">135.00 $</span>
                                     <i class="fa-solid fa-trash-can btn" data-bs-dismiss="Item1" aria-label="Close" onclick="removeItem('Item1')"></i>
                                  </div>
     
                              </div>
 
-                             <div class="CartItem">
+                             
 
                                 <div class="Item1">
                                       <img src="images/homepage/bg-04.jpg" alt="product" width="80px" height="80px">
@@ -290,7 +290,7 @@
         
                                     <div class="float-end">
                                         <br>
-                                        <span class="fs-5 text-secondary Price">$135.00</span>
+                                        <span class="fs-5 text-secondary Price">135.00 $</span>
                                         <i class="fa-solid fa-trash-can btn" data-bs-dismiss="Item1" aria-label="Close" onclick="removeItem('Item1')"></i>
                                      </div>
         
