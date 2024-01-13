@@ -1,0 +1,472 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    --fontcolor: black;
+    --maincolor: white;
+    --textfont: 'Poppins', sans-serif;
+    --headerfont: 'Yeseva One', serif;
+    --paragrahcolor: #8b8989;
+    --mainheight: 80vh;
+    --secondaryheight: 45vh;
+    --sectionpadding: .7rem;
+    --backgroundhead:#f1f1f1;
+
+}
+::selection {
+    background-color: var(--fontcolor);
+    color: var(--maincolor);
+}
+
+/* some repeated classes*/
+.buttonshape {
+    background-color: transparent;
+    border: 1px solid var(--fontcolor);
+    padding: 5px 20px;
+    transition: all 0.5s;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.buttonshape:hover {
+    background-color: var(--fontcolor);
+    color: var(--maincolor);
+}
+
+.headfont {
+    line-height: 1em;
+    font-family: var(--headerfont);
+    color: var(--fontcolor);
+}
+
+.textfont {
+    font-size: 12px;
+    color: var(--paragrahcolor);
+    font-family: var(--textfont);
+    font-weight: 300;
+}
+
+/* end of some repeated classes*/
+
+
+ /* nav bar section*/ 
+header{
+    margin: 0 -.7rem;
+}
+
+ 
+#header-text {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 20px;
+
+    margin-left: 5%;
+}
+header .navbar-expand-lg{
+    background-color: transparent !important;
+}
+header .nav-link{
+    color: var(--fontcolor);
+}
+header .navbar-toggler {
+    border: none;
+    background-color: transparent;
+
+}
+
+/* #header-text h2 {
+    font-size: 6vw;
+    width: 60%;
+    font-family: var(--headerfont);
+    line-height: .9;
+}*/
+
+/* #header-text p {
+    width: 60%;
+    font-size: 1.5vw;
+} */
+
+/* #header-text button {
+    width: 120px;
+    padding: 10px;
+} */
+
+.fa-magnifying-glass{
+    font-size: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.fa-magnifying-glass:hover{
+    transform: scale(1.5);
+}
+#cart-icon {
+    position: relative;
+    cursor: pointer;
+    transition: all .2s;
+}
+#cart-icon:hover{
+    opacity: .5;
+}
+
+#cart-items-count {
+    position: absolute;
+    top: -10px;
+    right: -7px;
+    font-size: 12px;
+}
+
+#header-logo {
+    margin-left: 140px;
+}
+
+@media (max-width:950px) {
+    #header-text h2 {
+        font-size: 60px;
+    }
+
+    #header-text p {
+        font-size: 20px;
+    }
+}
+
+@media (max-width:768px) {
+    #header-logo {
+        margin: auto;
+        padding-bottom: 3%;
+    }
+    header #header-right-section{
+        display: none !important;
+
+    }
+}
+
+@media (max-width:500px) {
+    #header-text h2 {
+        font-size: 30px;
+    }
+
+    #header-text p {
+        font-size: 10px;
+    }
+
+    #imgContainer img {
+        display: none;
+    }
+}
+
+@media (max-width:768px) {
+    #header-text {
+        /* top: 80%; */
+        margin-left: 0;
+        margin-top: 25%;
+    }
+}
+
+/* end of nav bar */
+
+
+/* beginign of content */ 
+
+#content {
+    padding: 5% 5%;
+    margin-bottom: 5%px;
+}
+#content>div>div:first-of-type{
+    padding-bottom:20px;
+    padding-top: 2%;
+}
+#content>div a{
+    margin-right: 5px;
+    transition: all .5s;
+}
+#content>div a p{
+    margin-left: 5px;
+    font-family: var(--textfont);
+}
+#content .circle{
+
+        width: 20px; /* Adjust the size as needed */
+        height: 20px;
+        border-radius: 50%;
+        background-color:var(--fontcolor); /* Set the background color */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff; /* Set the text color */
+        margin-right: 5px;
+}
+/*end of content */
+
+
+/* first table */
+
+#content>div table:first-of-type{
+    border: 1px solid var(--backgroundhead);
+}
+#content .bg-body-secondary{
+    background-color: var(--backgroundhead) !important;
+}
+#content>div table:first-of-type tbody th{
+    text-align: right;
+    width: 0px;
+}
+#content>div table:first-of-type img{
+    height: auto;
+    max-width: 50px;
+    width: auto;
+    vertical-align: middle;
+}
+#content>div table:first-of-type tbody td{
+    padding: 25px 10px;
+    color: var(--paragrahcolor);
+    
+}
+#content>div table:first-of-type .counter{
+    border: 1px solid gray;
+    width: fit-content;
+}
+
+#content>div table:first-of-type .counter output{
+    padding: 5px 10px;
+    color: var(--paragrahcolor);
+    transition: all .5s;
+    cursor: pointer;
+}
+#content>div table:first-of-type .counter output:not(.number):hover{
+    background-color: var(--fontcolor);
+    color: white;
+}
+#content .fa-circle-xmark{
+    color: #8b8989;
+    cursor: pointer;
+    font-size: 1rem;
+
+}
+#content .fa-circle-xmark:hover{
+    color: #424242;
+}
+
+
+/* seconed div */
+#tableparts .secondtable{
+    width: 30%;
+    margin-left: 2%;
+    padding: 0 20px;
+    border: 1px solid var(--backgroundhead);
+    height: fit-content;
+}
+#tableparts .secondtable h5{
+    background-color: var(--backgroundhead);
+    margin: 0 -20px 0px -20px;
+    padding: 8px 8px;
+
+}
+#tableparts .secondtable table{
+    border: none !important;
+    width: 100%;
+}
+
+#tableparts .secondtable table tr{
+    border-bottom: 1px solid var(--backgroundhead);
+
+}
+#tableparts .secondtable table tr td{
+    border: none;
+    font-size: 12px;
+}
+S
+#tableparts .secondtable p{
+    padding-top: 15px;
+    cursor: pointer;
+}
+#tableparts .secondtable:hover p{
+    cursor: pointer;
+}
+#tableparts .secondtable button{
+    margin: 0 auto;
+    width: 100%;
+    margin-bottom: 10%;
+}
+
+
+
+
+
+@media all and (max-width:768px){
+ 
+    #content>div>div:first-of-type a{
+        display: none !important;
+    }
+    #content>div>div:first-of-type #shopping-card{
+        display: block !important;
+        color: red;
+    }
+    #content>div>div:first-of-type #shopping-card p:first-of-type,
+    #content>div>div:first-of-type #shopping-card p:last-of-type{
+        display: none;
+    }
+
+    /* begging of first atble */ 
+    #content #tableparts{
+        flex-direction: column;
+    }
+    
+    #content #tableparts>table thead{
+        display: none !important;
+    }
+
+    #content #tableparts>table tbody th{
+        width: 100%;
+        display: block;
+        text-align: center !important;
+    }
+
+    #content #tableparts>table tbody td{
+        width: 100%;
+        display: block;
+        text-align: right;
+        padding: 10px 10px;
+    }
+    #content #tableparts>table tbody td::before{
+        content: attr(data-title) " ";
+        font-weight: 700;
+        float: left;
+    }
+
+    #content #tableparts>table tbody td .counter{
+        margin: auto;
+    }
+    #content #tableparts>table tbody tr td:last-of-type{
+        text-align: center;
+    }
+     /* end of first table */
+    #tableparts .secondtable{
+        width: 100%;
+    }
+    #tableparts .secondtable tbody tr td:last-of-type{
+        text-align: right;
+    }
+}
+
+
+
+/* end of main part */
+
+
+
+
+
+
+
+
+
+/*footer*/
+
+
+footer {
+    background-color: #f1f1f1;
+    margin: -.7rem;
+
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer li {
+    line-height: 200%;
+    /* font-weight: 500; */
+}
+
+footer h3 {
+    text-transform: uppercase;
+}
+
+footer a,
+footer a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.logo,
+.about,
+.links,
+.contacts {
+    text-align: left;
+}
+
+@media all and (max-width:1000px) {
+
+    .logo,
+    .about,
+    .links,
+    .contacts {
+        text-align: center;
+    }
+}
+
+footer .cpyright {
+    border-top: 2px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+footer .cpyright a {
+    text-decoration: none;
+    background-color: white;
+    padding: 10px;
+    font-size: 1rem;
+    color: inherit;
+    line-height: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+footer .cpyright p,
+footer .contacts li {
+    color: var(--lightGray);
+}
+
+/* end of aya parts*/
+
+/* start of ali parts*/
+
+.cartButton{
+    margin: 10px;
+    padding: 10px;
+}
+.cartButton:hover{
+    background-color: var(--fontcolor);
+    color: var(--maincolor);
+}
+
+.QuantityValue{
+    width: 50px; 
+    border: 1px solid var(--paragrahcolor);
+    background-color: #d8d6d6;
+    appearance:textfield;
+    -webkit-appearance: textfield;
+}
+
+
+.QuantityValue::-webkit-inner-spin-button,
+.QuantityValue::-webkit-outer-spin-button,
+.QuantityValue {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.CartItemDetails{margin-left: 5%;
+text-align: center;}
+
+
+
+
+
+
+/* end of ali parts*/
