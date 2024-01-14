@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+/* .container-fluid{
+    background-color: rgb(253, 252, 252) !important;
+} */
 body {
     --fontcolor: black;
     --maincolor: white;
@@ -279,6 +282,13 @@ text-align: center;
 #content .formcontent .leftcontent .coponinput{
     display: none;
 }
+
+#content .formcontent .leftcontent button[type="submit"]{
+    margin-top: 3%;
+    width: 100%;
+}
+
+
 #content .formcontent .rightcontent{
     padding: 10px;
     flex-grow: 1;
@@ -286,7 +296,7 @@ text-align: center;
     height: fit-content;
 }
 
-    
+
 
 
 

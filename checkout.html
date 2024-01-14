@@ -256,22 +256,22 @@
                 <div class="formcontent d-flex  ">
                     <div class="leftcontent">
                         <h3 class="headfont">CUSTOMER INFORMATION</h3>
-                        <form action="">
+                        <form action="#" method="get">
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label textfont">Email address&nbsp;<abbr class=" text-warning">*</abbr></label>
                                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="user name or email address"
-                                data-original-placeholder = "user name or email address">
+                                data-original-placeholder = "user name or email address" required>
                             </div>
                             <div class="bilingdetails row">
                                 <h3 class="headfont">BILLING DETAILS</h3>
                                 
                                 <div class="col-md-6">
                                     <label for="inputEmail4" class="form-label textfont">First Name<abbr class=" text-warning">*</abbr></label>
-                                    <input type="email" class="form-control" id="inputEmail4">
+                                    <input type="email" class="form-control" id="inputEmail4" required>
                                 </div>
                                 <div class="col-md-6">
                                     <label for="inputPassword4" class="form-label textfont">Last Name<abbr class=" text-warning">*</abbr></label>
-                                    <input type="text" class="form-control" id="inputPassword4">
+                                    <input type="text" class="form-control" id="inputPassword4" required>
                                   </div>
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput2" class="form-label textfont">Company Name(optional)</label>
@@ -281,7 +281,7 @@
                                         <label for="exampleFormControlInput3" class="form-label textfont">Country<abbr class=" text-warning">*</abbr></label>
                                         <input name = "country" 
                                         type = "text"
-                                        class="form-select" id="exampleFormControlInput3" list="browsers">
+                                        class="form-select" id="exampleFormControlInput3" list="browsers" required>
                                             <datalist id="browsers">
                                             <option value="Afghanistan">Afghanistan</option>
                                             <option value="Åland Islands">Åland Islands</option>
@@ -532,7 +532,7 @@
                                     <div class="col-md-6">
                                         <label for="inputEmail5" class="form-label textfont">Street address<abbr class=" text-warning">*</abbr></label>
                                         <input type="email" class="form-control" id="inputEmail5"
-                                        placeholder="House number and street name">
+                                        placeholder="House number and street name" required>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="inputPassword6" class="form-label textfont">Apartment, suite, unit, etc. (optional)</label>
@@ -541,19 +541,19 @@
                                     </div>
                                     <div class="col-md-4">
                                         <label for="inputCity" class="form-label textfont">City<abbr class=" text-warning">*</abbr></label>
-                                        <input type="text" class="form-control" id="inputCity">
+                                        <input type="text" class="form-control" id="inputCity" required>
                                     </div>
                                     <div class="col-md-4">
                                         <label for="inputState" class="form-label textfont">State<abbr class=" text-warning">*</abbr></label>
-                                        <input type="text" id="inputState" class="form-control">
+                                        <input type="text" id="inputState" class="form-control" required>
                                     </div>
                                     <div class="col-md-4">
                                         <label for="inputZip" class="form-label textfont">Zip<abbr class=" text-warning">*</abbr></label>
-                                        <input type="text" class="form-control" id="inputZip">
+                                        <input type="text" class="form-control" id="inputZip" required>
                                     </div>
                                     <div class="mb-3">
                                         <label for="phone" class="form-label textfont">Phone<abbr class=" text-warning">*</abbr></label>
-                                        <input type="tel" class="form-control" id="phone">
+                                        <input type="tel" class="form-control" id="phone" required>
                                     </div>
                                     <h3 class="headfont">ADDITIONAL INFORMATION</h3>
                                     <div class="mb-3">
@@ -570,25 +570,38 @@
 
                                     <div class="accordion" id="accordionExample">
                                         <div class="accordion-item">
-                                          <h2 class="accordion-header">
-                                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                              Accordion Item #1
-                                            </button>
+                                          <h2 class="accordion-header ">
+                                            <h2 class="accordion-header">
+                                                <button class="accordion-button collapsed" type="button">
+                                                <div class="form-check">
+
+                                                <input type="radio" name="payment" id="firstinput" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" checked class="form-check-input">
+
+                                                <label class="textfont form-check-label" for="firstinput"> Direct bank transfer
+                                                </label>
+                                                </div>
+                                                </button>
+                                              </h2>
                                           </h2>
                                           <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                                            <div class="accordion-body textfont">
+                                            <div class="accordion-body textfont bg-secondary-subtle">
                                               Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.
                                             </div>
                                           </div>
                                         </div>
                                         <div class="accordion-item">
                                           <h2 class="accordion-header">
-                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                              Accordion Item #2
+                                            <button class="accordion-button collapsed" type="button">
+                                                <div class="form-check">
+                                                    
+                                                <input type="radio" name="payment" id="secondinput" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="form-check-input">
+                                                <label class="textfont form-check-label" for="secondinput"> Direct bank transfer
+                                                </label>
+                                            </div>
                                             </button>
                                           </h2>
                                           <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                            <div class="accordion-body textfont">
+                                            <div class="accordion-body textfont bg-secondary-subtle">
                                                 Pay with cash upon delivery.
                                             </div>
                                           </div>
@@ -596,9 +609,8 @@
                                         
                                         
                                     </div>
-                                
                             </div>
-
+                            <button type="submit" class="buttonshape">Place Order <span class="ordernumber">$135.00</span></button>
                         </form>
                     </div>
                     <div class="rightcontent">
