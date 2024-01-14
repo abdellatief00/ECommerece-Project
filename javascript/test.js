@@ -48,6 +48,7 @@ console.log(totalPrice);
 console.log(itemsNumber);
 console.log(document.querySelector(".CartMenu").children[0].children[0].innerHTML)
 document.querySelector(".total").innerHTML=document.querySelector(".CartMenu").children[0].children[0].innerHTML=totalPrice+".00 $";
+document.querySelector("#cart-items-count").innerHTML=itemsNumber;
    
 
 }
