@@ -252,8 +252,8 @@ text-align: center;
 #content .formcontent .leftcontent{
     /* flex-grow: 1; */
     padding: 10px;
-    margin-right: 5%;
-    width: 65%;
+    margin-right: 3%;
+    width: 60%;
 }
 #content .formcontent .leftcontent input,
 #content .formcontent .leftcontent textarea{
@@ -282,22 +282,54 @@ text-align: center;
 #content .formcontent .leftcontent .coponinput{
     display: none;
 }
-
 #content .formcontent .leftcontent button[type="submit"]{
     margin-top: 3%;
     width: 100%;
 }
 
 
+/* right content*/
 #content .formcontent .rightcontent{
     padding: 10px;
     flex-grow: 1;
-    background-color: red;
+    /* background-color: red; */
     height: fit-content;
 }
-
-
-
+#content .formcontent .rightcontent table{
+    width: 100%;
+    border-right: 1px solid var(--backgroundhead);
+    border-left: 1px solid var(--backgroundhead);
+}
+#content .formcontent .rightcontent table tr{
+    border-top: 1px solid var(--backgroundhead);
+    padding: 5px !important;
+}
+#content .formcontent .rightcontent table tr td{
+    padding: .5em .7em;
+}
+#content .formcontent .rightcontent table tr td:last-child{
+    text-align: right;
+}
+#content .formcontent .rightcontent table thead tr{
+    color: var(--paragrahcolor);
+    font-size: 1rem;
+}
+#content .formcontent .rightcontent table tbody tr td{
+    padding: 1em  0.7em;
+}
+#content .formcontent .rightcontent table tbody tr td img{
+    width: 50px;
+    height: 50px;
+}
+#content .formcontent .rightcontent table tbody tr td p{
+    margin-bottom: 0;
+    padding-left: 5px;
+    font-size: .6rem !important;
+}
+#content .formcontent .rightcontent table tfoot tr{
+    border-bottom: 1px solid var(--backgroundhead);
+    color: var(--paragrahcolor);
+}
 
 
 
@@ -325,4 +357,17 @@ text-align: center;
     #content>div>div:first-of-type #shopping-card p:last-of-type{
         display: none;
     }
+
+    /*form*/
+    #content .formcontent{
+        flex-direction: column;
+    }
+    #content .formcontent .leftcontent{
+        width: 100%;
+        order: 2;
+    }
+    #content .formcontent .rightcontent{
+        order: 1;
+    }
+
 }
