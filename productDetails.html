@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="style/all.min.css">
+    <link rel="stylesheet" href="style/homesection6donay.css">
+    <link rel="stylesheet" href="style/homepage.css">
+    <link rel="stylesheet" href="style/productDetailsPage.css">
+
+</head>
+<body>
+
+    <!--Header-->
+    <header class="d-flex justify-content-between flex-column-reverse flex-md-row position-relative align-items-center p-3">
+
+        <nav class="navbar navbar-expand-lg bg-body-tertiary nav-underline position-relative z-3">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 position-absolute">
+
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold active" aria-current="page" href="#">Home</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold" href="#">MEN</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold" href="#">WOMEN</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold " href="#">ABOUT</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold" href="#">CONTACT</a>
+                        </li>
+                    
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <div id = "header-logo">
+            <img src="images/logo-header-regular.png" alt="">
+        </div>
+
+        <div id = "header-right-section" class="d-flex  justify-content-between align-items-center">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+                
+            <div id="cart-icon" class="me-3 ms-3">
+                <span>$0.00</span>
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-items-count">0</span>
+            </div>
+
+            <button class="btn">LOG IN</button>
+        </div>
+    </header>
+    <hr>
+
+    <!--product details-->
+    <section id="product-details-section" class="d-flex justify-content-between flex-column flex-lg-row mt-5">
+
+        <!--photo on the left-->
+        <div id="product-photo" class=" ms-5 me-0 mb-5">
+            <div>
+                <img src="images/product-10-a.jpg" alt="">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </div>
+        </div>
+
+        <!--Info part-->
+        <div id="product-info" class="container-fluid d-flex flex-column w-100 ">
+            <!--next and pre buttons with floating div-->
+            <div class="container-fluid d-flex justify-content-between">
+                <span>MEN</span> 
+                <div id="buttons-and-preview-div">
+                    <button id="prevProduct" class="btn btn-outline-secondary fw-bold"> &lt; </button>
+                    <button id="nextProduct" class="btn btn-outline-secondary fw-bold"> &gt; </button>
+
+                    <!--preiew next or previous product-->
+                    <div id="product-preview-div" class="d-flex miniImage d-none">
+                        <img src="images/product-09-a.jpg" alt="" class="w-25 h-25">
+                        <div>
+                            <div>Product Name</div>
+                            <div>&price</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Main Info section-->
+            <section>
+                <h1>Product Name</h1>
+                <h3>$Price</h3>&free shipping
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet sed unde tenetur corporis eum facilis totam voluptates qui odit animi omnis sequi, minima quos sunt iste at nam eligendi quaerat?
+                </p>
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima sapiente deserunt cupiditate repellendus iste temporibu.
+                </p>
+
+                <!--counter and Add to cart-->
+                <div class="d-flex align-items-center container-fluid">
+                    <div>
+                        <div class="input-group">
+                            <button class="btn btn-outline-secondary" type="button" id="decrementBtn">-</button>
+                            <input type="text" class="form-control text-center" value="1" id="countDisplay" readonly>
+                            <button class="btn btn-outline-secondary" type="button" id="incrementBtn">+</button>
+                        </div>
+                    </div>
+                    
+                    <div class="mx-4">
+                        <button id="add-to-cart-btn" class="btn btn-outline-secondary add-to-cart-btn">
+                            Add To Cart
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Description Section -->
+            <section class="container-fluid mt-5 ">
+                <div class="accordion" id="descriptionAccordion">
+                    
+                    <div class="accordion-item border-0">
+                        <h2 class="accordion-header" id="descriptionHeading">
+                            <button class="accordion-button fw-bold bg-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#descriptionCollapse" aria-expanded="true" aria-controls="descriptionCollapse">
+                                Description
+                            </button>
+                        </h2>
+                        <div id="descriptionCollapse" class="accordion-collapse collapse show" aria-labelledby="descriptionHeading" data-bs-parent="#descriptionAccordion">
+                            <div class="accordion-body">
+                                <!-- SIZE Section -->
+                                <div class="d-flex justify-content-between">
+                                    <div class="fw-bold">SIZE:</div>
+                                    <div>XL (58-14)</div>
+                                </div>
+    
+                                <hr>
+            
+                                <!-- SHIPPING & RETURNS Section -->
+                                <div>
+                                    <div class="fw-bold">SHIPPING & RETURNS:</div>
+                                     Quisque ut augue eu dui semper eleifend. Aliquam imperdiet nisl libero, vitae vulputate lectus fringilla eget.
+                                </div>
+                                
+                                <hr>
+                                <!-- FRAME DESCRIPTION Section -->
+                                <div>
+                                    <div class="fw-bold">FRAME DESCRIPTION:</div>
+                                    
+                                    <ul class="list-unstyled">
+                                        <li>Shape: Round</li>
+                                        <li>Color: Pink</li>
+                                        <li>Material: Metal</li>
+                                    </ul>
+                                </div>
+    
+                                <hr>
+            
+                                <!-- LENS INFORMATION Section -->
+                                <div >
+                                    <div class="fw-bold">LENS INFORMATION:</div>
+                                    
+                                    <ul class="list-unstyled">
+                                        <li>Class: 3P</li>
+                                        <li>Color: Pink</li>
+                                        <li>Treatment: Classic</li>
+                                    </ul>
+                                </div>
+                                <hr>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--Reviews section-->
+            <section class="container-fluid mt-5">
+                <div class="accordion" id="reviewsAccordion">
+            
+                    <!-- Reviews Section -->
+                    <div class="accordion-item border-0 bg-white">
+                        <h2 class="accordion-header" id="reviewsHeading">
+                            <button class="accordion-button bg-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#reviewsCollapse" aria-expanded="true" aria-controls="reviewsCollapse">
+                                Reviews (0)
+                            </button>
+                        </h2>
+                        <div id="reviewsCollapse" class="accordion-collapse collapse show" aria-labelledby="reviewsHeading" data-bs-parent="#reviewsAccordion">
+                            <div class="accordion-body">
+                                <p>No reviews yet. Be the first to review this product.</p>
+                                <!-- Add your review content here -->
+                            </div>
+                        </div>
+                    </div>
+            
+                    <!-- Form Section -->
+                    <div class="accordion-item border-0 bg-white">
+                        <h2 class="accordion-header" id="formHeading">
+                            <button class="accordion-button fw-bold border-0 bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#formCollapse" aria-expanded="false" aria-controls="formCollapse">
+                                Add a Review
+                            </button>
+                        </h2>
+                        <div id="formCollapse" class="accordion-collapse collapse" aria-labelledby="formHeading" data-bs-parent="#reviewsAccordion">
+                            <div class="accordion-body">
+            
+                                <p>Be the first to review “Product Name”</p>
+            
+                                <form>
+                                    <div class="mb-3">
+                                        <label for="review" class="form-label">Your review *</label>
+                                        <textarea class="form-control" id="review" rows="3" required></textarea>
+                                    </div>
+            
+                                    <div class="mb-3">
+                                        <label for="name" class="form-label">Name *</label>
+                                        <input type="text" class="form-control" id="name" required>
+                                    </div>
+            
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label">Email *</label>
+                                        <input type="email" class="form-control" id="email" required>
+                                    </div>
+            
+                                    <button type="submit" class="btn btn-secondary">Submit Review</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+            
+                </div>
+            </section>
+            
+        </div>
+    </section>
+
+    <!--Related products-->
+    <section id="related-products">
+        <!-- products part -->
+        <div class="mb-0 mt-5">
+            <p id="title2" class="headfont">Related products</p>
+        </div>
+    
+        <div id="products" class="mt-0">
+            <div class="product ">
+                <div class="product-image" id="image1">
+                    <div class="icons-product">
+                        <i class="far fa-eye" id="eye"></i>
+                    </div>
+                    <div class="quick-view">Quick View</div>
+                    <div class="icons-product icons-product-2">
+                        <i class="fas fa-shopping-basket" id="shop"></i>
+                    </div>
+                    <div class="add-to-cart">Add to Cart</div>
+                </div>
+                <div class="product-info">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h2 class="productname headfont">Product Name 10</h2>
+                    <p class="price textfont">$117.00</p>
+                    
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-image" id="image2">
+                    <div class="icons-product">
+                        <i class="far fa-eye" id="eye"></i>
+                    </div>
+                    <div class="quick-view">Quick View</div>
+                    <div class="icons-product icons-product-2">
+                        <i class="fas fa-shopping-basket" id="shop"></i>
+                    </div>
+                    <div class="add-to-cart">Add to Cart</div>
+                </div>
+                <div class="product-info">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h2 class="productname headfont">Product Name 11</h2>
+                    <p class="price textfont">$185.00</p>
+                    
+                </div>
+            </div>
+            <div class="product">
+                <div class="product-image" id="image3">
+                    <div class="icons-product">
+                        <i class="far fa-eye" id="eye"></i>
+                    </div>
+                    <div class="quick-view">Quick View</div>
+                    <div class="icons-product icons-product-2">
+                        <i class="fas fa-shopping-basket" id="shop"></i>
+                    </div>
+                    <div class="add-to-cart">Add to Cart</div>
+                </div>
+                <div class="product-info">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h2 class="productname headfont">Product Name 9</h2>
+                    <p class="price textfont">$135.00</p>
+                    
+                </div>
+            </div>
+        </div>
+                <!-- end of products  -->
+    </section>
+    
+    <!--Footer-->
+    <section>
+        <footer>
+            <div class="container p-5">
+                <div class="row"> 
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 logo m-0">
+                       <a href="#logo"><img src="images/logo.png" alt="" class="mb-3"></a>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 about m-0">
+                        <h3 class="pb-3 headfont">About us</h3>
+                        <ul class="p-0 textfont">
+                            <li><a href="#"> Home</a></li>
+                            <li><a href="#"> Women</a></li>
+                            <li><a href="#"> Men</a></li>
+                            <li><a href="#"> About Us</a></li>
+                            <li><a href="#"> Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 links m-0 ">
+                        <h3 class="pb-3 headfont">Useful Links</h3>
+                        <ul class="p-0 textfont">
+                            <li><a href="#"> Privacy Policy</a></li>
+                            <li><a href="#"> Refund Policy</a></li>
+                            <li><a href="#"> Shipping Informations</a></li>
+                            <li><a href="#"> Terms & Conditions</a></li>
+                            <li><a href="#"> FAQ’s</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 contacts m-0">
+                        <h3 class="pb-3 headfont">Contact</h3>
+                        <ul class="p-0 textfont">
+                            <li>123 Fifth Avenue, New York, NY 10160</li>
+                            <li>contact@info.com </li>
+                            <li>929-242-6868</li>
+                        </ul>
+                    </div>
+                </div> <!-- end of row -->
+                <div class="row cpyright p-4 mb-3 d-flex">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 p-4 ">
+                        <p class="textfont">Copyright &copy; 2024 Eyewear Store | Powered by Eyewear Store</p>
+                    </div>
+                    <div class="offset-xl-3 col-xl-3 offset-lg-3 col-lg-3 col-md-6 col-sm-12 col-12 p-4">
+                        <a href="#facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#twitter"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#instagram"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                   
+                </div> <!-- copyright -->
+            </div>
+        </footer>
+    </section>
+
+    <!-- Floating product counter -->
+    <section id="bottom-product-counter" class="d-flex align-items-center  justify-content-between d-none bg-white">
+        <div>
+            <img src="images/product-09-a.jpg" alt="" class="miniImage ">
+            Product Name
+        </div>
+
+        <div>
+            
+            <div class="d-flex align-items-center container-fluid">
+                <span>$price</span>
+                <div>
+                    <div class="input-group">
+                        <button class="btn btn-outline-secondary" type="button" id="floatingDecrementBtn">-</button>
+                        <input type="text" class="form-control text-center" value="1" id="floatingCountDisplay" readonly>
+                        <button class="btn btn-outline-secondary" type="button" id="floatingIncrementBtn">+</button>
+                    </div>
+                </div>
+                
+                <div class="mx-4">
+                    <button class="btn btn-outline-secondary add-to-cart-btn">
+                        Add To Cart
+                    </button>
+                </div>
+            </div>
+
+        </div>
+        
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script src="javascript/all.min.js"></script>
+    <script>
+        
+        window.addEventListener("load", function(){
+            let nextProduct = document.getElementById("nextProduct");
+            let prevProduct = document.getElementById("prevProduct");
+            let incrementBtn = document.getElementById("incrementBtn");
+            let decrementBtn = document.getElementById("decrementBtn");
+            let floatingDecrementBtn = document.getElementById("floatingDecrementBtn");
+            let floatingIncrementBtn = document.getElementById("floatingIncrementBtn");
+            
+
+            prevProduct.addEventListener("mouseenter", toggleProductPreviewDiv);
+            nextProduct.addEventListener("mouseenter", toggleProductPreviewDiv);
+
+            prevProduct.addEventListener("mouseleave", toggleProductPreviewDiv);
+            nextProduct.addEventListener("mouseleave", toggleProductPreviewDiv);
+
+            incrementBtn.addEventListener("click", incrementCounter);
+            decrementBtn.addEventListener("click", decrementCounter);
+
+            floatingIncrementBtn.addEventListener("click", incrementCounter);
+            floatingDecrementBtn.addEventListener("click", decrementCounter);
+
+            window.addEventListener("scroll", showOrHideFloatingDiv);
+            //dispalyProductInfo();
+        });
+
+        
+
+        const products = [
+          {
+            name: 'Product 1',
+            imageSrc: 'images/product1.jpg',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+            price: 29.99,
+            size: 'Medium',
+            category: 'MEN',
+            reviews: [
+              { user: 'User1', rating: 4, comment: 'Great product!' },
+              { user: 'User2', rating: 5, comment: 'Excellent quality.' }
+            ]
+          },
+          {
+            name: 'Product 2',
+            imageSrc: 'images/product2.jpg',
+            description: 'Sed do eiusmod tempor incididunt ut labore et dolore magna        aliqua.',
+            price: 49.99,
+            size: 'Large',
+            category: 'MEN',
+            reviews: [
+              { user: 'User3', rating: 3, comment: 'Nice design.' },
+              { user: 'User4', rating: 4, comment: 'Comfortable to wear.' }
+            ]
+          },
+          {
+            name: 'Product 3',
+            imageSrc: 'images/product3.jpg',
+            description: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco        laboris.',
+            price: 39.99,
+            size: 'Small',
+            category: 'MEN',
+            reviews: [
+              { user: 'User5', rating: 5, comment: 'Perfect fit!' },
+              { user: 'User6', rating: 4, comment: 'Durable and stylish.' }
+            ]
+          }
+        ];
+
+        let currentProductIndex = 1;
+        let imageContainer = document.querySelector("#product-photo>div");
+        let productImage = document.querySelector("#product-photo>div>img");
+        let count = 1;
+
+        productImage.addEventListener("mousemove", function(e){
+
+            let xPercent = (e.clientX - imageContainer.offsetLeft) / imageContainer.offsetWidth * 100;
+
+            let yPercent = (e.clientY - imageContainer.offsetTop) / imageContainer.offsetHeight * 100;
+            
+            productImage.style.transform = 'translate(-' + xPercent + '%, -' + yPercent + '%) scale(2)';
+        });
+
+        imageContainer.addEventListener('mouseleave', function () {
+            productImage.style.transform = 'translate(0, 0) scale(1)';
+    });
+
+    function dispalyProductInfo(){
+        let productInfoDiv = document.querySelector("#product-info");
+        let category = document.createElement("span");
+        let pName = document.createElement("h2");
+        let pPrice = document.createElement("h3");
+        let pDesc1 = document.createElement("p");
+        let pDesc2 = document.createElement("p");
+        let buttonsDiv = document.createElement("div");
+        let line = document.createElement("hr");
+        let line2 = document.createElement("hr");
+
+        category.innerText = products[currentProductIndex].category;
+        pName.innerText = products[currentProductIndex].name;
+        pPrice.innerText = ` $ ${products[currentProductIndex].price} &free shipping `;
+        pDesc1.innerText = products[currentProductIndex].description;
+        pDesc2.innerText = products[currentProductIndex].description;
+        buttonsDiv.innerHTML = createCountButton();
+
+        productInfoDiv.append(category, pName, pPrice, pDesc1, pDesc2, buttonsDiv, line, category, line2);
+    }
+
+    function createCountButton() {
+    let incrementButton = document.createElement("button");
+    let decrementButton = document.createElement("button");
+    let countContainer = document.createElement("input");
+    let buttonsDiv = document.createElement("div");
+
+
+    let counterDiv = `
+    <div class="d-flex align-items-center container-fluid">
+                <div class="">
+                    <div class="input-group">
+                        <button class="btn btn-outline-secondary" type="button" id="decrementBtn">-</button>
+                        <input type="text" class="form-control text-center" value="0" id="countDisplay" readonly>
+                        <button class="btn btn-outline-secondary" type="button" id="incrementBtn">+</button>
+                    </div>
+                </div>
+                
+                <div class="mx-4">
+                    <button class="btn btn-outline-secondary">
+                        Add To Cart
+                    </button>
+                </div>
+            </div>
+    
+    `;
+
+    
+
+    // Set classes for styling
+    buttonsDiv.classList.add("count-container");
+    countContainer.classList.add("count-output");
+
+    incrementButton.innerText = "+";
+    decrementButton.innerText = "-";
+    let counter = 1;
+
+    buttonsDiv.append(decrementButton, countContainer, incrementButton);
+
+    return counterDiv;
+}
+
+    function displayFloatingDiv()
+    {
+
+    }
+    
+    function showOrHideFloatingDiv(){
+        let triggerElement = document.getElementById("add-to-cart-btn");
+        let triggerElementPosition = triggerElement.getBoundingClientRect().bottom;
+
+        if(triggerElementPosition < 0)
+        {
+            document.getElementById("bottom-product-counter").classList.remove("d-none");
+        }
+        else
+        document.getElementById("bottom-product-counter").classList.add("d-none");
+    }
+
+    function toggleProductPreviewDiv(){
+        let previewDiv = document.getElementById("product-preview-div");
+        previewDiv.classList.toggle("d-none");
+    }
+
+    function incrementCounter(){
+        if(count < 99)
+            count++;
+        updateCounterDisplay();
+    }
+
+    function decrementCounter(){
+        if(count > 1)
+            count--;
+        updateCounterDisplay();
+    }
+
+    function updateCounterDisplay(){
+        document.getElementById("countDisplay").value = count;
+        document.getElementById("floatingCountDisplay").value = count;
+    }
+
+    </script>
+</body>
+
+</html>
