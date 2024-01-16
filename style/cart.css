@@ -12,7 +12,10 @@ body {
     --mainheight: 80vh;
     --secondaryheight: 45vh;
     --sectionpadding: .7rem;
+<<<<<<< HEAD
     --backgroundhead:#f1f1f1;
+=======
+>>>>>>> origin/donya
 
 }
 ::selection {

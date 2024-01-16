@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style/all.min.css">
     <link rel="stylesheet" href="style/homepage.css">
-    <link rel="stylesheet" href="homesection6donay.css">
+
     <script src="javascript/test.js" defer></script>
 
   </head>
@@ -34,6 +34,7 @@
             <div id="imgContainer" class="z-2">
                 <img src="images/headerGlass.png" alt="" style="position: absolute;">
             </div>
+            
             <header class="d-flex justify-content-between flex-column-reverse flex-md-row position-relative align-items-center p-3">
 
                 <nav class="navbar navbar-expand-lg bg-body-tertiary nav-underline">
@@ -49,7 +50,11 @@
                                 </li>
 
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#">Link</a>
+                                    <a class="nav-link" href="html/woman.html">WOMEN</a>
+                                </li>
+
+                                <li class="nav-item">
+                                    <a class="nav-link" href="html/man.html">MEN</a>
                                 </li>
 
                                 <li class="nav-item">
@@ -59,26 +64,22 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="#">Link</a>
                                 </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#">Link</a>
-                                </li>
+                            
                             </ul>
                         </div>
                     </div>
                 </nav>
-
-                <div id="header-logo">
+    
+                <div id = "header-logo">
                     <img src="images/logo-header-regular.png" alt="">
                 </div>
-
+    
                 <div id = "header-right-section" class="d-flex  justify-content-between align-items-center">
 
                     <i class="fa-solid fa-magnifying-glass"></i>
-                    
-                        <div class="btn CartMenu" data-bs-toggle="modal" data-bs-target="#ShoppingCart" data-bs-whatever="@mdo" onclick="totalprice()">
-                    <div id="cart-icon" class="me-3 ms-3" >
-                        <span>$00.00</span>
+                        
+                    <div id="cart-icon" class="me-3 ms-3">
+                        <span>$0.00</span>
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span id="cart-items-count">0</span>
                     </div>
@@ -103,7 +104,7 @@
         <!-- section one -->
         <div class="row text-center gap-3" id="sectiontwo">
             <div class="col-12 col-sm-6 col-md-4 col-lg-4  text-start align-self-center">
-                <div>
+                <div >
                     <h1 class="headfont">A few words about us</h1>
                     <p class="textfont">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum maxime consequatur officiis veritatis.</p>
                     <button class="buttonshape">read more</button>
@@ -132,12 +133,12 @@
                     <div>
                         <img src="images/homepage/bg-04.jpg" alt="product">
                     </div>
-
-                    <h4 class="textfont text-uppercase">product Name</h4>
-                    <p class="textfont">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
-                    <bdi class="textfont">135.00$</bdi>
-                    <button class="buttonshape">ADD TO CARD</button>
-
+                    
+                        <h4 class="textfont text-uppercase">product Name</h4>
+                        <p class="textfont">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                        <bdi class="textfont">135.00$</bdi>
+                        <button class="buttonshape">ADD TO CARD</button>
+                    
                 </div>
             </div>
         </div>
@@ -146,16 +147,16 @@
 
         <div class="row" id="sectionfive">
             <div class="col-12 col-sm-12 col-lg-6 offset-lg-3  text-center">
-                <h6>Client's Review</h6>
-                <h1 class="headfont">Testimonials</h1>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <span class="fa fa-star checked"></span>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus volutpat malesuada mollis. Curabitur maximus maximus faucibus. Phasellus interdum imperdiet lacus finibus.</p>
-                <p class="textfont">Jennifer Oliver</p>
-                <button class="buttonshape">READ MORE</button>
+                    <h6>Client's Review</h6>
+                    <h1 class="headfont">Testimonials</h1>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <span class="fa fa-star checked"></span>
+                    <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus volutpat malesuada mollis. Curabitur maximus maximus faucibus. Phasellus interdum imperdiet lacus finibus.</p>
+                    <p class="textfont">Jennifer Oliver</p>
+                    <button class="buttonshape">READ MORE</button>
             </div>
         </div>
         <!-- end of sectoin five -->
@@ -202,6 +203,7 @@
                     </div>
                     <h2 class="productname headfont">Product Name 10</h2>
                     <p class="price textfont">$117.00</p>
+                    
                 </div>
             </div>
             <div class="product">
@@ -225,6 +227,7 @@
                     </div>
                     <h2 class="productname headfont">Product Name 11</h2>
                     <p class="price textfont">$185.00</p>
+                    
                 </div>
             </div>
             <div class="product">
@@ -248,12 +251,18 @@
                     </div>
                     <h2 class="productname headfont">Product Name 9</h2>
                     <p class="price textfont">$135.00</p>
+                    
                 </div>
             </div>
         </div>
         <!-- end of products  -->
         <!-- end of donya parts -->
         <!-- aya part -->
+
+
+
+        <!-- end of donya parts -->
+
         <section class="ProductFeatures">
             <div class="container-fluid">
                 <div class="row">
@@ -291,12 +300,12 @@
                 </div>
             </div>
         </section> <!-- end of features section -->
-
+    
         <footer>
             <div class="container p-5">
-                <div class="row">
+                <div class="row"> 
                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 logo m-0">
-                        <a href="#logo"><img src="images/logo.png" alt="" class="mb-3"></a>
+                       <a href="#logo"><img src="images/logo.png" alt="" class="mb-3"></a>
                     </div>
                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 about m-0">
                         <h3 class="pb-3 headfont">About us</h3>
