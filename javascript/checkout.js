@@ -19,6 +19,9 @@ window.addEventListener('load',function(){
 window.addEventListener('resize',function(){
     if(this.window.innerWidth<=768){
     this.document.querySelector('#content .formcontent .rightcontent #collapseOne').classList.remove("show");
+    this.document.querySelector('#content .formcontent .rightcontent .accordion button').classList.add("collapsed");
+    this.document.querySelector('#content .formcontent .rightcontent .accordion button').setAttribute("aria-expanded",'False');
+    
     }
     else{
         this.document.querySelector('#content .formcontent .rightcontent #collapseOne').classList.add("show");
