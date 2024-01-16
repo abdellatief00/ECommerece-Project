@@ -70,7 +70,7 @@
         <!-- end of nav bar -->
         
       <!-- login Start -->
-<div>
+<!-- <div>
     <div class="modal fade " id="LoginScreen" tabindex="-1" aria-labelledby="Login_form" aria-hidden="true" data-bs-backdrop="static"  >
             <div class="modal-dialog  modal-dialog-centered" >
                 <div class="modal-content" style="background-color: #d8d6d6;">
@@ -105,14 +105,57 @@
             </div>
         </div>
     </div>
+    </div> -->
+    <div class="modal fade" id="LoginScreen" tabindex="-1" aria-labelledby="Login_form" aria-hidden="true" data-bs-backdrop="static">
+        <div class="modal-dialog">
+            <!-- Left Column for Image -->
+            <div class="modal-content split-modal-content">
+                <div class="modal-body">
+                    <!-- Add your image here -->
+                    <img src="images/glass.jpg" alt="Login Image" class="img-fluid">
+                </div>
+            </div>
+    
+            <!-- Right Column for Login Form -->
+            <div class="modal-content split-modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="Login_form">Login</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="mb-3">
+                            <label for="Email">Email:</label>
+                            <div class="input-group my-2">
+                                <span class="fa fa-user input-group-prepend input-group-text" style="padding: 10px;"></span>
+                                <input type="email" class="form-control" id="Email" name="Email" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Password" class="col-form-label">Password:</label>
+                            <div class="input-group my-2">
+                                <span class="fa fa-lock input-group-prepend input-group-text" style="padding: 10px;"></span>
+                                <input type="password" class="form-control" id="Password" name="Password" required>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" value="Login" class="btn btn-primary">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+    
+    
     
     <!-- end login -->
 
        <!-- Cart start -->
 <div class="modal fade  " id="ShoppingCart" tabindex="-1" aria-labelledby="ShoppingCartModalLabel" aria-hidden="true" >
-    <div class="modal-dialog " style=" margin-right: 0; margin-top: 0;" >
-        <div class="modal-content " style="background-color:  #d8d6d6;" >
+    <div class="modal-dialog Cart-dialog" style=" margin-right: 0; margin-top: 0;" >
+        <div class="modal-content Cart-Content" style="background-color:  #d8d6d6;" >
             <div class="modal-header ">
                 <h5 class="modal-title" id="ShoppingCartModalLabel">Shopping Cart</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -121,75 +164,7 @@
                 
                 <div class="CartItems" >
 
-                        <div class="Item1">
-                              <img src="images/homepage/bg-04.jpg" alt="product" width="80px" height="80px">
-                                 <div class="CartItemDetails" style="display: inline-block;">
-                                     <h6>Sunglasses</h6>
-
-
-                                     <div class="input-group">
-                                     <button class="btn btn-outline-secondary" type="button" onclick="decrementValue() ">-</button>
-                                     <input type="number"  value="1" min="1" class="QuantityValue text-center flex-fill  "/>
-                                     <button class="btn btn-outline-secondary" type="button" onclick="incrementValue()">+</button>
-                                     </div>
-
-                                </div>
-
-                            <div class="float-end">
-                                <br>
-                                <span class="fs-5 text-secondary Price">135.00 $</span>
-                                <i class="fa-solid fa-trash-can btn" data-bs-dismiss="Item1" aria-label="Close" onclick="removeItem('Item1')"></i>
-                             </div>
-
-                         </div>
-
-                         
-
-                            <div class="Item1">
-                                  <img src="images/homepage/bg-04.jpg" alt="product" width="80px" height="80px">
-                                     <div class="CartItemDetails" style="display: inline-block;">
-                                         <h6>Sunglasses</h6>
-    
-    
-                                         <div class="input-group">
-                                         <button class="btn btn-outline-secondary" type="button" onclick="decrementValue()">-</button>
-                                         <input type="number"  value="1" min="1" class="QuantityValue text-center flex-fill  "/>
-                                         <button class="btn btn-outline-secondary" type="button" onclick="incrementValue()">+</button>
-                                         </div>
-    
-                                    </div>
-    
-                                <div class="float-end">
-                                    <br>
-                                    <span class="fs-5 text-secondary Price">135.00 $</span>
-                                    <i class="fa-solid fa-trash-can btn" data-bs-dismiss="Item1" aria-label="Close" onclick="removeItem('Item1')"></i>
-                                 </div>
-    
-                             </div>
-
-                             
-
-                                <div class="Item1">
-                                      <img src="images/homepage/bg-04.jpg" alt="product" width="80px" height="80px">
-                                         <div class="CartItemDetails" style="display: inline-block;">
-                                             <h6>Sunglasses</h6>
-        
-        
-                                             <div class="input-group">
-                                             <button class="btn btn-outline-secondary" type="button" onclick="decrementValue()">-</button>
-                                             <input type="number"  value="1" min="1" class="QuantityValue text-center flex-fill  "/>
-                                             <button class="btn btn-outline-secondary" type="button" onclick="incrementValue()">+</button>
-                                             </div>
-        
-                                        </div>
-        
-                                    <div class="float-end">
-                                        <br>
-                                        <span class="fs-5 text-secondary Price">135.00 $</span>
-                                        <i class="fa-solid fa-trash-can btn" data-bs-dismiss="Item1" aria-label="Close" onclick="removeItem('Item1')"></i>
-                                     </div>
-        
-                                 </div>
+                      
                    
 
                     

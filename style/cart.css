@@ -461,10 +461,25 @@ footer .contacts li {
     margin: 0;
 }
 
-.CartItemDetails{margin-left: 5%;
-text-align: center;}
-
-
+.CartItemDetails{margin-left: 15%;
+    text-align: center;}
+    
+    
+   
+    .Cart-Content{height: 100vh;
+        border-radius: 0%;
+        
+       }
+       .Cart-dialog{
+        margin: 0% 0% 0% 0%;
+        float: right;
+        width: 100%;
+       }
+    
+    
+       .Item{
+        margin-top: 10px;
+       }
 
 
 
