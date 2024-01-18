@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About-Us</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style/bootstrap.min.css">
+    <link rel="stylesheet" href="style/all.min.css">
+    <link rel="stylesheet" href="style/aboutStyle.css">
+    <script src="javascript/test.js" defer></script>
+</head>
+
+<body>
+    <section id="homepage-header">
+        <header>
+            <nav class="navbar navbar-expand-lg nav-underline p-lg-4">
+                <div class="container-fluid">
+                    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="navbar-collapse collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item ">
+                                <a class="nav-link p-xl-4 p-lg-2 p-md-1  p-2" href="homepage.html">Home</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link p-xl-4 p-lg-2 p-md-1  p-2" href="html/woman.html">Women</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link p-xl-4 p-lg-2 p-md-1  p-2" href="html/man.html">Men</a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link p-xl-4 p-lg-2 p-md-1  p-2 active " aria-current="page" href="#">About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link p-xl-4 p-lg-2 p-md-1  p-2 " href="contact.html">contact</a>
+                            </li>
+                        </ul> <!-- end of navbar links -->
+
+                           <div id = "header-right-section" class="d-flex  justify-content-between align-items-center">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    
+                        <div class="btn CartMenu" data-bs-toggle="modal" data-bs-target="#ShoppingCart" data-bs-whatever="@mdo" onclick="totalprice()">
+                    <div id="cart-icon" class="me-3 ms-3" >
+                        <span>$00.00</span>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span id="cart-items-count">0</span>
+                    </div>
+
+                </div>
+
+                    <button class="btn" data-bs-toggle="modal" data-bs-target="#LoginScreen" data-bs-whatever="@mdo">LOG IN</button>
+                </div>
+                <!-- end cart and login -->
+
+
+                    </div> <!-- end of collapse -->
+                </div> <!-- end of container -->
+            </nav>
+            <div id="header-logo" style="position: absolute; top: 2%; left:45%;">
+                <img src="images/logo-header-regular.png" alt="">
+            </div>
+            <div
+                class="contactWord text-center text-capitalize mt-xl-5 pt-xl-5 mt-lg-5 pt-lg-5 mt-md-3 pt-md-3 mt-sm-3 pt-sm-3 mt-4 pt-4">
+                <h1>About us</h1>
+            </div>
+
+
+        </header>
+
+    </section>
+
+    <section class="aboutInfo">
+        <div class="container m-lg-5 p-lg-5 m-md-3 p-md-3 pt-4">
+            <div class="row">
+                <h5 class="text-uppercase">About Us</h5>
+                <div class="d-flex  divh1P">
+                    <h1 class="hugeHead ms-auto">
+                        We are an eyewear brand from Milan, Italy
+                    </h1>
+                    <p class="textfont mt-auto ms-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+                        iaculis sapien erat. Sed ornare lectus sit amet felis posuere, semper sodales risus iaculis. Sed
+                        quis sodales magna. Ut in efficitur leo. Proin vel commodo justo, vitae pellentesque enim.
+                        Curabitur ultrices fringilla cursus. Nulla sed laoreet risus.</p>
+                </div> <!-- right cols -->
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </section>
+
+    <section class="justImg"></section> <!-- end of section -->
+
+    <section class="ourVision">
+        <div class="container  m-lg-4 m-md-1">
+            <div class="row">
+                <div
+                    class="offset-xl-1 col-xl-5  col-lg-5  col-md-6 col-sm-12 col-12 leftHandSide">
+                    <h1>Our <br> Vision</h1>
+                    <!-- <img src="" alt=""> -->
+
+                    <img src="images/about-section2.jpg">
+                </div> <!-- left side -->
+                <div
+                    class="offset-xl-1 col-xl-5  offset-lg-2 col-lg-5  col-md-6 col-sm-12 col-12 rightHandSide">
+                    <h4 class="text-capitalize mt-5 pt-5">METUS EU NISL VEHICULA</h4>
+                    <h2 class="text-capitalize mb-2">INTEGER TRISTIQUE METUS EU NISL VEHICULA ET</h2>
+                    <p>Vivamus sem enim, viverra et maximus eget, volutpat pellentesque lacus. Proin non felis dictum,
+                        lacinia enim in, tristique ex. Fusce ac aliquam est. Nunc molestie sapien lacus. Nam sagittis,
+                        tortor feugiat sodales lobortis, sapien ex efficitur sem, vel pharetra ante turpis ut purus.
+                        Phasellus dignissim mollis auctor. Quisque egestas turpis et sem semper bibendum. Praesent
+                        eleifend turpis nec ex blandit, non vehicula dui congue. Mauris interdum mauris dolor.
+                    </p>
+                    <p>Sed in mauris tortor. Maecenas ullamcorper nisi a maximus consequat. Donec imperdiet tempus nisl
+                        id aliquam. Nunc aliquet quis orci nec pharetra.</p>
+                </div> <!-- right side -->
+            </div>
+        </div>
+    </section>
+
+    <section class="ProductFeatures">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 py-5 feature">
+                    <img src="images/discount.png" class="pb-4" alt="">
+                    <div class="card-body px-5">
+                        <h5 class="card-title pb-3"> BIG DISCOUNTS</h5>
+                        <p class="card-text" class="">Integer euismod blandit nunc sit amet sollicitudin. Fusce quis
+                            orci viverra, cursus justo lipsum dolor.</p>
+                    </div> <!-- end of card-body -->
+                </div> <!-- end of card1 -->
+
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 py-5 feature">
+                    <img src="images/shipping.png" class="pb-4" alt="">
+                    <div class="card-body px-5">
+                        <h5 class="card-title  pb-3">FREE SHIPPING</h5>
+                        <p class="card-text" class="">Integer euismod blandit nunc sit amet sollicitudin. Fusce quis
+                            orci viverra, cursus justo lipsum dolor.</p>
+                    </div> <!-- end of card-body -->
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 py-5 feature">
+                    <img src="images/pays.png" class="pb-4" alt="">
+                    <div class="card-body px-5">
+                        <h5 class="card-title  pb-3">SECURE PAYMENTS</h5>
+                        <p class="card-text" class="">Integer euismod blandit nunc sit amet sollicitudin. Fusce quis
+                            orci viverra, cursus justo lipsum dolor.</p>
+                    </div> <!-- end of card-body -->
+                </div>
+            </div>
+        </div>
+    </section> <!-- end of features section -->
+    <footer>
+        <div class="container p-5">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 logo m-0">
+                    <a href="#logo"><img src="images/logo.png" alt="" class="mb-3"></a>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 about m-0">
+                    <h3 class="pb-3">About us</h3>
+                    <ul class="p-0">
+                        <li><a href="#"> Home</a></li>
+                        <li><a href="#"> Women</a></li>
+                        <li><a href="#"> Men</a></li>
+                        <li><a href="#"> About Us</a></li>
+                        <li><a href="#"> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 links m-0 ">
+                    <h3 class="pb-3">Useful Links</h3>
+                    <ul class="p-0">
+                        <li><a href="#"> Privacy Policy</a></li>
+                        <li><a href="#"> Refund Policy</a></li>
+                        <li><a href="#"> Shipping Informations</a></li>
+                        <li><a href="#"> Terms & Conditions</a></li>
+                        <li><a href="#"> FAQ’s</a></li>
+                    </ul>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 contacts m-0">
+                    <h3 class="pb-3">Contact</h3>
+                    <ul class="p-0">
+                        <li>123 Fifth Avenue, New York, NY 10160</li>
+                        <li>contact@info.com </li>
+                        <li>929-242-6868</li>
+                    </ul>
+                </div>
+            </div> <!-- end of row -->
+            <div class="row cpyright p-4 mb-3 d-flex">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 p-4">
+                    <p>Copyright &copy; 2024 Eyewear Store | Powered by Eyewear Store</p>
+                </div>
+                <div class="offset-xl-3 col-xl-3 offset-lg-3 col-lg-3 col-md-6 col-sm-12 col-12 p-4">
+                    <a href="#facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+
+            </div> <!-- copyright -->
+        </div>
+    </footer>
+
+
+      <!-- login Start -->
+      <div>
+        <div class="modal fade " id="LoginScreen" tabindex="-1" aria-labelledby="Login_form" aria-hidden="true" data-bs-backdrop="static"  >
+                <div class="modal-dialog  modal-dialog-centered" >
+                    <div class="modal-content" style="background-color: rgb(238, 231, 231);">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="Login_form">Login</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="">
+        
+                                
+                                <div class="mb-3">
+                                    <label for="Email">Email:</label>
+                                    <div class="input-group my-2">
+                                    <span class="fa fa-user input-group-prepend input-group-text" style="padding: 10px;"></span>
+                                    <input type="email" class="form-control" id="Email" name="Email" required>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="Password" class="col-form-label">Password:</label>
+                                    <div class="input-group my-2">
+                                    <span class="fa fa-lock input-group-prepend input-group-text" style="padding: 10px;"></span>
+                                    <input type="password" class="form-control" id="Password" name="Password" required>
+                                </div>
+                         
+                        </div>
+                        <div class="modal-footer">
+                                <input type="submit" value="Login" class="btn btn-primary">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        
+        <!-- end login -->
+    
+           <!-- Cart start -->
+    <div class="modal fade  " id="ShoppingCart" tabindex="-1" aria-labelledby="ShoppingCartModalLabel" aria-hidden="true" >
+        <div class="modal-dialog Cart-dialog"  >
+            <div class="modal-content Cart-Content " style="background-color: rgb(238, 231, 231);" >
+                <div class="modal-header ">
+                    <h5 class="modal-title" id="ShoppingCartModalLabel">Shopping Cart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" >
+                    
+                    <div class="CartItems" >
+    
+                           
+                        
+    
+                        
+                    </div>
+    
+                </div>
+                <hr class="ms-3 me-3">
+    
+                <div class="ms-5 me-5">
+                                <span class="fs-4 fw-bold float-start">Subtotal:</span>
+                                <span class="fs-5 fw-bold float-end text-secondary total">$135.00</span>
+                            </div>
+                            <br>
+                <br>
+                <div class="modal-footer mt-auto" style="margin: 10px;">
+                    <!-- <button type="button" class="btn w-100 border-dark fw-bold fs-5 cartButton"  >VIEW CART</button> --> 
+                    <a href="Cart.html" class="btn w-100 border-dark fw-bold fs-5 cartButton">VIEW CART</a>
+                    <button type="button" class="btn w-100 border-dark fw-bold fs-5 cartButton">CHECKOUT</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end Cart -->
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
+    <script src="javascript/bootstrap.bundle.min.js"></script>
+    <script src="javascript/all.min.js"></script>
+</body>
+
+</html>

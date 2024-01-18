@@ -16,9 +16,9 @@ body {
 
 }
 
-html {
+/* html {
     font-size: 14px;
-}
+} */
 
 
 ::selection {
@@ -50,7 +50,7 @@ html {
 }
 
 .textfont {
-    font-size: 12px;
+    font-size: 18px;
     color: var(--paragrahcolor);
     font-family: var(--textfont);
     font-weight: 300;
@@ -64,7 +64,7 @@ html {
 /* sharkawy part */
 
 
-.bg-body-tertiary {
+header .bg-body-tertiary {
     background-color: transparent !important;
 }
 
@@ -459,6 +459,70 @@ footer .contacts li {
     color: var(--lightGray);
 }
 
+/* end of aya parts*/
+
+
+
+
+/* start of ali parts*/
+
+.cartButton{
+    margin: 10px;
+    padding: 10px;
+}
+.cartButton:hover{
+    background-color: var(--fontcolor);
+    color: var(--maincolor);
+}
+
+.QuantityValue{
+    width: 50px; 
+    border: 1px solid var(--paragrahcolor);
+    background-color: rgb(238, 231, 231);
+    appearance:textfield;
+    -webkit-appearance: textfield;
+    
+}
+
+
+.QuantityValue::-webkit-inner-spin-button,
+.QuantityValue::-webkit-outer-spin-button,
+.QuantityValue {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.CartItemDetails{margin-left: 15%;
+text-align: center;}
+
+
+
+
+.Cart-Content{height: 100vh;
+    border-radius: 0%;
+    
+   }
+   .Cart-dialog{
+    margin: 0% 0% 0% 0%;
+    float: right;
+    width: 100%;
+   }
+
+
+   .Item{
+    margin-top: 10px;
+   }
+
+   
+   @media (max-width: 375px) {
+    .CartItemDetails {
+        margin-left: 7%;
+    
+    }}
+    
+
+       
+/* end of ali parts*/
 
 
 /*donya*/
@@ -615,6 +679,163 @@ footer .contacts li {
     color: #007bff;
 }
 
+/* end of ali parts*/
+
+
+/*donya*/
+#div4 {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center; /* Center child elements horizontally */
+    align-items: center;
+}
+
+#div5 {
+    width: 45%;
+    box-sizing: border-box;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 5% auto; 
+
+}
+
+#image {
+
+    width: 50%;
+    height: 80vh;
+    background-image: url("../images/glass.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 5% auto; /* Center the image horizontally */
+    position: relative;
+}
+
+
+#div5 h6 {
+    font-size: 1rem;
+    padding-bottom:2% ;
+}
+
+#div5 h2 {
+    font-size: 2rem;
+}
+
+#title1 {
+    font-size: 1.5rem; 
+    font-weight: bold;
+    text-align: center;
+    color: black;
+}
+
+#title2 {
+    font-size: 4rem; 
+    font-weight: bold;
+    text-align: center;
+    color: black;
+}
+
+
+@media (max-width: 768px){
+    #div5 {
+        order: 2; /* Change the order for small screens */
+        width: 100%;
+        padding-bottom: 25%;
+        text-align: left;
+        align-items: flex-start;
+    }
+    #image {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 45vh;
+        width: 100%;
+
+    }
+}
+
+
+/* products section */ 
+
+
+#products {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly; /* Center the images horizontally */
+    align-items: center; /* Center the images vertically */
+    flex-wrap: wrap;
+    padding: 5% 0;
+}
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;   
+}
+
+.product-info {
+    margin-top: 10px;
+    text-align: left;
+}
+
+.product-image {
+    width: 400px;
+    height: 400px;
+    padding: 5%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.icons-product {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    visibility: hidden;
+    flex-direction: column;
+}
+.icons-product-2{
+    top: 40px;
+}
+
+.quick-view,
+.add-to-cart {
+    visibility: hidden;
+    position: absolute;
+    left: 80%;
+    top: 7%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.icons-product:hover ~.quick-view,
+.icons-product-2:hover ~.add-to-cart{
+    visibility: visible;
+}
+.icons-product-2:hover ~.add-to-cart{
+    top: 10%;
+}
+
+.icons-product i{
+    display: block;
+    font-size: 24px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+
+.quick-view {
+    color: #007bff;
+}
+
 .add-to-cart {
     color: #28a745;
 }
@@ -693,3 +914,4 @@ footer .contacts li {
 }
 
 /* end of aya parts*/
+
