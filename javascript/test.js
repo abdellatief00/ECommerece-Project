@@ -1,46 +1,46 @@
+totalprice();
+var cartItemObj={
+    "id": "1",
+    "name": "Sunglasses",
+    "price": "135.00 $",
+    "image": "images/product-09-a.jpg",
+    "quantity": "1"
+}
 
-// var cartItemObj={
-//     "id": "1",
-//     "name": "Sunglasses",
-//     "price": "135.00 $",
-//     "image": "images/product-09-a.jpg",
-//     "quantity": "1"
-// }
+var cartItems = [
+    {
+        "id": "1",
+        "name": "Sunglasses",
+        "price": "135.00 $",
+        "image": "images/product-09-a.jpg",
+        "quantity": "1"
+    }
+    ,
+    {
+        "id": "2",
+        "name": "Sunglasses",
+        "price": "150.00 $",
+        "image": "images/product-10-a.jpg",
+        "quantity": "2"
+    },
+    {
+        "id": "3",
+        "name": "Sunglasses",
+        "price": "200.00 $",
+        "image": "images/product-11-a.jpg",
+        "quantity": "4"
+    }];
 
-// var cartItems = [
-//     {
-//         "id": "1",
-//         "name": "Sunglasses",
-//         "price": "135.00 $",
-//         "image": "images/product-09-a.jpg",
-//         "quantity": "1"
-//     }
-//     ,
-//     {
-//         "id": "2",
-//         "name": "Sunglasses",
-//         "price": "150.00 $",
-//         "image": "images/product-10-a.jpg",
-//         "quantity": "2"
-//     },
-//     {
-//         "id": "3",
-//         "name": "Sunglasses",
-//         "price": "200.00 $",
-//         "image": "images/product-11-a.jpg",
-//         "quantity": "4"
-//     }];
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
-//     localStorage.setItem("cartItems", JSON.stringify(cartItems));
-
- function addToCart(cartItemObj,order) {
+function addToCart(cartItemObj,order) {
     var cartItems=document.getElementsByClassName("CartItems")[0];
     var cartItem=document.createElement("div");
     cartItem.classList.add("Item"+cartItemObj.id);
     
     cartItem.innerHTML=
     `
-    <img src="${cartItemObj.image}" alt="${cartItemObj.name}" width="80px" height="80px" >
+    <img src="${cartItemObj.image}" alt="${cartItemObj.name}" width="22%" height="22%" >
     <div class="CartItemDetails" style="display: inline-block;">
                                      <h6>${cartItemObj.name}</h6>
 
@@ -127,6 +127,9 @@ function decrementValue(order) {
         inputElement.stepDown();
     }
     price.innerHTML = (itemPrice * Number(inputElement.value))+".00 $";
+    cartItems[order].quantity=inputElement.value;
+localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
     totalprice()
 }
 
@@ -194,4 +197,3 @@ var cartItems = [
 loadCartItems( cartItems);
 
 totalprice();
-

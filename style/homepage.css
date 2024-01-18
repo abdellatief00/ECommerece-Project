@@ -512,4 +512,249 @@ text-align: center;}
    .Item{
     margin-top: 10px;
    }
+
+   
+   @media (max-width: 375px) {
+    .CartItemDetails {
+        margin-left: 7%;
+    
+    }}
+    
+
+       
 /* end of ali parts*/
+
+
+/*donya*/
+#div4 {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center; /* Center child elements horizontally */
+    align-items: center;
+}
+
+#div5 {
+    width: 45%;
+    box-sizing: border-box;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 5% auto; 
+
+}
+
+#image {
+
+    width: 50%;
+    height: 80vh;
+    background-image: url("../images/glass.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    margin: 5% auto; /* Center the image horizontally */
+    position: relative;
+}
+
+
+#div5 h6 {
+    font-size: 1rem;
+    padding-bottom:2% ;
+}
+
+#div5 h2 {
+    font-size: 2rem;
+}
+
+#title1 {
+    font-size: 1.5rem; 
+    font-weight: bold;
+    text-align: center;
+    color: black;
+}
+
+#title2 {
+    font-size: 4rem; 
+    font-weight: bold;
+    text-align: center;
+    color: black;
+}
+
+
+@media (max-width: 768px){
+    #div5 {
+        order: 2; /* Change the order for small screens */
+        width: 100%;
+        padding-bottom: 25%;
+        text-align: left;
+        align-items: flex-start;
+    }
+    #image {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 45vh;
+        width: 100%;
+
+    }
+}
+
+
+/* products section */ 
+
+
+#products {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly; /* Center the images horizontally */
+    align-items: center; /* Center the images vertically */
+    flex-wrap: wrap;
+    padding: 10% 0;
+}
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;   
+}
+
+.product-info {
+    margin-top: 10px;
+    text-align: left;
+}
+
+.product-image {
+    width: 400px;
+    height: 400px;
+    padding: 5%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+.icons-product {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    visibility: hidden;
+    flex-direction: column;
+}
+.icons-product-2{
+    top: 40px;
+}
+
+.quick-view,
+.add-to-cart {
+    visibility: hidden;
+    position: absolute;
+    left: 80%;
+    top: 7%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.icons-product:hover ~.quick-view,
+.icons-product-2:hover ~.add-to-cart{
+    visibility: visible;
+}
+.icons-product-2:hover ~.add-to-cart{
+    top: 10%;
+}
+
+.icons-product i{
+    display: block;
+    font-size: 24px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+
+.quick-view {
+    color: #007bff;
+}
+
+.add-to-cart {
+    color: #28a745;
+}
+
+
+.product-image:hover .icons-product {
+    visibility: visible;
+}
+
+#image1 {
+    background-image: url("../images/product-09-a.jpg");
+}
+
+#image2 {
+    background-image: url("../images/product-10-a.jpg");
+}
+
+#image3 {
+    background-image: url("../images/product-11-a.jpg");
+}
+
+#image1:hover {
+    background-image: url("../images/product-09-b.jpg");
+}
+
+#image2:hover {
+    background-image: url("../images/product-10-b.jpg");
+}
+
+#image3:hover {
+    background-image: url("../images/product-11-b.jpg");
+}
+
+.stars {
+    margin-top: 5px;
+    font-size: .857em;
+    display: inline-block;
+    text-align: left;
+}
+
+.stars i {
+    color: transparent;
+    -webkit-text-stroke-width: 1px; 
+    -webkit-text-stroke-color: #555; 
+}
+
+.productname {
+    color: black;
+    text-align: left;
+    
+}
+
+.price {
+    color:gray;
+    text-align: left;
+    font-size:medium;
+    
+}
+
+
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+
+
+
+
+    .product-image{
+        justify-content: center;
+
+    }
+    #products {
+        text-align: center;
+        align-items: center;
+    }
+}
+
+/* end of aya parts*/
+

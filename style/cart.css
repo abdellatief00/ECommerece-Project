@@ -448,9 +448,10 @@ footer .contacts li {
 .QuantityValue{
     width: 50px; 
     border: 1px solid var(--paragrahcolor);
-    background-color: #d8d6d6;
+    background-color: rgb(238, 231, 231);
     appearance:textfield;
     -webkit-appearance: textfield;
+    
 }
 
 
@@ -462,26 +463,31 @@ footer .contacts li {
 }
 
 .CartItemDetails{margin-left: 15%;
-    text-align: center;}
+text-align: center;}
+
+
+
+
+.Cart-Content{height: 100vh;
+    border-radius: 0%;
     
-    
+   }
+   .Cart-dialog{
+    margin: 0% 0% 0% 0%;
+    float: right;
+    width: 100%;
+   }
+
+
+   .Item{
+    margin-top: 10px;
+   }
+
    
-    .Cart-Content{height: 100vh;
-        border-radius: 0%;
-        
-       }
-       .Cart-dialog{
-        margin: 0% 0% 0% 0%;
-        float: right;
-        width: 100%;
-       }
+   @media (max-width: 375px) {
+    .CartItemDetails {
+        margin-left: 7%;
     
-    
-       .Item{
-        margin-top: 10px;
-       }
-
-
-
-
+    }}
 /* end of ali parts*/
+

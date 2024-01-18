@@ -1,0 +1,270 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: "Yeseva One";
+    src: url(../Fonts/Yeseva_One/YesevaOne-Regular.ttf);
+    /* font-weight: bold; */
+}
+
+:root {
+    --lightGray: rgba(0, 0, 0, 0.6);
+}
+
+body {
+    --fontcolor: black;
+    --maincolor: white;
+    --textfont: 'Poppins', sans-serif;
+    --headerfont: 'Yeseva One', serif;
+    --paragrahcolor: #585858;
+    --mainheight: 80vh;
+    --secondaryheight: 45vh;
+    --sectionpadding: .7rem;
+
+}
+
+html {
+    font-size: 14px;
+}
+
+::selection {
+    background-color: var(--fontcolor);
+    color: var(--maincolor);
+}
+
+/* some repeated classes*/
+.buttonshape {
+    background-color: transparent;
+    border: 1px solid var(--fontcolor);
+    padding: 5px 10px;
+    transition: all 0.5s;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.buttonshape:hover {
+    background-color: var(--fontcolor);
+    color: var(--maincolor);
+}
+
+.headfont {
+    line-height: 1em;
+    font-family: var(--headerfont);
+    color: var(--fontcolor);
+}
+
+.textfont {
+    font-size: 19px;
+    color: var(--paragrahcolor);
+    font-family: var(--textfont);
+    font-weight: 300;
+}
+
+/* end of some repeated classes*/
+
+#cart-icon {
+    position: relative;
+}
+
+#cart-items-count {
+    position: absolute;
+    top: -15px;
+    right: -5px;
+}
+
+/* Contact */
+header {
+    background-image: url(../images/contact_header_bg.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background-attachment: fixed; */
+    height: 65vh;
+}
+
+#homepage-header nav {
+    font-size: 17px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.contactWord {
+    justify-items: center;
+
+}
+
+.contactWord h1 {
+    font-family: "Yeseva One";
+    font-size: 7rem;
+
+}
+
+.getInTouch h2 {
+    font-weight: 700;
+}
+
+.getInTouch ul {
+    list-style: none;
+    font-size: large;
+}
+
+.getInTouch ul a {
+    color: black;
+}
+
+@media all and (max-width:950px) {
+
+    .getInTouch h2,
+    .getInTouch p,
+    .getInTouch ul {
+        text-align: center;
+
+    }
+
+    .contactWord h1 {
+        font-size: 5rem;
+    }
+}
+
+.getInTouch .cardForm {
+    background-color: white !important;
+}
+
+.getInTouch .cardForm label {
+    display: block;
+    font-weight: 600;
+    color: var(--paragrahcolor);
+    word-break: break-word;
+    word-wrap: break-word;
+}
+
+.getInTouch .cardForm button {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+
+}
+
+/* start of footer */
+footer {
+    background-color: #f1f1f1;
+}
+
+footer ul {
+    list-style: none;
+}
+
+footer li {
+    line-height: 200%;
+    /* font-weight: 500; */
+}
+
+footer h3 {
+    text-transform: uppercase;
+}
+
+footer a,
+footer a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+.logo,
+.about,
+.links,
+.contacts {
+    text-align: left;
+}
+
+@media all and (max-width:1000px) {
+
+    .logo,
+    .about,
+    .links,
+    .contacts {
+        text-align: center;
+    }
+}
+
+footer .cpyright {
+    border-top: 2px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+footer .cpyright a {
+    text-decoration: none;
+    background-color: white;
+    padding: 10px;
+    font-size: 1rem;
+    color: inherit;
+    line-height: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+footer .cpyright p,
+footer .contacts li {
+    color: var(--lightGray);
+}
+
+/* start of ali parts*/
+
+.cartButton{
+    margin: 10px;
+    padding: 10px;
+}
+.cartButton:hover{
+    background-color: var(--fontcolor);
+    color: var(--maincolor);
+}
+
+.QuantityValue{
+    width: 50px; 
+    border: 1px solid var(--paragrahcolor);
+    background-color: rgb(238, 231, 231);
+    appearance:textfield;
+    -webkit-appearance: textfield;
+    
+}
+
+
+.QuantityValue::-webkit-inner-spin-button,
+.QuantityValue::-webkit-outer-spin-button,
+.QuantityValue {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.CartItemDetails{margin-left: 15%;
+text-align: center;}
+
+
+
+
+.Cart-Content{height: 100vh;
+    border-radius: 0%;
+    
+   }
+   .Cart-dialog{
+    margin: 0% 0% 0% 0%;
+    float: right;
+    width: 100%;
+   }
+
+
+   .Item{
+    margin-top: 10px;
+   }
+   
+   @media (max-width: 375px) {
+    .CartItemDetails {
+        margin-left: 7%;
+    
+    }}
+/* end of ali parts*/
