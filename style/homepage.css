@@ -16,9 +16,9 @@ body {
 
 }
 
-html {
+/* html {
     font-size: 14px;
-}
+} */
 
 
 ::selection {
@@ -50,7 +50,7 @@ html {
 }
 
 .textfont {
-    font-size: 12px;
+    font-size: 18px;
     color: var(--paragrahcolor);
     font-family: var(--textfont);
     font-weight: 300;
@@ -64,7 +64,7 @@ html {
 /* sharkawy part */
 
 
-.bg-body-tertiary {
+header .bg-body-tertiary {
     background-color: transparent !important;
 }
 
@@ -602,7 +602,7 @@ text-align: center;}
     justify-content: space-evenly; /* Center the images horizontally */
     align-items: center; /* Center the images vertically */
     flex-wrap: wrap;
-    padding: 10% 0;
+    padding: 5% 0;
 }
 .product {
     display: flex;

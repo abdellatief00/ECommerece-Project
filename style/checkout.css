@@ -45,7 +45,7 @@ body {
 }
 
 .textfont {
-    font-size: 12px;
+    font-size: 16px;
     color: var(--paragrahcolor);
     font-family: var(--textfont);
     font-weight: 300;
@@ -213,7 +213,7 @@ text-align: center;
 
 #content {
     padding: 5% 5%;
-    margin-bottom: 5%px;
+    margin-bottom: 5%;
 }
 #content>div>div:first-of-type{
     padding-bottom:20px;
