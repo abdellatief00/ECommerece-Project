@@ -1,19 +1,22 @@
 import { Cart} from './modula.js';
 
 let cartarr = [];
-cartarr.push(new Cart(1,"prod 1",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
-cartarr.push(new Cart(2,"prod 2",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
-cartarr.push(new Cart(3,"prod 3",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
-cartarr.push(new Cart(4,"prod 44",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
+cartarr.push(new Cart(1,"prod1",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
+cartarr.push(new Cart(2,"prod2",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
+cartarr.push(new Cart(3,"prod3",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
+cartarr.push(new Cart(4,"prod44",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
+cartarr.push(new Cart(5,"prod80",3 , 200.00 ,"images/women/product-1-a.jpg").addJson());
+
 
 localStorage.setItem("cart",JSON.stringify(cartarr));
-let stored = JSON.parse(window.localStorage.getItem("cart")) || [];
-console.log(stored[0].image);
+
 
 
 /* what happened when the window load */ 
 window,addEventListener("load",function(e){
-    createProductTable(stored);
+    let arr = getlocal();
+    createProductTable(arr);
+    setlocal(arr);
 })
 
 
@@ -53,7 +56,7 @@ function createProductTable(arr){
                             </tbody>
                         </table>
 
-                        <button class="buttonshape">PROCEED TO CHECKOUT</button>
+                        <a href="checkout.html" class="button-like-link";>Checkout Details</a>
                     </div>`;
 
 

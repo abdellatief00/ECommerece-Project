@@ -231,17 +231,17 @@ header .navbar-toggler {
 #content>div table:first-of-type tbody th{
     text-align: right;
     width: 0px;
+    vertical-align: middle !important;
 }
 #content>div table:first-of-type img{
     height: auto;
-    max-width: 50px;
+    max-width: 70px;
     width: auto;
     vertical-align: middle;
 }
 #content>div table:first-of-type tbody td{
-    padding: 25px 10px;
     color: var(--paragrahcolor);
-    
+    vertical-align: middle !important;
 }
 #content>div table:first-of-type .counter{
     border: 1px solid gray;
@@ -290,13 +290,16 @@ header .navbar-toggler {
 
 #tableparts .secondtable table tr{
     border-bottom: 1px solid var(--backgroundhead);
-
+    
 }
 #tableparts .secondtable table tr td{
     border: none;
     font-size: var(--textfontsize);
+    padding: 1.5rem 0;
 }
-S
+#tableparts .secondtable table tr td:last-of-type{
+    text-align: center;
+}
 #tableparts .secondtable p{
     padding-top: 15px;
     cursor: pointer;
@@ -304,10 +307,10 @@ S
 #tableparts .secondtable:hover p{
     cursor: pointer;
 }
-#tableparts .secondtable button{
-    margin: 0 auto;
+#tableparts .secondtable a {
     width: 100%;
-    margin-bottom: 10%;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 

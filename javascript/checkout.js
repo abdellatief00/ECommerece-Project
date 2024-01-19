@@ -15,7 +15,14 @@ window.addEventListener('load',function(){
         this.document.querySelector('#content .formcontent .rightcontent .accordion button').classList.add("collapsed");
         this.document.querySelector('#content .formcontent .rightcontent .accordion button').setAttribute("aria-expanded",'False');
         }
-})
+        let arr  = JSON.parse(window.localStorage.getItem("cart")) || [];
+        createProductTable(arr);
+        this.document.querySelector('#content .formcontent .rightcontent #accordionExample h2 button span').innerHTML = ` $${claculatetotal(arr)}`;
+        document.querySelector("#content button[type =submit] .ordernumber").innerHTML = `$${claculatetotal(arr)}`;
+
+});
+
+
 window.addEventListener('resize',function(){
     if(this.window.innerWidth<=768){
     this.document.querySelector('#content .formcontent .rightcontent #collapseOne').classList.remove("show");
@@ -29,6 +36,64 @@ window.addEventListener('resize',function(){
 
 })
 
+/* function create tables */ 
+
+function createProductTable(arr){
+  let table = `
+  <thead >
+      <tr>
+          <td>Product</td>
+          <td>Subtotal</td>
+      </tr>
+  </thead>
+  <tbody>
+      ${createallrows(arr)}
+  </tbody>
+  <tfoot>
+      <tr>
+          <td>Total</td>
+          <td>$${claculatetotal(arr)}</td>
+      </tr>
+  </tfoot>
+`;
+
+document.querySelector('#content .formcontent .rightcontent #collapseOne .accordion-body table').innerHTML = table;
+}
+
+function createrow(product){
+let row =`<tr >
+<td>
+    <div class="d-flex align-items-center">  
+        <img src="${product.image}">
+        <p class="textfont">${product.productTitle}<strong class="amount">  X ${product.quantity}</strong></p>
+    </div>
+</td>
+<td class="textfont">$${(parseFloat(product.price)*parseFloat(product.quantity)).toFixed(2)}</td>
+</tr>`;
+
+return row;
+}
+
+
+
+function createallrows(arr){
+  let rows =``;
+  for(let i = 0 ; i < arr.length ; i++){
+      rows +=`${createrow(arr[i])}`
+  }
+  return rows;
+}
+
+function claculatetotal(arr){
+  let total = 0;
+  for(let i = 0 ; i < arr.length ; i++){
+      total += parseFloat(arr[i].price)*parseFloat(arr[i].quantity);
+  }
+  return total.toFixed(2);
+}
+
+
+/* end of create table */
 /* validation part */
 
 function isValidInput(input) {

@@ -11,7 +11,7 @@ body {
     --maincolor: white;
     --textfont: 'Poppins', sans-serif;
     --headerfont: 'Yeseva One', serif;
-    --paragrahcolor: #8b8989;
+    --paragrahcolor: #4e4c4c;
     --mainheight: 80vh;
     --secondaryheight: 45vh;
     --sectionpadding: .7rem;
@@ -271,13 +271,13 @@ header .navbar-toggler {
 }
 
 #content .formcontent .leftcontent input::placeholder{
-    color:var(--paragrahcolor);
+    color:#dfdada;
     font-size: var(--palaceholdersize);
     font-family: var(--textfont);
     transition: all 0.5s ease;  
 }
 #content .formcontent .leftcontent textarea::placeholder{
-    color:var(--paragrahcolor);
+    color:#dfdada;
     font-size: var(--palaceholdersize);
     font-family: var(--textfont);
     transition: all 0.5s ease;
@@ -298,6 +298,7 @@ header .navbar-toggler {
 #content .formcontent .leftcontent button[type="submit"]{
     margin-top: 3%;
     width: 100%;
+    font-size: 1.25rem;
 }
 
 
