@@ -220,4 +220,66 @@
   }
   
  
-  
+  /* class for cart  abdellatief */
+
+  export class Cart{
+    #productId;
+    #productTitle;
+    #quantity;
+    #price;
+    #image;
+
+    set productId(_num){
+      this.#productId = _num;
+    }
+    get productId(){
+      return this.#productId;
+    }
+
+    set productTitle(_title){
+      this.#productTitle = _title;
+    }
+    get productTitle(){
+      return this.#productTitle;
+    }
+
+    set quantity(_quantity){
+      this.#quantity = _quantity;
+    }
+    get quantity(){
+      return this.#quantity;
+    }
+
+    set price(_price){
+      this.#price = _price;
+    }
+    get price(){
+      return this.#price;
+    }
+
+    set image(_img){
+      this.#image = _img;
+    }
+
+    get image(){
+      return this.#image;
+    }
+
+    constructor(_productid , _producttitle , _quantity , _price , _img){
+      this.productId = _productid;
+      this.productTitle = _producttitle;
+      this.quantity = _quantity;
+      this.price = _price;
+      this.image = _img;
+    }
+
+    addJson(){
+      return{
+        productId : this.productId,
+        productTitle : this.productTitle,
+        quantity : this.quantity,
+        price : this.price,
+        image : this.image
+      }
+    }
+  }

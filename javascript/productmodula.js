@@ -1,4 +1,4 @@
-// import { Product, Review } from './modula.js';
+// import { Product, Review, Rating } from './modula.js';
 
 // // Example usage
 // let product1 = [];
@@ -8,7 +8,7 @@
 //     'Metalen Ronde Shades Vrouwen Zonnebril Mode Mannen Brillen 2022 Vintage Wit Rood Zonnebril Vrouwelijke Mannen Eyewear Vrouwelijke Oculos',
 //     ['images/women/product-1-a.jpg', 'images/women/product-1-b.jpg'],
 //     100,
-//     [{3:5}],
+//     [{3:"this item is great"}],
 //     [{1: 4 }],
 //     49.99,
 //     'seller123',
@@ -29,7 +29,7 @@
 //     'Description for Product 2',
 //     ['images/women/product-2-a.jpg', 'images/women/product-2-b.jpg'],
 //     100,
-//     [{3:5}],
+//     [{3:"this item is trash"}],
 //     [{1: 4 }],
 //     49.99,
 //     'seller1',
@@ -50,7 +50,7 @@
 //     'Description for Product 3',
 //     ['images/women/product-3-a.jpg', 'images/women/product-3-b.jpg'],
 //     100,
-//     [{3:5}],
+//     [{3:"tarsh"}],
 //     [{1: 4 }],
 //     49.99,
 //     'seller2',
@@ -71,7 +71,7 @@
 //     'Description for Product 4',
 //     ['images/women/product-4-a.jpg', 'images/women/product-4-b.jpg'],
 //     100,
-//     [{3:5}],
+//     [{3:"gamed"}],
 //     [{1: 4 }],
 //     49.99,
 //     'seller3',
@@ -92,7 +92,7 @@
 //     'Description for Product 5',
 //     ['images/women/product-5-a.jpg', 'images/women/product-5-b.jpg'],
 //     100,
-//     [{3:5}],
+//     [{3:"lol"}],
 //     [{1: 4 }],
 //     49.99,
 //     'seller3',
