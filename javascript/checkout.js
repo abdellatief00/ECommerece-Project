@@ -118,7 +118,6 @@ function isValidInput(input) {
         e.target.classList.remove("is-valid");
     }
   });
-
 /* street address */
   function isValidStreetAddress(address) {
     const streetAddressRegex = /^[a-zA-Z0-9\s,'-]+$/;
