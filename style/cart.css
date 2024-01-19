@@ -48,7 +48,25 @@ body {
     font-family: var(--textfont);
     font-weight: 300;
 }
+.button-like-link {
+    display: inline-block;
+    padding: 10px 60px;
+    text-decoration: none;
+    background-color: var(--maincolor);
+    color: var(--fontcolor);
+    border: 1px solid var(--fontcolor);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    align-self:center;
+    
+}
 
+/* Hover effect */
+.button-like-link:hover {
+    background-color: var(--fontcolor);
+    color: var(--maincolor);
+}
 /* end of some repeated classes*/
 
 

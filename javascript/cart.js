@@ -11,6 +11,15 @@ let stored = JSON.parse(window.localStorage.getItem("cart")) || [];
 console.log(stored[0].image);
 
 
+/* what happened when the window load */ 
+window,addEventListener("load",function(e){
+    createProductTable(stored);
+})
+
+
+
+/* functions */
+
 function createProductTable(arr){
         let table = `<table class="table">
         <thead class="">
@@ -24,50 +33,6 @@ function createProductTable(arr){
         </tr>
         </thead>
         <tbody>
-        <tr class="textfont" >
-            <th scope="row"> <a href="#">
-                <img src="images/Cart/product-01-a-600x600.jpg">
-            </a></th>
-            <td data-title="Product">Mark</td>
-            <td data-title="price">$185.00</td>
-            <td>
-                <div class="d-flex counter">
-                    <output class="border-end">+</output>
-                    <output class="number">1</output>
-                    <output class="border-start">-</output>
-                </div>
-            </td>
-            <td data-title="total price">$185.00</td>
-            <td><i class="fa-regular fa-circle-xmark"></i></td>
-        </tr>
-        <tr class="textfont">
-            <th scope="row"> <a href="#">
-                <img src="images/Cart/product-01-a-600x600.jpg">
-            </a></th>
-            <td data-title="Product">Jacob</td>
-            <td data-title="price">$185.00</td>
-            <td><div class="d-flex counter">
-                <output class="border-end">+</output>
-                <output class="number">1</output>
-                <output class="border-start">-</output>
-            </div></td>
-            <td data-title="total price">$185.00</td>
-            <td><i class="fa-regular fa-circle-xmark"></i></td>
-        </tr>
-        <tr class="textfont">
-            <th scope="row"> <a href="#">
-                <img src="images/Cart/product-01-a-600x600.jpg">
-            </a> </th>
-            <td data-title="Product">Larry the Bird</td>
-            <td data-title="price">$185.00</td>
-            <td><div class="d-flex counter">
-                <output class="border-end">+</output>
-                <output class="number">1</output>
-                <output class="border-start">-</output>
-            </div></td>
-            <td data-title="total price">$185.00</td>
-            <td><i class="fa-regular fa-circle-xmark"></i></td>
-        </tr>
         ${createallrows(arr)}
         </tbody>
     </table>
@@ -79,11 +44,11 @@ function createProductTable(arr){
                             <tbody>
                                 <tr>
                                     <td>Subtotal</td>
-                                    <td>$185.00</td>
+                                    <td>$${claculatetotal(arr)}</td>
                                 </tr>
                                 <tr>
                                     <td>Total</td>
-                                    <td>$185.00</td>
+                                    <td>$${claculatetotal(arr)}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -95,7 +60,6 @@ function createProductTable(arr){
     document.getElementById('tableparts').innerHTML = table;
     
     }
-createProductTable(stored);
 
 function createrow(product){
     let row =`<tr class="textfont" data-productId = ${product.productId}>
@@ -103,7 +67,7 @@ function createrow(product){
         <img src="${product.image}">
     </a></th>
     <td data-title="Product">${product.productTitle}</td>
-    <td data-title="price">$${product.price}</td>
+    <td data-title="price">$${product.price.toFixed(2)}</td>
     <td>
         <div class="d-flex counter">
             <output class="border-end">+</output>
@@ -111,11 +75,13 @@ function createrow(product){
             <output class="border-start">-</output>
         </div>
     </td>
-    <td data-title="total price">$${parseFloat(product.price)*parseFloat(product.quantity)}</td>
+    <td data-title="total price">$${(parseFloat(product.price)*parseFloat(product.quantity)).toFixed(2)}</td>
     <td><i class="fa-regular fa-circle-xmark"></i></td>
 </tr>`;
 return row;
 }
+
+
 function createallrows(arr){
     let rows =``;
     for(let i = 0 ; i < arr.length ; i++){
@@ -123,4 +89,83 @@ function createallrows(arr){
     }
     return rows;
 }
-console.log(createallrows(stored)); 
+
+/* calculate the total */ 
+
+function claculatetotal(arr){
+    let total = 0;
+    for(let i = 0 ; i < arr.length ; i++){
+        total += parseFloat(arr[i].price)*parseFloat(arr[i].quantity);
+    }
+    return total.toFixed(2);
+}
+
+/*function to remove and add and decrease*/
+document.getElementById("tableparts").addEventListener("click",function(e){
+    if(e.target.classList.contains("fa-circle-xmark")){
+        let close  = e.target;
+        let prodid = close.parentElement.parentElement.getAttribute("data-productId");
+        let arr = getlocal();
+        let ind = searchbyid(arr,prodid);
+        arr.splice(ind,1);
+        createProductTable(arr);
+        setlocal(arr);
+    }
+    else if(e.target.classList.contains("border-end")){
+        let increaseamount = e.target;
+        let prodid = increaseamount.parentElement.parentElement.parentElement.getAttribute("data-productId");
+        let arr = getlocal();
+        let ind = searchbyid(arr,prodid);
+        arr[ind].quantity++;
+        createProductTable(arr);
+        setlocal(arr);
+    }
+    else if(e.target.classList.contains("border-start")){
+        let increaseamount = e.target;
+        let prodid = increaseamount.parentElement.parentElement.parentElement.getAttribute("data-productId");
+        let arr = getlocal();
+        let ind = searchbyid(arr,prodid);
+        arr[ind].quantity--;
+        if(arr[ind].quantity ==0){
+            arr.splice(ind,1);
+        }
+        createProductTable(arr);
+        setlocal(arr);
+    }
+
+    if(getlocal().length==0){
+        let ele = `<div class="alert alert-primary" role="alert" style="width :100%">
+        Your cart is currently Empty
+        </div>
+        <div>
+        <a href="homepage.html" class="button-like-link">Return home</a>
+        </div>`
+        document.getElementById('tableparts').innerHTML = ele;
+        document.getElementById('tableparts').style.flexWrap = "wrap";
+    }
+});
+
+
+
+/* write a search function */
+function searchbyid(arr,_id){
+    let ind = -1;
+    for(let i= 0 ; i <arr.length ; i++ ){
+        if(arr[i].productId==_id){
+            ind = i;
+            break;
+        }
+    }
+    return ind;
+}
+/*get and set element from local stoage */
+function getlocal(){
+    let arr  = JSON.parse(window.localStorage.getItem("cart")) || [];
+    return arr;
+}
+function setlocal(arr){
+    localStorage.setItem("cart",JSON.stringify(arr));
+}
+
+
+
