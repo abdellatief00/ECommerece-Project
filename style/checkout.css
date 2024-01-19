@@ -16,6 +16,7 @@ body {
     --secondaryheight: 45vh;
     --sectionpadding: .7rem;
     --backgroundhead:#f1f1f1;
+    --palaceholdersize:16px;
 
 }
 ::selection {
@@ -203,9 +204,12 @@ header .navbar-toggler {
 
 .CartItemDetails{
     margin-left: 5%;
-text-align: center;
+    text-align: center;
 }
 /* end of ali parts*/
+
+
+
 
 
 /* start of content part */
@@ -268,13 +272,13 @@ text-align: center;
 
 #content .formcontent .leftcontent input::placeholder{
     color:var(--paragrahcolor);
-    font-size: 12px;
+    font-size: var(--palaceholdersize);
     font-family: var(--textfont);
     transition: all 0.5s ease;  
 }
 #content .formcontent .leftcontent textarea::placeholder{
     color:var(--paragrahcolor);
-    font-size: 12px;
+    font-size: var(--palaceholdersize);
     font-family: var(--textfont);
     transition: all 0.5s ease;
     
@@ -282,6 +286,15 @@ text-align: center;
 #content .formcontent .leftcontent .coponinput{
     display: none;
 }
+#content .formcontent .leftcontent #visacarddetails{
+    margin-top: -150px;
+    animation-name: slidefromtopanimation;
+    animation-duration:1s ;
+    /* animation-direction: alternate; */
+    animation-fill-mode: forwards;
+}
+
+
 #content .formcontent .leftcontent button[type="submit"]{
     margin-top: 3%;
     width: 100%;
@@ -312,7 +325,7 @@ text-align: center;
 }
 #content .formcontent .rightcontent table thead tr{
     color: var(--paragrahcolor);
-    font-size: 1rem;
+    font-size: 1.25rem;
 }
 #content .formcontent .rightcontent table tbody tr td{
     padding: 1em  0.7em;
@@ -324,7 +337,7 @@ text-align: center;
 #content .formcontent .rightcontent table tbody tr td p{
     margin-bottom: 0;
     padding-left: 5px;
-    font-size: .6rem !important;
+    font-size: .8rem !important;
 }
 #content .formcontent .rightcontent table tfoot tr{
     border-bottom: 1px solid var(--backgroundhead);
@@ -386,8 +399,17 @@ text-align: center;
 
 }
 
+@keyframes  slidefromtopanimation {
+    form{
+        margin-top: -80px;
+    }
+    to{
+        margin-top: 0px;
+    }
+}
 
 
+/* end of checkout abdellatief part */
 
 
 /*footer*/
@@ -460,6 +482,7 @@ footer .contacts li {
 }
 
 /* end of aya parts*/
+
 /* start of ali parts*/
 
 .cartButton{
