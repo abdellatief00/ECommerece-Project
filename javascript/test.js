@@ -58,6 +58,9 @@ function addToCart(cartItemObj,order) {
                                 <span class="fs-5 text-secondary Price">${parseInt(cartItemObj.price)*parseInt(cartItemObj.quantity)}.00 $</span>
                                 <i class="fa-solid fa-trash-can btn" data-bs-dismiss="Item1" aria-label="Close" onclick="removeItem('${order}')"></i>
                              </div>
+                             <br/>
+                             <br/>
+                             
 
     `;
     cartItems.appendChild(cartItem);

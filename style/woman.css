@@ -493,9 +493,24 @@ text-align: center;}
    }
 
    
-   @media (max-width: 375px) {
+   @media (max-width: 416px) {
     .CartItemDetails {
-        margin-left: 7%;
+        margin-left: 3%;
     
     }}
+   @media (max-width: 375px) {
+   
+   
+
+        .QuantityValue{
+            width: 30px; 
+            border: 1px solid var(--paragrahcolor);
+            background-color: rgb(238, 231, 231);
+            appearance:textfield;
+            -webkit-appearance: textfield;
+            
+        }
+ 
+
+}
 /* end of ali parts*/

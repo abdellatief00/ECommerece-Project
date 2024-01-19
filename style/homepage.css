@@ -493,7 +493,8 @@ footer .contacts li {
 }
 
 .CartItemDetails{margin-left: 15%;
-text-align: center;}
+text-align: center;
+}
 
 
 
@@ -513,12 +514,24 @@ text-align: center;}
     margin-top: 10px;
    }
 
-   
-   @media (max-width: 375px) {
+   @media (max-width: 416px) {
     .CartItemDetails {
-        margin-left: 7%;
+        margin-left: 3%;
     
     }}
+   @media (max-width: 375px) {
+   
+   
+
+        .QuantityValue{
+            width: 30px; 
+          
+            
+        }
+ 
+
+}
+   
     
 
        
