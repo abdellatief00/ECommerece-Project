@@ -1,3 +1,7 @@
+import { Orders } from "./modula.js";
+
+
+
 $(".copon").click(function(){
     if($(".coponinput").css("display")=="none"){
         $(".coponinput").css("display","block");
@@ -335,12 +339,17 @@ function isValidInput(input) {
   /*validation for submition */
   document.querySelector("#content button[type =submit]").addEventListener("click",function(e){
     if(document.querySelectorAll('#content form input[required].is-valid').length != document.querySelectorAll('#content form input[required]').length){
-      e.target.disabled  = true;
+      e.preventDefault();
     }
     else{
-      e.target.disabled  = false;
+      e.preventDefault();
+      console.log("lol");
+      let order = JSON.parse(window.localStorage.getItem("orders")) || [];
+      let car = JSON.parse(window.localStorage.getItem("cart"));
+      order.push(new Orders(30, "visa", car).addJson());
+      window.localStorage.setItem("orders",JSON.stringify(order));
+      localStorage.removeItem('cart');
       document.querySelectorAll('#content form')[0].submit();
     }
   });
-
   

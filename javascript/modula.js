@@ -283,3 +283,31 @@
       }
     }
   }
+
+
+  /* class of orders */ 
+
+  export class Orders{
+    #orderNumber;
+    #date;
+    #total;
+    #paymentMethod;
+    #cart;
+    static currentorderid = 0;
+    constructor(_total,_pay , _cart){
+      this.#orderNumber = ++Orders.currentorderid;
+      this.#date = new Date();
+      this.#total  = _total;
+      this.#paymentMethod = _pay;
+      this.#cart = _cart;
+    }
+    addJson(){
+      return{
+      orderNumber : this.#orderNumber,
+      date : this.#date,
+      total : this.#total,
+      paymentMethod : this.#paymentMethod,
+      cart : this.#cart
+      }
+    }
+  }
