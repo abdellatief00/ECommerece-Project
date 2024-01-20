@@ -295,7 +295,7 @@
     #cart;
     static currentorderid = 0;
     constructor(_total,_pay , _cart){
-      this.#orderNumber = ++Orders.currentorderid;
+      this.#orderNumber = Orders.autoincreaseid();
       this.#date = new Date();
       this.#total  = _total;
       this.#paymentMethod = _pay;
@@ -309,5 +309,15 @@
       paymentMethod : this.#paymentMethod,
       cart : this.#cart
       }
+    }
+
+    static autoincreaseid(){
+      let lastid;
+      let order = JSON.parse(window.localStorage.getItem("orders")) ||[];
+      if(order.length > 0){
+        lastid = order[order.length-1].orderNumber;
+      }
+      else {lastid =0}
+      return ++lastid;
     }
   }

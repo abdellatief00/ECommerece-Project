@@ -346,7 +346,12 @@ function isValidInput(input) {
       console.log("lol");
       let order = JSON.parse(window.localStorage.getItem("orders")) || [];
       let car = JSON.parse(window.localStorage.getItem("cart"));
-      order.push(new Orders(30, "visa", car).addJson());
+
+      let pay = ``;
+      if(document.querySelectorAll("#firstinputradio")[0].checked){pay = "Direct Bank Transfer"}
+      else{pay = "Cash"}
+      
+      order.push(new Orders(claculatetotal(car), pay, car).addJson());
       window.localStorage.setItem("orders",JSON.stringify(order));
       localStorage.removeItem('cart');
       document.querySelectorAll('#content form')[0].submit();

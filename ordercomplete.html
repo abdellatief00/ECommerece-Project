@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300&family=Yeseva+One&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style/ordercomplete.css">
+    <!-- <script src="javascript/test.js" defer></script> -->
+    <script src="javascript/ordercomplete.js" type="module"></script>
+</head>
+<body>
+    <div class="container-fluid">
+         <!-- nav bar -->
+         <header class="d-flex justify-content-between flex-column-reverse flex-md-row position-relative align-items-center p-3">
+
+            <nav class="navbar navbar-expand-lg bg-body-tertiary nav-underline">
+                <!-- <div class=""> -->
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-2 position-absolute">
+
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="homepage.html">Home</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="html/man.html">men</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="html/woman.html">women</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="about.html">About</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">contact</a>
+                            </li>
+                        
+                        </ul>
+                    </div>
+                <!-- </div> -->
+            </nav>
+
+            <div id = "header-logo">
+               <a href="homepage.html"><img src="images/logo-header-regular.png" alt=""></a>
+            </div>
+
+            <div id = "header-right-section" class="d-flex  justify-content-between align-items-center">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <div class="btn CartMenu" data-bs-toggle="modal" data-bs-target="#ShoppingCart" data-bs-whatever="@mdo" onclick="totalprice()">
+                    <div id="cart-icon" class="me-3 ms-3" >
+                        <span>$00.00</span>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span id="cart-items-count">0</span>
+                    </div>
+
+                </div>
+
+                <button class="btn" data-bs-toggle="modal" data-bs-target="#LoginScreen" data-bs-whatever="@mdo">LOG IN</button>
+            </div>
+        </header>
+        <!-- end of the header -->
+
+        <!-- login start -->
+        <div>
+            <div class="modal fade " id="LoginScreen" tabindex="-1" aria-labelledby="Login_form" aria-hidden="true" data-bs-backdrop="static"  >
+                    <div class="modal-dialog  modal-dialog-centered" >
+                        <div class="modal-content" style="background-color: rgb(238, 231, 231);">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="Login_form">Login</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="">
+            
+                                    
+                                    <div class="mb-3">
+                                        <label for="Email">Email:</label>
+                                        <div class="input-group my-2">
+                                        <span class="fa fa-user input-group-prepend input-group-text" style="padding: 10px;"></span>
+                                        <input type="email" class="form-control" id="Email" name="Email" required>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="Password" class="col-form-label">Password:</label>
+                                        <div class="input-group my-2">
+                                        <span class="fa fa-lock input-group-prepend input-group-text" style="padding: 10px;"></span>
+                                        <input type="password" class="form-control" id="Password" name="Password" required>
+                                    </div>
+                             
+                            </div>
+                            <div class="modal-footer">
+                                    <input type="submit" value="Login" class="btn btn-primary">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <!-- end login -->
+            <!-- start of cart -->
+            <div class="modal fade  " id="ShoppingCart" tabindex="-1" aria-labelledby="ShoppingCartModalLabel" aria-hidden="true" >
+                <div class="modal-dialog Cart-dialog"  >
+                    <div class="modal-content Cart-Content " style="background-color: rgb(238, 231, 231);" >
+                        <div class="modal-header ">
+                            <h5 class="modal-title" id="ShoppingCartModalLabel">Shopping Cart</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" >
+                            
+                            <div class="CartItems" >
+            
+                                   
+                                
+            
+                                
+                            </div>
+            
+                        </div>
+                        <hr class="ms-3 me-3">
+            
+                        <div class="ms-5 me-5">
+                                        <span class="fs-4 fw-bold float-start">Subtotal:</span>
+                                        <span class="fs-5 fw-bold float-end text-secondary total">$135.00</span>
+                                    </div>
+                                    <br>
+                        <br>
+                        <div class="modal-footer mt-auto" style="margin: 10px;">
+                            <!-- <button type="button" class="btn w-100 border-dark fw-bold fs-5 cartButton"  >VIEW CART</button> --> 
+                            <a href="Cart.html" class="btn w-100 border-dark fw-bold fs-5 cartButton">VIEW CART</a>
+                            <button type="button" class="btn w-100 border-dark fw-bold fs-5 cartButton">CHECKOUT</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end of cart -->
+
+
+            <!-- start of contnent -->
+            <div id="content" class="row">
+                <div class="col-12 col-lg-8 offset-lg-2">
+                    <h3 class="headfont">Checkout </h3>
+                        <div class="d-flex justify-content-center align-items-center">
+                            <a href="#" class="d-flex align-items-center text-decoration-none link-dark link-opacity-25 link-opacity-100-hover">
+                                <p class="circle">1</p>
+                                <p >SHOPPING CART</p>
+                                <p><i class="fa-solid fa-greater-than"></i></p>
+                            </a>
+                            <a href="#" class="d-flex align-items-center text-decoration-none link-dark link-opacity-25 link-opacity-100-hover">
+                                <p class="circle">2</p>
+                                <p>CHECKOUT DETAILS</p>
+                                <p><i class="fa-solid fa-greater-than"></i></p>
+                            </a>
+                            <a href="#" class="d-flex align-items-center text-decoration-none link-dark link-opacity-100-hover" id="shopping-card">
+                                <p class="circle">3</p>
+                                <p>ORDER COMPELETE</p>
+                            </a>
+                        </div>
+                        <div class="d-flex justify-content-center flex-column align-items-center" id="bill">
+                            <p class="text-center">Your order has been recieved</p>
+                            <div>
+                                <ul>
+                                    <li>order number: <strong>980</strong></li>
+                                    <li>Date:<strong>980</strong></li>
+                                    <li>Total: <strong>980</strong></li>
+                                    <li>Payment Method: <strong>980</strong></li>
+                                </ul>
+                                <section class="table">
+                                    <h3 class="headfont">Order Details</h3>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Product</th>
+                                                <th>Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                         
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td>Total</td>
+                                                <td>$110.00</td>
+                                            </tr>
+                                        </tfoot>
+                                    </table>
+                                </section>
+                            </div>
+                            
+
+                        </div>
+                </div>
+            </div>
+            <!-- end of table -->
+
+            <!-- footer -->
+        <footer>
+            <div class="container p-5">
+                <div class="row"> 
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 logo m-0">
+                       <a href="#logo"><img src="images/logo.png" alt="" class="mb-3"></a>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 about m-0">
+                        <h3 class="pb-3 headfont">About us</h3>
+                        <ul class="p-0 textfont">
+                            <li><a href="#"> Home</a></li>
+                            <li><a href="#"> Women</a></li>
+                            <li><a href="#"> Men</a></li>
+                            <li><a href="#"> About Us</a></li>
+                            <li><a href="#"> Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 links m-0 ">
+                        <h3 class="pb-3 headfont">Useful Links</h3>
+                        <ul class="p-0 textfont">
+                            <li><a href="#"> Privacy Policy</a></li>
+                            <li><a href="#"> Refund Policy</a></li>
+                            <li><a href="#"> Shipping Informations</a></li>
+                            <li><a href="#"> Terms & Conditions</a></li>
+                            <li><a href="#"> FAQ’s</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 contacts m-0">
+                        <h3 class="pb-3 headfont">Contact</h3>
+                        <ul class="p-0 textfont">
+                            <li>123 Fifth Avenue, New York, NY 10160</li>
+                            <li>contact@info.com </li>
+                            <li>929-242-6868</li>
+                        </ul>
+                    </div>
+                </div> <!-- end of row -->
+                <div class="row cpyright p-4 mb-3 d-flex">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 p-4 ">
+                        <p class="textfont">Copyright &copy; 2024 Eyewear Store | Powered by Eyewear Store</p>
+                    </div>
+                    <div class="offset-xl-3 col-xl-3 offset-lg-3 col-lg-3 col-md-6 col-sm-12 col-12 p-4">
+                        <a href="#facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#twitter"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#instagram"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                   
+                 </div> <!--copyright  -->
+             </div>
+        </footer>
+        <!-- end of footer -->
+
+
+
+    </div>
+    <!-- end of container fluid -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
