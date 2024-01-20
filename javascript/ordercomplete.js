@@ -2,6 +2,8 @@ import { Orders } from "./modula.js";
 
 
 window.addEventListener('load',function(e){
+
+
     let order = getlocal("orders");
     let lastorder = order[order.length-1];
     console.log(lastorder);

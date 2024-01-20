@@ -17,9 +17,25 @@ window,addEventListener("load",function(e){
     let arr = getlocal();
     createProductTable(arr);
     setlocal(arr);
+
+
+    showToast('Welcome to cart page!', 3000 , "#6cb36d");
 })
 
+/* toast that fire when action happens */
 
+
+
+function showToast(message, duration , color) {
+    var toast = document.getElementById('toast');
+    toast.style.animationName = "animationdropfromtop";
+    toast.style.display = 'block';
+    toast.innerText = message;
+    toast.style.backgroundColor = color;
+    setTimeout(function () {
+        toast.style.display = 'none';
+    }, duration);
+  }
 
 /* functions */
 
@@ -113,6 +129,7 @@ document.getElementById("tableparts").addEventListener("click",function(e){
         arr.splice(ind,1);
         createProductTable(arr);
         setlocal(arr);
+        showToast('Action Completed', 3000 , "#ea6060");
     }
     else if(e.target.classList.contains("border-end")){
         let increaseamount = e.target;
@@ -122,6 +139,7 @@ document.getElementById("tableparts").addEventListener("click",function(e){
         arr[ind].quantity++;
         createProductTable(arr);
         setlocal(arr);
+        showToast('Action Completed', 3000 , "#6cb36d");
     }
     else if(e.target.classList.contains("border-start")){
         let increaseamount = e.target;
@@ -134,6 +152,7 @@ document.getElementById("tableparts").addEventListener("click",function(e){
         }
         createProductTable(arr);
         setlocal(arr);
+        showToast('Action Completed', 3000 , "#6cb36d");
     }
 
     if(getlocal().length==0){

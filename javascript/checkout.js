@@ -358,3 +358,10 @@ function isValidInput(input) {
     }
   });
   
+
+/* when he go to order complete he can't go back */ 
+
+  window.history.forward(); 
+        function noBack() { 
+            window.history.forward(); 
+        } 
