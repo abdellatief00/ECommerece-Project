@@ -48,7 +48,6 @@ body
 }
 
 
-
 .miniImage{
     width: 80px;
     height: 80px;
@@ -85,5 +84,17 @@ body
         top: 40px;
     }
 }
+
+#logo-image{
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* @media (max-width: 991px){
+    ul>li{
+        width: 10   0vw;
+        background-color: red;
+    }
+} */
 
 
