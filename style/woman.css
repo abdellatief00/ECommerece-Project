@@ -3,6 +3,10 @@
     padding: 0;
     box-sizing: border-box;
 }
+#logo-image{
+    left: 50%;
+    transform: translateX(-50%);
+}
 
 body {
     --fontcolor: black;
