@@ -20,6 +20,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style/cart.css">
     <script src="javascript/test.js" defer></script>
+    <script src="javascript/cart.js" type="module"></script>
+
 </head>
 <body>
 
@@ -81,50 +83,51 @@
         </header>
         <!-- end of nav bar -->
         
+
       <!-- login Start -->
-<div>
-    <div class="modal fade " id="LoginScreen" tabindex="-1" aria-labelledby="Login_form" aria-hidden="true" data-bs-backdrop="static"  >
-            <div class="modal-dialog  modal-dialog-centered" >
-                <div class="modal-content" style="background-color: #d8d6d6;">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="Login_form">Login</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="">
-    
-                            
-                            <div class="mb-3">
-                                <label for="Email">Email:</label>
-                                <div class="input-group my-2">
-                                <span class="fa fa-user input-group-prepend input-group-text" style="padding: 10px;"></span>
-                                <input type="email" class="form-control" id="Email" name="Email" required>
+      <div>
+        <div class="modal fade " id="LoginScreen" tabindex="-1" aria-labelledby="Login_form" aria-hidden="true" data-bs-backdrop="static"  >
+                <div class="modal-dialog  modal-dialog-centered" >
+                    <div class="modal-content" style="background-color: rgb(238, 231, 231);">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="Login_form">Login</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="">
+        
+                                
+                                <div class="mb-3">
+                                    <label for="Email">Email:</label>
+                                    <div class="input-group my-2">
+                                    <span class="fa fa-user input-group-prepend input-group-text" style="padding: 10px;"></span>
+                                    <input type="email" class="form-control" id="Email" name="Email" required>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="Password" class="col-form-label">Password:</label>
-                                <div class="input-group my-2">
-                                <span class="fa fa-lock input-group-prepend input-group-text" style="padding: 10px;"></span>
-                                <input type="password" class="form-control" id="Password" name="Password" required>
-                            </div>
-                     
+                                <div class="mb-3">
+                                    <label for="Password" class="col-form-label">Password:</label>
+                                    <div class="input-group my-2">
+                                    <span class="fa fa-lock input-group-prepend input-group-text" style="padding: 10px;"></span>
+                                    <input type="password" class="form-control" id="Password" name="Password" required>
+                                </div>
+                         
+                        </div>
+                        <div class="modal-footer">
+                                <input type="submit" value="Login" class="btn btn-primary">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                </form>
                     </div>
-                    <div class="modal-footer">
-                            <input type="submit" value="Login" class="btn btn-primary">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-            </form>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
+        </div>
+        
+        <!-- end login -->
     
-    <!-- end login -->
-
-       <!-- Cart start -->
+           <!-- Cart start -->
     <div class="modal fade  " id="ShoppingCart" tabindex="-1" aria-labelledby="ShoppingCartModalLabel" aria-hidden="true" >
-        <div class="modal-dialog " style=" margin-right: 0; margin-top: 0;" >
-            <div class="modal-content " style="background-color:  #d8d6d6;" >
+        <div class="modal-dialog Cart-dialog"  >
+            <div class="modal-content Cart-Content " style="background-color: rgb(238, 231, 231);" >
                 <div class="modal-header ">
                     <h5 class="modal-title" id="ShoppingCartModalLabel">Shopping Cart</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -132,86 +135,16 @@
                 <div class="modal-body" >
                     
                     <div class="CartItems" >
-
-                            <div class="Item1">
-                                <img src="images/homepage/bg-04.jpg" alt="product" width="80px" height="80px">
-                                    <div class="CartItemDetails" style="display: inline-block;">
-                                        <h6>Sunglasses</h6>
-
-
-                                        <div class="input-group">
-                                        <button class="btn btn-outline-secondary" type="button" onclick="decrementValue() ">-</button>
-                                        <input type="number"  value="1" min="1" class="QuantityValue text-center flex-fill  "/>
-                                        <button class="btn btn-outline-secondary" type="button" onclick="incrementValue()">+</button>
-                                        </div>
-
-                                    </div>
-
-                                <div class="float-end">
-                                    <br>
-                                    <span class="fs-5 text-secondary Price">135.00 $</span>
-                                    <i class="fa-solid fa-trash-can btn" data-bs-dismiss="Item1" aria-label="Close" onclick="removeItem('Item1')"></i>
-                                </div>
-
-                            </div>
-
-                            
-
-                                <div class="Item1">
-                                    <img src="images/homepage/bg-04.jpg" alt="product" width="80px" height="80px">
-                                        <div class="CartItemDetails" style="display: inline-block;">
-                                            <h6>Sunglasses</h6>
-        
-        
-                                            <div class="input-group">
-                                            <button class="btn btn-outline-secondary" type="button" onclick="decrementValue()">-</button>
-                                            <input type="number"  value="1" min="1" class="QuantityValue text-center flex-fill  "/>
-                                            <button class="btn btn-outline-secondary" type="button" onclick="incrementValue()">+</button>
-                                            </div>
-        
-                                        </div>
-        
-                                    <div class="float-end">
-                                        <br>
-                                        <span class="fs-5 text-secondary Price">135.00 $</span>
-                                        <i class="fa-solid fa-trash-can btn" data-bs-dismiss="Item1" aria-label="Close" onclick="removeItem('Item1')"></i>
-                                    </div>
-        
-                                </div>
-
-                                
-
-                                    <div class="Item1">
-                                        <img src="images/homepage/bg-04.jpg" alt="product" width="80px" height="80px">
-                                            <div class="CartItemDetails" style="display: inline-block;">
-                                                <h6>Sunglasses</h6>
-            
-            
-                                                <div class="input-group">
-                                                <button class="btn btn-outline-secondary" type="button" onclick="decrementValue()">-</button>
-                                                <input type="number"  value="1" min="1" class="QuantityValue text-center flex-fill  "/>
-                                                <button class="btn btn-outline-secondary" type="button" onclick="incrementValue()">+</button>
-                                                </div>
-            
-                                            </div>
-            
-                                        <div class="float-end">
-                                            <br>
-                                            <span class="fs-5 text-secondary Price">135.00 $</span>
-                                            <i class="fa-solid fa-trash-can btn" data-bs-dismiss="Item1" aria-label="Close" onclick="removeItem('Item1')"></i>
-                                        </div>
-            
-                                    </div>
-                    
-
+    
+                           
                         
-
+    
                         
                     </div>
-
+    
                 </div>
                 <hr class="ms-3 me-3">
-
+    
                 <div class="ms-5 me-5">
                                 <span class="fs-4 fw-bold float-start">Subtotal:</span>
                                 <span class="fs-5 fw-bold float-end text-secondary total">$135.00</span>
@@ -226,7 +159,7 @@
             </div>
         </div>
     </div>
-<!-- end Cart -->
+    <!-- end Cart -->
 
         <section class="row gap-6 d-flex justify-content-center " id="content">
             <div class="col-12">
@@ -237,98 +170,20 @@
                         <p >SHOPPING CART</p>
                         <p><i class="fa-solid fa-greater-than"></i></p>
                     </a>
-                    <a href="checkout.html" class="d-flex align-items-center text-decoration-none link-dark link-opacity-50 link-opacity-100-hover">
+                    <a href="#" class="d-flex align-items-center text-decoration-none link-dark link-opacity-25 link-opacity-100-hover">
                         <p class="circle">2</p>
                         <p>CHECKOUT DETAILS</p>
                         <p><i class="fa-solid fa-greater-than"></i></p>
                     </a>
-                    <a href="#" class="d-flex align-items-center text-decoration-none link-dark link-opacity-50 link-opacity-100-hover">
+                    <a href="#" class="d-flex align-items-center text-decoration-none link-dark link-opacity-25 link-opacity-100-hover">
                         <p class="circle">3</p>
                         <p>ORDER COMPELETE</p>
                         
                     </a>
                 </div>
+
                 <!-- tabels part -->
                 <div class="d-flex" id="tableparts">
-                <table class="table">
-                    <thead class="">
-                      <tr class="textfont" >
-                        <th scope="col" class="bg-body-secondary"></th>
-                        <th scope="col" class="bg-body-secondary">Product</th>
-                        <th scope="col" class="bg-body-secondary">price</th>
-                        <th scope="col" class="bg-body-secondary">Quantity</th>
-                        <th scope="col" class="bg-body-secondary">subtotal</th>
-                        <th scope="col" class="bg-body-secondary"></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="textfont">
-                        <th scope="row"> <a href="#">
-                            <img src="images/Cart/product-01-a-600x600.jpg">
-                        </a></th>
-                        <td data-title="Product">Mark</td>
-                        <td data-title="price">$185.00</td>
-                        <td>
-                            <div class="d-flex counter">
-                                <output class="border-end">+</output>
-                                <output class="number">1</output>
-                                <output class="border-start">-</output>
-                            </div>
-                        </td>
-                        <td data-title="total price">$185.00</td>
-                        <td><i class="fa-regular fa-circle-xmark"></i></td>
-                      </tr>
-                      <tr class="textfont">
-                        <th scope="row"> <a href="#">
-                            <img src="images/Cart/product-01-a-600x600.jpg">
-                        </a></th>
-                        <td data-title="Product">Jacob</td>
-                        <td data-title="price">$185.00</td>
-                        <td><div class="d-flex counter">
-                            <output class="border-end">+</output>
-                            <output class="number">1</output>
-                            <output class="border-start">-</output>
-                        </div></td>
-                        <td data-title="total price">$185.00</td>
-                        <td><i class="fa-regular fa-circle-xmark"></i></td>
-                      </tr>
-                      <tr class="textfont">
-                        <th scope="row"> <a href="#">
-                            <img src="images/Cart/product-01-a-600x600.jpg">
-                        </a> </th>
-                        <td data-title="Product">Larry the Bird</td>
-                        <td data-title="price">$185.00</td>
-                        <td><div class="d-flex counter">
-                            <output class="border-end">+</output>
-                            <output class="number">1</output>
-                            <output class="border-start">-</output>
-                        </div></td>
-                        <td data-title="total price">$185.00</td>
-                        <td><i class="fa-regular fa-circle-xmark"></i></td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                  <div class="secondtable">
-                        <h5 class="headfont">Cart Total</h5>
-                    
-                        <table class="table table-borderless">
-                        <tbody>
-                            <tr>
-                                <td>Subtotal</td>
-                                <td>$185.00</td>
-                            </tr>
-                            <tr>
-                                <td>Total</td>
-                                <td>$185.00</td>
-                            </tr>
-                        </tbody>
-                      </table>
-
-                      <p class="textfont">Have a Copon ?</p>
-                      <button class="buttonshape">PROCEED TO CHECKOUT</button>
-                  </div>
-                  
                 
                 </div>
 

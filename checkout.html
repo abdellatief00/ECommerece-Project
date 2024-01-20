@@ -82,154 +82,83 @@
             </div>
         </header>
         <!-- end of nav bar -->
-        <!-- log in part -->
-        <div>
-            <div class="modal fade " id="LoginScreen" tabindex="-1" aria-labelledby="Login_form" aria-hidden="true" data-bs-backdrop="static"  >
-                    <div class="modal-dialog  modal-dialog-centered" >
-                        <div class="modal-content" style="background-color: #d8d6d6;">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="Login_form">Login</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form action="">
-            
-                                    
-                                    <div class="mb-3">
-                                        <label for="Email">Email:</label>
-                                        <div class="input-group my-2">
-                                        <span class="fa fa-user input-group-prepend input-group-text" style="padding: 10px;"></span>
-                                        <input type="email" class="form-control" id="Email" name="Email" required>
-                                        </div>
-                                    </div>
-                                    <div class="mb-3">
-                                        <label for="Password" class="col-form-label">Password:</label>
-                                        <div class="input-group my-2">
-                                        <span class="fa fa-lock input-group-prepend input-group-text" style="padding: 10px;"></span>
-                                        <input type="password" class="form-control" id="Password" name="Password" required>
-                                    </div>
-                             
-                            </div>
-                            <div class="modal-footer">
-                                    <input type="submit" value="Login" class="btn btn-primary">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    </form>
-                        </div>
+       
+      <!-- login Start -->
+<div>
+    <div class="modal fade " id="LoginScreen" tabindex="-1" aria-labelledby="Login_form" aria-hidden="true" data-bs-backdrop="static"  >
+            <div class="modal-dialog  modal-dialog-centered" >
+                <div class="modal-content" style="background-color: rgb(238, 231, 231);">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="Login_form">Login</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                </div>
-            </div>
-            </div>
-            </div>
-            
-            <!-- end login -->
-        
-            <!-- Cart start -->
-    <div class="modal fade  " id="ShoppingCart" tabindex="-1" aria-labelledby="ShoppingCartModalLabel" aria-hidden="true" >
-        <div class="modal-dialog " style=" margin-right: 0; margin-top: 0;" >
-            <div class="modal-content " style="background-color:  #d8d6d6;" >
-                <div class="modal-header ">
-                    <h5 class="modal-title" id="ShoppingCartModalLabel">Shopping Cart</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" >
-                    
-                    <div class="CartItems" >
-
-                            <div class="Item1">
-                                <img src="images/homepage/bg-04.jpg" alt="product" width="80px" height="80px">
-                                    <div class="CartItemDetails" style="display: inline-block;">
-                                        <h6>Sunglasses</h6>
-
-
-                                        <div class="input-group">
-                                        <button class="btn btn-outline-secondary" type="button" onclick="decrementValue() ">-</button>
-                                        <input type="number"  value="1" min="1" class="QuantityValue text-center flex-fill  "/>
-                                        <button class="btn btn-outline-secondary" type="button" onclick="incrementValue()">+</button>
-                                        </div>
-
-                                    </div>
-
-                                <div class="float-end">
-                                    <br>
-                                    <span class="fs-5 text-secondary Price">135.00 $</span>
-                                    <i class="fa-solid fa-trash-can btn" data-bs-dismiss="Item1" aria-label="Close" onclick="removeItem('Item1')"></i>
-                                </div>
-
-                            </div>
-
+                    <div class="modal-body">
+                        <form action="">
+    
                             
-
-                                <div class="Item1">
-                                    <img src="images/homepage/bg-04.jpg" alt="product" width="80px" height="80px">
-                                        <div class="CartItemDetails" style="display: inline-block;">
-                                            <h6>Sunglasses</h6>
-        
-        
-                                            <div class="input-group">
-                                            <button class="btn btn-outline-secondary" type="button" onclick="decrementValue()">-</button>
-                                            <input type="number"  value="1" min="1" class="QuantityValue text-center flex-fill  "/>
-                                            <button class="btn btn-outline-secondary" type="button" onclick="incrementValue()">+</button>
-                                            </div>
-        
-                                        </div>
-        
-                                    <div class="float-end">
-                                        <br>
-                                        <span class="fs-5 text-secondary Price">135.00 $</span>
-                                        <i class="fa-solid fa-trash-can btn" data-bs-dismiss="Item1" aria-label="Close" onclick="removeItem('Item1')"></i>
-                                    </div>
-        
+                            <div class="mb-3">
+                                <label for="Email">Email:</label>
+                                <div class="input-group my-2">
+                                <span class="fa fa-user input-group-prepend input-group-text" style="padding: 10px;"></span>
+                                <input type="email" class="form-control" id="Email" name="Email" required>
                                 </div>
-
-                                
-
-                                    <div class="Item1">
-                                        <img src="images/homepage/bg-04.jpg" alt="product" width="80px" height="80px">
-                                            <div class="CartItemDetails" style="display: inline-block;">
-                                                <h6>Sunglasses</h6>
-            
-            
-                                                <div class="input-group">
-                                                <button class="btn btn-outline-secondary" type="button" onclick="decrementValue()">-</button>
-                                                <input type="number"  value="1" min="1" class="QuantityValue text-center flex-fill  "/>
-                                                <button class="btn btn-outline-secondary" type="button" onclick="incrementValue()">+</button>
-                                                </div>
-            
-                                            </div>
-            
-                                        <div class="float-end">
-                                            <br>
-                                            <span class="fs-5 text-secondary Price">135.00 $</span>
-                                            <i class="fa-solid fa-trash-can btn" data-bs-dismiss="Item1" aria-label="Close" onclick="removeItem('Item1')"></i>
-                                        </div>
-            
-                                    </div>
-                    
-
-                        
-
-                        
-                    </div>
-
-                </div>
-                <hr class="ms-3 me-3">
-
-                <div class="ms-5 me-5">
-                                <span class="fs-4 fw-bold float-start">Subtotal:</span>
-                                <span class="fs-5 fw-bold float-end text-secondary total">$135.00</span>
                             </div>
-                            <br>
-                <br>
-                <div class="modal-footer mt-auto" style="margin: 10px;">
-                    <!-- <button type="button" class="btn w-100 border-dark fw-bold fs-5 cartButton"  >VIEW CART</button> --> 
-                    <a href="Cart.html" class="btn w-100 border-dark fw-bold fs-5 cartButton">VIEW CART</a>
-                    <button type="button" class="btn w-100 border-dark fw-bold fs-5 cartButton">CHECKOUT</button>
+                            <div class="mb-3">
+                                <label for="Password" class="col-form-label">Password:</label>
+                                <div class="input-group my-2">
+                                <span class="fa fa-lock input-group-prepend input-group-text" style="padding: 10px;"></span>
+                                <input type="password" class="form-control" id="Password" name="Password" required>
+                            </div>
+                     
+                    </div>
+                    <div class="modal-footer">
+                            <input type="submit" value="Login" class="btn btn-primary">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </form>
                 </div>
             </div>
         </div>
-        </div>
-    <!-- end Cart -->
+    </div>
+    </div>
+    
+    <!-- end login -->
 
+       <!-- Cart start -->
+<div class="modal fade  " id="ShoppingCart" tabindex="-1" aria-labelledby="ShoppingCartModalLabel" aria-hidden="true" >
+    <div class="modal-dialog Cart-dialog"  >
+        <div class="modal-content Cart-Content " style="background-color: rgb(238, 231, 231);" >
+            <div class="modal-header ">
+                <h5 class="modal-title" id="ShoppingCartModalLabel">Shopping Cart</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" >
+                
+                <div class="CartItems" >
+
+                       
+                    
+
+                    
+                </div>
+
+            </div>
+            <hr class="ms-3 me-3">
+
+            <div class="ms-5 me-5">
+                            <span class="fs-4 fw-bold float-start">Subtotal:</span>
+                            <span class="fs-5 fw-bold float-end text-secondary total">$135.00</span>
+                        </div>
+                        <br>
+            <br>
+            <div class="modal-footer mt-auto" style="margin: 10px;">
+                <!-- <button type="button" class="btn w-100 border-dark fw-bold fs-5 cartButton"  >VIEW CART</button> --> 
+                <a href="Cart.html" class="btn w-100 border-dark fw-bold fs-5 cartButton">VIEW CART</a>
+                <button type="button" class="btn w-100 border-dark fw-bold fs-5 cartButton">CHECKOUT</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end Cart -->
 
     <!-- begining of checkout content -->
 
@@ -238,7 +167,7 @@
         <div class="col-12">
             <h3 class="headfont">Cart</h3>
                 <div class="d-flex justify-content-center align-items-center">
-                    <a href="cart.html" class="d-flex align-items-center text-decoration-none link-dark link-opacity-50 link-opacity-100-hover">
+                    <a href="cart.html" class="d-flex align-items-center text-decoration-none link-dark link-opacity-25 link-opacity-100-hover">
                         <p class="circle">1</p>
                         <p >SHOPPING CART</p>
                         <p><i class="fa-solid fa-greater-than"></i></p>
@@ -248,7 +177,7 @@
                         <p>CHECKOUT DETAILS</p>
                         <p><i class="fa-solid fa-greater-than"></i></p>
                     </a>
-                    <a href="#" class="d-flex align-items-center text-decoration-none link-dark link-opacity-50 link-opacity-100-hover">
+                    <a href="#" class="d-flex align-items-center text-decoration-none link-dark link-opacity-25 link-opacity-100-hover">
                         <p class="circle">3</p>
                         <p>ORDER COMPELETE</p>
                         
@@ -257,7 +186,7 @@
                 <div class="formcontent d-flex  ">
                     <div class="leftcontent"  >
                         <h3 class="headfont">CUSTOMER INFORMATION</h3>
-                        <form action="#"  class="needs-validation" >
+                        <form action="ordercomplete.html"  class="needs-validation" >
                             <div class="mb-3">
                                 <label for="exampleFormControlInput1" class="form-label textfont">Email address&nbsp;<abbr class=" text-warning">*</abbr></label>
                                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="user name or email address"
@@ -291,7 +220,7 @@
                                     <div class="invalid-feedback">
                                         Please enter a valid last name.
                                     </div>
-                                  </div>
+                                </div>
                                     <div class="mb-3">
                                         <label for="exampleFormControlInput2" class="form-label textfont">Company Name(optional)</label>
                                         <input type="text" class="form-control" id="exampleFormControlInput2">
@@ -572,10 +501,22 @@
                                     <div class="col-md-4">
                                         <label for="inputCity" class="form-label textfont">City<abbr class=" text-warning">*</abbr></label>
                                         <input type="text" class="form-control" id="inputCity" required>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Please enter a valid city name.
+                                        </div>
                                     </div>
                                     <div class="col-md-4">
                                         <label for="inputState" class="form-label textfont">State<abbr class=" text-warning">*</abbr></label>
                                         <input type="text" id="inputState" class="form-control" required>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Please enter a valid state name.
+                                        </div>
                                     </div>
                                     <div class="col-md-4">
                                         <label for="inputZip" class="form-label textfont">Zip<abbr class=" text-warning">*</abbr></label>
@@ -617,9 +558,9 @@
                                                 <button class="accordion-button collapsed" type="button">
                                                 <div class="form-check">
 
-                                                <input type="radio" name="payment" id="firstinput" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" checked class="form-check-input">
+                                                <input type="radio" name="payment" id="firstinputradio" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" checked class="form-check-input">
 
-                                                <label class="textfont form-check-label" for="firstinput"> Direct bank transfer
+                                                <label class="textfont form-check-label" for="firstinputradio"> Direct bank transfer
                                                 </label>
                                                 </div>
                                                 </button>
@@ -636,8 +577,8 @@
                                             <button class="accordion-button collapsed" type="button">
                                                 <div class="form-check">
                                                     
-                                                <input type="radio" name="payment" id="secondinput" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="form-check-input">
-                                                <label class="textfont form-check-label" for="secondinput"> Direct bank transfer
+                                                <input type="radio" name="payment" id="secondinputradio" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="form-check-input">
+                                                <label class="textfont form-check-label" for="secondinputradio"> Cash
                                                 </label>
                                             </div>
                                             </button>
@@ -652,8 +593,72 @@
                                         
                                     </div>
                             </div>
+
+
+                            <!--visa card details -->
+
+                            <div class="carddetails row" id="visacarddetails">
+                                <h3 class="headfont">Card Details</h3>
+                                
+                                <div class="col-md-12">
+                                    <label for="inputcardname" class="form-label textfont">card holder name<abbr class=" text-warning">*</abbr></label>
+                                    <input type="text" class="form-control" id="inputcardname" required placeholder="card holder name">
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid card name.
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="inputcardnumber" class="form-label textfont">card number<abbr class=" text-warning">*</abbr></label>
+                                    <input type="text" class="form-control" id="inputcardnumber" required placeholder="card number">
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please enter a card number.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="expiryyear" class="form-label textfont">Expiry month<abbr class=" text-warning">*</abbr></label>
+                                    <input type="text" class="form-control" id="expiryyear" required >
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please enter a expiry month.
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="expirymonth" class="form-label textfont">Expiry year<abbr class=" text-warning">*</abbr></label>
+                                    <input type="text" class="form-control" id="expirymonth" required>
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please enter a expiry year.
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <label for="inputcvv" class="form-label textfont">CVV<abbr class=" text-warning">*</abbr></label>
+                                    <input type="text" class="form-control" id="inputcvv" required placeholder="CVV">
+                                    <div class="valid-feedback">
+                                        Looks good!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Please enter a valid CVV.
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- end of visa card details -->
+
+
+
                             <button type="submit" class="buttonshape">Place Order <span class="ordernumber">$135.00</span></button>
                         </form>
+                        <!-- end of form -->
                     </div>
                     <div class="rightcontent">
                         <h3 class="headfont">YOUR ORDER</h3>
@@ -671,38 +676,7 @@
                                 <div class="accordion-body">
                                     <div>
                                         <table>
-                                            <thead >
-                                                <tr>
-                                                    <td>Product</td>
-                                                    <td>Subtotal</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr >
-                                                    <td>
-                                                        <div class="d-flex align-items-center">  
-                                                            <img src="images/Cart/product-01-a-600x600.jpg" alt="item">
-                                                            <p class="textfont">Product Name x<strong class="amount">1</strong></p>
-                                                        </div>
-                                                    </td>
-                                                    <td class="textfont">$135.00</td>
-                                                </tr>
-                                                <tr >
-                                                    <td>
-                                                        <div class="d-flex align-items-center">  
-                                                            <img src="images/Cart/product-01-a-600x600.jpg" alt="item">
-                                                            <p class="textfont">Product Name x<strong class="amount">1</strong></p>
-                                                        </div>
-                                                    </td>
-                                                    <td class="textfont">$135.00</td>
-                                                </tr>
-                                            </tbody>
-                                            <tfoot>
-                                                <tr>
-                                                    <td>Total</td>
-                                                    <td>$252.00</td>
-                                                </tr>
-                                            </tfoot>
+                                           
                                         </table>
                                     </div>
                                 </div>
@@ -723,7 +697,7 @@
 
 
 
-        
+        <!-- footer -->
     
         <footer>
             <div class="container p-5">
