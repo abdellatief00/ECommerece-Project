@@ -13,65 +13,86 @@
     <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../javascript/navbar.js" type="module"></script>
   </head>
     
 </head>
 <body>
         <section id="homepage-header">
             
-            <header class="d-flex justify-content-between flex-column-reverse flex-md-row position-relative align-items-center p-3">
+            <header class="d-flex justify-content-between position-relative p-3">
 
-                <nav class="navbar navbar-expand-lg bg-body-tertiary nav-underline">
+                <a id="logo-image" href="../homepage.html" class="position-absolute d-none d-lg-block">
+                    <img  src="../images/logo-header-regular.png" alt="Eyewear-logo">
+                </a>
+            
+                
+                <nav class="navbar navbar-expand-lg bg-body-tertiary nav-underline  z-3 position-relative">
                     <div class="container-fluid">
-                      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                      </button>
+                        <a class="navbar-brand d-lg-none" href="../homepage.html">
+                            <img src="../images/logo-header-regular.png" alt="Eyewear-logo">
+                        </a>
                       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 position-absolute">
-
+                        <ul class="navbar-nav me-auto mt-2 mb-2 mb-lg-0 fw-bold flex-grow">
                           <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="../homepage.html">HOME</a>
                           </li>
-
+        
                           <li class="nav-item">
-                            <a class="nav-link active" href="#">Women</a>
-                          </li>
-
-                          <li class="nav-item">
-                            <a class="nav-link" href="man.html">Men</a>
-                          </li>
-
-                          <li class="nav-item">
-                            <a class="nav-link" href="../about.html">About</a>
-                          </li>
-
-                          <li class="nav-item">
-                            <a class="nav-link" href="../contact.html">Contact</a>
-                          </li>
+                            <a class="nav-link" href="../html/man.html">MEN</a>
+                        </li>
+        
+                        <li class="nav-item">
+                            <a class="nav-link" href="../html/woman.html">WOMEN</a>
+                        </li>
+        
+                        <li class="nav-item">
+                            <a class="nav-link " href="../about.html">ABOUT US</a>
+                        </li>
+        
+                        <li class="nav-item">
+                            <a class="nav-link" href="../contact.html">CONTACT</a>
+                        </li>
+        
+                        <li class="nav-item">
+                            
+                        </li>
                           
                         </ul>
-                      </div>
-                    </div>
-                  </nav>
-    
-                <div id = "header-logo">
-                    <img src="../images/logo-header-regular.png" alt="">
-                </div>
-    
-                <div id = "header-right-section" class="d-flex  justify-content-between align-items-center">
-
-                    <i class="fa-solid fa-magnifying-glass"></i>
                         
-                    <div id="cart-icon" class="me-3 ms-3">
-                        <span>$0.00</span>
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span id="cart-items-count">0</span>
+                      </div>
+        
                     </div>
-
-                    <button class="btn">LOG IN</button>
+                </nav>
+        
+            <div id = "header-right-section" class="d-flex justify-content-between mt-3 flex-grow-0">
+                <div>
+                    <form id = "header-search-form" role="search" class="d-flex">
+                        <input class="form-control me-2 d-none" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
                 </div>
                 
-            </header>
+        
+                <div id="cart-icon" class="me-3 ms-3 mt-4 mt-lg-2 align-self-right">
+                    <span>$0.00</span>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-items-count">0</span>
+                </div>
+        
+                <button id="loginBtn" class="btn btn-outline-secondary border-0 align-self-start">
+                    <i class="fa-solid fa-user"></i>
+                    <!-- <img class="bg-white" src="images/miniProfile.png" style="width: 30px; height: 30px; border-radius: 50%;" alt=""> -->
+                    <span>Login</span>
+                </button>
+        
+                <div class="navbar">
+                    <button class="navbar-toggler align-self-start d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                </div>
+            </div>
+        </header>
         <hr>
         <p class="switchwoman">Home / Women</p>
         <h1 class="womanname">Women</h1>

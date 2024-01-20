@@ -175,6 +175,11 @@ header .bg-body-tertiary {
     }
 }
 
+#logo-image{
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 @media (max-width:768px) {
     #header-text {
         /* top: 80%; */

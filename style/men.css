@@ -440,6 +440,12 @@ footer .contacts li {
     color: var(--lightGray);
 }
 
+
+#logo-image{
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 /* end of aya parts*/
 
 
@@ -499,3 +505,4 @@ text-align: center;}
     
     }}
 /* end of ali parts*/
+

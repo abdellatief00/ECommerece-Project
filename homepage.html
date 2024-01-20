@@ -22,8 +22,10 @@
     <link rel="stylesheet" href="style/all.min.css">
     <link rel="stylesheet" href="style/homepage.css">
     <script src="javascript/test.js" defer></script>
+    <script src="javascript/navbar.js" type="module"></script>
     <script src="javascript/productmodula.js" type="module"></script>
     <script src="javascript/homepage.js" type="module"></script>
+
 
 
   </head>
@@ -39,60 +41,79 @@
                 <img src="images/headerGlass.png" alt="" style="position: absolute;">
             </div>
             
-            <header class="d-flex justify-content-between flex-column-reverse flex-md-row position-relative align-items-center p-3">
+            <!--Header-->
+    <header class="d-flex justify-content-between position-relative p-3">
+        <a id="logo-image" href="homepage.html" class="position-absolute d-none d-lg-block">
+            <img  src="images/logo-header-regular.png" alt="Eyewear-logo">
+        </a>
+            
+            <nav class="navbar navbar-expand-lg bg-body-tertiary nav-underline  z-3 position-relative">
+                <div class="container-fluid">
+                    <a class="navbar-brand d-lg-none" href="homepage.html">
+                        <img src="images/logo-header-regular.png" alt="Eyewear-logo">
+                    </a>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mt-2 mb-2 mb-lg-0 fw-bold flex-grow">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="homepage.html">Home</a>
+                      </li>
 
-                <nav class="navbar navbar-expand-lg bg-body-tertiary change nav-underline">
-                    <div class="container-fluid">
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0 position-absolute">
-
-                                <li class="nav-item">
-                                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="html/woman.html">Women</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="html/man.html">Men</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="about.html">About</a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a class="nav-link" href="contact.html">Contact</a>
-                                </li>
-                            
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+                      <li class="nav-item">
+                        <a class="nav-link" href="html/man.html">MEN</a>
+                    </li>
     
-                <div id = "header-logo">
-                    <img src="images/logo-header-regular.png" alt="">
-                </div>
+                    <li class="nav-item">
+                        <a class="nav-link" href="html/woman.html">WOMEN</a>
+                    </li>
     
-                <div id = "header-right-section" class="d-flex  justify-content-between align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link " href="about.html">ABOUT US</a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">CONTACT</a>
+                    </li>
 
-                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <li class="nav-item">
                         
-                    <div id="cart-icon" class="me-3 ms-3">
-                        <span>$0.00</span>
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span id="cart-items-count">0</span>
-                    </div>
+                    </li>
+                      
+                    </ul>
+                    
+                  </div>
 
                 </div>
+            </nav>
 
-                    <button class="btn" data-bs-toggle="modal" data-bs-target="#LoginScreen" data-bs-whatever="@mdo">LOG IN</button>
-                
-            </header>
+        <div id = "header-right-section" class="d-flex justify-content-between mt-3 flex-grow-0">
+            <div>
+                <form id = "header-search-form" role="search" class="d-flex">
+                    <input class="form-control me-2 d-none" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </div>
+            
+
+            <div id="cart-icon" class="me-3 ms-3 mt-4 mt-lg-2 align-self-right">
+                <span>$0.00</span>
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-items-count">0</span>
+            </div>
+
+            <button id="loginBtn" class="btn btn-outline-secondary border-0 align-self-start">
+                <i class="fa-solid fa-user"></i>
+                <!-- <img class="bg-white" src="images/miniProfile.png" style="width: 30px; height: 30px; border-radius: 50%;" alt=""> -->
+                <span>Login</span>
+            </button>
+
+            <div class="navbar">
+                <button class="navbar-toggler align-self-start d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+            </div>
+        </div>
+    </header>
+    <hr>
 
             <div class="d-flex flex-column justify-content-center z-1" id="header-text">
                 <h5>ORIGINAL SUNGLASSES</h5>
