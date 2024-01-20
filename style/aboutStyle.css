@@ -76,6 +76,8 @@ html {
 }
 
 /* About */
+
+ 
 header {
     background-image: url(../images/about_header_bg.jpg);
     background-position: center;
@@ -119,6 +121,14 @@ header {
     }
 
 }
+
+/* end of nav sharkawy */
+
+
+
+
+
+
 .aboutInfo .hugeHead {
     /* font-size:110px; */
     font-size: 80px;
