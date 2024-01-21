@@ -25,11 +25,6 @@ body {
     --sectionpadding: .7rem;
 
 }
-
-html {
-    font-size: 14px;
-}
-
 ::selection {
     background-color: var(--fontcolor);
     color: var(--maincolor);
@@ -39,7 +34,7 @@ html {
 .buttonshape {
     background-color: transparent;
     border: 1px solid var(--fontcolor);
-    padding: 5px 10px;
+    padding: 5px 20px;
     transition: all 0.5s;
     font-size: 12px;
     font-weight: 600;
@@ -65,6 +60,127 @@ html {
 
 /* end of some repeated classes*/
 
+
+ /* nav bar section*/ 
+header{
+    margin: 0 -.7rem;
+}
+
+ 
+#header-text {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 20px;
+
+    margin-left: 5%;
+}
+header .navbar-expand-lg{
+    background-color: transparent !important;
+}
+header .nav-link{
+    color: var(--fontcolor);
+}
+header .navbar-toggler {
+    border: none;
+    background-color: transparent;
+
+}
+
+/* #header-text h2 {
+    font-size: 6vw;
+    width: 60%;
+    font-family: var(--headerfont);
+    line-height: .9;
+}*/
+
+/* #header-text p {
+    width: 60%;
+    font-size: 1.5vw;
+} */
+
+/* #header-text button {
+    width: 120px;
+    padding: 10px;
+} */
+
+.fa-magnifying-glass{
+    font-size: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.fa-magnifying-glass:hover{
+    transform: scale(1.5);
+}
+#cart-icon {
+    position: relative;
+    cursor: pointer;
+    transition: all .2s;
+}
+#cart-icon:hover{
+    opacity: .5;
+}
+
+#cart-items-count {
+    position: absolute;
+    top: -10px;
+    right: -7px;
+    font-size: 12px;
+}
+
+#header-logo {
+    margin-left: 140px;
+}
+
+@media (max-width:950px) {
+    #header-text h2 {
+        font-size: 60px;
+    }
+
+    #header-text p {
+        font-size: 20px;
+    }
+}
+
+@media (max-width:768px) {
+    #header-logo {
+        margin: auto;
+        padding-bottom: 3%;
+    }
+    header #header-right-section{
+        display: none !important;
+
+    }
+}
+
+@media (max-width:500px) {
+    #header-text h2 {
+        font-size: 30px;
+    }
+
+    #header-text p {
+        font-size: 10px;
+    }
+
+    #imgContainer img {
+        display: none;
+    }
+}
+
+@media (max-width:768px) {
+    #header-text {
+        /* top: 80%; */
+        margin-left: 0;
+        margin-top: 25%;
+    }
+}
+
+/* end of nav bar */
+
+
+
+/* end of some repeated classes*/
+
 #cart-icon {
     position: relative;
 }
@@ -76,7 +192,7 @@ html {
 }
 
 /* About */
-header {
+.headerDiv {
     background-image: url(../images/about_header_bg.jpg);
     background-position: center;
     background-size: cover;
@@ -307,3 +423,60 @@ footer .cpyright p,
 footer .contacts li {
     color: var(--lightGray);
 }
+
+/* start of ali parts*/
+
+.cartButton{
+    margin: 10px;
+    padding: 10px;
+}
+.cartButton:hover{
+    background-color: var(--fontcolor);
+    color: var(--maincolor);
+}
+
+.QuantityValue{
+    width: 50px; 
+    border: 1px solid var(--paragrahcolor);
+    background-color: rgb(238, 231, 231);
+    appearance:textfield;
+    -webkit-appearance: textfield;
+    
+}
+
+
+.QuantityValue::-webkit-inner-spin-button,
+.QuantityValue::-webkit-outer-spin-button,
+.QuantityValue {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.CartItemDetails{margin-left: 15%;
+text-align: center;}
+
+
+
+
+.Cart-Content{height: 100vh;
+    border-radius: 0%;
+    
+   }
+   .Cart-dialog{
+    margin: 0% 0% 0% 0%;
+    float: right;
+    width: 100%;
+   }
+
+
+   .Item{
+    margin-top: 10px;
+   }
+
+   
+   @media (max-width: 375px) {
+    .CartItemDetails {
+        margin-left: 7%;
+    
+    }}
+/* end of ali parts*/
