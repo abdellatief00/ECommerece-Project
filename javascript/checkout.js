@@ -62,6 +62,7 @@ function createProductTable(arr){
 `;
 
 document.querySelector('#content .formcontent .rightcontent #collapseOne .accordion-body table').innerHTML = table;
+updatecartnumber(arr);
 }
 
 function createrow(product){
@@ -358,6 +359,13 @@ function isValidInput(input) {
     }
   });
   
+
+/* update cart number */
+
+function updatecartnumber(arr){
+  let amount = arr.reduce((sum, product) => sum + product.quantity, 0);
+  document.getElementById("cart-items-count").innerText = amount;
+}
 
 /* when he go to order complete he can't go back */ 
 

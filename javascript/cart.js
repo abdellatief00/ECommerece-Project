@@ -18,7 +18,6 @@ window,addEventListener("load",function(e){
     createProductTable(arr);
     setlocal(arr);
 
-
     showToast('Welcome to cart page!', 3000 , "#6cb36d");
 })
 
@@ -77,6 +76,7 @@ function createProductTable(arr){
 
 
     document.getElementById('tableparts').innerHTML = table;
+    updatecartnumber(arr);
     
     }
 
@@ -187,7 +187,20 @@ function getlocal(){
 }
 function setlocal(arr){
     localStorage.setItem("cart",JSON.stringify(arr));
+    // window.dispatchEvent(new Event('storage'));
 }
 
 
+/* update cart number */
 
+function updatecartnumber(arr){
+    let amount = arr.reduce((sum, product) => sum + product.quantity, 0);
+    document.getElementById("cart-items-count").innerText = amount;
+}
+
+/* local storage chnage */
+/* it only fires when a change happens on the local storaege from different page */
+// window.addEventListener("storage", function(e){
+    
+//     console.log("change");
+// });
