@@ -50,14 +50,12 @@ function changeItemsPlaces()
         navbar.querySelector("ul>li:nth-child(6)").appendChild(loginBtn);
         //navbar.appendChild(loginBtn);
         navbar.appendChild(searchForm);
-        console.log("appended");
     }
 
     else
     {
         headerRightSection.appendChild(loginBtn);
         rightSectionFormDiv.appendChild(searchForm);
-        console.log("deleted");
     }
 
 
