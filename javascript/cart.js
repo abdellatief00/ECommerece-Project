@@ -200,6 +200,8 @@ function updatecartnumber(arr){
 
 /* local storage chnage */
 /* it only fires when a change happens on the local storaege from different page */
+
+
 // window.addEventListener("storage", function(e){
     
 //     console.log("change");

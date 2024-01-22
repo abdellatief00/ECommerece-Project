@@ -14,7 +14,7 @@
     --lightGray: rgba(0, 0, 0, 0.6);
 }
 
-body {
+/* body {
     --fontcolor: black;
     --maincolor: white;
     --textfont: 'Poppins', sans-serif;
@@ -24,10 +24,6 @@ body {
     --secondaryheight: 45vh;
     --sectionpadding: .7rem;
 
-}
-
-html {
-    font-size: 14px;
 }
 
 ::selection {
@@ -61,7 +57,162 @@ html {
     color: var(--paragrahcolor);
     font-family: var(--textfont);
     font-weight: 300;
+} */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
+body {
+    --fontcolor: black;
+    --maincolor: white;
+    --textfont: 'Poppins', sans-serif;
+    --headerfont: 'Yeseva One', serif;
+    --paragrahcolor: #8b8989;
+    --mainheight: 80vh;
+    --secondaryheight: 45vh;
+    --sectionpadding: .7rem;
+    --backgroundhead:#f1f1f1;
+
+}
+::selection {
+    background-color: var(--fontcolor);
+    color: var(--maincolor);
+}
+
+/* some repeated classes*/
+.buttonshape {
+    background-color: transparent;
+    border: 1px solid var(--fontcolor);
+    padding: 5px 20px;
+    transition: all 0.5s;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.buttonshape:hover {
+    background-color: var(--fontcolor);
+    color: var(--maincolor);
+}
+
+.headfont {
+    line-height: 1em;
+    font-family: var(--headerfont);
+    color: var(--fontcolor);
+}
+
+.textfont {
+    font-size: 19px;
+    color: var(--paragrahcolor);
+    font-family: var(--textfont);
+    font-weight: 300;
+}
+
+/* end of some repeated classes*/
+
+
+/* sharkawy parts */
+#header-text {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 20px;
+
+    margin-left: 5%;
+}
+
+#header-text::selection {
+    color: var(--maincolor);
+    background: var(--fontcolor);
+}
+header .bg-body-tertiary{
+    background-color: transparent !important;
+}
+
+#header-text h2 {
+    font-size: 6vw;
+    width: 60%;
+    font-family: var(--headerfont);
+    line-height: .9;
+}
+
+#header-text p {
+    width: 60%;
+    font-size: 1.5vw;
+
+}
+
+#header-text button {
+    width: 120px;
+    padding: 10px;
+}
+
+#cart-icon {
+    position: relative;
+}
+
+#cart-items-count {
+    position: absolute;
+    top: -15px;
+    right: -5px;
+
+
+}
+
+#header-logo {
+    margin-left: 140px;
+}
+
+@media (max-width:950px) {
+    #header-text h2 {
+        font-size: 60px;
+    }
+
+    #header-text p {
+        font-size: 20px;
+    }
+}
+
+@media (max-width:768px) {
+    #header-logo {
+        margin: auto;
+    }
+}
+
+@media (max-width:500px) {
+    #header-text h2 {
+        font-size: 30px;
+    }
+
+    #header-text p {
+        font-size: 10px;
+    }
+
+    #imgContainer img {
+        display: none;
+    }
+}
+
+#logo-image{
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media (max-width:768px) {
+    #header-text {
+        /* top: 80%; */
+        margin-left: 0;
+        margin-top: 25%;
+    }
+}
+
+
+/* end of sharkawy part */
+
+/* end of nav bar */
+
+
 
 #toast {
     display: none;
@@ -101,7 +252,7 @@ html {
 }
 
 /* Contact */
-header {
+.headerDiv {
     background-image: url(../images/contact_header_bg.jpg);
     background-position: center;
     background-size: cover;
@@ -110,11 +261,7 @@ header {
     height: 65vh;
 }
 
-#homepage-header nav {
-    font-size: 17px;
-    text-transform: uppercase;
-    font-weight: 700;
-}
+
 
 .contactWord {
     justify-items: center;

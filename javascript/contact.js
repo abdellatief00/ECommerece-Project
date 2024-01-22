@@ -15,7 +15,7 @@ function sendEmail(_name, _from="blank", _message) {
     }
 
 // document.getElementById("sendEmailButton").addEventListener("click", sendEmail);
-document.querySelector('button[type="submit"]').addEventListener("click",function(e){
+document.querySelector('#formsubmit').addEventListener("click",function(e){
     if(
        isValidInputName( document.querySelector("#firstName").value ) &&
        isValidInputName(document.querySelector("#lastName").value) &&
