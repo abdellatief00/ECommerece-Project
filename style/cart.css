@@ -61,7 +61,7 @@ body {
     align-self:center;
     
 }
-#toast {
+.toast {
     display: none;
     position: fixed;
     top: 20%;

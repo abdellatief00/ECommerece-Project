@@ -4,7 +4,7 @@ function sendEmail(_name, _from="blank", _message) {
     console.log("hello world");
       emailjs.send("service_g9sjq5h", "template_qpomd8t", {
         name: _name,
-        to_name:"ana",
+        to_name:"abdellatief",
         from_name:_from ,
         message:_message,
         reply_to: 'Check this out!'
@@ -23,7 +23,7 @@ document.querySelector('#formsubmit').addEventListener("click",function(e){
        isValidInput(document.querySelector("#floatingInput").value )
     ){
         e.preventDefault();
-        sendEmail(`${document.querySelector("#firstName").value} ${document.querySelector("#lastName").value}`,document.querySelector("#floatingInput").value ,document.querySelector("#lastName").value);
+        sendEmail(`${document.querySelector("#firstName").value} ${document.querySelector("#lastName").value}`,document.querySelector("#floatingInput").value ,document.querySelector("#floatingTextarea2").value);
         document.querySelector("#firstName").value = "";
         document.querySelector("#lastName").value = "";
         document.querySelector("#floatingInput").value = "";

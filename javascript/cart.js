@@ -26,13 +26,16 @@ window,addEventListener("load",function(e){
 
 
 function showToast(message, duration , color) {
-    var toast = document.getElementById('toast');
-    toast.style.animationName = "animationdropfromtop";
-    toast.style.display = 'block';
-    toast.innerText = message;
-    toast.style.backgroundColor = color;
+    var el =document.createElement('div');
+    el.className = "toast";
+    // var toast = document.querySelector('.toast');
+    el.style.animationName = "animationdropfromtop";
+    el.style.display = 'block';
+    el.innerText = message;
+    el.style.backgroundColor = color;
+    document.body.appendChild(el);
     setTimeout(function () {
-        toast.style.display = 'none';
+        document.querySelector('.toast').remove();
     }, duration);
   }
 
