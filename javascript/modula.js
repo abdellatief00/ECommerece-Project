@@ -321,3 +321,106 @@
       return ++lastid;
     }
   }
+
+
+
+  /* class users */
+  //#region  User type
+
+ export class user{
+  #id;
+  static current_id = 0;
+  #fname; #lname;
+  #email;
+  #password;
+  #images =[];
+  #age;
+  #role;
+
+  set fname(_fname){
+    this.#fname = _fname;
+}
+get fname(){
+    return this.#fname;
+}
+set lname(_lname){
+    this.#lname = _lname;
+}
+get lname(){
+    return this.#lname;
+}
+
+  set email(_email){
+      this.#email = _email;
+  }
+  get email(){
+      return this.#email;
+  }
+
+  set password(_pass){
+      this.#password = _pass;
+  }
+  get password(){
+      return this.#password;
+  }
+
+  set age(_age){
+      this.#age = _age;
+  }
+  get age(){
+      return this.#age;
+  }
+
+  get id(){
+      return this.#id;
+  }
+
+  set images(_img){
+      this.#images.push(_img);
+  }
+  get images(){
+      return this.#images;
+  }
+
+  set role(_role) {
+      this.#role = _role;
+  }
+  get role() {
+      return this.#role;
+  }
+  constructor(_fname,_lname,_email,_pass,_age,_img,_role){
+    this.fname = _fname;
+    this.lname = _lname;
+    this.email = _email;
+      this.password = _pass;
+      this.age = _age;
+      this.images = _img;
+      this.#id = user.autoincreaseid();
+      this.#role = _role;
+  }
+  addjson(){
+      return{
+          id : this.id,
+          fname : this.fname,
+          lname : this.lname,
+          email: this.email,
+          password: this.password,
+          age : this.age,
+          images: this.images,
+          role: this.role
+
+      };
+  }
+  static autoincreaseid(){
+    let lastid;
+    let user = JSON.parse(window.localStorage.getItem("users")) ||[]; // u can chage the name of the user how ever u want
+    if(user.length > 0){
+      lastid = user[user.length-1].id;
+    }
+    else {lastid =0}
+    return ++lastid;
+  }
+
+}
+
+ //#endregion

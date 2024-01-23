@@ -372,4 +372,12 @@ function updatecartnumber(arr){
   window.history.forward(); 
         function noBack() { 
             window.history.forward(); 
-        } 
+} 
+
+window.onload = function() {
+  // Check if the page was loaded from the browser's forward button
+  if (performance.navigation.type === 2) {
+    // Reload the page
+    location.reload(true);
+  }
+};

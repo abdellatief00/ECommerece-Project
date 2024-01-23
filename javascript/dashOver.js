@@ -2,6 +2,7 @@ $(document).ready(function () {
     $("#sidebarToggle").click(function () {
         $("#sidebar").toggleClass("collapsed");
         $("#content").toggleClass("collapsed");
+        // $('#firstrow').toggleClass("offset-2");
         if ($("#sidebar").hasClass("collapsed")) {
             $(".nav-link .fa").removeClass("fa-bars").addClass("fa-table-cells-large");
         } else {
