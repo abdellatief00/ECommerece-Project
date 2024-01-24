@@ -75,7 +75,7 @@ window.addEventListener('load', function () {
             //<i class="fa-regular fa-eye"></i>
             let lastcreatedtd = document.createElement('td');
             let showIcon = document.createElement('i');
-            showIcon.setAttribute("class", "fa-regular fa-eye text-primary cursorPointer");
+            showIcon.setAttribute("class", "fa-regular fa-eye text-secondary cursorPointer");
             let showBtn = document.createElement('button');
             showBtn.setAttribute("class", "btn m-1");
             showBtn.setAttribute("data-bs-toggle", "modal");
