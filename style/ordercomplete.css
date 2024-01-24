@@ -60,9 +60,6 @@ body {
 
 /* end of some repeated classes*/
 
-
- /* nav bar section*/ 
-
 /* sharkawy parts */
 #header-text {
     position: absolute;
@@ -160,7 +157,6 @@ header .bg-body-tertiary{
 
 
 /* end of sharkawy part */
-/* end of nav bar */
 
 /* start of ali parts*/
 .cartButton{
@@ -196,14 +192,11 @@ header .bg-body-tertiary{
 
 
 
-
-
 /* start of content part */
 
 
 #content {
     padding: 5% 5%;
-    margin-bottom: 5%;
 }
 #content>div>div:first-of-type{
     padding-bottom:20px;
@@ -231,120 +224,56 @@ header .bg-body-tertiary{
 }
 
 
-/* begining of main part */ 
+/* bill  css */
 
-#content .formcontent h3{
-    margin-top: 1em;
-    margin-bottom: 0.7em;
-    font-size: 1em;
-    font-weight: 600;
-}
-#content .formcontent .leftcontent{
-    /* flex-grow: 1; */
-    padding: 10px;
-    margin-right: 3%;
-    width: 60%;
-}
-#content .formcontent .leftcontent input,
-#content .formcontent .leftcontent textarea{
-    border-radius: 0%;
-    margin-bottom: 10px;
-    padding: 5px 5px;
-}
-
-#content .formcontent .leftcontent abbr{
-    color: red !important;
-}
-
-#content .formcontent .leftcontent input::placeholder{
-    color:#dfdada;
-    font-size: var(--palaceholdersize);
+#content #bill>p:first-child{
+    margin-bottom: 2%;
+    font-size: 1.5rem;
     font-family: var(--textfont);
-    transition: all 0.5s ease;  
+    color: var(--paragrahcolor);
 }
-#content .formcontent .leftcontent textarea::placeholder{
-    color:#dfdada;
-    font-size: var(--palaceholdersize);
-    font-family: var(--textfont);
-    transition: all 0.5s ease;
+#content #bill>div{
+    width: 100%;
+}
+#content #bill>div ul{
+    list-style-type: none;
+    display: flex;
+    background-color:#f1f1f1;
+    padding: 1.5em 1.5em 1em;
+    margin:1em 0 3em 0;
+    width: 100%;
+    justify-content: space-around;
     
 }
-#content .formcontent .leftcontent .coponinput{
-    display: none;
+#content #bill>div ul li{
+    margin:0 10px ;
+    display: flex;
+    flex-direction: column;
 }
-#content .formcontent .leftcontent #visacarddetails{
-    margin-top: -150px;
-    animation-name: slidefromtopanimation;
-    animation-duration:1s ;
-    /* animation-direction: alternate; */
-    animation-fill-mode: forwards;
+#content #bill>div ul li strong{
+    display: block;
 }
-
-
-#content .formcontent .leftcontent button[type="submit"]{
-    margin-top: 3%;
+#content #bill>div table{
     width: 100%;
-    font-size: 1.25rem;
+    border-style: hidden;
+    border: 1px solid #f1f1f1;
+}
+#content #bill>div table tr{
+    border: 1px solid rgb(235, 229, 229);
 }
 
-
-/* right content*/
-#content .formcontent .rightcontent{
-    padding: 10px;
-    flex-grow: 1;
-    /* background-color: red; */
-    height: fit-content;
+#content #bill>div table tr td,#content #bill>div table tr th{
+    padding: 1.5em 20px;
+    font-family: var(--textfont);
+    color: var(--paragrahcolor);
+    vertical-align: middle;
 }
-#content .formcontent .rightcontent table{
-    width: 100%;
-    /* border-right: 1px solid var(--backgroundhead);
-    border-left: 1px solid var(--backgroundhead); */
-}
-#content .formcontent .rightcontent table tr{
-    border-top: 1px solid var(--backgroundhead);
-    padding: 5px !important;
-}
-#content .formcontent .rightcontent table tr td{
-    padding: .5em .7em;
-}
-#content .formcontent .rightcontent table tr td:last-child{
+#content #bill>div table tr td:last-of-type,#content #bill>div table tr th:last-of-type{
     text-align: right;
 }
-#content .formcontent .rightcontent table thead tr{
-    color: var(--paragrahcolor);
-    font-size: 1.25rem;
+#content #bill>div table tfoot tr td{
+    font-weight: bold;
 }
-#content .formcontent .rightcontent table tbody tr td{
-    padding: 1em  0.7em;
-}
-#content .formcontent .rightcontent table tbody tr td img{
-    width: 50px;
-    height: 50px;
-}
-#content .formcontent .rightcontent table tbody tr td p{
-    margin-bottom: 0;
-    padding-left: 5px;
-    font-size: .8rem !important;
-}
-#content .formcontent .rightcontent table tfoot tr{
-    border-bottom: 1px solid var(--backgroundhead);
-    color: var(--paragrahcolor);
-}
-#content .formcontent .rightcontent  .accordion-header{
-    display: none;
-}
-#content .formcontent .rightcontent .accordion-body{
-    border: 0 !important;
-    padding: 0 !important;
-}
-
-
-
-
-
-
-
-
 
 
 
@@ -357,47 +286,15 @@ header .bg-body-tertiary{
     }
     #content>div>div:first-of-type #shopping-card{
         display: block !important;
-        color: red;
+        font-size: 1.25rem;
     }
     #content>div>div:first-of-type #shopping-card p:first-of-type,
-    #content>div>div:first-of-type #shopping-card p:last-of-type{
+    #content>div>div:first-of-type #shopping-card p:nth-child(1){
         display: none;
-    }
 
-    /*form*/
-    #content .formcontent{
-        flex-direction: column;
-    }
-    #content .formcontent .leftcontent{
-        width: 100%;
-        order: 2;
-    }
-    #content .formcontent .rightcontent{
-        order: 1;
-    }
-    #content .formcontent .rightcontent  .accordion-header {
-        display: block;
-
-    }
-    #content .formcontent .rightcontent  .accordion-header button{
-        color: var(--paragrahcolor);
-        padding: 10px 10px !important;
-    }
-
-}
-
-@keyframes  slidefromtopanimation {
-    form{
-        margin-top: -80px;
-    }
-    to{
-        margin-top: 0px;
     }
 }
-
-
-/* end of checkout abdellatief part */
-
+/* end of content */
 
 /*footer*/
 
@@ -467,60 +364,3 @@ footer .cpyright p,
 footer .contacts li {
     color: var(--lightGray);
 }
-
-/* end of aya parts*/
-/* start of ali parts*/
-
-.cartButton{
-    margin: 10px;
-    padding: 10px;
-}
-.cartButton:hover{
-    background-color: var(--fontcolor);
-    color: var(--maincolor);
-}
-
-.QuantityValue{
-    width: 50px; 
-    border: 1px solid var(--paragrahcolor);
-    background-color: rgb(238, 231, 231);
-    appearance:textfield;
-    -webkit-appearance: textfield;
-    
-}
-
-
-.QuantityValue::-webkit-inner-spin-button,
-.QuantityValue::-webkit-outer-spin-button,
-.QuantityValue {
-    -webkit-appearance: none;
-    margin: 0;
-}
-
-.CartItemDetails{margin-left: 15%;
-text-align: center;}
-
-
-
-
-.Cart-Content{height: 100vh;
-    border-radius: 0%;
-    
-   }
-   .Cart-dialog{
-    margin: 0% 0% 0% 0%;
-    float: right;
-    width: 100%;
-   }
-
-
-   .Item{
-    margin-top: 10px;
-   }
-   
-   @media (max-width: 375px) {
-    .CartItemDetails {
-        margin-left: 7%;
-    
-    }}
-/* end of ali parts*/

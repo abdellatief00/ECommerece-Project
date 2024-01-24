@@ -174,7 +174,7 @@ header .bg-body-tertiary {
 
 .carousel-inner{
     width:100%;
-    height: 600px !important;
+    height: 800px !important;
 
 }
 .orderby{
@@ -197,17 +197,17 @@ header .bg-body-tertiary {
 
  .add-to-cart{
     opacity: 1;
-    color: #FF9BD2 ;
+    color: #7FC7D9 ;
     background-color: white;
     font-size: 15px;
     font-weight: 600;
     margin: 0 0 10px;
-    border-color: #402B3A; 
+    border-color: #0F1035; 
 }
 
 .product:hover .add-to-cart{ opacity: 1; 
     color:white;
-    background-color: #402B3A;
+    background-color: #0F1035;
   }
 .product .productname{
     font-size: 16px;
@@ -215,7 +215,7 @@ header .bg-body-tertiary {
     text-transform: capitalize;
     margin: 0 0 10px;
     transition: all 0.3s ease 0s;
-    color:#D63484;
+    color:#365486;
 }
 .product-image{
     overflow: hidden;
@@ -235,7 +235,7 @@ header .bg-body-tertiary {
 }
 .product .product-links li:hover{
     color: #fff;
-    background-color: #402B3A;
+    background-color:#0F1035 ;
     
 }
 #products ,#product-container {
@@ -289,7 +289,7 @@ header .bg-body-tertiary {
 }*/
 
 .price {
-    color: #402B3A;
+    color: #0F1035;
     text-align: center;
     font-size:medium;
     font-size: 16px;
@@ -307,6 +307,19 @@ width:100%;
 height: 12%;
 
 }
+.out-of-stock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #DCF2F1;/* Optional: Add a semi-transparent white background */
+    padding: 10px;
+    color: #11235A;
+    font-weight: bold;
+    font-size: 18px;
+    z-index: 2; /* Make sure the overlay is on top of the image */
+    border-radius: 25%;
+}
 .offer-overlay {
     position: absolute;
     top: 0;
@@ -317,28 +330,13 @@ height: 12%;
     font-weight: bold;
     z-index: 2;
 }
-.out-of-stock {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #E9A8F2;
-    padding: 10px;
-    color: #5F0F40;
-    font-weight: bold;
-    font-size: 18px;
-    z-index: 2; 
-    border-radius: 25%;
-}
+
 .product-image{
 
 max-height: 350px;
 }  
 .productImage {
     width: 100%;
-    height: 100%;
-}
-.carousel-item{
     height: 100%;
 }
 .carousel-item img{
@@ -352,6 +350,12 @@ max-height: 350px;
     }
     .carousel-inner{
         height: 360px;
+    }
+    .carousel-item{
+        height: 100%;
+    }
+    .carousel-item img{
+        height: 100%;
     }
     .product-image{
         justify-content: center;

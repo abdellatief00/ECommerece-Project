@@ -25,11 +25,6 @@ body {
     --sectionpadding: .7rem;
 
 }
-
-html {
-    font-size: 14px;
-}
-
 ::selection {
     background-color: var(--fontcolor);
     color: var(--maincolor);
@@ -39,7 +34,7 @@ html {
 .buttonshape {
     background-color: transparent;
     border: 1px solid var(--fontcolor);
-    padding: 5px 10px;
+    padding: 5px 20px;
     transition: all 0.5s;
     font-size: 12px;
     font-weight: 600;
@@ -65,6 +60,256 @@ html {
 
 /* end of some repeated classes*/
 
+
+ /* nav bar section*/ 
+header{
+    margin: 0 -.7rem;
+}
+
+ 
+#header-text {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 20px;
+
+    margin-left: 5%;
+}
+header .navbar-expand-lg{
+    background-color: transparent !important;
+}
+header .nav-link{
+    color: var(--fontcolor);
+}
+header .navbar-toggler {
+    border: none;
+    background-color: transparent;
+
+}
+
+/* #header-text h2 {
+    font-size: 6vw;
+    width: 60%;
+    font-family: var(--headerfont);
+    line-height: .9;
+}*/
+
+/* #header-text p {
+    width: 60%;
+    font-size: 1.5vw;
+} */
+
+/* #header-text button {
+    width: 120px;
+    padding: 10px;
+} */
+
+.fa-magnifying-glass{
+    font-size: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.fa-magnifying-glass:hover{
+    transform: scale(1.5);
+}
+#cart-icon {
+    position: relative;
+    cursor: pointer;
+    transition: all .2s;
+}
+#cart-icon:hover{
+    opacity: .5;
+}
+
+#cart-items-count {
+    position: absolute;
+    top: -10px;
+    right: -7px;
+    font-size: 12px;
+}
+
+#header-logo {
+    margin-left: 140px;
+}
+
+@media (max-width:950px) {
+    #header-text h2 {
+        font-size: 60px;
+    }
+
+    #header-text p {
+        font-size: 20px;
+    }
+}
+
+@media (max-width:768px) {
+    #header-logo {
+        margin: auto;
+        padding-bottom: 3%;
+    }
+    header #header-right-section{
+        display: none !important;
+
+    }
+}
+
+@media (max-width:500px) {
+    #header-text h2 {
+        font-size: 30px;
+    }
+
+    #header-text p {
+        font-size: 10px;
+    }
+
+    #imgContainer img {
+        display: none;
+    }
+}
+
+@media (max-width:768px) {
+    #header-text {
+        /* top: 80%; */
+}
+
+#header-text button {
+    width: 120px;
+    padding: 10px;
+}
+
+#cart-icon {
+    position: relative;
+}
+
+#cart-items-count {
+    position: absolute;
+    top: -15px;
+    right: -5px;
+
+
+}
+
+#header-logo {
+    margin-left: 140px;
+}
+}
+@media (max-width:950px) {
+    #header-text h2 {
+        font-size: 60px;
+    }
+
+    #header-text p {
+        font-size: 20px;
+    }
+}
+
+@media (max-width:768px) {
+    #header-logo {
+        margin: auto;
+    }
+}
+
+@media (max-width:500px) {
+    #header-text h2 {
+        font-size: 30px;
+    }
+
+    #header-text p {
+        font-size: 10px;
+    }
+
+    #imgContainer img {
+        display: none;
+    }
+}
+
+#logo-image{
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media (max-width:768px) {
+    #header-text {
+        /* top: 80%; */
+        margin-left: 0;
+        margin-top: 25%;
+    }
+}
+
+
+/* end of sharkawy part */
+
+
+#header-text button {
+    width: 120px;
+    padding: 10px;
+}
+
+#cart-icon {
+    position: relative;
+}
+
+#cart-items-count {
+    position: absolute;
+    top: -15px;
+    right: -5px;
+
+
+}
+
+#header-logo {
+    margin-left: 140px;
+}
+
+@media (max-width:950px) {
+    #header-text h2 {
+        font-size: 60px;
+    }
+
+    #header-text p {
+        font-size: 20px;
+    }
+}
+
+@media (max-width:768px) {
+    #header-logo {
+        margin: auto;
+    }
+}
+
+@media (max-width:500px) {
+    #header-text h2 {
+        font-size: 30px;
+    }
+
+    #header-text p {
+        font-size: 10px;
+    }
+
+    #imgContainer img {
+        display: none;
+    }
+}
+
+#logo-image{
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@media (max-width:768px) {
+    #header-text {
+        /* top: 80%; */
+        margin-left: 0;
+        margin-top: 25%;
+    }
+}
+
+
+/* end of sharkawy part */
+
+
+/* end of some repeated classes*/
+
 #cart-icon {
     position: relative;
 }
@@ -76,7 +321,7 @@ html {
 }
 
 /* About */
-header {
+.headerDiv {
     background-image: url(../images/about_header_bg.jpg);
     background-position: center;
     background-size: cover;
@@ -119,6 +364,14 @@ header {
     }
 
 }
+
+/* end of nav sharkawy */
+
+
+
+
+
+
 .aboutInfo .hugeHead {
     /* font-size:110px; */
     font-size: 80px;

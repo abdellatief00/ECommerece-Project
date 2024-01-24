@@ -13,6 +13,7 @@ body {
     --secondaryheight: 45vh;
     --sectionpadding: .7rem;
     --backgroundhead:#f1f1f1;
+    --textfontsize : 16px;
 
 }
 ::selection {
@@ -36,27 +37,66 @@ body {
 }
 
 .headfont {
-    line-height: 1em;
+    line-height: 1.25em;
     font-family: var(--headerfont);
     color: var(--fontcolor);
 }
 
 .textfont {
-    font-size: 12px;
+    font-size: var(--textfontsize);
     color: var(--paragrahcolor);
     font-family: var(--textfont);
     font-weight: 300;
 }
+.button-like-link {
+    display: inline-block;
+    padding: 10px 60px;
+    text-decoration: none;
+    background-color: var(--maincolor);
+    color: var(--fontcolor);
+    border: 1px solid var(--fontcolor);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    align-self:center;
+    
+}
+.toast {
+    display: none;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ea6060;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: 50%;
+    text-align: center;
+    animation-name: animationdropfromtop;
+    animation-duration: 1s;
+  }
 
+
+.button-like-link:hover {
+    background-color: var(--fontcolor);
+    color: var(--maincolor);
+}
+
+
+
+@keyframes animationdropfromtop {
+    from{
+        top: -20%
+    }
+    to{
+        top:20%
+    }
+}
 /* end of some repeated classes*/
 
 
- /* nav bar section*/ 
-header{
-    margin: 0 -.7rem;
-}
-
- 
+/* sharkawy parts */
 #header-text {
     position: absolute;
     top: 50%;
@@ -65,57 +105,43 @@ header{
 
     margin-left: 5%;
 }
-header .navbar-expand-lg{
+
+#header-text::selection {
+    color: var(--maincolor);
+    background: var(--fontcolor);
+}
+header .bg-body-tertiary{
     background-color: transparent !important;
 }
-header .nav-link{
-    color: var(--fontcolor);
-}
-header .navbar-toggler {
-    border: none;
-    background-color: transparent;
 
-}
-
-/* #header-text h2 {
+#header-text h2 {
     font-size: 6vw;
     width: 60%;
     font-family: var(--headerfont);
     line-height: .9;
-}*/
+}
 
-/* #header-text p {
+#header-text p {
     width: 60%;
     font-size: 1.5vw;
-} */
 
-/* #header-text button {
+}
+
+#header-text button {
     width: 120px;
     padding: 10px;
-} */
+}
 
-.fa-magnifying-glass{
-    font-size: 10px;
-    margin-right: 20px;
-    cursor: pointer;
-}
-.fa-magnifying-glass:hover{
-    transform: scale(1.5);
-}
 #cart-icon {
     position: relative;
-    cursor: pointer;
-    transition: all .2s;
-}
-#cart-icon:hover{
-    opacity: .5;
 }
 
 #cart-items-count {
     position: absolute;
-    top: -10px;
-    right: -7px;
-    font-size: 12px;
+    top: -15px;
+    right: -5px;
+
+
 }
 
 #header-logo {
@@ -135,11 +161,6 @@ header .navbar-toggler {
 @media (max-width:768px) {
     #header-logo {
         margin: auto;
-        padding-bottom: 3%;
-    }
-    header #header-right-section{
-        display: none !important;
-
     }
 }
 
@@ -157,6 +178,11 @@ header .navbar-toggler {
     }
 }
 
+#logo-image{
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 @media (max-width:768px) {
     #header-text {
         /* top: 80%; */
@@ -165,7 +191,8 @@ header .navbar-toggler {
     }
 }
 
-/* end of nav bar */
+
+/* end of sharkawy part */
 
 
 /* beginign of content */ 
@@ -212,17 +239,17 @@ header .navbar-toggler {
 #content>div table:first-of-type tbody th{
     text-align: right;
     width: 0px;
+    vertical-align: middle !important;
 }
 #content>div table:first-of-type img{
     height: auto;
-    max-width: 50px;
+    max-width: 70px;
     width: auto;
     vertical-align: middle;
 }
 #content>div table:first-of-type tbody td{
-    padding: 25px 10px;
     color: var(--paragrahcolor);
-    
+    vertical-align: middle !important;
 }
 #content>div table:first-of-type .counter{
     border: 1px solid gray;
@@ -242,7 +269,7 @@ header .navbar-toggler {
 #content .fa-circle-xmark{
     color: #8b8989;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 1.5rem;
 
 }
 #content .fa-circle-xmark:hover{
@@ -271,13 +298,16 @@ header .navbar-toggler {
 
 #tableparts .secondtable table tr{
     border-bottom: 1px solid var(--backgroundhead);
-
+    
 }
 #tableparts .secondtable table tr td{
     border: none;
-    font-size: 12px;
+    font-size: var(--textfontsize);
+    padding: 1.5rem 0;
 }
-S
+#tableparts .secondtable table tr td:last-of-type{
+    text-align: center;
+}
 #tableparts .secondtable p{
     padding-top: 15px;
     cursor: pointer;
@@ -285,10 +315,10 @@ S
 #tableparts .secondtable:hover p{
     cursor: pointer;
 }
-#tableparts .secondtable button{
-    margin: 0 auto;
+#tableparts .secondtable a {
     width: 100%;
-    margin-bottom: 10%;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 
@@ -343,8 +373,10 @@ S
         text-align: center;
     }
      /* end of first table */
+
     #tableparts .secondtable{
         width: 100%;
+        margin: 0;
     }
     #tableparts .secondtable tbody tr td:last-of-type{
         text-align: right;

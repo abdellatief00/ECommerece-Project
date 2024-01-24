@@ -32,9 +32,9 @@ body {
 .buttonshape {
     background-color: transparent;
     border: 1px solid var(--fontcolor);
-    padding: 5px 20px;
+    padding: 5px 40px;
     transition: all 0.5s;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 600;
 }
 
@@ -54,6 +54,9 @@ body {
     color: var(--paragrahcolor);
     font-family: var(--textfont);
     font-weight: 300;
+}
+.readmore{
+    display: none;
 }
 
 /* end of some repeated classes*/
@@ -170,6 +173,11 @@ header .bg-body-tertiary {
     #imgContainer img {
         display: none;
     }
+}
+
+#logo-image{
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 @media (max-width:768px) {
