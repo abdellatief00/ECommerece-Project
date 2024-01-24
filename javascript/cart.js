@@ -1,4 +1,4 @@
-import { Cart} from './modula.js';
+import { Cart ,user} from './modula.js';
 
 let cartarr = [];
 cartarr.push(new Cart(1,"prod1",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
@@ -10,6 +10,8 @@ cartarr.push(new Cart(5,"prod80",3 , 200.00 ,"images/women/product-1-a.jpg").add
 
 localStorage.setItem("cart",JSON.stringify(cartarr));
 
+// let one_user = new user("abdo","hamed","abdellatiefhamed00@gmail.com","1578aaa",50,"images/women/product-1-a.jpg",0).addjson();
+// window.localStorage.setItem("current_user",JSON.stringify(one_user));
 
 
 /* what happened when the window load */ 
@@ -184,14 +186,14 @@ function searchbyid(arr,_id){
     return ind;
 }
 /*get and set element from local stoage */
-function getlocal(){
-    let arr  = JSON.parse(window.localStorage.getItem("cart")) || [];
+function getlocal(key="cart"){
+    let arr  = JSON.parse(window.localStorage.getItem(key)) || [];
     return arr;
 }
-function setlocal(arr){
-    localStorage.setItem("cart",JSON.stringify(arr));
+function setlocal(arr, key="cart"){
+    localStorage.setItem(key,JSON.stringify(arr));
     // window.dispatchEvent(new Event('storage'));
-}
+}   
 
 
 /* update cart number */

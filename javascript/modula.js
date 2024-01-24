@@ -293,13 +293,15 @@
     #total;
     #paymentMethod;
     #cart;
+    #userId;
     static currentorderid = 0;
-    constructor(_total,_pay , _cart){
+    constructor(_total,_pay , _cart, user_id){
       this.#orderNumber = Orders.autoincreaseid();
       this.#date = new Date();
       this.#total  = _total;
       this.#paymentMethod = _pay;
       this.#cart = _cart;
+      this.#userId = user_id;
     }
     addJson(){
       return{
@@ -307,7 +309,8 @@
       date : this.#date,
       total : this.#total,
       paymentMethod : this.#paymentMethod,
-      cart : this.#cart
+      cart : this.#cart,
+      userId : this.#userId
       }
     }
 
@@ -336,6 +339,7 @@
   #images =[];
   #age;
   #role;
+  #orders=[];
 
   set fname(_fname){
     this.#fname = _fname;
@@ -407,8 +411,8 @@ get lname(){
           password: this.password,
           age : this.age,
           images: this.images,
-          role: this.role
-
+          role: this.role,
+          orders: this.#orders
       };
   }
   static autoincreaseid(){
@@ -424,3 +428,4 @@ get lname(){
 }
 
  //#endregion
+

@@ -20,6 +20,7 @@ window.addEventListener('load',function(){
         this.document.querySelector('#content .formcontent .rightcontent .accordion button').setAttribute("aria-expanded",'False');
         }
         let arr  = JSON.parse(window.localStorage.getItem("cart")) || [];
+        if(arr.length==0){window.open("../homepage.html","_self")}
         createProductTable(arr);
         this.document.querySelector('#content .formcontent .rightcontent #accordionExample h2 button span').innerHTML = ` $${claculatetotal(arr)}`;
         document.querySelector("#content button[type =submit] .ordernumber").innerHTML = `$${claculatetotal(arr)}`;
@@ -339,21 +340,29 @@ function isValidInput(input) {
 
   /*validation for submition */
   document.querySelector("#content button[type =submit]").addEventListener("click",function(e){
+
+    let currnet_user = JSON.parse(window.localStorage.getItem("current_user")) || false;
     if(document.querySelectorAll('#content form input[required].is-valid').length != document.querySelectorAll('#content form input[required]').length){
       e.preventDefault();
     }
+    else if(currnet_user==false){
+      e.preventDefault();
+      document.getElementById("loginBtn").click();
+    }
     else{
       e.preventDefault();
-      console.log("lol");
       let order = JSON.parse(window.localStorage.getItem("orders")) || [];
       let car = JSON.parse(window.localStorage.getItem("cart"));
 
       let pay = ``;
       if(document.querySelectorAll("#firstinputradio")[0].checked){pay = "Direct Bank Transfer"}
       else{pay = "Cash"}
-      
-      order.push(new Orders(claculatetotal(car), pay, car).addJson());
-      window.localStorage.setItem("orders",JSON.stringify(order));
+      let or = new Orders(claculatetotal(car), pay, car,currnet_user.id);
+      order.push(or.addJson());
+      currnet_user.orders.push(or.addJson());
+      window.localStorage.setItem("current_user",JSON.stringify(currnet_user));
+
+      window.localStorage.setItem("orders",JSON.stringify(order));   
       localStorage.removeItem('cart');
       document.querySelectorAll('#content form')[0].submit();
     }
@@ -367,12 +376,16 @@ function updatecartnumber(arr){
   document.getElementById("cart-items-count").innerText = amount;
 }
 
+
+
+
+
 /* when he go to order complete he can't go back */ 
 
-  window.history.forward(); 
-        function noBack() { 
-            window.history.forward(); 
-} 
+//   window.history.forward(); 
+//         function noBack() { 
+//             window.history.forward(); 
+// } 
 
 window.onload = function() {
   // Check if the page was loaded from the browser's forward button
@@ -381,3 +394,6 @@ window.onload = function() {
     location.reload(true);
   }
 };
+
+
+

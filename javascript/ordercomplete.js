@@ -6,7 +6,6 @@ window.addEventListener('load',function(e){
 
     let order = getlocal("orders");
     let lastorder = order[order.length-1];
-    console.log(lastorder);
     /*the bill */
     this.document.querySelectorAll("#bill>div>ul li strong")[0].innerText = lastorder.orderNumber;
     this.document.querySelectorAll("#bill>div>ul li strong")[1].innerText = lastorder.date.split('T')[0];
@@ -67,4 +66,8 @@ function getlocal(_key){
 function setlocal(_key,arr){
     localStorage.setItem(_key,JSON.stringify(arr));
 }
+
+
+
+
 
