@@ -123,7 +123,15 @@ window.addEventListener('load', function () {
             editBtn.setAttribute('data-row-index', i);
             editBtn.addEventListener('click', function () {
                 let index = editBtn.getAttribute('data-row-index');
-
+                  document.getElementById("fname").removeAttribute("disabled");
+                document.getElementById("lname").removeAttribute("disabled");
+                document.getElementById("email").removeAttribute("disabled");
+                document.getElementById("pass").removeAttribute("disabled");
+                document.getElementById("age").removeAttribute("disabled");
+                document.getElementById("editUser").style.display="block";
+                document.getElementById("editViewUserCancel").innerText="Cancel";
+                document.getElementById("editViewUserCancel").classList.remove("btn-secondary");
+                document.getElementById("editViewUserCancel").classList.add("btn-danger");
                 document.getElementById("fname").value = users[index]["fname"];
                 document.getElementById("lname").value = users[index]["lname"];
                 document.getElementById("email").value = users[index]["email"];
