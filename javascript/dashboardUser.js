@@ -102,6 +102,10 @@ window.addEventListener('load', function () {
                 document.getElementById("pass").removeAttribute("type");
                 document.getElementById("pass").setAttribute("type","text");
                 document.getElementById("age").setAttribute("disabled","disabled");
+                document.getElementById("editUser").style.display="none";
+                document.getElementById("editViewUserCancel").innerText="close";
+                document.getElementById("editViewUserCancel").classList.remove("btn-danger");
+                document.getElementById("editViewUserCancel").classList.add("btn-secondary");
             });
 
 
