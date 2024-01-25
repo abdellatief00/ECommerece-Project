@@ -64,6 +64,9 @@
     #lensClass;
     #treatment;
     #category;
+    get product_id(){
+      return this.#productId;
+    }
     set product_title(_product_title){
         this.#productTitle = _product_title;
     }
@@ -219,9 +222,7 @@
     }
   }
   
- 
   /* class for cart  abdellatief */
-
   export class Cart{
     #productId;
     #productTitle;
@@ -284,9 +285,7 @@
     }
   }
 
-
   /* class of orders */ 
-
   export class Orders{
     #orderNumber;
     #date;

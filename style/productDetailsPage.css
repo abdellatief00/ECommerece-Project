@@ -85,11 +85,6 @@ body
     }
 }
 
-#logo-image{
-    left: 50%;
-    transform: translateX(-50%);
-}
-
 /* @media (max-width: 991px){
     ul>li{
         width: 10   0vw;

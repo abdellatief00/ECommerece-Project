@@ -148,8 +148,6 @@ document.getElementById("tableparts").addEventListener("click",function(e){
     }
 });
 
-
-
 /* write a search function */
 function searchbyid(arr,_id){
     let ind = -1;
@@ -166,6 +164,7 @@ function getlocal(){
     let arr  = JSON.parse(window.localStorage.getItem("cart")) || [];
     return arr;
 }
+
 function setlocal(arr){
     localStorage.setItem("cart",JSON.stringify(arr));
 }
