@@ -165,7 +165,7 @@ export class Product {
       lensClass,
       treatment,
       category,
-      date,
+      date = new Date(),
   ) {
       this.#productTitle = productTitle;
       this.#productDescription = productDescription;
@@ -182,7 +182,7 @@ export class Product {
       this.#treatment = treatment;
       this.#category = category;
       this.#date = date || new Date(); // Default to the current date if not provided
-      this.#productId = ++Product.currentProductId;
+      this.#productId = Product.autoincreaseid();
   }
 
   addReview(userId, reviewBody) {
@@ -211,6 +211,16 @@ export class Product {
           sellerId:this.#sellerId,
           date: this.#date.toISOString(), // Convert date to ISO string for serialization
       };
+  }
+
+  static autoincreaseid(){
+    let lastid;
+    let user = JSON.parse(window.localStorage.getItem("products")) ||[]; // u can chage the name of the user how ever u want
+    if(user.length > 0){
+      lastid = user[user.length-1].id;
+    }
+    else {lastid =0}
+    return ++lastid;
   }
 }
   
