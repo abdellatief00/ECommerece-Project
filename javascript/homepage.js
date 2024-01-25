@@ -1,5 +1,7 @@
-
-
+//import { Cart ,user} from './modula.js';
+// let one_user = new user("abdo","hamed","abdellatiefhamed00@gmail.com","1578aaa",50,"images/women/product-1-a.jpg",0).addjson();
+// window.localStorage.setItem("current_user",JSON.stringify(one_user));
+//console.log(one_user);
 /* read more */
 document.querySelectorAll("#sectiontwo button")[0].addEventListener("click",function(e){
     if(e.target.innerText.toLowerCase()=="read more"){
