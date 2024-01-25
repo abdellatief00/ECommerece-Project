@@ -322,7 +322,7 @@ footer .contacts li {
 .QuantityValue{
     width: 50px; 
     border: 1px solid var(--paragrahcolor);
-    background-color: rgb(238, 231, 231);
+    background-color: rgb(209, 228, 238);
     appearance:textfield;
     -webkit-appearance: textfield;
     
@@ -375,4 +375,8 @@ text-align: center;}
  
 
 }
+.btn:active{ font-weight: bolder;}
+    
+.authButtons:hover{  background-color: rgba(207, 175, 175, 0.938); 
+    background-blend-mode: darken;}
 /* end of ali parts*/

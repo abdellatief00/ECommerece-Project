@@ -58,7 +58,9 @@
 
                 </div>
 
-                    <button class="btn" data-bs-toggle="modal" data-bs-target="#LoginScreen" data-bs-whatever="@mdo">LOG IN</button>
+                <button class="btn authButtons" data-bs-toggle="modal" data-bs-target="#LoginScreen" data-bs-whatever="@mdo">LOG IN</button>
+                <a  class="btn fw-bold authButtons" href="SignUP.html">SIGN UP</a>
+
                 </div>
                 <!-- end cart and login -->
 
@@ -206,17 +208,18 @@
     </footer>
 
 
-      <!-- login Start -->
+
+         <!-- login Start -->
       <div>
         <div class="modal fade " id="LoginScreen" tabindex="-1" aria-labelledby="Login_form" aria-hidden="true" data-bs-backdrop="static"  >
                 <div class="modal-dialog  modal-dialog-centered" >
-                    <div class="modal-content" style="background-color: rgb(238, 231, 231);">
+                    <div class="modal-content" style="background-color:  rgb(209, 228, 238);">
                         <div class="modal-header">
                             <h1 class="modal-title fs-5" id="Login_form">Login</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form action="">
+                            <form>
         
                                 
                                 <div class="mb-3">
@@ -232,10 +235,11 @@
                                     <span class="fa fa-lock input-group-prepend input-group-text" style="padding: 10px;"></span>
                                     <input type="password" class="form-control" id="Password" name="Password" required>
                                 </div>
-                         
+                                <span class="loginMassage" >error</span>
+
                         </div>
                         <div class="modal-footer">
-                                <input type="submit" value="Login" class="btn btn-primary">
+                                <input type="submit" value="Login" class="btn btn-primary" onclick="login()">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                 </form>
                     </div>
@@ -246,10 +250,11 @@
         
         <!-- end login -->
     
+    
            <!-- Cart start -->
     <div class="modal fade  " id="ShoppingCart" tabindex="-1" aria-labelledby="ShoppingCartModalLabel" aria-hidden="true" >
         <div class="modal-dialog Cart-dialog"  >
-            <div class="modal-content Cart-Content " style="background-color: rgb(238, 231, 231);" >
+            <div class="modal-content Cart-Content " style="background-color: rgb(209, 228, 238);" >
                 <div class="modal-header ">
                     <h5 class="modal-title" id="ShoppingCartModalLabel">Shopping Cart</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -274,9 +279,8 @@
                             <br>
                 <br>
                 <div class="modal-footer mt-auto" style="margin: 10px;">
-                    <!-- <button type="button" class="btn w-100 border-dark fw-bold fs-5 cartButton"  >VIEW CART</button> --> 
                     <a href="Cart.html" class="btn w-100 border-dark fw-bold fs-5 cartButton">VIEW CART</a>
-                    <button type="button" class="btn w-100 border-dark fw-bold fs-5 cartButton">CHECKOUT</button>
+                    <a href="checkout.html" class="btn w-100 border-dark fw-bold fs-5 cartButton">CHECKOUT</a>
                 </div>
             </div>
         </div>

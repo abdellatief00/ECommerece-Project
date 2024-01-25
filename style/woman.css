@@ -504,10 +504,7 @@ text-align: center;}
 
         .QuantityValue{
             width: 30px; 
-            border: 1px solid var(--paragrahcolor);
-            background-color: rgb(238, 231, 231);
-            appearance:textfield;
-            -webkit-appearance: textfield;
+           
             
         }
  
