@@ -21,67 +21,88 @@
     <link rel="stylesheet" href="style/cart.css">
     <script src="javascript/test.js" defer></script>
     <script src="javascript/cart.js" type="module"></script>
+    <script src="javascript/navbar.js" type="module"></script>
 
 </head>
 <body>
 
     <div class="container-fluid">
-        <!-- nav bar -->
-        <header class="d-flex justify-content-between flex-column-reverse flex-md-row position-relative align-items-center p-3">
+       
+        <header class="d-flex justify-content-between position-relative p-3">
 
-            <nav class="navbar navbar-expand-lg bg-body-tertiary nav-underline">
-                <!-- <div class=""> -->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-2 position-absolute">
-
-                            <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="homepage.html">Home</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="html/man.html">men</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="html/woman.html">women</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="about.html">About</a>
-                            </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact.html">contact</a>
-                            </li>
+            <a id="logo-image" href="../homepage.html" class="position-absolute d-none d-lg-block">
+                <img  src="../images/logo-header-regular.png" alt="Eyewear-logo">
+            </a>
+        
+            
+            <nav class="navbar navbar-expand-lg bg-body-tertiary nav-underline  z-3 position-relative">
+                <div class="container-fluid">
+                    <a class="navbar-brand d-lg-none" href="../homepage.html">
+                        <img src="../images/logo-header-regular.png" alt="Eyewear-logo">
+                    </a>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mt-2 mb-2 mb-lg-0 fw-bold flex-grow">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="../homepage.html">HOME</a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="../html/man.html">MEN</a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="../html/woman.html">WOMEN</a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link " href="../about.html">ABOUT US</a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="../contact.html">CONTACT</a>
+                    </li>
+    
+                    <li class="nav-item">
                         
-                        </ul>
-                    </div>
-                <!-- </div> -->
-            </nav>
-
-            <div id = "header-logo">
-               <a href="homepage.html"><img src="images/logo-header-regular.png" alt=""></a>
-            </div>
-
-            <div id = "header-right-section" class="d-flex  justify-content-between align-items-center">
-
-                <i class="fa-solid fa-magnifying-glass"></i>
-                <div class="btn CartMenu" data-bs-toggle="modal" data-bs-target="#ShoppingCart" data-bs-whatever="@mdo" onclick="totalprice()">
-                    <div id="cart-icon" class="me-3 ms-3" >
-                        <span>$00.00</span>
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span id="cart-items-count">0</span>
-                    </div>
-
+                    </li>
+                    
+                    </ul>
+                    
                 </div>
-
-                <button class="btn" data-bs-toggle="modal" data-bs-target="#LoginScreen" data-bs-whatever="@mdo">LOG IN</button>
+    
+                </div>
+            </nav>
+    
+        <div id = "header-right-section" class="d-flex justify-content-between mt-3 flex-grow-0">
+            <div>
+                <form id = "header-search-form" role="search" class="d-flex">
+                    <input class="form-control me-2 d-none" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
             </div>
-        </header>
-        <!-- end of nav bar -->
+            
+    
+            <div id="cart-icon" class="me-3 ms-3 mt-4 mt-lg-2 align-self-right">
+                <span>$0.00</span>
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-items-count">0</span>
+            </div>
+    
+            <button id="loginBtn" class="btn btn-outline-secondary border-0 align-self-start">
+                <i class="fa-solid fa-user"></i>
+                <!-- <img class="bg-white" src="images/miniProfile.png" style="width: 30px; height: 30px; border-radius: 50%;" alt=""> -->
+                <span>Login</span>
+            </button>
+    
+            <div class="navbar">
+                <button class="navbar-toggler align-self-start d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </div>
+    </header>
+    <hr>
+    <!-- end of nav bar -->
         
 
       <!-- login Start -->
@@ -161,6 +182,8 @@
     </div>
     <!-- end Cart -->
 
+    <!-- main part -->
+
         <section class="row gap-6 d-flex justify-content-center " id="content">
             <div class="col-12">
                 <h3 class="headfont">Cart</h3>
@@ -193,7 +216,9 @@
 
             </div>
         </section>
+        <!-- <div id="toast"></div> -->
 
+        <!-- main part -->
         <!-- footer -->
 
     

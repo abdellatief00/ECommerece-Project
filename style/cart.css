@@ -61,21 +61,42 @@ body {
     align-self:center;
     
 }
+.toast {
+    display: none;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ea6060;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: 50%;
+    text-align: center;
+    animation-name: animationdropfromtop;
+    animation-duration: 1s;
+  }
 
-/* Hover effect */
+
 .button-like-link:hover {
     background-color: var(--fontcolor);
     color: var(--maincolor);
 }
+
+
+
+@keyframes animationdropfromtop {
+    from{
+        top: -20%
+    }
+    to{
+        top:20%
+    }
+}
 /* end of some repeated classes*/
 
 
- /* nav bar section*/ 
-header{
-    margin: 0 -.7rem;
-}
-
- 
+/* sharkawy parts */
 #header-text {
     position: absolute;
     top: 50%;
@@ -84,57 +105,43 @@ header{
 
     margin-left: 5%;
 }
-header .navbar-expand-lg{
+
+#header-text::selection {
+    color: var(--maincolor);
+    background: var(--fontcolor);
+}
+header .bg-body-tertiary{
     background-color: transparent !important;
 }
-header .nav-link{
-    color: var(--fontcolor);
-}
-header .navbar-toggler {
-    border: none;
-    background-color: transparent;
 
-}
-
-/* #header-text h2 {
+#header-text h2 {
     font-size: 6vw;
     width: 60%;
     font-family: var(--headerfont);
     line-height: .9;
-}*/
+}
 
-/* #header-text p {
+#header-text p {
     width: 60%;
     font-size: 1.5vw;
-} */
 
-/* #header-text button {
+}
+
+#header-text button {
     width: 120px;
     padding: 10px;
-} */
+}
 
-.fa-magnifying-glass{
-    font-size: 10px;
-    margin-right: 20px;
-    cursor: pointer;
-}
-.fa-magnifying-glass:hover{
-    transform: scale(1.5);
-}
 #cart-icon {
     position: relative;
-    cursor: pointer;
-    transition: all .2s;
-}
-#cart-icon:hover{
-    opacity: .5;
 }
 
 #cart-items-count {
     position: absolute;
-    top: -10px;
-    right: -7px;
-    font-size: 12px;
+    top: -15px;
+    right: -5px;
+
+
 }
 
 #header-logo {
@@ -154,11 +161,6 @@ header .navbar-toggler {
 @media (max-width:768px) {
     #header-logo {
         margin: auto;
-        padding-bottom: 3%;
-    }
-    header #header-right-section{
-        display: none !important;
-
     }
 }
 
@@ -176,6 +178,11 @@ header .navbar-toggler {
     }
 }
 
+#logo-image{
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 @media (max-width:768px) {
     #header-text {
         /* top: 80%; */
@@ -184,7 +191,8 @@ header .navbar-toggler {
     }
 }
 
-/* end of nav bar */
+
+/* end of sharkawy part */
 
 
 /* beginign of content */ 

@@ -1,4 +1,4 @@
-import { Cart} from './modula.js';
+import { Cart ,user} from './modula.js';
 
 let cartarr = [];
 cartarr.push(new Cart(1,"prod1",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
@@ -10,6 +10,8 @@ cartarr.push(new Cart(5,"prod80",3 , 200.00 ,"images/women/product-1-a.jpg").add
 
 localStorage.setItem("cart",JSON.stringify(cartarr));
 
+// let one_user = new user("abdo","hamed","abdellatiefhamed00@gmail.com","1578aaa",50,"images/women/product-1-a.jpg",0).addjson();
+// window.localStorage.setItem("current_user",JSON.stringify(one_user));
 
 
 /* what happened when the window load */ 
@@ -17,9 +19,27 @@ window,addEventListener("load",function(e){
     let arr = getlocal();
     createProductTable(arr);
     setlocal(arr);
+
+    showToast('Welcome to cart page!', 3000 , "#6cb36d");
 })
 
+/* toast that fire when action happens */
 
+
+
+function showToast(message, duration , color) {
+    var el =document.createElement('div');
+    el.className = "toast";
+    // var toast = document.querySelector('.toast');
+    el.style.animationName = "animationdropfromtop";
+    el.style.display = 'block';
+    el.innerText = message;
+    el.style.backgroundColor = color;
+    document.body.appendChild(el);
+    setTimeout(function () {
+        document.querySelector('.toast').remove();
+    }, duration);
+  }
 
 /* functions */
 
@@ -61,6 +81,7 @@ function createProductTable(arr){
 
 
     document.getElementById('tableparts').innerHTML = table;
+    updatecartnumber(arr);
     
     }
 
@@ -113,6 +134,7 @@ document.getElementById("tableparts").addEventListener("click",function(e){
         arr.splice(ind,1);
         createProductTable(arr);
         setlocal(arr);
+        showToast('Action Completed', 3000 , "#ea6060");
     }
     else if(e.target.classList.contains("border-end")){
         let increaseamount = e.target;
@@ -122,6 +144,7 @@ document.getElementById("tableparts").addEventListener("click",function(e){
         arr[ind].quantity++;
         createProductTable(arr);
         setlocal(arr);
+        showToast('Action Completed', 3000 , "#6cb36d");
     }
     else if(e.target.classList.contains("border-start")){
         let increaseamount = e.target;
@@ -134,6 +157,7 @@ document.getElementById("tableparts").addEventListener("click",function(e){
         }
         createProductTable(arr);
         setlocal(arr);
+        showToast('Action Completed', 3000 , "#6cb36d");
     }
 
     if(getlocal().length==0){
@@ -160,14 +184,29 @@ function searchbyid(arr,_id){
     return ind;
 }
 /*get and set element from local stoage */
-function getlocal(){
-    let arr  = JSON.parse(window.localStorage.getItem("cart")) || [];
+function getlocal(key="cart"){
+    let arr  = JSON.parse(window.localStorage.getItem(key)) || [];
     return arr;
 }
 
-function setlocal(arr){
-    localStorage.setItem("cart",JSON.stringify(arr));
+function setlocal(arr, key="cart"){
+    localStorage.setItem(key,JSON.stringify(arr));
+    // window.dispatchEvent(new Event('storage'));
+}   
+
+
+/* update cart number */
+
+function updatecartnumber(arr){
+    let amount = arr.reduce((sum, product) => sum + product.quantity, 0);
+    document.getElementById("cart-items-count").innerText = amount;
 }
 
+/* local storage chnage */
+/* it only fires when a change happens on the local storaege from different page */
 
 
+// window.addEventListener("storage", function(e){
+    
+//     console.log("change");
+// });

@@ -82,7 +82,6 @@ function changeItemsPlaces()
         navbar.querySelector("ul>li:nth-child(6)").appendChild(loginBtn);
         //navbar.appendChild(loginBtn);
         navbar.appendChild(searchForm);
-
     }
 
     else
