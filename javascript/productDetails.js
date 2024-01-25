@@ -1,470 +1,362 @@
 import { Product, Review, Rating, Cart } from "./modula.js";
+import { updateCartInfo } from "./navbar.js";
 
 let nextProduct = document.getElementById("nextProduct");
 let prevProduct = document.getElementById("prevProduct");
+
 let incrementBtn = document.getElementById("incrementBtn");
 let decrementBtn = document.getElementById("decrementBtn");
+
 let floatingDecrementBtn = document.getElementById("floatingDecrementBtn");
 let floatingIncrementBtn = document.getElementById("floatingIncrementBtn");
+let floatingAddToCart = document.getElementById("floatingAddToCart");
+let floatingDivImg = document.querySelector("#bottom-product-counter > div:nth-child(1) > img");
+let floatingDivPName = document.querySelector("#bottom-product-counter > div:nth-child(1) > span");
+let floatingDivPPrice = document.querySelector("#bottom-product-counter > div:nth-child(2) > div > span");
 let currentProductIndex = 2;
+
 let imageContainer = document.querySelector("#product-photo>div");
 let productImage = document.querySelector("#product-photo>div>img");
 let previewDiv = document.getElementById("product-preview-div");
 let count = 1;
 
-let products = [
-    new Product(
-      "Product 1",
-      "Description for Product 1",
-      ["images/", "image2.jpg"],
-      100,
-      [{ userId: "user1", reviewBody: "Great product!" }],
-      [{ userId: "user1", rating: 4 }],
-      29.99,
-      "seller1",
-      "10% off",
-      "Round",
-      "Black",
-      "Plastic",
-      "UV400",
-      "Anti-reflective",
-      "Men's"
-    ),
-    new Product(
-      "Product 2",
-      "Description for Product 2",
-      ["image3.jpg", "image4.jpg"],
-      50,
-      [{ userId: "user2", reviewBody: "Nice design." }],
-      [{ userId: "user2", rating: 5 }],
-      49.99,
-      "seller2",
-      "20% off",
-      "Square",
-      "Brown",
-      "Metal",
-      "UV400",
-      "Anti-scratch",
-      "Women's"
-    ),
-    new Product(
-      "Product 3",
-      "Description for Product 3",
-      ["image5.jpg", "image6.jpg"],
-      75,
-      [{ userId: "user3", reviewBody: "Perfect fit!" }],
-      [{ userId: "user3", rating: 4 }],
-      39.99,
-      "seller3",
-      "15% off",
-      "Oval",
-      "Blue",
-      "Acetate",
-      "UV400",
-      "Anti-glare",
-      "MEN's"
-    ),
-    new Product(
-      "Product 4",
-      "Description for Product 4",
-      ["image7.jpg", "image8.jpg"],
-      120,
-      [{ userId: "user4", reviewBody: "Comfortable to wear." }],
-      [{ userId: "user4", rating: 3 }],
-      59.99,
-      "seller4",
-      "25% off",
-      "Aviator",
-      "Silver",
-      "Titanium",
-      "Polarized",
-      "Water-resistant",
-      "Men's"
-    ),
-    new Product(
-      "Product 5",
-      "Description for Product 5",
-      ["image9.jpg", "image10.jpg"],
-      90,
-      [{ userId: "user5", reviewBody: "Durable and stylish." }],
-      [{ userId: "user5", rating: 5 }],
-      34.99,
-      "seller5",
-      "30% off",
-      "Rectangular",
-      "Red",
-      "Plastic",
-      "Polarized",
-      "Scratch-resistant",
-      "Women's"
-    ),
-  ];
 
-let ps = [
-    {
-        "id": 1,
-        "productTitle": "Product 1",
-        "productDescription": "Metalen Ronde Shades Vrouwen Zonnebril Mode Mannen Brillen 2022 Vintage Wit Rood Zonnebril Vrouwelijke Mannen Eyewear Vrouwelijke Oculos",
-        "images": [
-            "../images/women/product-1-a.jpg",
-            "../images/women/product-1-b.jpg"
-        ],
-        "stockQuantity": 0,
-        "offer": "Round",
-        "shape": "Black",
-        "frameColor": "Plastic",
-        "material": "UV Protection",
-        "lensClass": "High Index",
-        "treatment": "Women",
-        "category": "2024-01-23T12:00:00.000Z",
-        "reviews": [
-            {
-                "3": 5
-            }
-        ],
-        "rating": 300.67
-    },
-    {
-        "id": 2,
-        "productTitle": "Product 2",
-        "productDescription": "Description for Product 2",
-        "images": [
-            "../images/women/product-2-a.jpg",
-            "../images/women/product-2-b.jpg"
-        ],
-        "stockQuantity": 100,
-        "offer": "Round",
-        "shape": "Black",
-        "frameColor": "Plastic",
-        "material": "UV Protection",
-        "lensClass": "High Index",
-        "treatment": "Women",
-        "category": "2024-01-20T12:00:00.000Z",
-        "reviews": [
-            {
-                "3": 5
-            }
-        ],
-        "rating": 189
-    },
-    {
-        "id": 3,
-        "productTitle": "Product 3",
-        "productDescription": "Description for Product 3",
-        "images": [
-            "../images/women/product-3-a.jpg",
-            "../images/women/product-3-b.jpg"
-        ],
-        "stockQuantity": 100,
-        "offer": "Round",
-        "shape": "Black",
-        "frameColor": "Plastic",
-        "material": "UV Protection",
-        "lensClass": "High Index",
-        "treatment": "Women",
-        "category": "2023-01-23T12:00:00.000Z",
-        "reviews": [
-            {
-                "3": 5
-            }
-        ],
-        "rating": 49.99
-    },
-    {
-        "id": 4,
-        "productTitle": "Product 4",
-        "productDescription": "Description for Product 4",
-        "images": [
-            "../images/women/product-4-a.jpg",
-            "../images/women/product-4-b.jpg"
-        ],
-        "stockQuantity": 100,
-        "offer": "Round",
-        "shape": "Black",
-        "frameColor": "Plastic",
-        "material": "UV Protection",
-        "lensClass": "High Index",
-        "treatment": "Women",
-        "category": "2023-07-23T12:00:00.000Z",
-        "reviews": [
-            {
-                "3": 5
-            }
-        ],
-        "rating": 50
-    },
-    {
-        "id": 5,
-        "productTitle": "Product 5",
-        "productDescription": "Description for Product 5",
-        "images": [
-            "../images/women/product-5-a.png",
-            "../images/women/product-5-b.png"
-        ],
-        "stockQuantity": 100,
-        "offer": "Round",
-        "shape": "Black",
-        "frameColor": "Plastic",
-        "material": "UV Protection",
-        "lensClass": "High Index",
-        "treatment": "Women",
-        "category": "2023-06-23T12:00:00.000Z",
-        "reviews": [
-            {
-                "3": 5
-            }
-        ],
-        "rating": 200.99
-    },
-    {
-        "id": 6,
-        "productTitle": "BLOOM",
-        "productDescription": "Description for Product 6",
-        "images": [
-            "../images/women/product-6-a.jpg",
-            "../images/women/product-6-b.jpg"
-        ],
-        "stockQuantity": 100,
-        "offer": "Round",
-        "shape": "Black",
-        "frameColor": "Plastic",
-        "material": "UV Protection",
-        "lensClass": "High Index",
-        "treatment": "Women",
-        "category": "2023-11-23T12:00:00.000Z",
-        "reviews": [
-            {
-                "3": 5
-            }
-        ],
-        "rating": 400.99
-    },
-    {
-        "id": 7,
-        "productTitle": "Product 7",
-        "productDescription": "Description for Product 7",
-        "images": [
-            "../images/men/product-7-a.jpg",
-            "../images/men/product-7-b.jpg"
-        ],
-        "stockQuantity": 100.67,
-        "offer": "Round",
-        "shape": "Black",
-        "frameColor": "Plastic",
-        "material": "UV Protection",
-        "lensClass": "High Index",
-        "treatment": "Men",
-        "category": "2023-11-25T12:00:00.000Z",
-        "reviews": [
-            {
-                "3": 5
-            }
-        ],
-        "rating": 49.99
-    },
-    {
-        "id": 8,
-        "productTitle": "Product 8",
-        "productDescription": "Description for Product 8",
-        "images": [
-            "../images/men/product-8-a.jpg",
-            "../images/men/product-8-b.jpg"
-        ],
-        "stockQuantity": 100,
-        "offer": "Round",
-        "shape": "Black",
-        "frameColor": "Plastic",
-        "material": "UV Protection",
-        "lensClass": "High Index",
-        "treatment": "Men",
-        "category": "2024-01-22T12:00:00.000Z",
-        "reviews": [
-            {
-                "3": 5
-            }
-        ],
-        "rating": 49.99
-    },
-    {
-        "id": 9,
-        "productTitle": "Product 9",
-        "productDescription": "Description for Product 9",
-        "images": [
-            "../images/men/product-9-a.jpg",
-            "../images/men/product-9-b.jpg"
-        ],
-        "stockQuantity": 100,
-        "offer": "Round",
-        "shape": "Black",
-        "frameColor": "Plastic",
-        "material": "UV Protection",
-        "lensClass": "High Index",
-        "treatment": "Men",
-        "category": "2023-11-20T12:00:00.000Z",
-        "reviews": [
-            {
-                "3": 5
-            }
-        ],
-        "rating": 49.99
-    },
-    {
-        "id": 10,
-        "productTitle": "Product 10",
-        "productDescription": "Description for Product 10",
-        "images": [
-            "../images/men/product-10-a.jpg",
-            "../images/men/product-10-b.jpg"
-        ],
-        "stockQuantity": 100,
-        "offer": "Round",
-        "shape": "Black",
-        "frameColor": "Plastic",
-        "material": "UV Protection",
-        "lensClass": "High Index",
-        "treatment": "Men",
-        "category": "2024-01-11T12:00:00.000Z",
-        "reviews": [
-            {
-                "3": 5
-            }
-        ],
-        "rating": 49.99
-    },
-    {
-        "id": 11,
-        "productTitle": "Product 11",
-        "productDescription": "Description for Product 11",
-        "images": [
-            "../images/men/product-11-a.jpg",
-            "../images/men/product-11-b.jpg"
-        ],
-        "stockQuantity": 100,
-        "offer": "Round",
-        "shape": "Black",
-        "frameColor": "Plastic",
-        "material": "UV Protection",
-        "lensClass": "High Index",
-        "treatment": "Men",
-        "category": "2023-08-09T12:00:00.000Z",
-        "reviews": [
-            {
-                "3": 5
-            }
-        ],
-        "rating": 49.99
-    },
-    {
-        "id": 12,
-        "productTitle": "DOLCE GABBANA",
-        "productDescription": "Description for Product 12",
-        "images": [
-            "../images/men/product-12-a.webp",
-            "../images/men/product-12-b.webp"
-        ],
-        "stockQuantity": 0,
-        "offer": "Round",
-        "shape": "Black",
-        "frameColor": "Plastic",
-        "material": "UV Protection",
-        "lensClass": "High Index",
-        "treatment": "Men",
-        "category": "2024-01-01T12:00:00.000Z",
-        "reviews": [
-            {
-                "3": 5
-            }
-        ],
-        "rating": 49.99
-    },
-    {
-        "id": 13,
-        "productTitle": "Product 13",
-        "productDescription": "Description for Product 13",
-        "images": [
-            "../images/women/product-13-a.jpg",
-            "../images/women/product-13-b.jpg"
-        ],
-        "stockQuantity": 100,
-        "offer": "Round",
-        "shape": "Black",
-        "frameColor": "Plastic",
-        "material": "UV Protection",
-        "lensClass": "High Index",
-        "treatment": "Women",
-        "category": "2023-12-30T12:00:00.000Z",
-        "reviews": [
-            {
-                "3": 5
-            }
-        ],
-        "rating": 49.99
-    },
-    {
-        "id": 14,
-        "productTitle": "Product 14",
-        "productDescription": "Description for Product 14",
-        "images": [
-            "../images/women/product-14-a.jpg",
-            "../images/women/product-14-b.jpg"
-        ],
-        "stockQuantity": 100,
-        "offer": "Round",
-        "shape": "Black",
-        "frameColor": "Plastic",
-        "material": "UV Protection",
-        "lensClass": "High Index",
-        "treatment": "Women",
-        "category": "2023-09-23T12:00:00.000Z",
-        "reviews": [
-            {
-                "3": 5
-            }
-        ],
-        "rating": 49.99
-    },
-    {
-        "id": 15,
-        "productTitle": "Product 15",
-        "productDescription": "Description for Product 15",
-        "images": [
-            "../images/women/product-15-a.jpg",
-            "../images/women/product-15-b.jpg"
-        ],
-        "stockQuantity": 100,
-        "offer": "Round",
-        "shape": "Black",
-        "frameColor": "Plastic",
-        "material": "UV Protection",
-        "lensClass": "High Index",
-        "treatment": "Women",
-        "category": "2024-01-02T12:00:00.000Z",
-        "reviews": [
-            {
-                "3": 5
-            }
-        ],
-        "rating": 250
-    }
-]
+
+
+/*   let product1 = [];
+  product1.push(
+    new Product(
+      'Product 1',
+      'Metalen Ronde Shades Vrouwen Zonnebril Mode Mannen Brillen 2022 Vintage Wit Rood Zonnebril Vrouwelijke Mannen Eyewear Vrouwelijke Oculos',
+      ['../images/women/product-1-a.jpg', '../images/women/product-1-b.jpg'],
+      0,
+      [{3:5}],
+      300.67,
+      'seller123',
+      '20',
+      'Round',
+      'Black',
+      'Plastic',
+      'UV Protection',
+      'High Index',
+      'Women',
+      new Date('2024-01-23T12:00:00.000Z')
+      
+    )
+    .addJson()
+  );
+  product1.push(
+    new Product(
+      'Product 2',
+      'Description for Product 2',
+      ['../images/women/product-2-a.jpg', '../images/women/product-2-b.jpg'],
+      100,
+      [{3:5}],
+      189.00,
+      'seller1',
+      '30',
+      'Round',
+      'Black',
+      'Plastic',
+      'UV Protection',
+      'High Index',
+      'Women',
+      new Date('2024-01-20T12:00:00.000Z')
+      
+    )
+    .addJson()
+  );
+  product1.push(
+    new Product(
+      'Product 3',
+      'Description for Product 3',
+      ['../images/women/product-3-a.jpg', '../images/women/product-3-b.jpg'],
+      100,
+      [{3:5}],
+      49.99,
+      'seller2',
+      '5',
+      'Round',
+      'Black',
+      'Plastic',
+      'UV Protection',
+      'High Index',
+      'Women',
+      new Date('2023-01-23T12:00:00.000Z')
+      
+    )
+    .addJson()
+  );
+  product1.push(
+    new Product(
+      'Product 4',
+      'Description for Product 4',
+      ['../images/women/product-4-a.jpg', '../images/women/product-4-b.jpg'],
+      100,
+      [{3:5}],
+      50.00,
+      'seller3',
+      '0',
+      'Round',
+      'Black',
+      'Plastic',
+      'UV Protection',
+      'High Index',
+      'Women',
+      new Date('2023-07-23T12:00:00.000Z')
+      
+    )
+    .addJson()
+  );
+  product1.push(
+    new Product(
+      'Product 5',
+      'Description for Product 5',
+      ['../images/women/product-5-a.png', '../images/women/product-5-b.png'],
+      100,
+      [{3:5}],
+      200.99,
+      'seller3',
+      '10',
+      'Round',
+      'Black',
+      'Plastic',
+      'UV Protection',
+      'High Index',
+      'Women',
+      new Date('2023-06-23T12:00:00.000Z')
+      
+    )
+    .addJson()
+  );
+  product1.push(
+    new Product(
+      'BLOOM',
+      'Description for Product 6',
+      ['../images/women/product-6-a.jpg', '../images/women/product-6-b.jpg'],
+      100,
+      [{3:5}],
+      400.99,
+      'seller3',
+      '10',
+      'Round',
+      'Black',
+      'Plastic',
+      'UV Protection',
+      'High Index',
+      'Women',
+      new Date('2023-11-23T12:00:00.000Z')
+      
+    )
+    .addJson()
+  );
+  product1.push(
+    new Product(
+      'Product 7',
+      'Description for Product 7',
+      ['../images/men/product-7-a.jpg', '../images/men/product-7-b.jpg'],
+      100.67,
+      [{3:5}],
+      49.99,
+      'seller2',
+      '10',
+      'Round',
+      'Black',
+      'Plastic',
+      'UV Protection',
+      'High Index',
+      'Men',
+      new Date('2023-11-25T12:00:00.000Z')
+      
+    )
+    .addJson()
+  );
+  product1.push(
+    new Product(
+      'Product 8',
+      'Description for Product 8',
+      ['../images/men/product-8-a.jpg', '../images/men/product-8-b.jpg'],
+      100,
+      [{3:5}],
+      49.99,
+      'seller2',
+      '10',
+      'Round',
+      'Black',
+      'Plastic',
+      'UV Protection',
+      'High Index',
+      'Men',
+      new Date('2024-01-22T12:00:00.000Z')
+      
+    )
+    .addJson()
+  );
+  product1.push(
+    new Product(
+      'Product 9',
+      'Description for Product 9',
+      ['../images/men/product-9-a.jpg', '../images/men/product-9-b.jpg'],
+      100,
+      [{3:5}],
+      49.99,
+      'seller4',
+      '10',
+      'Round',
+      'Black',
+      'Plastic',
+      'UV Protection',
+      'High Index',
+      'Men',
+      new Date('2023-11-20T12:00:00.000Z')
+      
+    )
+    .addJson()
+  );
+  product1.push(
+    new Product(
+      'Product 10',
+      'Description for Product 10',
+      ['../images/men/product-10-a.jpg', '../images/men/product-10-b.jpg'],
+      100,
+      [{3:5}],
+      49.99,
+      'seller4',
+      '10',
+      'Round',
+      'Black',
+      'Plastic',
+      'UV Protection',
+      'High Index',
+      'Men',
+      new Date('2024-01-11T12:00:00.000Z')
+      
+    )
+    .addJson()
+  );
+  product1.push(
+    new Product(
+      'Product 11',
+      'Description for Product 11',
+      ['../images/men/product-11-a.jpg', '../images/men/product-11-b.jpg'],
+      100,
+      [{3:5}],
+      49.99,
+      'seller4',
+      '10',
+      'Round',
+      'Black',
+      'Plastic',
+      'UV Protection',
+      'High Index',
+      'Men',
+      new Date('2023-08-09T12:00:00.000Z')
+      
+    )
+    .addJson()
+  );
+  product1.push(
+    new Product(
+      'DOLCE GABBANA',
+      'Description for Product 12',
+      ['../images/men/product-12-a.webp', '../images/men/product-12-b.webp'],
+      0,
+      [{3:5}],
+      49.99,
+      'seller1',
+      '10',
+      'Round',
+      'Black',
+      'Plastic',
+      'UV Protection',
+      'High Index',
+      'Men',
+      new Date('2024-01-01T12:00:00.000Z')
+      
+    )
+    .addJson()
+  );
+  product1.push(
+    new Product(
+      'Product 13',
+      'Description for Product 13',
+      ['../images/women/product-13-a.jpg', '../images/women/product-13-b.jpg'],
+      100,
+      [{3:5}],
+      49.99,
+      'seller2',
+      '10',
+      'Round',
+      'Black',
+      'Plastic',
+      'UV Protection',
+      'High Index',
+      'Women',
+      new Date('2023-12-30T12:00:00.000Z')
+      
+    )
+    .addJson()
+  );
+  product1.push(
+    new Product(
+      'Product 14',
+      'Description for Product 14',
+      ['../images/women/product-14-a.jpg', '../images/women/product-14-b.jpg'],
+      100,
+      [{3:5}],
+      49.99,
+      'seller3',
+      '10',
+      'Round',
+      'Black',
+      'Plastic',
+      'UV Protection',
+      'High Index',
+      'Women',
+      new Date('2023-09-23T12:00:00.000Z')
+      
+    )
+    .addJson()
+  );
+  product1.push(
+    new Product(
+      'Product 15',
+      'Description for Product 15',
+      ['../images/women/product-15-a.jpg', '../images/women/product-15-b.jpg'],
+      100,
+      [{3:5}],
+      250.00,
+      'seller2',
+      '10', //offer
+      'Round',
+      'Black',
+      'Plastic',
+      'UV Protection',
+      'High Index',
+      'Women',
+      new Date('2024-01-02T12:00:00.000Z')
+      
+    )
+    .addJson()
+  );
+  localStorage.setItem('products', JSON.stringify(product1));
+ */
+let products;
 
 let cartItems = getCartFromlocal();
 let addToCartBtn = document.querySelector("#add-to-cart-btn");
-// let searchBtn = document.querySelector("#header-search-form > button");
-// let searchBox = document.querySelector("#header-search-form > input");
-// let searchResultProducts = [];
-// let searchResultDiv = document.getElementById("search-results");
 
 window.addEventListener("load", function(){
+    getProductsFromLocal();
+    console.log( "products from nav",products);
+    console.log( "products from nav",products.length);
     console.log("yes, here");
-    //this.localStorage.setItem("products", JSON.stringify(product1));
-    //console.log(JSON.parse(this.localStorage.getItem("products")));
-    //console.log(ps[0]);
     console.log("currentProductId",getCurrentProductIdFromLocal());
     currentProductIndex = getProductIndex(getCurrentProductIdFromLocal());
+    console.log("currentProductIndex",currentProductIndex);
     dispalyProductInfo();
     
-    console.log("currentProductIndex",currentProductIndex);
+    
     prevProduct.addEventListener("mouseenter", toggleProductPreviewDiv);
     nextProduct.addEventListener("mouseenter", toggleProductPreviewDiv);
 
@@ -479,6 +371,7 @@ window.addEventListener("load", function(){
 
     floatingIncrementBtn.addEventListener("click", incrementCounter);
     floatingDecrementBtn.addEventListener("click", decrementCounter);
+    floatingAddToCart.addEventListener("click", addToCart);
 
     window.addEventListener("scroll", showOrHideFloatingDiv);
 
@@ -500,11 +393,19 @@ productImage.addEventListener("mousemove", function(e){
 imageContainer.addEventListener('mouseleave', function () {
     productImage.style.transform = 'translate(0, 0) scale(1)';
 });
-    
+
+function updateFloatingDivContent()
+{
+    let currentProduct = products[currentProductIndex];
+    floatingDivImg.src = currentProduct.images[0];
+    floatingDivPName.innerText = currentProduct.productTitle;
+    floatingDivPPrice.innerText = `$ ${currentProduct.price}`;
+}
+
 function showOrHideFloatingDiv(){
     let triggerElement = document.getElementById("add-to-cart-btn");
     let triggerElementPosition = triggerElement.getBoundingClientRect().bottom;
-
+    updateFloatingDivContent();
     if(triggerElementPosition < 0)
     {
         document.getElementById("bottom-product-counter").classList.remove("d-none");
@@ -556,15 +457,18 @@ function dispalyProductInfo(){
     let currP = products[currentProductIndex];
     
     category.innerText = currP.category;
-    pName.innerText = currP.product_title;
+    pImage.src = currP.images[0];
+    pName.innerText = currP.productTitle;
     pPrice.innerText = ` $ ${currP.price}`;
-    pDesc1.innerText = currP.product_description;
+    pDesc1.innerText = currP.productDescription;
     pFShape.innerText = currP.shape;
-    pFColor.innerText = currP.frame_color;
+    pFColor.innerText = currP.frameColor;
     pFMaterial.innerText = currP.material;
-    pLClass.innerText = currP.lens_class;
-    pLColor.innerText = currP.frame_color;
+    pLClass.innerText = currP.lensClass;
+    pLColor.innerText = currP.frameColor;
     pLTreatment.innerText = currP.treatment;
+
+    updateFloatingDivContent();
 
     if(currentProductIndex === 0)
         prevProduct.classList.add("disabled");
@@ -592,8 +496,9 @@ function updatePreviewDiv(e)
     if(e.target == nextProduct)
         currPreviewProduct = products[currentProductIndex+1];
     
-    pPreviewName.innerText = currPreviewProduct.product_title;
+    pPreviewName.innerText = currPreviewProduct.productTitle;
     pPreviewPrice.innerText = `$ ${currPreviewProduct.price}`;
+    pPreviewImg.src = currPreviewProduct.images[0];
 
 }
 
@@ -603,7 +508,7 @@ function displayNextProduct(e){
     {
         currentProductIndex++;
         updatePreviewDiv(e);
-        setCurrentProductToLocal(products[currentProductIndex].product_id);
+        setCurrentProductToLocal(products[currentProductIndex].id);
         dispalyProductInfo();
     }
 }
@@ -615,7 +520,7 @@ function displayPreviousProduct(e)
     {
         currentProductIndex--;
         updatePreviewDiv(e);
-        setCurrentProductToLocal(products[currentProductIndex].product_id);
+        setCurrentProductToLocal(products[currentProductIndex].id);
         dispalyProductInfo();
     }
 }
@@ -633,7 +538,7 @@ function itemIndxInCart(_item)
 {
     let indx = -1;
     for(let i = 0; i<cartItems.length; i++){
-        if(cartItems[i].productId === _item.product_id)
+        if(cartItems[i].productId === _item.id)
         {
             indx = i;
             break;
@@ -647,8 +552,8 @@ function addToCart()
     let currentProduct = products[currentProductIndex];
     let addedQuantity = +document.querySelector("#countDisplay").value;
     let indexInCart = itemIndxInCart(currentProduct);
-    let availableQuantity = currentProduct.stock_quantity;
-    console.log("available quantity",currentProduct.stock_quantity);
+    let availableQuantity = currentProduct.stockQuantity;
+    console.log("available quantity",currentProduct.stockQuantity);
     let totalQuantity = addedQuantity;
     let notEnoughItemModal = document.getElementById("not-enough-items-modal");
 
@@ -662,7 +567,7 @@ function addToCart()
             //alert(`Not enough product only ${availableQuantity} left in stock`);
             return;
         }
-        cartItems.push(new Cart(currentProduct.product_id, currentProduct.product_title, addedQuantity, currentProduct.price, currentProduct.images[0]).addJson());
+        cartItems.push(new Cart(currentProduct.id, currentProduct.productTitle, addedQuantity, currentProduct.price, currentProduct.images[0]).addJson());
 
     }
     else
@@ -684,6 +589,7 @@ function addToCart()
 
     //currentProduct.stock_quantity -= addedQuantity;
     setCartTolocal(cartItems);
+    updateCartInfo(cartItems);
 
 }
 
@@ -697,16 +603,22 @@ function setCurrentProductToLocal(currentProductId)
     localStorage.setItem("currentProductId", currentProductId)
 }
 
+//get product Index by Id
 function getProductIndex(productId)
 {
     console.log("productId",productId);
     for(let i=0; i<products.length; i++)
     {
-        console.log("innerId",products[i].product_id);
-        if(products[i].product_id === productId)
+        console.log("innerId",products[i].id);
+        if(products[i].id === productId)
             return i;
     }
     return -1;
+}
+
+function getProductsFromLocal()
+{
+    products = JSON.parse(localStorage.getItem("products")) || [];
 }
   
 

@@ -3,106 +3,28 @@ import { Product, Review, Rating, Cart } from "./modula.js";
 let searchForm = document.getElementById("header-search-form");
 let searchButton = searchForm.querySelector("button");
 let searchInput = searchForm.querySelector("input");
-let products = [
-    new Product(
-      "Product 1",
-      "Description for Product 1",
-      ["images/", "image2.jpg"],
-      100,
-      [{ userId: "user1", reviewBody: "Great product!" }],
-      [{ userId: "user1", rating: 4 }],
-      29.99,
-      "seller1",
-      "10% off",
-      "Round",
-      "Black",
-      "Plastic",
-      "UV400",
-      "Anti-reflective",
-      "Men's"
-    ),
-    new Product(
-      "Product 2",
-      "Description for Product 2",
-      ["image3.jpg", "image4.jpg"],
-      50,
-      [{ userId: "user2", reviewBody: "Nice design." }],
-      [{ userId: "user2", rating: 5 }],
-      49.99,
-      "seller2",
-      "20% off",
-      "Square",
-      "Brown",
-      "Metal",
-      "UV400",
-      "Anti-scratch",
-      "Women's"
-    ),
-    new Product(
-      "Product 3",
-      "Description for Product 3",
-      ["image5.jpg", "image6.jpg"],
-      75,
-      [{ userId: "user3", reviewBody: "Perfect fit!" }],
-      [{ userId: "user3", rating: 4 }],
-      39.99,
-      "seller3",
-      "15% off",
-      "Oval",
-      "Blue",
-      "Acetate",
-      "UV400",
-      "Anti-glare",
-      "MEN's"
-    ),
-    new Product(
-      "Product 4",
-      "Description for Product 4",
-      ["image7.jpg", "image8.jpg"],
-      120,
-      [{ userId: "user4", reviewBody: "Comfortable to wear." }],
-      [{ userId: "user4", rating: 3 }],
-      59.99,
-      "seller4",
-      "25% off",
-      "Aviator",
-      "Silver",
-      "Titanium",
-      "Polarized",
-      "Water-resistant",
-      "Men's"
-    ),
-    new Product(
-      "Product 5",
-      "Description for Product 5",
-      ["image9.jpg", "image10.jpg"],
-      90,
-      [{ userId: "user5", reviewBody: "Durable and stylish." }],
-      [{ userId: "user5", rating: 5 }],
-      34.99,
-      "seller5",
-      "30% off",
-      "Rectangular",
-      "Red",
-      "Plastic",
-      "Polarized",
-      "Scratch-resistant",
-      "Women's"
-    ),
-]; 
+let products;
 let searchBtn = document.querySelector("#header-search-form > button");
 let searchBox = document.querySelector("#header-search-form > input");
 let searchResultProducts = [];
 let searchResultDiv = document.getElementById("search-results");
-let currentProductId = 8;
-let currentProductIndex = getProductIndex(currentProductId) ;
+let currentProductId = 2;
+let currentProductIndex;
+let cartItemsTotalPriceSpan = document.querySelector("#cart-icon > span:nth-child(1)");
+let cartItemsCountSpan = document.querySelector("#cart-items-count");
+let localCartItems;
+
 
 window.addEventListener("load", function(){
-    changeItemsPlaces();
 
-    console.log("localproduct",getCurrentProductFromLocal()); 
+    getProductsFromLocal();
+    //console.log("localproduct",getCurrentProductIdFromLocal()); 
+    localCartItems = getCartFromlocal();
+    currentProductId = getCurrentProductIdFromLocal();
     currentProductIndex = getProductIndex(currentProductId);
-    console.log( "currentProductIndex", currentProductIndex)
+    console.log( "currentProductIndex", currentProductIndex);
+    changeItemsPlaces();
+    updateCartInfo(localCartItems);
     window.addEventListener('resize', changeItemsPlaces);
 
     //searchResultDiv.addEventListener("click", displayOneOrAllProducts);
@@ -180,7 +102,7 @@ function searchProductsByTitle()
 
     const fuzzy = new Fuse(products, {
         // Configure Fuse for fuzzy matching with adjustments for "MR"
-        keys: ["product_title"], // Search within the "product_title" field
+        keys: ["productTitle"], // Search within the "product_title" field
         threshold: 0.4 , // Higher threshold for stricter matching, ensuring "MR" is distinct
         location: 0, // Prioritize matches at the beginning of the title
         distance: 25, // Allow for some typos and variations, but not too generous
@@ -190,7 +112,7 @@ function searchProductsByTitle()
     
     let fuzzyResults = fuzzy.search(_searchTitle);
     
-    fuzzyResults.sort((a,b) => b>a);
+    fuzzyResults.sort((a,b) => b.score > a.score);
     searchResultProducts = fuzzyResults.map(element => {
         return element.item; 
     });
@@ -215,23 +137,27 @@ function searchProductsByTitle()
         i++;
     }
 
+    if(searchResultProducts.length > 3)
+    {
+        searchResultDiv.appendChild(createShowAllResultsDiv());
+    }
 }
 
 function createResultProductDiv(resultProduct) {
     const productDiv = document.createElement('div');
-    productDiv.setAttribute('productId', resultProduct.product_id);
+    productDiv.setAttribute('productId', resultProduct.id);
     productDiv.classList.add('d-flex', 'align-items-center');
   
     const img = document.createElement('img');
     img.src = resultProduct.images[0]; 
-    img.alt = resultProduct.product_title;
+    img.alt = resultProduct.productTitle;
     productDiv.appendChild(img);
   
     const detailsDiv = document.createElement('div');
     detailsDiv.classList.add('d-flex', 'flex-column', 'mx-2');
   
     const title = document.createElement('h6');
-    title.textContent = resultProduct.product_title;
+    title.textContent = resultProduct.productTitle;
     detailsDiv.appendChild(title);
   
     const priceCategoryDiv = document.createElement('div');
@@ -258,9 +184,9 @@ function setCurrentProductToLocal()
     localStorage.setItem("currentProductId", currentProductId)
 }
 
-function getCurrentProductFromLocal()
+function getCurrentProductIdFromLocal()
 {
-    return +localStorage.getItem("currentProductId");
+    return +localStorage.getItem("currentProductId") || currentProductId;
 }
 
 function getProductIndex(productId)
@@ -268,18 +194,71 @@ function getProductIndex(productId)
     console.log("productId",productId);
     for(let i=0; i<products.length; i++)
     {
-        console.log("innerId",products[i].product_id);
-        if(products[i].product_id === productId)
+        console.log("innerId",products[i].id);
+        if(products[i].id === productId)
             return i;
     }
     return -1;
 }
 
-function displayOneOrAllProducts(e)
+function displayOneOrAllProducts()
 {
-    e.preventDefault();
-    console.log(this.getAttribute("productId"));
-    currentProductId = 2;
+    currentProductId = +this.getAttribute("productId");
     setCurrentProductToLocal();
     window.location.assign("productDetails.html");
+}
+
+function getProductsFromLocal()
+{
+    products = JSON.parse(localStorage.getItem("products")) || [];
+}
+
+function claculateTotalPrice(arr){
+    let total = 0;
+    for(let i = 0 ; i < arr.length ; i++){
+        total += parseFloat(arr[i].price)*parseFloat(arr[i].quantity);
+    }
+    return total.toFixed(2);
+}
+
+function claculateTotalQuantity(arr)
+{
+    let total = 0;
+    for(let i=0; i<arr.length; i++)
+        total += +arr[i].quantity;
+
+    return total;
+    
+}
+
+export function updateCartInfo(cartItems)
+{
+    cartItemsTotalPriceSpan.innerText = `$ ${claculateTotalPrice(cartItems)}`;
+    cartItemsCountSpan.innerText = `${claculateTotalQuantity(cartItems)}`;
+    if(claculateTotalQuantity(cartItems) >= 100)
+    {
+        cartItemsCountSpan.innerText = `99+`;
+    }
+}
+
+function getCartFromlocal(){
+    let arr  = JSON.parse(window.localStorage.getItem("cart")) || [];
+    return arr;
+}
+
+function createShowAllResultsDiv()
+{
+const showAllDiv = document.createElement('div');
+
+showAllDiv.style.backgroundColor = 'rgb(181, 172, 172)';
+showAllDiv.style.textAlign = 'center';
+
+showAllDiv.innerHTML = 'Show all results &rarr;';
+
+showAllDiv.addEventListener('click', () => {
+    console.log("log the results for now");
+});
+
+return showAllDiv;
+
 }
