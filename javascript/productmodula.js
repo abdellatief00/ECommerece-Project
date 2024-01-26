@@ -7,7 +7,7 @@ product1.push(
     'Product 1',
     'Metalen Ronde Shades Vrouwen Zonnebril Mode Mannen Brillen 2022 Vintage Wit Rood Zonnebril Vrouwelijke Mannen Eyewear Vrouwelijke Oculos',
     ['../images/women/product-1-a.jpg', '../images/women/product-1-b.jpg'],
-    0,
+    10,
     [{3:5}],
     300.67,
     20,

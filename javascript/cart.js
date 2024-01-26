@@ -136,16 +136,32 @@ document.getElementById("tableparts").addEventListener("click",function(e){
         setlocal(arr);
         showToast('Action Completed', 3000 , "#ea6060");
     }
+
+
+    /* adding more */
     else if(e.target.classList.contains("border-end")){
         let increaseamount = e.target;
         let prodid = increaseamount.parentElement.parentElement.parentElement.getAttribute("data-productId");
         let arr = getlocal();
         let ind = searchbyid(arr,prodid);
+
+        let prod =JSON.parse(window.localStorage.getItem('products'));
+        let prodind = searchbyid2(prod,prodid);
+        console.log(prodind);
+        let quant = prod[prodind].stockQuantity;
+        if(arr[ind].quantity>=quant){
+            showToast("can't add more the stock is empty" , 3000 , "orange");
+        }
+        else{
         arr[ind].quantity++;
         createProductTable(arr);
         setlocal(arr);
         showToast('Action Completed', 3000 , "#6cb36d");
+        }
     }
+
+
+
     else if(e.target.classList.contains("border-start")){
         let increaseamount = e.target;
         let prodid = increaseamount.parentElement.parentElement.parentElement.getAttribute("data-productId");
@@ -185,6 +201,19 @@ function searchbyid(arr,_id){
     }
     return ind;
 }
+function searchbyid2(arr,_id){
+    let ind = -1;
+    for(let i= 0 ; i <arr.length ; i++ ){
+        if(arr[i].id==_id){
+            ind = i;
+            break;
+        }
+    }
+    return ind;
+}
+
+
+
 /*get and set element from local stoage */
 function getlocal(key="cart"){
     let arr  = JSON.parse(window.localStorage.getItem(key)) || [];

@@ -10,9 +10,10 @@ let current_products =  all_products.filter((ele)=>{return ele.sellerId==current
 let searched = all_products.slice();
 
 window.addEventListener("load",function(){
-    createtablebody(current_products);
     createlis();
-    changeactive();
+    createtablebody(current_products);
+
+    document.querySelector('.adminImgANDNot').children[1].children[0].src  = getlocal('current_user').images[0];
     document.querySelector('.adminImgANDNot').children[1].children[1].innerText =getlocal('current_user').fname+" "+getlocal('current_user').lname
 
 });
@@ -109,7 +110,6 @@ document.querySelector('#deleteRow').addEventListener('click',function(){
 /*end of buttons action*/
 
 /*show details */
-console.log(current_products[0]);
 
 function showdetails(arr,_id){
     let ind = searchbyid(arr,_id);
@@ -289,10 +289,7 @@ function isvalidvisaname(input) {
 
 
 
-
 /* toast */
-
-
 
 function showToast(message, duration , color) {
     var el =document.createElement('div');
@@ -327,9 +324,11 @@ function showToast2(message, duration , color) {
 /* search by name */
 
 document.getElementById('searchByName').addEventListener('input',function(e){
+    searched = current_products.slice();
     let x = e.target.value;
     searched = searched.filter(function(value){
-        return value.productTitle.toLowerCase().includes(x);
+        let z = value.productTitle.toLowerCase().includes(x)||value.category.toLowerCase().includes(x)||value.shape.toLowerCase().includes(x)||value.treatment.toLowerCase().includes(x);
+        return z ;
     });
     
     
@@ -351,14 +350,14 @@ function changeactive(key = current_products){
 
                     item.classList.add('active');
                     createtablebody(key);
-                    document.getElementById('searchByName').value = "";
+                    document.getElementById('searchByName').value = ""; 
                 });
             });
 }
 function createlis(){
     let createpages = ``;
             let act = "active";
-            for(let i = 0 ;  i<Math.ceil(searched.length/5) ; i++){
+            for(let i = 0 ;  i<Math.ceil(current_products.length/5) ; i++){
                 if(i!=0){act=""}
                 createpages += `<li class="page-item ${act}" aria-current="page">
                 <a class="page-link " href="#">${i+1}</a>

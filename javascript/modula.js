@@ -44,6 +44,7 @@ export class Product {
   #treatment;
   #category;
   #date; // New property for the product date
+  #sold; // new property
   set product_title(_product_title) {
     this.#productTitle = _product_title;
   }
@@ -166,6 +167,7 @@ export class Product {
       treatment,
       category,
       date = new Date(),
+      _sold = 0
   ) {
       this.#productTitle = productTitle;
       this.#productDescription = productDescription;
@@ -183,6 +185,7 @@ export class Product {
       this.#category = category;
       this.#date = date || new Date(); // Default to the current date if not provided
       this.#productId = Product.autoincreaseid();
+      this.#sold = 0;
   }
 
   addReview(userId, reviewBody) {
@@ -210,6 +213,7 @@ export class Product {
           price:this.#price,
           sellerId:this.#sellerId,
           date: this.#date.toISOString(), // Convert date to ISO string for serialization
+          sold : this.#sold
       };
   }
 
@@ -299,14 +303,26 @@ export class Product {
     #paymentMethod;
     #cart;
     #userId;
+    #email;
+    #phone;
+    #city;
+    #country;
+    #name;
+    #state;
     static currentorderid = 0;
-    constructor(_total,_pay , _cart, user_id){
+    constructor(_total,_pay , _cart, user_id,_email,_phone,_city,_country,_fname , _lname ,_state = "pending"){
       this.#orderNumber = Orders.autoincreaseid();
       this.#date = new Date();
       this.#total  = _total;
       this.#paymentMethod = _pay;
       this.#cart = _cart;
       this.#userId = user_id;
+      this.#email = _email;
+      this.#phone = _phone;
+      this.#city = _city;
+      this.#country = _country;
+      this.#name = _fname+" "+_lname;
+      this.#state = _state ;
     }
     addJson(){
       return{
@@ -315,7 +331,13 @@ export class Product {
       total : this.#total,
       paymentMethod : this.#paymentMethod,
       cart : this.#cart,
-      userId : this.#userId
+      userId : this.#userId,
+      email : this.#email,
+      city : this.#city,
+      country : this.#country,
+      name : this.#name,
+      phone : this.#phone,
+      state : this.#state
       }
     }
 
