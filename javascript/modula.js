@@ -2,7 +2,7 @@ export class Review {
   #userId;
   #reviewBody;
 
-  constructor(userId, reviewBody, date) {
+  constructor(userId, reviewBody) {
       this.#userId = userId;
       this.#reviewBody = reviewBody;
       
@@ -18,11 +18,11 @@ export class Review {
 
   toJSON() {
       return {
-          [this.#userId]: {
-              reviewBody: this.#reviewBody,
-          }
+        userId: this.#userId,   
+        reviewBody: this.#reviewBody,
       };
   }
+
 }
 
 export class Product {
@@ -228,9 +228,7 @@ export class Product {
   }
 }
   
- 
   /* class for cart  abdellatief */
-
   export class Cart{
     #productId;
     #productTitle;
@@ -293,9 +291,7 @@ export class Product {
     }
   }
 
-
   /* class of orders */ 
-
   export class Orders{
     #orderNumber;
     #date;
@@ -327,7 +323,7 @@ export class Product {
     addJson(){
       return{
       orderNumber : this.#orderNumber,
-      date : this.#date,
+      date : this.#date,  
       total : this.#total,
       paymentMethod : this.#paymentMethod,
       cart : this.#cart,

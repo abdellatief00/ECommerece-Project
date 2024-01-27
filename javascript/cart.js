@@ -188,8 +188,6 @@ document.getElementById("tableparts").addEventListener("click",function(e){
     }
 });
 
-
-
 /* write a search function */
 function searchbyid(arr,_id){
     let ind = -1;
@@ -219,6 +217,7 @@ function getlocal(key="cart"){
     let arr  = JSON.parse(window.localStorage.getItem(key)) || [];
     return arr;
 }
+
 function setlocal(arr, key="cart"){
     localStorage.setItem(key,JSON.stringify(arr));
     // window.dispatchEvent(new Event('storage'));
