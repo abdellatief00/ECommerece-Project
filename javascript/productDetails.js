@@ -493,7 +493,7 @@ function dispalyProductInfo(){
     let pLTreatment = pLensInfo.querySelector("li:nth-child(3)>span");
 
     let currP = products[currentProductIndex];
-    
+     
     category.innerText = currP.category;
     pImage.src = currP.images[0];
     pName.innerText = currP.productTitle;
@@ -543,11 +543,15 @@ function displayPreviousProduct(e)
     }
 }
 
+/* added one line here -_- ممتهورش */
+
+
 function getProductIndex(productId)
 {
-    for(let i=0; i<products.length; i++)
+    let products1 =JSON.parse(window.localStorage.getItem('products')); //just this line;
+    for(let i=0; i<products1.length; i++)
     {
-        if(products[i].id === productId)
+        if(products1[i].id === productId)
             return i;
     }
     return -1;

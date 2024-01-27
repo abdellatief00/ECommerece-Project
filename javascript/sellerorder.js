@@ -38,6 +38,7 @@ function searchbyid(arr,_id){
     }
     return ind;
 }
+
 function searchbyid2(arr,_id){
     let ind = -1;
     for(let i= 0 ; i <arr.length ; i++ ){
@@ -104,31 +105,45 @@ function createmultirow(arr){
 
 /* pending change status */
 document.querySelector("table tbody").addEventListener('click',function(e){
+
+
     if(e.target.closest ("button.state")){
+        let stat = '';
+        if(e.target.value=="delivery"){
+            e.target.value = "pending";
+            e.target.innerText = "pending";
+            e.target.classList.add("btn-primary");
+            e.target.classList.remove("btn-info");
+            stat = "pending";
+        }
+        else{
+            e.target.value = "delivery";
+            e.target.innerText = "delivery";
+            e.target.classList.remove("btn-primary");
+            e.target.classList.add("btn-info");
+            stat = "delivery";
+        }
+
         let data_order = $(e.target).parents("tr").attr('data-order');
         let ind  = searchbyid(allorders , data_order);
-        let rows = document.querySelectorAll("tbody tr").length;
-        for (let i = 0 ; i < rows ; i++){
-            if(document.querySelectorAll("tbody tr")[i].getAttribute("data-order")==data_order){
-                let current = document.querySelectorAll("tbody tr button.state")[i];
-                if(current.value=="delivery"){
-                    current.value = "pending";
-                    current.innerText = "pending";
-                    current.classList.add("btn-primary");
-                    current.classList.remove("btn-info");
-                }
-                else{
-                    current.value = "delivery";
-                    current.innerText = "delivery";
-                    current.classList.remove("btn-primary");
-                    current.classList.add("btn-info");
-                }
-                
+
+        for (let i = 0 ; i < searched.length ; i++){
+            if(searched[i].id===data_order){
+                searched[i].state = stat;
             }
         }
-        allorders[ind].state = e.target.value;
+        seller_orders = seller_orders.map(function(ele){
+            if(ele.id==data_order){
+                ele.state = stat;
+            }
+            return ele;
+        });
+
+        allorders[ind].state = stat;
         setlocal(allorders,"orders");
+        createtablebody(searched);
     }
+
 
     if(e.target.closest ("button")){
         row_id = $(e.target).parents('tr').attr('data-this-order');
@@ -136,11 +151,10 @@ document.querySelector("table tbody").addEventListener('click',function(e){
     }
 });
 
+
 //name  phone  product_title location total_price  email
 function showdetails2(arr,_ind){
     let ind = searchbyid2(arr,row_id);
-    console.log(ind);
-    console.log(seller_orders[ind]);
     document.getElementById('fname1').value = seller_orders[ind].name;
     document.getElementById('lname1').value = seller_orders[ind].phone;
     document.getElementById('email1').value = seller_orders[ind].product_title;
@@ -200,6 +214,9 @@ function sortdescending(innername){
     changeactive(searched);
     createtablebody(searched);
 }
+
+
+/* end of sorting */
 
 
 let before = '';

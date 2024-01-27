@@ -8,6 +8,7 @@ let current_user_id = getlocal('current_user').id;
 let all_products  = getlocal();
 let current_products =  all_products.filter((ele)=>{return ele.sellerId==current_user_id});
 let searched = current_products.slice();
+let current_page_number = 0;
 
 window.addEventListener("load",function(){
     createlis(searched);
@@ -54,10 +55,10 @@ function createtablebody(arr){
 
 function createproductrow(arr){
     let row = `<tr data-productId = ${arr.id}>
-    <td><input type="checkbox" name="checkRow"></td>
     <td>${arr.id}</td>
     <td>${arr.productTitle}</td>
     <td>${Math.floor(arr.stockQuantity)}</td>
+    <td>${arr.sold}</td>
     <td>$${parseFloat(arr.price).toFixed(2)}</td>
     <td>${arr.category}</td>
     <td>${arr.shape}</td>
@@ -102,6 +103,12 @@ document.querySelector('table tbody').addEventListener("click",function(e){
         row_id = $(e.target).parents('tr').attr('data-productid');
         showdetails(current_products,row_id);
         showdetails2(current_products,row_id);
+    }
+    else if(e.target.closest('img')){
+        row_id = $(e.target).parents('tr').attr('data-productid');
+        setlocal(parseInt(row_id),"currentProductId");
+        window.location.assign('productDetails.html')
+        
     }
 });
 
@@ -159,7 +166,10 @@ function removeproduct(_id){
     createtablebody(searched);
 }
 
+/* show product details */
+function showOneOrAllProductDetails(){
 
+}
 
 
 /*end of show details*/
@@ -372,12 +382,68 @@ function changeactive(key = searched){
 }
 function createlis(key = searched){
     let createpages = ``;
-            let act = "active";
             for(let i = 0 ;  i<Math.ceil(searched.length/5) ; i++){
-                if(i!=0){act=""}
+                let act = "";
+                if(i==current_page_number){act="active"}
                 createpages += `<li class="page-item ${act}" aria-current="page">
                 <a class="page-link " href="#">${i+1}</a>
             </li>`;
             }
             document.querySelector(".pagination").innerHTML = createpages;
 }
+
+/* end of paggination */
+
+function sortascending(innername){
+
+    current_products.sort(function(a,b){
+        var nameA = a[innername]; 
+        var nameB = b[innername];
+        if (nameA < nameB) return -1;
+        if (nameA > nameB) return 1;
+        return 0; 
+    })
+    searched = current_products.slice();
+    createlis(searched);
+    changeactive(searched);
+    createtablebody(searched);
+}
+function sortdescending(innername){
+
+    current_products.sort(function(a,b){
+        var nameA = a[innername]; 
+        var nameB = b[innername];
+        if (nameA > nameB) return -1;
+        if (nameA < nameB) return 1;
+        return 0; 
+    })
+    searched = current_products.slice();
+    createlis(searched);
+    changeactive(searched);
+    createtablebody(searched);
+}
+
+let before = '';
+document.querySelector('thead').addEventListener('click',function(e){
+    let obj = {
+        ['ID'] : 'id', 
+        ['Product Title'] : 'productTitle',
+        ['stock Quantity'] : 'stockQuantity',
+        ['sold']: 'sold',
+        ['Price'] : 'price',
+        ['category'] : 'category',
+        ['shape'] : 'shape'
+    }
+    
+    if(e.target.innerText === before){
+        before = '';
+        let val = obj[e.target.innerText];
+        sortdescending(val);
+    }
+    else{
+        before = e.target.innerText;
+        let val = obj[e.target.innerText];
+        sortascending(val);
+    }
+})
+

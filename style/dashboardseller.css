@@ -127,14 +127,25 @@ table img {
     min-height: 70px;
     border-radius: 5%;
 }
+table img:hover {
+    cursor: pointer;
+}
 
+table thead tr:hover{
+    cursor: pointer;
+}
 .entryRows {
     display: flex;
     justify-content: space-between;
 }
 
-#tbodyUsers tr td:nth-child(5) {
-    color: rgb(223, 71, 71);
+#tbodyUsers tr td:nth-child(3) {
+    color: rgb(173, 21, 21);
+    
+    cursor: pointer;
+}
+#tbodyUsers tr td:nth-child(4) {
+    color: rgb(42, 115, 14);
     
     cursor: pointer;
 }

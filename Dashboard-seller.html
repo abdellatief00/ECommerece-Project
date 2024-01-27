@@ -62,7 +62,7 @@
                                 <div
                                     class="col-xl-8 my-xl-1 pt-xl-3 col-lg-8 my-lg-1 pt-lg-3  pt-md-3 col-md-8 my-md-1 col-sm-8 my-sm-1 pt-sm-4 col-8 pt-4">
                                     <input class="form-control" type="search" name="searchByName" id="searchByName"
-                                        placeholder="Search By Name">
+                                        placeholder="Search">
                                 </div>
                             </div> <!-- search -->
 
@@ -115,10 +115,11 @@
                                     </div>
                                     <thead class="table-light ">
                                         <tr>
-                                            <th><input type="checkbox" name="checkAll" id="checkAll"></th>
+                                            
                                             <th>ID</th>
                                             <th>Product Title</th>
                                             <th>stock Quantity</th>
+                                            <th>sold</th>
                                             <th>Price</th>
                                             <th>category</th>
                                             <th>shape</th>
@@ -132,7 +133,7 @@
                                 </table> <!-- end of table ---->
                             </div>  <!--table div  -->
                             <!------------------------ modall----------------- -->
-                            <div class="modal fade" id="addproduct" tabindex="-1" aria-labelledby="addproductLabel"
+                            <div class="modal fade modal-lg " id="addproduct" tabindex="-1" aria-labelledby="addproductLabel"
                                 aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -142,18 +143,18 @@
                                                 aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            <form>
-                                                <div class="mb-1">
+                                            <div class="row">
+                                                <div class="mb-1 col-12">
                                                     <label for="user-fname"
                                                         class="col-form-label">Product Title:</label>
                                                     <input type="text" class="form-control" id="user-fname" aria-required="true" required>
                                                 </div>
-                                                <div class="mb-1">
+                                                <div class="mb-1 col-6">
                                                     <label for="user-lname"
                                                         class="col-form-label">stock quantity:</label>
                                                     <input type="number" class="form-control" id="user-lname" aria-required="true" required>
                                                 </div>
-                                                <div class="mb-1">
+                                                <div class="mb-1 col-6">
                                                     <label for="user-email" class="col-form-label">price:</label>
                                                     <input type="number" class="form-control" id="user-email" required>
                                                 </div>
@@ -169,19 +170,19 @@
                                                         <option value="Women">Women</option>
                                                     </select>
                                                 </div>
-                                                <div class="mb-1">
+                                                <div class="mb-1 col-6">
                                                     <label for="user-pass" class="col-form-label">shape</label>
                                                     <input type="text" class="form-control" id="user-pass" required>
                                                 </div>
-                                                <div class="mb-1">
+                                                <div class="mb-1 col-6">
                                                     <label for="user-age" class="col-form-label">frame color:</label>
                                                     <input type="text" class="form-control" id="user-age" required>
                                                 </div>
-                                                <div class="mb-1">
+                                                <div class="mb-1 col-6">
                                                     <label for="user-material" class="col-form-label">material:</label>
                                                     <input type="text" class="form-control" id="user-material" required>
                                                 </div>
-                                                <div class="mb-1">
+                                                <div class="mb-1 col-6">
                                                     <label for="lenses" class="col-form-label">lense glass:</label>
                                                     <input type="text" class="form-control" id="lenses" required>
                                                 </div>
@@ -194,7 +195,7 @@
                                                     <input type="file" id="user-image" accept="image/*" required>
                                                     <input type="file" id="user-image2" accept="image/*" required>
                                                 </div>
-                                            </form>
+                                            </div>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-danger"
