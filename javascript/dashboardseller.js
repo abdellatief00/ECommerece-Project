@@ -7,11 +7,12 @@ let row_id;
 let current_user_id = getlocal('current_user').id;
 let all_products  = getlocal();
 let current_products =  all_products.filter((ele)=>{return ele.sellerId==current_user_id});
-let searched = all_products.slice();
+let searched = current_products.slice();
 
 window.addEventListener("load",function(){
-    createlis();
-    createtablebody(current_products);
+    createlis(searched);
+    changeactive(searched);
+    createtablebody(searched);
 
     document.querySelector('.adminImgANDNot').children[1].children[0].src  = getlocal('current_user').images[0];
     document.querySelector('.adminImgANDNot').children[1].children[1].innerText =getlocal('current_user').fname+" "+getlocal('current_user').lname
@@ -49,7 +50,6 @@ function searchbyid(arr,_id){
 function createtablebody(arr){
     let table =`${createmultirow(arr)}`;
     document.querySelector('#tbodyUsers').innerHTML = table;
-    changeactive();
 }
 
 function createproductrow(arr){
@@ -58,7 +58,7 @@ function createproductrow(arr){
     <td>${arr.id}</td>
     <td>${arr.productTitle}</td>
     <td>${Math.floor(arr.stockQuantity)}</td>
-    <td>${arr.price}</td>
+    <td>$${parseFloat(arr.price).toFixed(2)}</td>
     <td>${arr.category}</td>
     <td>${arr.shape}</td>
     <td> <img src="${arr.images[0]}" alt="product img"> </td>
@@ -73,11 +73,17 @@ return row;
 }
 
 function createmultirow(arr){
-    let max = parseInt(document.querySelector(".pagination .active").innerText)*5 ;
+    let max;
+    let min;
+    if(document.querySelector(".pagination .active")===null){
+        max = arr.length;
+        min = 0;
+    }
+    else{
+    max= parseInt(document.querySelector(".pagination .active").innerText)*5 || 0 ;
     max = Math.min(max,arr.length);
-    let min = parseInt(document.querySelector(".pagination .active").innerText)*5-5;
-    
-
+    min = parseInt(document.querySelector(".pagination .active").innerText)*5-5 ;
+    }
     let rows = ``;
     for(let i = min ; i < max ; i++){
         rows += createproductrow(arr[i]);
@@ -100,7 +106,6 @@ document.querySelector('table tbody').addEventListener("click",function(e){
 });
 
 document.querySelector('#deleteRow').addEventListener('click',function(){
-    createlis();
     removeproduct(row_id);
     document.getElementById('searchByName').value = "";
     
@@ -142,10 +147,16 @@ function showdetails2(arr,_id){
 function removeproduct(_id){
     let ind1 = searchbyid(current_products,_id);
     let ind2 = searchbyid(all_products,_id);
+
     all_products.splice(ind2,1);
     current_products.splice(ind1,1);
+
     setlocal(all_products,"products");
-    createtablebody(current_products);
+    searched = current_products.slice();
+
+    createlis(searched);
+    changeactive(searched);
+    createtablebody(searched);
 }
 
 
@@ -154,6 +165,7 @@ function removeproduct(_id){
 /*end of show details*/
 
 /* save for later */
+
 function getfilelocation(tar){
     var input = tar;
             
@@ -211,9 +223,11 @@ document.querySelector("button#addproduct").addEventListener("click",function(e)
         document.getElementById("categorychoose").value);
         all_products.push(o.addJson());
         current_products.push(o.addJson());
+        searched = current_products.slice();
         setlocal(all_products,"products");
-        createlis();
-        createtablebody(current_products);
+        createlis(searched);
+        changeactive(searched);
+        createtablebody(searched);
         document.getElementById('searchByName').value = "";
         
         e.target.parentElement.children[0].click();    
@@ -325,20 +339,22 @@ function showToast2(message, duration , color) {
 
 document.getElementById('searchByName').addEventListener('input',function(e){
     searched = current_products.slice();
-    let x = e.target.value;
+    let x = e.target.value.trim().toLowerCase();
     searched = searched.filter(function(value){
         let z = value.productTitle.toLowerCase().includes(x)||value.category.toLowerCase().includes(x)||value.shape.toLowerCase().includes(x)||value.treatment.toLowerCase().includes(x);
         return z ;
     });
-    
-    
     if(e.target.value==""){
     searched = current_products.slice();
     }
+    createlis(searched);
+    changeactive(searched);
     createtablebody(searched);
-})
+});
+
+
 /* paggination */
-function changeactive(key = current_products){
+function changeactive(key = searched){
             let pageItems = document.querySelectorAll('.pagination .page-item');
 
             pageItems.forEach(function (item) {
@@ -350,14 +366,14 @@ function changeactive(key = current_products){
 
                     item.classList.add('active');
                     createtablebody(key);
-                    document.getElementById('searchByName').value = ""; 
+                    // document.getElementById('searchByName').value = ""; 
                 });
             });
 }
-function createlis(){
+function createlis(key = searched){
     let createpages = ``;
             let act = "active";
-            for(let i = 0 ;  i<Math.ceil(current_products.length/5) ; i++){
+            for(let i = 0 ;  i<Math.ceil(searched.length/5) ; i++){
                 if(i!=0){act=""}
                 createpages += `<li class="page-item ${act}" aria-current="page">
                 <a class="page-link " href="#">${i+1}</a>

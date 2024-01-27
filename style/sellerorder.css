@@ -115,6 +115,10 @@
 
 }
 
+table thead tr{
+    cursor: pointer;
+}
+
 .cursorPointer {
     cursor: pointer !important;
 }
@@ -133,7 +137,7 @@ table img {
     justify-content: space-between;
 }
 
-#tbodyUsers tr td:nth-child(5) {
+#tbodyUsers tr td:nth-child(4) {
     color: rgb(223, 71, 71);
     
     cursor: pointer;
@@ -195,4 +199,10 @@ table img {
     to{
         top:8%
     }
+}
+
+
+
+.fa-sort{
+    color: rgb(183, 193, 193);
 }

@@ -6,11 +6,13 @@ let all_products  = getlocal();
 let current_products =  all_products.filter((ele)=>{return ele.sellerId==current_user_id});
 let allorders = getlocal('orders');
 let seller_orders = createorders();
-
+let searched =  seller_orders.slice();
+let current_page_number = 0;
 
 
 window.addEventListener('load',function(){
     createlis();
+    changeactive();
     createtablebody(seller_orders);
     document.querySelector('.adminImgANDNot').children[1].children[0].src  = getlocal('current_user').images[0];
     document.querySelector('.adminImgANDNot').children[1].children[1].innerText =getlocal('current_user').fname+" "+getlocal('current_user').lname
@@ -63,7 +65,6 @@ function createproductrow(arr){
     else{pend=  "delivery"
         clas = "btn-info"}
     let row = `<tr data-order=${arr.id} , data-this-order = ${arr.orderid}>
-    <td><input type="checkbox" name="check"></td>
     <td>${arr.id}</td>
     <td>${arr.product_title}</td>
     <th>${arr.quantity}</th>
@@ -83,11 +84,19 @@ return row;
 }
 
 function createmultirow(arr){
-    // let max = parseInt(document.querySelector(".pagination .active").innerText)*5 ;
-    // max = Math.min(max,arr.length);
-    // let min = parseInt(document.querySelector(".pagination .active").innerText)*5-5;
+    let max;
+    let min;
+    if(document.querySelector(".pagination .active")===null){
+        max = arr.length;
+        min = 0;
+    }
+    else{
+    max= parseInt(document.querySelector(".pagination .active").innerText)*5 || 0 ;
+    max = Math.min(max,arr.length);
+    min = parseInt(document.querySelector(".pagination .active").innerText)*5-5 ;
+    }
     let rows = ``;
-    for(let i = 0 ; i < arr.length ; i++){
+    for(let i = min ; i < max ; i++){
         rows += createproductrow(arr[i]);
     }
     return rows;
@@ -144,8 +153,8 @@ function showdetails2(arr,_ind){
 
 /*search  */
 document.getElementById('searchByName').addEventListener('input',function(e){
-    let searched = seller_orders.slice();
-    let x = e.target.value;
+    searched = seller_orders.slice();
+    let x = e.target.value.trim().toLowerCase();
     searched = searched.filter(function(value){
         return value.product_title.toLowerCase().includes(x)|| value.location.toLowerCase().includes(x)||value.name.toLowerCase().includes(x);
     });
@@ -154,12 +163,68 @@ document.getElementById('searchByName').addEventListener('input',function(e){
     if(e.target.value==""){
     searched = seller_orders.slice();
     }
+    createlis(searched);
+    changeactive(searched);
     createtablebody(searched);
 })
 
 
+/* sorting */
+
+function sortascending(innername){
+
+    
+    seller_orders.sort(function(a,b){
+        var nameA = a[innername]; 
+        var nameB = b[innername];
+        if (nameA < nameB) return -1;
+        if (nameA > nameB) return 1;
+        return 0; 
+    })
+    searched = seller_orders.slice();
+    createlis(searched);
+    changeactive(searched);
+    createtablebody(searched);
+}
+function sortdescending(innername){
+
+    seller_orders.sort(function(a,b){
+        var nameA = a[innername]; 
+        var nameB = b[innername];
+        if (nameA > nameB) return -1;
+        if (nameA < nameB) return 1;
+        return 0; 
+    })
+    searched = seller_orders.slice();
+    createlis(searched);
+    changeactive(searched);
+    createtablebody(searched);
+}
 
 
+let before = '';
+document.querySelector('thead').addEventListener('click',function(e){
+    let obj = {
+        ['ID'] : 'id', 
+        ['Product Title'] : 'product_title',
+        ['Quantity'] : 'quantity',
+        ['Total Price']: 'total_price',
+        ['Location'] : 'location',
+        ['Customer Name'] : 'name',
+        ['current State'] : 'state'
+    }
+    
+    if(e.target.innerText === before){
+        before = '';
+        let val = obj[e.target.innerText];
+        sortdescending(val);
+    }
+    else{
+        before = e.target.innerText;
+        let val = obj[e.target.innerText];
+        sortascending(val);
+    }
+})
 
 
 
@@ -184,7 +249,7 @@ document.getElementById('searchByName').addEventListener('input',function(e){
 
 /*navigation */
 
-function changeactive(key = seller_orders){
+function changeactive(key = searched){
     let pageItems = document.querySelectorAll('.pagination .page-item');
 
     pageItems.forEach(function (item) {
@@ -195,16 +260,18 @@ function changeactive(key = seller_orders){
             });
 
             item.classList.add('active');
+            current_page_number = parseInt(item.innerText)-1;
             createtablebody(key);
-            document.getElementById('searchByName').value = ""; 
+            // document.getElementById('searchByName').value = ""; 
         });
     });
 }
-function createlis(){
+function createlis(key = searched){
 let createpages = ``;
-    let act = "active";
-    for(let i = 0 ;  i<Math.ceil(seller_orders.length/5) ; i++){
-        if(i!=0){act=""}
+    
+    for(let i = 0 ;  i<Math.ceil(key.length/5) ; i++){
+        let act = "";
+        if(i==current_page_number){act="active"}
         createpages += `<li class="page-item ${act}" aria-current="page">
         <a class="page-link " href="#">${i+1}</a>
     </li>`;
@@ -212,6 +279,8 @@ let createpages = ``;
     document.querySelector(".pagination").innerHTML = createpages;
 }
 /* navigation */
+
+
 
 
 
@@ -244,7 +313,6 @@ function createorders(){
                 };
                 seller.push(obj);
             }
-            
         }
     }
     return seller;
