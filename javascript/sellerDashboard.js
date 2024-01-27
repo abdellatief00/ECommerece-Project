@@ -264,6 +264,13 @@ window.addEventListener("load", function(){
 //==================================================================//
 //						orders formatting Functions					//
 //==================================================================//
+// use these functions for admin to get all the orders 
+// or pass the seller id to get his orders
+// 1- first we choose all the orders by getAndFormatOrders
+// 2- then we format them as obj = {date : {
+//    aProductId : aQuantity,
+//    bProductId : bQuantity}} using formatOrdersByDate
+// 3 -sort the result object by date using sortOrdersByDate
 function getAndFormatOrders(roleId = "admin")
 {
     let ordersFormatted = [];
@@ -330,6 +337,8 @@ function sortOrdersByDate(obj)
 //==================================================================//
 //						orders statistics Functions					//
 //==================================================================//
+// obj passed to these functions must be the result after formatting and
+// ordering the orders
 function getTotalOrdersQuantities(obj)
 {
     let totalOrderQuantities = [];
@@ -364,6 +373,9 @@ function getOrderTotalPrice(obj)
 //==================================================================//
 //					product statistics Functions				    //
 //==================================================================//
+
+// getProductOrdersObj is for formatting the product Obj 
+// the object passed to it must be an orders formatted object also
 function getProductOrdersObj(obj, productId)
 {
     let productOrdersObj = {};
@@ -381,7 +393,8 @@ function getProductOrdersObj(obj, productId)
 
     return productOrdersObj;
 }
-
+// the obj passed to these two functions must be result from
+// getProductOrdersObj
 function getProductQuantities(obj)
 {
     let quantitiesArr = [];
