@@ -1,22 +1,188 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Page 1</title>
+<title>Multiple Wavy Lines Chart with Chart.js</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-
-  <h1>Page 1</h1>
-
-  <button onclick="goToSecondPage()">Go to Page 2</button>
+  <canvas id="myChart" height="300"></canvas>
 
   <script>
-    function goToSecondPage() {
-      // Navigate to the second page
-      window.location.href = 'productDetails.html';
-    }
-  </script>
+    const ctx = document.getElementById('myChart').getContext('2d');
 
+    const labels = [
+    "2023-02-10",
+    "2023-02-13",
+    "2023-05-04",
+    "2023-05-21",
+    "2023-12-15",
+    "2024-01-03",
+    "2024-02-22",
+    "2024-08-14"
+];
+
+    // Define multiple datasets with varying data and colors
+    const chartData = {
+      labels,
+      datasets: [
+        {
+          label: 'product 3',
+          data: [
+    199.96,
+    49.99,
+    599.88,
+    199.96,
+    0,
+    0,
+    0,
+    99.98
+],
+          borderColor: '#900000', // Red
+          borderWidth: 2,
+          fill: false,
+          pointRadius: 1,
+          cubicInterpolationMode: "monotone",
+          tension: 0.5 // Adjust waviness as desired
+        },
+        /* {
+          label: 'Dataset 2',
+          data: [12, 9, 7, 14, 15, 8, 11, 10, 13, 6, 5, 9],
+          borderColor: '#004590', // Blue
+          borderWidth: 2,
+          fill: false,
+          pointRadius: 0,
+          cubicInterpolationMode: "monotone",
+          tension: 0.7
+        },
+        {
+          label: 'Dataset 3',
+          data: [8, 12, 14, 9, 6, 11, 15, 5, 13, 10, 7, 8],
+          borderColor: '#4CAF50', // Green
+          borderWidth: 2,
+          fill: false,
+          pointRadius: 0,
+          cubicInterpolationMode: "monotone",
+          tension: 0.4
+        },
+        {
+          label: 'Dataset 4',
+          data: [10, 13, 6, 15, 11, 5, 12, 9, 8, 7, 14, 10],
+          borderColor: '#FFC107', // Amber
+          borderWidth: 2,
+          fill: false,
+          pointRadius: 0,
+          cubicInterpolationMode: "monotone",
+          tension: 0.6
+        },
+        {
+          label: 'Dataset 5',
+          data: [15, 5, 11, 12, 8, 13, 6, 14, 10, 7, 9, 15],
+          borderColor: '#DC143C', // Crimson
+          borderWidth: 2,
+          fill: false,
+          pointRadius: 0,
+          cubicInterpolationMode: "monotone",
+          tension: 0.8
+        } */
+      ]
+    };
+
+    const options = {
+      responsive: true,
+      maintainAspectRatio: false,
+      title: {
+        display: true,
+        text: 'Wavy Line Chart with Chart.js'
+      },
+      legend: {
+        display: false
+      },
+      tooltips: {
+        enabled: true,
+        mode: 'index',
+        intersect: false
+      },
+      axes: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: true
+          }
+        }]
+      },
+      hover: {
+        mode: 'nearest',
+        intersect: true
+      }
+    };
+
+    const myChart = new Chart(ctx, {
+      type: 'line',
+      data: chartData,
+      options
+    });
+  </script>
 </body>
 </html>
+
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<title>Multiple Wavy Lines Chart with Chart.js</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <canvas id="myChart"></canvas>
+
+  <script>
+    const ctx = document.getElementById('myChart').getContext('2d');
+
+    const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+    const chartData = {
+      labels,
+      datasets: [
+        // ... datasets with transparent backgroundColor
+        {
+          label: 'Dataset 1',
+          data: [5, 10, 8, 15, 7, 12, 9, 14, 6, 11, 13, 5],
+          borderColor: 'rgba(144, 0, 0, 0.2)', // Red with transparency
+          borderWidth: 2,
+          fill: false,
+          pointRadius: 0,
+          cubicInterpolationMode: "monotone",
+          tension: 0.5,
+          backgroundColor: 'rgba(144, 0, 0, 0.2)' // Transparent background
+        },
+        // ... other datasets with similar transparency
+      ]
+    };
+
+    const options = {
+      // ... your existing options
+    };
+
+    const myChart = new Chart(ctx, {
+      type: 'bar',
+      data: chartData,
+      options
+    });
+
+    // Click-highlighting functionality
+    myChart.on('click', (event) => {
+      const point = event.chart.getElementsAtEventForPoints(event)[0];
+      if (point) {
+        const datasetIndex = point.datasetIndex;
+        highlightDataset(datasetIndex);
+      }
+    });
+
+    function highlightDataset(datasetIndex) {
+      chartData.datasets.forEach((dataset, index) => {
+        dataset.borderColor = index === datasetIndex ? '#f00' : 'rgba(144, 0, 0, 0.2)';
+      });
+      myChart.update();
+    }
+  </script>
+</body>
+</html> -->

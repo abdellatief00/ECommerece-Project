@@ -11,4 +11,283 @@
   <p>Welcome to Page 2!</p>
 
 </body>
+<script>
+    const getRandomProductId = () => Math.floor(Math.random() * (16 - 2 + 1)) + 2;
+
+const generateOrder = () => {
+    const orderNumber = Math.floor(Math.random() * 1000) + 1;
+    const date = randomDate();
+    const total = Math.random() * 100;
+    const paymentMethod = Math.random() > 0.5 ? 'Credit Card' : 'PayPal';
+
+    const cart = Array.from({ length: Math.floor(Math.random() * 5) + 1 }, () => ({
+        productId: getRandomProductId(),
+        quantity: Math.floor(Math.random() * 5) + 1
+    }));
+
+    const userId = Math.floor(Math.random() * 1000) + 1;
+
+    return {
+        orderNumber : orderNumber,
+      date : date,
+      total : total,
+      paymentMethod : paymentMethod,
+      cart : cart,
+      userId : userId
+    };
+};
+
+const orders = Array.from({ length: 9 }, () => generateOrder());
+
+
+function randomDate()
+{
+const minYear = 2023; // Adjust this year if needed
+const maxYear = 2024; // Adjust this year if needed
+
+// Define month range (adjust for leap years and month lengths if needed)
+const minMonth = 1;
+const maxMonth = 12;
+
+const randomYear = Math.floor(Math.random() * (maxYear - minYear + 1)) + minYear;
+const randomMonth = Math.floor(Math.random() * (maxMonth - minMonth + 1)) + minMonth;
+
+// Determine maxDay based on random month and year (for leap years)
+const maxDay = new Date(randomYear, randomMonth, 0).getDate();
+const randomDay = Math.floor(Math.random() * maxDay) + 1;
+
+const randomDate = new Date(randomYear, randomMonth, randomDay);
+
+const currentDateTime = new Date();
+currentDateTime.setYear(randomYear);
+currentDateTime.setMonth(randomMonth);
+currentDateTime.setDate(randomDay);
+//currentDateTime.setMilliseconds(desiredDate.getMilliseconds());
+
+console.log(currentDateTime); // Example output: Sun Jan 28 2024 18:42:06.252549 GMT+0000 (Coordinated Universal Time)
+return currentDateTime;
+}
+
+</script>
 </html>
+
+myOrders =
+[
+    {
+        "orderNumber": 177,
+        "date": "2024-01-03T18:51:12.911Z",
+        "total": 66.78610152647282,
+        "paymentMethod": "Credit Card",
+        "cart": [
+            {
+                "productId": 12,
+                "quantity": 3
+            },
+            {
+                "productId": 6,
+                "quantity": 2
+            },
+            {
+                "productId": 15,
+                "quantity": 3
+            },
+            {
+                "productId": 14,
+                "quantity": 4
+            }
+        ],
+        "userId": 503
+    },
+    {
+        "orderNumber": 489,
+        "date": "2023-02-10T18:51:12.912Z",
+        "total": 51.24107419954016,
+        "paymentMethod": "Credit Card",
+        "cart": [
+            {
+                "productId": 13,
+                "quantity": 2
+            },
+            {
+                "productId": 6,
+                "quantity": 3
+            },
+            {
+                "productId": 3,
+                "quantity": 1
+            },
+            {
+                "productId": 3,
+                "quantity": 3
+            }
+        ],
+        "userId": 264
+    },
+    {
+        "orderNumber": 751,
+        "date": "2023-12-15T18:51:12.912Z",
+        "total": 16.800541146849234,
+        "paymentMethod": "PayPal",
+        "cart": [
+            {
+                "productId": 14,
+                "quantity": 3
+            },
+            {
+                "productId": 8,
+                "quantity": 2
+            }
+        ],
+        "userId": 702
+    },
+    {
+        "orderNumber": 750,
+        "date": "2023-09-07T17:51:12.912Z",
+        "total": 17.0898882484283,
+        "paymentMethod": "Credit Card",
+        "cart": [
+            {
+                "productId": 10,
+                "quantity": 2
+            },
+            {
+                "productId": 5,
+                "quantity": 4
+            }
+        ],
+        "userId": 825
+    },
+    {
+        "orderNumber": 858,
+        "date": "2024-02-22T18:51:12.912Z",
+        "total": 6.883951274391054,
+        "paymentMethod": "PayPal",
+        "cart": [
+            {
+                "productId": 8,
+                "quantity": 4
+            },
+            {
+                "productId": 7,
+                "quantity": 3
+            },
+            {
+                "productId": 5,
+                "quantity": 1
+            },
+            {
+                "productId": 8,
+                "quantity": 4
+            }
+        ],
+        "userId": 190
+    },
+    {
+        "orderNumber": 800,
+        "date": "2023-05-04T17:51:12.912Z",
+        "total": 57.682764030949784,
+        "paymentMethod": "PayPal",
+        "cart": [
+            {
+                "productId": 2,
+                "quantity": 1
+            },
+            {
+                "productId": 3,
+                "quantity": 4
+            },
+            {
+                "productId": 3,
+                "quantity": 3
+            },
+            {
+                "productId": 3,
+                "quantity": 5
+            },
+            {
+                "productId": 8,
+                "quantity": 2
+            }
+        ],
+        "userId": 310
+    },
+    {
+        "orderNumber": 962,
+        "date": "2023-02-13T18:51:12.913Z",
+        "total": 2.3060128672778513,
+        "paymentMethod": "PayPal",
+        "cart": [
+            {
+                "productId": 16,
+                "quantity": 2
+            },
+            {
+                "productId": 8,
+                "quantity": 1
+            },
+            {
+                "productId": 3,
+                "quantity": 1
+            },
+            {
+                "productId": 8,
+                "quantity": 2
+            }
+        ],
+        "userId": 999
+    },
+    {
+        "orderNumber": 591,
+        "date": "2023-05-21T17:51:12.913Z",
+        "total": 41.48830848925671,
+        "paymentMethod": "PayPal",
+        "cart": [
+            {
+                "productId": 14,
+                "quantity": 4
+            },
+            {
+                "productId": 16,
+                "quantity": 3
+            },
+            {
+                "productId": 3,
+                "quantity": 2
+            },
+            {
+                "productId": 3,
+                "quantity": 2
+            }
+        ],
+        "userId": 495
+    },
+    {
+        "orderNumber": 677,
+        "date": "2024-08-14T17:51:12.913Z",
+        "total": 19.746920910764977,
+        "paymentMethod": "Credit Card",
+        "cart": [
+            {
+                "productId": 13,
+                "quantity": 3
+            },
+            {
+                "productId": 2,
+                "quantity": 3
+            },
+            {
+                "productId": 4,
+                "quantity": 2
+            },
+            {
+                "productId": 3,
+                "quantity": 2
+            },
+            {
+                "productId": 10,
+                "quantity": 4
+            }
+        ],
+        "userId": 714
+    }
+]
