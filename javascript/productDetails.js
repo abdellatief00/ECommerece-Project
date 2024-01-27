@@ -548,10 +548,10 @@ function displayPreviousProduct(e)
 
 function getProductIndex(productId)
 {
-    let products1 =JSON.parse(window.localStorage.getItem('products')); //just this line;
-    for(let i=0; i<products1.length; i++)
+    // let products1 =JSON.parse(window.localStorage.getItem('products')); 
+    for(let i=0; i<products.length; i++)
     {
-        if(products1[i].id === productId)
+        if(products[i].id === productId)
             return i;
     }
     return -1;
