@@ -244,9 +244,9 @@ window.addEventListener("load", function(){
     // getDateArray extracts the dates for the graph x-axis
     // getProductQuantities and getProducTotaltPrice for the y-axis
     
-    /* console.log("product orders Dates" ,getDateArray(dummyProductObj));
+    console.log("product orders Dates" ,getDateArray(dummyProductObj));
     console.log("product orders quantities " ,getProductQuantities(dummyProductObj));
-    console.log("product orders totalPrices" ,getProducTotaltPrice(dummyProductObj, 3)); */
+    console.log("product orders totalPrices" ,getProducTotaltPrice(dummyProductObj, 3));
 
     
 

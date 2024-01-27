@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 
         const eyeLink = createProductLink('<i class="fa fa-eye" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top"></i>', function () {
-            showProductPopup(product);
+            showProductDetails(product);
         });
 
         const quickViewLink = createProductLink('<i class="fa fa-search" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top"></i>', function () {
@@ -167,8 +167,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Function to show product popup
-    function showProductPopup(product) {
-        console.log('Product details popup:', product);
+    function showProductDetails(product) {
+        setCurrentProductIdToLocal(product.id);
+        window.location.assign("productDetails.html");
         // Implement logic to display product details in a popup
         // You can use a modal or any other UI component to display detailed product information
     }
@@ -309,3 +310,7 @@ document.addEventListener('DOMContentLoaded', function () {
     sortAndRenderProducts(document.getElementById('orderby').value);
     updatePagingButtons();
 });
+function setCurrentProductIdToLocal(productId)
+{
+    localStorage.setItem("currentProductId", productId);
+}
