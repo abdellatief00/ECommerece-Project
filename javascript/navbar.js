@@ -138,7 +138,7 @@ function searchProductsByTitle()
 
     if(searchResultProducts.length > 3)
     {
-        searchResultDiv.appendChild(createShowAllResultsDiv());
+        searchResultDiv.appendChild(createShowAllResultsDiv(searchResultProducts));
     }
 }
 
@@ -245,7 +245,7 @@ function getCartFromlocal(){
     return arr;
 }
 
-function createShowAllResultsDiv()
+function createShowAllResultsDiv(products)
 {
 const showAllDiv = document.createElement('div');
 
@@ -255,9 +255,15 @@ showAllDiv.style.textAlign = 'center';
 showAllDiv.innerHTML = 'Show all results &rarr;';
 
 showAllDiv.addEventListener('click', () => {
-    console.log("log the results for now");
+    setSearchResultsToLocal(products);
+    window.location.href = "searchResults.html";
 });
 
 return showAllDiv;
 
+}
+
+function setSearchResultsToLocal(products)
+{
+    localStorage.setItem("searchResults" ,JSON.stringify(products));
 }

@@ -439,14 +439,27 @@ function updatePreviewDiv(e)
     let pPreviewPrice = previewDiv.querySelector("#product-preview-div > div > div:nth-child(2)");
     let currPreviewProduct;
     
-    if(currentProductIndex==0 || currentProductIndex == products.length-1)
+    if(currentProductIndex<0 || currentProductIndex > products.length-1)
+    {
         return;
+    }
 
-    if(e.target == prevProduct)
-        currPreviewProduct = products[currentProductIndex-1];
-    if(e.target == nextProduct)
-        currPreviewProduct = products[currentProductIndex+1];
-    
+    if(currentProductIndex==0)
+    {
+        currPreviewProduct = products[currentProductIndex+1]
+    }
+    else if(currentProductIndex == products.length-1)
+    {
+        currPreviewProduct = products[currentProductIndex-1]
+    }
+    else
+    {
+        if(e.target == prevProduct)
+            currPreviewProduct = products[currentProductIndex-1];
+        if(e.target == nextProduct)
+            currPreviewProduct = products[currentProductIndex+1];
+    }
+
     pPreviewName.innerText = currPreviewProduct.productTitle;
     pPreviewPrice.innerText = `$ ${currPreviewProduct.price}`;
     pPreviewImg.src = currPreviewProduct.images[0];

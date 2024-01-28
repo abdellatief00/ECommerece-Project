@@ -1,0 +1,11 @@
+* {
+    box-sizing: border-box;
+}
+
+.page-link{
+    color: rgb(125, 123, 123);
+}
+.page-link:hover{
+    color: black;
+}
+
