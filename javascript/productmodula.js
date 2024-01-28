@@ -116,7 +116,7 @@ product1.push(
   new Product(
     'BLOOM',
     'Description for Product 6',
-    ['../images/women/product-5-a.png', '../images/women/product-6-b.jpg'],
+    ['../images/women/product-6-a.webp', '../images/women/product-6-b.webp'],
     100,
     [{3:5}],
     400.99,
