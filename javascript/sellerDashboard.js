@@ -339,7 +339,7 @@ function sortOrdersByDate(obj)
 //==================================================================//
 // obj passed to these functions must be the result after formatting and
 // ordering the orders
-function getTotalOrdersQuantities(obj)
+export function getTotalOrdersQuantities(obj)
 {
     let totalOrderQuantities = [];
     for(let date in obj)
@@ -354,7 +354,7 @@ function getTotalOrdersQuantities(obj)
     return totalOrderQuantities; 
 }
 
-function getOrderTotalPrice(obj)
+export function getOrderTotalPrice(obj)
 {
     let orderTotalPrice = [];
     for(let date in obj)
