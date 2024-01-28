@@ -291,7 +291,6 @@ window.addEventListener('load', function () {
             let imgarr = [getfilelocation(allinp[5])];
             let role = document.getElementById("user-role").value == "user" ? 0 : 1;
             console.log(imgarr);
-<<<<<<< HEAD
             allinp = Array.from(allinp);
             let o = new userClass(allinp[0].value, allinp[1].value, allinp[2].value, allinp[3].value, allinp[4].value, imgarr, role);
             //o.id = userClass.autoincreaseid();
@@ -299,10 +298,6 @@ window.addEventListener('load', function () {
 
             // usersfullData.push(item);
             users.push(o.addjson());
-=======
-            let o = new userClass(allinp[0].value, allinp[1].value, allinp[2].value, allinp[3].value, allinp[4].value, imgarr, role).addjson();
-            users.push(o);
->>>>>>> origin/aya
             localStorage.setItem("users", JSON.stringify(users));
             users = JSON.parse(localStorage.getItem("users"));
             console.log(users);
