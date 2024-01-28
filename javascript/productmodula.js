@@ -331,15 +331,11 @@ product1.push(
   )
   .addJson()
 );
+
 setlocal(product1);
 
 // localStorage.setItem('products', JSON.stringify(product1));
-
-// Retrieve the products from local storage
 let storedProducts = JSON.parse(localStorage.getItem('products')) || [];
-console.log(storedProducts);
-
-
 
 
 
@@ -347,3 +343,7 @@ console.log(storedProducts);
 function setlocal(arr , key = "products"){
   window.localStorage.setItem(key,JSON.stringify(arr));
 }
+
+// Modify the existing product1 and update it in local storage
+//product1[0].images.push('images/product-09-a.jpg');
+localStorage.setItem('products', JSON.stringify(product));
