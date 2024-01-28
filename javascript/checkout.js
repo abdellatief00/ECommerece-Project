@@ -343,6 +343,23 @@ function isValidInput(input) {
     let currnet_user = JSON.parse(window.localStorage.getItem("current_user")) || false;
     if(document.querySelectorAll('#content form input[required].is-valid').length != document.querySelectorAll('#content form input[required]').length){
       e.preventDefault();
+      // let prod = JSON.parse(window.localStorage.getItem("products")) || [];
+      // let car = JSON.parse(window.localStorage.getItem("cart")) || [];
+      // let sellerprod = [];
+      // for(let i = 0; i < car.length ; i++){
+      //   let prodid = car[i].productId;
+      //   let sellerid = prod.find((ele)=>ele.id==prodid).sellerId;
+      //   sellerprod.push(sellerid);
+      // }
+      // sellerprod = uniqueArray(sellerprod);
+      // let obj = {};
+      // for(let i= 0 ; i < sellerprod.length  ; i++){
+      //   obj[sellerprod[i]] = "pending"
+      // }
+
+
+
+
     }
     else if(currnet_user==false){
       e.preventDefault();
@@ -358,6 +375,20 @@ function isValidInput(input) {
       let pay = ``;
       if(document.querySelectorAll("#firstinputradio")[0].checked){pay = "Direct Bank Transfer"}
       else{pay = "Cash"}
+
+
+
+      let sellerprod = [];
+      for(let i = 0; i < car.length ; i++){
+        let prodid = car[i].productId;
+        let sellerid = prod.find((ele)=>ele.id==prodid).sellerId;
+        sellerprod.push(sellerid);
+      }
+      sellerprod = uniqueArray(sellerprod);
+      let obj = {};
+      for(let i= 0 ; i < sellerprod.length  ; i++){
+        obj[sellerprod[i]] = "pending"
+      }
       
 
 
@@ -367,7 +398,8 @@ function isValidInput(input) {
       document.querySelectorAll(".leftcontent form input")[7].value,
       document.querySelectorAll(".leftcontent form input")[4].value,
       document.querySelectorAll(".leftcontent form input")[1].value,
-      document.querySelectorAll(".leftcontent form input")[2].value);
+      document.querySelectorAll(".leftcontent form input")[2].value,
+      obj);
 
       for (let i = 0 ; i < car.length ; i++){
         let cur_item_id = car[i].productId;
@@ -428,3 +460,11 @@ function searchbyid(arr,_id){
   return ind;
 }
 
+
+
+/* return unique values */
+const uniqueArray = (array) => {
+  return Array.from(
+      array.reduce((set, e) => set.add(e), new Set())
+  )
+}

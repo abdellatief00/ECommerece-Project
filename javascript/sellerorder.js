@@ -2,13 +2,12 @@ import {Orders, Product,user} from './modula.js';
 
 let row_id;
 let current_user_id = getlocal('current_user').id;
-let all_products  = getlocal();
+let all_products  = getlocal()||[];
 let current_products =  all_products.filter((ele)=>{return ele.sellerId==current_user_id});
-let allorders = getlocal('orders');
+let allorders = getlocal('orders')||[];
 let seller_orders = createorders();
 let searched =  seller_orders.slice();
 let current_page_number = 0;
-
 
 window.addEventListener('load',function(){
     createlis();
@@ -138,8 +137,8 @@ document.querySelector("table tbody").addEventListener('click',function(e){
             }
             return ele;
         });
-
-        allorders[ind].state = stat;
+        console.log(allorders);
+        allorders[ind].state[current_user_id] = stat;
         setlocal(allorders,"orders");
         createtablebody(searched);
     }
@@ -325,7 +324,7 @@ function createorders(){
                     name : allorders[i].name,
                     payment: allorders[i].paymentMethod,
                     email : allorders[i].email,
-                    state : allorders[i].state || "pending",
+                    state : allorders[i].state[current_user_id] || "pending",
                     phone : allorders[i].phone
                 };
                 seller.push(obj);
