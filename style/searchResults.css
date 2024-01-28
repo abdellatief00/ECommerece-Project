@@ -1,0 +1,14 @@
+
+
+.page-link{
+    color: rgb(125, 123, 123);
+}
+.page-link:hover{
+    color: black;
+}
+
+.active>.page-link{
+    background-color: black;
+    border-color: black;
+}
+

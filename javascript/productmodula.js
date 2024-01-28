@@ -23,6 +23,7 @@ product1.push(
   )
   .addJson()
 );
+setlocal(product1);
 product1.push(
   new Product(
     'Product 2',
@@ -44,6 +45,7 @@ product1.push(
   )
   .addJson()
 );
+setlocal(product1);
 product1.push(
   new Product(
     'Product 3',
@@ -65,6 +67,7 @@ product1.push(
   )
   .addJson()
 );
+setlocal(product1);
 product1.push(
   new Product(
     'Product 4',
@@ -86,6 +89,7 @@ product1.push(
   )
   .addJson()
 );
+setlocal(product1);
 product1.push(
   new Product(
     'Product 5',
@@ -107,6 +111,7 @@ product1.push(
   )
   .addJson()
 );
+setlocal(product1);
 product1.push(
   new Product(
     'BLOOM',
@@ -128,6 +133,7 @@ product1.push(
   )
   .addJson()
 );
+setlocal(product1);
 product1.push(
   new Product(
     'Product 7',
@@ -149,6 +155,7 @@ product1.push(
   )
   .addJson()
 );
+setlocal(product1);
 product1.push(
   new Product(
     'Product 8',
@@ -170,6 +177,7 @@ product1.push(
   )
   .addJson()
 );
+setlocal(product1);
 product1.push(
   new Product(
     'Product 9',
@@ -191,6 +199,7 @@ product1.push(
   )
   .addJson()
 );
+setlocal(product1);
 product1.push(
   new Product(
     'Product 10',
@@ -212,6 +221,7 @@ product1.push(
   )
   .addJson()
 );
+setlocal(product1);
 product1.push(
   new Product(
     'Product 11',
@@ -233,6 +243,7 @@ product1.push(
   )
   .addJson()
 );
+setlocal(product1);
 product1.push(
   new Product(
     'DOLCE GABBANA',
@@ -254,6 +265,7 @@ product1.push(
   )
   .addJson()
 );
+setlocal(product1);
 product1.push(
   new Product(
     'Product 13',
@@ -275,6 +287,7 @@ product1.push(
   )
   .addJson()
 );
+setlocal(product1);
 product1.push(
   new Product(
     'Product 14',
@@ -296,6 +309,7 @@ product1.push(
   )
   .addJson()
 );
+setlocal(product1);
 product1.push(
   new Product(
     'Product 15',
@@ -317,8 +331,19 @@ product1.push(
   )
   .addJson()
 );
-localStorage.setItem('products', JSON.stringify(product1));
 
-// Retrieve the products from local storage
+setlocal(product1);
+
+// localStorage.setItem('products', JSON.stringify(product1));
 let storedProducts = JSON.parse(localStorage.getItem('products')) || [];
-console.log(storedProducts);
+
+
+
+
+function setlocal(arr , key = "products"){
+  window.localStorage.setItem(key,JSON.stringify(arr));
+}
+
+// Modify the existing product1 and update it in local storage
+//product1[0].images.push('images/product-09-a.jpg');
+localStorage.setItem('products', JSON.stringify(product));

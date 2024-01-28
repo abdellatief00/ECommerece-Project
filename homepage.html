@@ -17,14 +17,16 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    <link rel="stylesheet" href="style/woman.css">
     
     <link rel="stylesheet" href="style/all.min.css">
     <link rel="stylesheet" href="style/homepage.css">
-    <script src="javascript/test.js" defer></script>
-    <script src="javascript/navbar.js" type="module"></script>
+    <!-- <script src="javascript/navbar.js" type="module"></script> -->
     <script src="javascript/productmodula.js" type="module"></script>
     <script src="javascript/homepage.js" type="module"></script>
+    <script src="javascript/UserModule.js" type="module"></script>
+    <script src="javascript/test.js"  type="module"></script>
+    <script src="javascript/Login&logut.js" defer></script>
   </head>
     
 </head>
@@ -39,7 +41,7 @@
             </div>
             
             <!--Header-->
-    <header class="d-flex justify-content-between position-relative p-3">
+    <header class="d-flex justify-content-between position-relative p-3" style=" background-color: rgba(240, 231, 231, 0.774); ">
         <a id="logo-image" href="homepage.html" class="position-absolute d-none d-lg-block">
             <img  src="images/logo-header-regular.png" alt="Eyewear-logo">
         </a>
@@ -90,18 +92,25 @@
                 </form>
             </div>
             
+           
 
-            <div id="cart-icon" class="me-3 ms-3 mt-4 mt-lg-2 align-self-right">
+
+            
+
+            <div id="cart-icon" class="me-3 ms-3 mt-4 mt-lg-2 align-self-right btn CartMenu"  data-bs-toggle="modal" data-bs-target="#ShoppingCart" data-bs-whatever="@mdo" >
                 <span>$0.00</span>
                 <i class="fa-solid fa-cart-shopping"></i>
                 <span id="cart-items-count">0</span>
             </div>
-
-            <button id="loginBtn" class="btn btn-outline-secondary border-0 align-self-start">
+    
+            <button id="loginBtn" class="btn btn-outline-secondary border-0 align-self-start" data-bs-toggle="modal" data-bs-target="#LoginScreen" data-bs-whatever="@mdo">
                 <i class="fa-solid fa-user"></i>
                 <!-- <img class="bg-white" src="images/miniProfile.png" style="width: 30px; height: 30px; border-radius: 50%;" alt=""> -->
                 <span>Login</span>
             </button>
+
+           
+
 
             <div class="navbar">
                 <button class="navbar-toggler align-self-start d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -110,7 +119,7 @@
             </div>
         </div>
     </header>
-    <hr>
+
 
             <div class="d-flex flex-column justify-content-center z-1" id="header-text">
                 <h5>ORIGINAL SUNGLASSES</h5>
@@ -203,77 +212,29 @@
 
 
         <!-- products part -->
-        <div id="products" class="">
-            <div class="product ">
-                <div class="product-image" id="image1">
-                    <div class="icons-product">
-                        <i class="far fa-eye" id="eye"></i>
+        <div id="products" class="products">  
+        </div>
+        <div class="modal fade border-0" id="productImageModal" tabindex="-1" aria-labelledby="productImageModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg border-0">
+                <div class="modal-content bg-transparent">
+                    <div class="modal-header border-0">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="quick-view">Quick View</div>
-                    <div class="icons-product icons-product-2">
-                        <i class="fas fa-shopping-basket" id="shop"></i>
+                    <div class="modal-body p-0">
+                        <div id="productImageCarousel" class="carousel slide" data-bs-ride="carousel">
+                            <div class="carousel-inner">
+                                <!-- Images will be dynamically added here -->
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#productImageCarousel" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#productImageCarousel" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
                     </div>
-                    <div class="add-to-cart">Add to Cart</div>
-                </div>
-                <div class="product-info">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h2 class="productname headfont">Product Name 10</h2>
-                    <p class="price textfont">$117.00</p>
-                    
-                </div>
-            </div>
-            <div class="product">
-                <div class="product-image" id="image2">
-                    <div class="icons-product">
-                        <i class="far fa-eye" id="eye"></i>
-                    </div>
-                    <div class="quick-view">Quick View</div>
-                    <div class="icons-product icons-product-2">
-                        <i class="fas fa-shopping-basket" id="shop"></i>
-                    </div>
-                    <div class="add-to-cart">Add to Cart</div>
-                </div>
-                <div class="product-info">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h2 class="productname headfont">Product Name 11</h2>
-                    <p class="price textfont">$185.00</p>
-                    
-                </div>
-            </div>
-            <div class="product">
-                <div class="product-image" id="image3">
-                    <div class="icons-product">
-                        <i class="far fa-eye" id="eye"></i>
-                    </div>
-                    <div class="quick-view">Quick View</div>
-                    <div class="icons-product icons-product-2">
-                        <i class="fas fa-shopping-basket" id="shop"></i>
-                    </div>
-                    <div class="add-to-cart">Add to Cart</div>
-                </div>
-                <div class="product-info">
-                    <div class="stars">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <h2 class="productname headfont">Product Name 9</h2>
-                    <p class="price textfont">$135.00</p>
-                    
                 </div>
             </div>
         </div>
@@ -371,47 +332,48 @@
             </div>
         </footer>
 
-
-      <!-- login Start -->
-      <div>
-        <div class="modal fade " id="LoginScreen" tabindex="-1" aria-labelledby="Login_form" aria-hidden="true" data-bs-backdrop="static"  >
-                <div class="modal-dialog  modal-dialog-centered" >
-                    <div class="modal-content" style="background-color: rgb(238, 231, 231);">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="Login_form">Login</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="">
-        
-                                
-                                <div class="mb-3">
-                                    <label for="Email">Email:</label>
-                                    <div class="input-group my-2">
-                                    <span class="fa fa-user input-group-prepend input-group-text" style="padding: 10px;"></span>
-                                    <input type="email" class="form-control" id="Email" name="Email" required>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="Password" class="col-form-label">Password:</label>
-                                    <div class="input-group my-2">
-                                    <span class="fa fa-lock input-group-prepend input-group-text" style="padding: 10px;"></span>
-                                    <input type="password" class="form-control" id="Password" name="Password" required>
-                                </div>
-                         
-                        </div>
-                        <div class="modal-footer">
-                                <input type="submit" value="Login" class="btn btn-primary">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                </form>
+<!-- login Start -->
+<div>
+    <div class="modal fade " id="LoginScreen" tabindex="-1" aria-labelledby="Login_form" aria-hidden="true" data-bs-backdrop="static"  >
+            <div class="modal-dialog  modal-dialog-centered" >
+                <div class="modal-content" style="background-color: rgb(238, 231, 231);">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="Login_form">Login</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <div class="modal-body">
+                        <form>
+    
+                            
+                            <div class="mb-3">
+                                <label for="Email">Email:</label>
+                                <div class="input-group my-2">
+                                <span class="fa fa-user input-group-prepend input-group-text" style="padding: 10px;"></span>
+                                <input type="email" class="form-control" id="Email" name="Email" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="Password" class="col-form-label">Password:</label>
+                                <div class="input-group my-2">
+                                <span class="fa fa-lock input-group-prepend input-group-text" style="padding: 10px;"></span>
+                                <input type="password" class="form-control" id="Password" name="Password" required>
+                            </div>
+                            
+                            <a  class=" fw-bold authButtons  border-0 align-self-start" href="SignUP.html">SIGN UP</a>
+
+                    </div>
+                    <div class="modal-footer">
+
+                            <input type="submit" value="Login" class="btn btn-primary" onclick="login()">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+            </form>
                 </div>
             </div>
         </div>
-        </div>
-        
-        <!-- end login -->
+    </div>
+    </div>
     
+    <!-- end login -->
            <!-- Cart start -->
     <div class="modal fade  " id="ShoppingCart" tabindex="-1" aria-labelledby="ShoppingCartModalLabel" aria-hidden="true" >
         <div class="modal-dialog Cart-dialog"  >
@@ -438,7 +400,7 @@
                 <div class="modal-footer mt-auto" style="margin: 10px;">
                     <!-- <button type="button" class="btn w-100 border-dark fw-bold fs-5 cartButton"  >VIEW CART</button> --> 
                     <a href="Cart.html" class="btn w-100 border-dark fw-bold fs-5 cartButton">VIEW CART</a>
-                    <button type="button" class="btn w-100 border-dark fw-bold fs-5 cartButton">CHECKOUT</button>
+                    <a href="checkout.html" class="btn w-100 border-dark fw-bold fs-5 cartButton">CHECKOUT</a>
                 </div>
             </div>
         </div>

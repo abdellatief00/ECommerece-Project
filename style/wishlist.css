@@ -77,3 +77,6 @@
     font-size: 1.2rem;
     font-weight: 600;
 }
+svg:not(:host).svg-inline--fa, svg:not(:root).svg-inline--fa:hover{
+    cursor: pointer;
+}

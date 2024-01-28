@@ -229,3 +229,8 @@ table img {
     }
     
 }
+
+
+svg:hover{
+    cursor: pointer;
+}

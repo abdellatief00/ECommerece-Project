@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script src="javascript/UserAuthenticate.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>User Profile</title>
+    <style>
+        /* Add your custom CSS styles here */
+        
+    </style>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Retrieve the currentUser object from local storage
+            var currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+            // Fill the profile details
+            document.querySelector(".profile-name").textContent = currentUser.fname + " " + currentUser.lname;
+            document.querySelector(".profile-email").textContent = currentUser.email;
+            document.querySelector(".profile-image").textContent = "";
+            document.querySelector(".profile-image").innerHTML = ` <img src="${currentUser.images[0]}" alt="User Profile Image">
+`;
+
+
+            document.querySelector(".profile-role").textContent = getRoleName(currentUser.role);
+            fillImages(currentUser.images);
+        });
+
+        function getRoleName(role) {
+            switch (role) {
+                case 0:
+                    return "Admin";
+                case 1:
+                    return "Seller";
+                case 2:
+                    return "Normal Customer";
+                default:
+                    return "Unknown";
+            }
+        }
+
+        function fillImages(images) {
+            var imagesList = document.getElementById("images");
+            images.forEach(function(image) {
+                var li = document.createElement("li");
+                li.className = "list-group-item";
+                li.textContent = image;
+                imagesList.appendChild(li);
+            });
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card mt-5">
+                    <div class="card-header">
+                        <h3>User Profile</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="profile">
+                            <div class="profile-image">
+                                <img src="user-profile-image.jpg" alt="User Profile Image">
+                            </div>
+                            <div class="profile-details">
+                                <h4 class="profile-name">John Doe</h4>
+                                <p class="profile-email">john.doe@example.com</p>
+                                <p class="profile-role">Admin</p>
+                            </div>
+                        </div>
+                        <div class="profile-images">
+                            <h5>Images:</h5>
+                            <ul id="images" class="list-group" readonly>
+                                <li class="list-group-item">image1.jpg</li>
+                                <li class="list-group-item">image2.jpg</li>
+                                <li class="list-group-item">image3.jpg</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .card {
+            border: none;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-image img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-details {
+            margin-left: 20px;
+        }
+
+        .profile-name {
+            margin: 0;
+        }
+
+        .profile-email,
+        .profile-role {
+            margin: 0;
+            color: #6c757d;
+        }
+
+        .profile-images {
+            margin-top: 20px;
+        }
+
+        ul.list-group {
+            padding: 0;
+        }
+
+        ul.list-group li {
+            list-style: none;
+            padding: 5px 0;
+        }
+    </style>
+
+    
+</body>
+
+</html>

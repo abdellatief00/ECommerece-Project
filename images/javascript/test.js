@@ -9,6 +9,7 @@ function removeItem(itemId) {
 }
 
 function incrementValue() {
+    debugger;
    var itemPrice=135; //we will get from jesons
     var price = event.target.parentNode.parentNode.parentNode.getElementsByClassName("Price")[0];
 

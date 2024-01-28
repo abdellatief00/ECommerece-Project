@@ -11,9 +11,14 @@
     <link rel="stylesheet" href="style/homepage.css">
     <link rel="stylesheet" href="style/productDetailsPage.css">
     
+    
     <script src="javascript/productDetails.js" type="module"></script>
 
-    <script src="javascript/navbar.js" type="module"></script>
+    <!-- <script src="javascript/navbar.js" type="module"></script> -->
+    <script src="javascript/UserModule.js" type="module"></script>
+    <script src="javascript/test.js"  type="module"></script>
+    <script src="javascript/Login&logut.js" defer></script>
+
 
 </head>
 <body>
@@ -38,11 +43,11 @@
                       </li>
 
                       <li class="nav-item">
-                        <a class="nav-link" href="html/man.html">MEN</a>
+                        <a class="nav-link" href="man.html">MEN</a>
                     </li>
     
                     <li class="nav-item">
-                        <a class="nav-link" href="html/woman.html">WOMEN</a>
+                        <a class="nav-link" href="woman.html">WOMEN</a>
                     </li>
     
                     <li class="nav-item">
@@ -72,20 +77,21 @@
                 </form>
             </div>
             
-            <div id="cart-icon" class="me-3 ms-3 mt-4 mt-lg-2 align-self-right">
+            <div id="cart-icon" class="me-3 ms-3 mt-4 mt-lg-2 align-self-right btn CartMenu"  data-bs-toggle="modal" data-bs-target="#ShoppingCart" data-bs-whatever="@mdo" >
                 <span>$0.00</span>
                 <i class="fa-solid fa-cart-shopping"></i>
                 <span id="cart-items-count">0</span>
+                
             </div>
-
-            <button id="loginBtn" class="btn btn-outline-secondary border-0 align-self-start">
+    
+            <button id="loginBtn" class="btn btn-outline-secondary border-0 align-self-start" data-bs-toggle="modal" data-bs-target="#LoginScreen" data-bs-whatever="@mdo">
                 <i class="fa-solid fa-user"></i>
                 <!-- <img class="bg-white" src="images/miniProfile.png" style="width: 30px; height: 30px; border-radius: 50%;" alt=""> -->
                 <span>Login</span>
             </button>
 
             <div class="navbar">
-                <button class="navbar-toggler align-self-start d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler align-self-start d-lg-none " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
             </div>
@@ -98,7 +104,7 @@
     <section id="product-details-section" class="d-flex justify-content-between flex-column flex-lg-row mt-5">
 
         <!--photo on the left-->
-        <div id="product-photo" class=" ms-5 me-0 mb-5">
+        <div id="product-photo" class="ms-5 me-5 mb-5">
             <div>
                 <img src="images/product-10-a.jpg" alt="">
                 <i class="fa-solid fa-magnifying-glass"></i>
@@ -506,7 +512,7 @@
                 <div class="modal-footer mt-auto" style="margin: 10px;">
                     <!-- <button type="button" class="btn w-100 border-dark fw-bold fs-5 cartButton"  >VIEW CART</button> --> 
                     <a href="Cart.html" class="btn w-100 border-dark fw-bold fs-5 cartButton">VIEW CART</a>
-                    <button type="button" class="btn w-100 border-dark fw-bold fs-5 cartButton">CHECKOUT</button>
+                    <a href="checkout.html" class="btn w-100 border-dark fw-bold fs-5 cartButton">CHECKOUT</a>
                 </div>
             </div>
         </div>

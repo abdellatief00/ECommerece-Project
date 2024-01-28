@@ -1,3 +1,7 @@
+
+import { Cart } from './modula.js';
+import { createCartData } from './test.js';
+
 document.addEventListener('DOMContentLoaded', function () {
     // Retrieve products and current user from local storage
     let storedProducts = JSON.parse(localStorage.getItem('products')) || [];
@@ -65,11 +69,11 @@ document.addEventListener('DOMContentLoaded', function () {
             updateWishlistLinkColor(wishlistLink, product.id);
         });
 
-        const eyeLink = createProductLink('<i class="fa fa-eye" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top"></i>', function () {
-            showProductPopup(product);
+        const eyeLink = createProductLink('<i class="fa fa-eye" data-bs-toggle="tooltip" data-bs-placement="top" title="Product details"></i>', function () {
+            showProductDetails(product);
         });
 
-        const quickViewLink = createProductLink('<i class="fa fa-search" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top"></i>', function () {
+        const quickViewLink = createProductLink('<i class="fa fa-search" data-bs-toggle="tooltip" data-bs-placement="top" title="View"></i>', function () {
             viewProductImage(product);
         });
 
@@ -131,7 +135,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         return productInfoDiv;
     }
-
     // Function to create "Add to Cart" button
     function createAddToCartButton(product) {
         const addToCartButton = document.createElement('button');
@@ -141,10 +144,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
         addToCartButton.addEventListener('click', function () {
             if (product.stockQuantity > 0) {
+                // Add product to cart
+                //debugger;
+                let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+                let existingCartItem = cartItems.find(item => item.productId === product.id);
+                if (!existingCartItem)
+                cartItems.push(new Cart(product.id, product.productTitle,1, product.price, product.images[0]).addJson());
+                else
+                existingCartItem.quantity = existingCartItem ? parseInt( existingCartItem.quantity) + 1+"" : 1;
+
+                console.log("cartItems",cartItems);
+                localStorage.setItem('cart', JSON.stringify(cartItems));
+                createCartData();
+
+//////////////////////////////////
+
                 console.log(`Product added to cart: ${product.productTitle}`);
             } else {
                 console.log(`Product is out of stock: ${product.productTitle}`);
             }
+          
+
         });
 
         return addToCartButton;
@@ -167,10 +188,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Function to show product popup
-    function showProductPopup(product) {
-        console.log('Product details popup:', product);
-        // Implement logic to display product details in a popup
-        // You can use a modal or any other UI component to display detailed product information
+    function showProductDetails(product) {
+        setCurrentProductIdToLocal(product.id);
+        window.location.assign("productDetails.html");
     }
 
     // Function to view product image
@@ -322,3 +342,7 @@ document.addEventListener('DOMContentLoaded', function () {
     sortAndRenderProducts(document.getElementById('orderby').value);
     updatePagingButtons();
 });
+function setCurrentProductIdToLocal(productId)
+{
+    localStorage.setItem("currentProductId", productId);
+}

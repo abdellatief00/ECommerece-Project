@@ -516,10 +516,25 @@ text-align: center;}
    }
 
    
-   @media (max-width: 375px) {
+   @media (max-width: 430px) {
     .CartItemDetails {
-        margin-left: 7%;
+        margin-left: 3%;
     
     }}
+   @media (max-width: 375px) {
+   
+   
+    .CartItemDetails {
+        margin-left: 0%;
+    
+    }
+        .QuantityValue{
+            width: 30px; 
+          
+            
+        }
+        
+
+}
 /* end of ali parts*/
 

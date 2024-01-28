@@ -9,19 +9,19 @@ $(document).ready(function () {
             $(".nav-link .fa").removeClass("fa-table-cells-large").addClass("fa-bars");
         }
     });
-    let search = document.querySelector("input[name=searchByName]");
-    search.addEventListener("input", searching);
+    // let search = document.querySelector("input[name=searchByName]");
+    // search.addEventListener("input", searching);
 
-    function searching(e) {
-        //  console.log(e);
-        let tr = document.querySelectorAll("tbody tr");
-        for (let i = 0; i < tr.length; i++) {
-            let node = tr[i];
-            let textContent = node.children[2].textContent.toLowerCase();
-            let show = textContent.indexOf(this.value.toLowerCase()) !== -1;
-            node.style.display = show ? "" : "none";
-        }
-    }
+    // function searching(e) {
+    //     //  console.log(e);
+    //     let tr = document.querySelectorAll("tbody tr");
+    //     for (let i = 0; i < tr.length; i++) {
+    //         let node = tr[i];
+    //         let textContent = node.children[2].textContent.toLowerCase();
+    //         let show = textContent.indexOf(this.value.toLowerCase()) !== -1;
+    //         node.style.display = show ? "" : "none";
+    //     }
+    // }
     $(window).resize(function () {
         updateSidebarState();
     });
@@ -45,7 +45,7 @@ function updateSidebarState() {
 }
 document.addEventListener("DOMContentLoaded", function () {
     const currentUser = JSON.parse(localStorage.getItem("current_user")) || {};
-    const orders = JSON.parse(localStorage.getItem("Orders")) || [];
+    const orders = JSON.parse(localStorage.getItem("orders")) || [];
     const products = JSON.parse(localStorage.getItem("products")) || [];
     const tbodyOrders = document.getElementById("tbodyOrders");
 
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <td>${order.paymentMethod}</td>
             <td>${order.total}</td>
             <td>${new Date(order.date).toLocaleString()}</td>
-            <td>${order.status}</td>
+            <td>${order.state["10"]}</td>
         `;
 
         const buttonCell = document.createElement("td");
