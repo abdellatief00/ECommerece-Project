@@ -1,16 +1,22 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Multiple Wavy Lines Chart with Chart.js</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Counter Example</title>
 </head>
 <body>
-  <canvas id="myChart" height="300"></canvas>
 
-  <script>
-    const ctx = document.getElementById('myChart').getContext('2d');
+<div class="container mt-5">
+    <div class="input-group">
+        <button class="btn btn-outline-secondary" type="button" id="decrementBtn">-</button>
+        <input type="text" class="form-control text-center" value="0" id="countDisplay" readonly>
+        <button class="btn btn-outline-secondary" type="button" id="incrementBtn">+</button>
+    </div>
+</div>
 
+<<<<<<< HEAD
     const labels = [
     "2023-02-10",
     "2023-02-13",
@@ -68,102 +74,31 @@
         }
       ]
     };
+=======
 
-    const options = {
-      responsive: true,
-      maintainAspectRatio: false,
-      title: {
-        display: true,
-        text: 'Wavy Line Chart with Chart.js'
-      },
-      legend: {
-        display: false
-      },
-      tooltips: {
-        enabled: true,
-        mode: 'index',
-        intersect: false
-      },
-      axes: {
-        yAxes: [{
-          ticks: {
-            beginAtZero: true
-          }
-        }]
-      },
-      hover: {
-        mode: 'nearest',
-        intersect: true
-      }
-    };
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+>>>>>>> origin/alibranch
 
-    const myChart = new Chart(ctx, {
-      type: 'line',
-      data: chartData,
-      options
+<script>
+    // JavaScript logic for counter
+    let count = 0;
+    
+    document.getElementById("decrementBtn").addEventListener("click", function() {
+        count--;
+        updateCountDisplay();
     });
-  </script>
+
+    document.getElementById("incrementBtn").addEventListener("click", function() {
+        count++;
+        updateCountDisplay();
+    });
+
+    function updateCountDisplay() {
+        document.getElementById("countDisplay").value = count;
+    }
+</script>
+
 </body>
 </html>
 
-<!-- <!DOCTYPE html>
-<html>
-<head>
-<title>Multiple Wavy Lines Chart with Chart.js</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-  <canvas id="myChart"></canvas>
-
-  <script>
-    const ctx = document.getElementById('myChart').getContext('2d');
-
-    const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-
-    const chartData = {
-      labels,
-      datasets: [
-        // ... datasets with transparent backgroundColor
-        {
-          label: 'Dataset 1',
-          data: [5, 10, 8, 15, 7, 12, 9, 14, 6, 11, 13, 5],
-          borderColor: 'rgba(144, 0, 0, 0.2)', // Red with transparency
-          borderWidth: 2,
-          fill: false,
-          pointRadius: 0,
-          cubicInterpolationMode: "monotone",
-          tension: 0.5,
-          backgroundColor: 'rgba(144, 0, 0, 0.2)' // Transparent background
-        },
-        // ... other datasets with similar transparency
-      ]
-    };
-
-    const options = {
-      // ... your existing options
-    };
-
-    const myChart = new Chart(ctx, {
-      type: 'bar',
-      data: chartData,
-      options
-    });
-
-    // Click-highlighting functionality
-    myChart.on('click', (event) => {
-      const point = event.chart.getElementsAtEventForPoints(event)[0];
-      if (point) {
-        const datasetIndex = point.datasetIndex;
-        highlightDataset(datasetIndex);
-      }
-    });
-
-    function highlightDataset(datasetIndex) {
-      chartData.datasets.forEach((dataset, index) => {
-        dataset.borderColor = index === datasetIndex ? '#f00' : 'rgba(144, 0, 0, 0.2)';
-      });
-      myChart.update();
-    }
-  </script>
-</body>
-</html> -->
+ 

@@ -118,35 +118,20 @@
 .cursorPointer {
     cursor: pointer !important;
 }
-table tbody tr {
-    vertical-align: middle !important;
-}
 
 table img {
     max-width: 70px;
-    min-height: 70px;
-    border-radius: 5%;
-}
-table img:hover {
-    cursor: pointer;
+    border-radius: 50%;
 }
 
-table thead tr:hover{
-    cursor: pointer;
-}
 .entryRows {
     display: flex;
     justify-content: space-between;
 }
 
-#tbodyUsers tr td:nth-child(3) {
-    color: rgb(173, 21, 21);
-    
-    cursor: pointer;
-}
-#tbodyUsers tr td:nth-child(4) {
-    color: rgb(42, 115, 14);
-    
+#tbodyUsers tr td:nth-child(5) {
+    color: blue;
+    text-decoration: underline;
     cursor: pointer;
 }
 #tbodyUsers tr td{
@@ -179,31 +164,4 @@ table thead tr:hover{
         margin-left: 0 !important;
     } */
     
-}
-
-
-.toast {
-    display: none;
-    position: fixed;
-    top: 8%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #ea6060;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    width: 50%;
-    text-align: center;
-    animation-name: animationdropfromtop;
-    animation-duration: 1s;
-  }
-
-
-@keyframes animationdropfromtop {
-    from{
-        top: -20%
-    }
-    to{
-        top:8%
-    }
 }

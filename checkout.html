@@ -19,8 +19,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style/checkout.css">
-    <script src="javascript/test.js" defer></script>
     <script src="javascript/checkout.js" type="module"></script>
+    <script src="javascript/UserModule.js" type="module"></script>
+    <script src="javascript/test.js"  type="module"></script>
+    <script src="javascript/Login&logut.js" defer></script>
+
 </head>
 <body>
     <!-- beginign of container -->
@@ -80,15 +83,14 @@
             </div>
             
     
-            <div id="cart-icon" class="me-3 ms-3 mt-4 mt-lg-2 align-self-right">
+            
+            <div id="cart-icon" class="me-3 ms-3 mt-4 mt-lg-2 align-self-right btn CartMenu" >
                 <span>$0.00</span>
-                <a href="cart.html" style="color: black;">
                 <i class="fa-solid fa-cart-shopping"></i>
                 <span id="cart-items-count">0</span>
-                </a>
             </div>
     
-            <button id="loginBtn" class="btn btn-outline-secondary border-0 align-self-start">
+            <button id="loginBtn" class="btn btn-outline-secondary border-0 align-self-start" data-bs-toggle="modal" data-bs-target="#LoginScreen" data-bs-whatever="@mdo">
                 <i class="fa-solid fa-user"></i>
                 <!-- <img class="bg-white" src="images/miniProfile.png" style="width: 30px; height: 30px; border-radius: 50%;" alt=""> -->
                 <span>Login</span>
