@@ -622,7 +622,7 @@ function setUserToLocal(){
 
 function getUserFromLocal()
 {
-    return JSON.parse(localStorage.getItem("currentUser"));
+    return JSON.parse(localStorage.getItem("current_user"));
 }
 
 function getProductsFromLocal()
