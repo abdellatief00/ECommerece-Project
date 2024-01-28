@@ -1,3 +1,7 @@
+
+import { Cart } from './modula.js';
+import { createCartData } from './test.js';
+
 document.addEventListener('DOMContentLoaded', function () {
     // Retrieve products and current user from local storage
     let storedProducts = JSON.parse(localStorage.getItem('products')) || [];
@@ -131,7 +135,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         return productInfoDiv;
     }
-
     // Function to create "Add to Cart" button
     function createAddToCartButton(product) {
         const addToCartButton = document.createElement('button');
@@ -141,10 +144,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
         addToCartButton.addEventListener('click', function () {
             if (product.stockQuantity > 0) {
+                // Add product to cart
+                //debugger;
+                let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+                let existingCartItem = cartItems.find(item => item.productId === product.id);
+                if (!existingCartItem)
+                cartItems.push(new Cart(product.id, product.productTitle,1, product.price, product.images[0]).addJson());
+                else
+                existingCartItem.quantity = existingCartItem ? parseInt( existingCartItem.quantity) + 1+"" : 1;
+
+                console.log("cartItems",cartItems);
+                localStorage.setItem('cart', JSON.stringify(cartItems));
+                createCartData();
+
+//////////////////////////////////
+
                 console.log(`Product added to cart: ${product.productTitle}`);
             } else {
                 console.log(`Product is out of stock: ${product.productTitle}`);
             }
+          
+
         });
 
         return addToCartButton;

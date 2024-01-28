@@ -103,8 +103,9 @@ function claculatetotal(arr){
 /* validation part */
 
 function isValidInput(input) {
+    const usernameRegex = /^[a-zA-Z-']{3,16}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(input);
+    return usernameRegex.test(input) || emailRegex.test(input);
   }
   
   document.querySelectorAll(".leftcontent form input")[0].addEventListener("input",function(e){
@@ -124,7 +125,7 @@ function isValidInput(input) {
   }
   document.querySelectorAll(".leftcontent form input")[1].addEventListener("input",function(e){
     let userInput = e.target.value;
-    if (isValidInputName(userInput)) {
+    if (isValidInput(userInput)) {
         e.target.classList.remove('is-invalid');
         e.target.classList.add("is-valid");
     } else {
@@ -134,7 +135,7 @@ function isValidInput(input) {
   })
   document.querySelectorAll(".leftcontent form input")[2].addEventListener("input",function(e){
     let userInput = e.target.value;
-    if (isValidInputName(userInput)) {
+    if (isValidInput(userInput)) {
         e.target.classList.remove('is-invalid');
         e.target.classList.add("is-valid");
     } else {
@@ -149,7 +150,7 @@ function isValidInput(input) {
 
   document.querySelectorAll(".leftcontent form input")[7].addEventListener("input",function(e){
     let userInput = e.target.value;
-    if (isValidInputName(userInput)) {
+    if (isValidInput(userInput)) {
         e.target.classList.remove('is-invalid');
         e.target.classList.add("is-valid");
     } else {
@@ -159,7 +160,7 @@ function isValidInput(input) {
   })
   document.querySelectorAll(".leftcontent form input")[8].addEventListener("input",function(e){
     let userInput = e.target.value;
-    if (isValidInputName(userInput)) {
+    if (isValidInput(userInput)) {
         e.target.classList.remove('is-invalid');
         e.target.classList.add("is-valid");
     } else {
@@ -343,23 +344,6 @@ function isValidInput(input) {
     let currnet_user = JSON.parse(window.localStorage.getItem("current_user")) || false;
     if(document.querySelectorAll('#content form input[required].is-valid').length != document.querySelectorAll('#content form input[required]').length){
       e.preventDefault();
-      // let prod = JSON.parse(window.localStorage.getItem("products")) || [];
-      // let car = JSON.parse(window.localStorage.getItem("cart")) || [];
-      // let sellerprod = [];
-      // for(let i = 0; i < car.length ; i++){
-      //   let prodid = car[i].productId;
-      //   let sellerid = prod.find((ele)=>ele.id==prodid).sellerId;
-      //   sellerprod.push(sellerid);
-      // }
-      // sellerprod = uniqueArray(sellerprod);
-      // let obj = {};
-      // for(let i= 0 ; i < sellerprod.length  ; i++){
-      //   obj[sellerprod[i]] = "pending"
-      // }
-
-
-
-
     }
     else if(currnet_user==false){
       e.preventDefault();
@@ -368,51 +352,15 @@ function isValidInput(input) {
     else{
       e.preventDefault();
       let order = JSON.parse(window.localStorage.getItem("orders")) || [];
-      let car = JSON.parse(window.localStorage.getItem("cart")) || [];
-      let prod = JSON.parse(window.localStorage.getItem("products")) || [];
-
+      let car = JSON.parse(window.localStorage.getItem("cart"));
 
       let pay = ``;
       if(document.querySelectorAll("#firstinputradio")[0].checked){pay = "Direct Bank Transfer"}
       else{pay = "Cash"}
-
-
-
-      let sellerprod = [];
-      for(let i = 0; i < car.length ; i++){
-        let prodid = car[i].productId;
-        let sellerid = prod.find((ele)=>ele.id==prodid).sellerId;
-        sellerprod.push(sellerid);
-      }
-      sellerprod = uniqueArray(sellerprod);
-      let obj = {};
-      for(let i= 0 ; i < sellerprod.length  ; i++){
-        obj[sellerprod[i]] = "pending"
-      }
-      
-
-
-      let or = new Orders(claculatetotal(car), pay, car,currnet_user.id ,
-      document.querySelectorAll(".leftcontent form input")[0].value,
-      document.querySelectorAll(".leftcontent form input")[10].value,
-      document.querySelectorAll(".leftcontent form input")[7].value,
-      document.querySelectorAll(".leftcontent form input")[4].value,
-      document.querySelectorAll(".leftcontent form input")[1].value,
-      document.querySelectorAll(".leftcontent form input")[2].value,
-      obj);
-
-      for (let i = 0 ; i < car.length ; i++){
-        let cur_item_id = car[i].productId;
-        let ind = searchbyid(prod,cur_item_id);
-        prod[ind].sold += car[i].quantity;
-        prod[ind].stockQuantity -= car[i].quantity; 
-      }
-
-
+      let or = new Orders(claculatetotal(car), pay, car,currnet_user.id);
       order.push(or.addJson());
       currnet_user.orders.push(or.addJson());
       window.localStorage.setItem("current_user",JSON.stringify(currnet_user));
-      window.localStorage.setItem('products',JSON.stringify(prod));
 
       window.localStorage.setItem("orders",JSON.stringify(order));   
       localStorage.removeItem('cart');
@@ -425,7 +373,7 @@ function isValidInput(input) {
 
 function updatecartnumber(arr){
   let amount = arr.reduce((sum, product) => sum + product.quantity, 0);
-  document.getElementById("cart-items-count").innerText = amount;
+  // document.getElementById("cart-items-count").innerText = amount;
 }
 
 
@@ -449,22 +397,3 @@ window.onload = function() {
 
 
 
-function searchbyid(arr,_id){
-  let ind = -1;
-  for(let i= 0 ; i <arr.length ; i++ ){
-      if(arr[i].id==_id){
-          ind = i;
-          break;
-      }
-  }
-  return ind;
-}
-
-
-
-/* return unique values */
-const uniqueArray = (array) => {
-  return Array.from(
-      array.reduce((set, e) => set.add(e), new Set())
-  )
-}

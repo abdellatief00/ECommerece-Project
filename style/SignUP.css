@@ -11,7 +11,7 @@ body {
     --maincolor: white;
     --textfont: 'Poppins', sans-serif;
     --headerfont: 'Yeseva One', serif;
-    --paragrahcolor: #4e4c4c;
+    --paragrahcolor: #8b8989;
     --mainheight: 80vh;
     --secondaryheight: 45vh;
     --sectionpadding: .7rem;
@@ -27,11 +27,12 @@ body {
 /* some repeated classes*/
 .buttonshape {
     background-color: transparent;
-    border: 1px solid var(--fontcolor);
-    padding: 5px 20px;
+    border: 1px solid white;
+    padding:  20px;
     transition: all 0.5s;
-    font-size: 12px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: bolder;
+    color: white;
 }
 
 .buttonshape:hover {
@@ -40,6 +41,7 @@ body {
 }
 
 .headfont {
+    
     line-height: 1em;
     font-family: var(--headerfont);
     color: var(--fontcolor);
@@ -62,8 +64,11 @@ body {
 
 
  /* nav bar section*/ 
+header{
+    margin: 0 -.7rem;
+}
 
-/* sharkawy parts */
+ 
 #header-text {
     position: absolute;
     top: 50%;
@@ -72,43 +77,57 @@ body {
 
     margin-left: 5%;
 }
-
-#header-text::selection {
-    color: var(--maincolor);
-    background: var(--fontcolor);
-}
-header .bg-body-tertiary{
+header .navbar-expand-lg{
     background-color: transparent !important;
 }
+header .nav-link{
+    color: var(--fontcolor);
+}
+header .navbar-toggler {
+    border: none;
+    background-color: transparent;
 
-#header-text h2 {
+}
+
+/* #header-text h2 {
     font-size: 6vw;
     width: 60%;
     font-family: var(--headerfont);
     line-height: .9;
-}
+}*/
 
-#header-text p {
+/* #header-text p {
     width: 60%;
     font-size: 1.5vw;
+} */
 
-}
-
-#header-text button {
+/* #header-text button {
     width: 120px;
     padding: 10px;
-}
+} */
 
+.fa-magnifying-glass{
+    font-size: 10px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+.fa-magnifying-glass:hover{
+    transform: scale(1.5);
+}
 #cart-icon {
     position: relative;
+    cursor: pointer;
+    transition: all .2s;
+}
+#cart-icon:hover{
+    opacity: .5;
 }
 
 #cart-items-count {
     position: absolute;
-    top: -15px;
-    right: -5px;
-
-
+    top: -10px;
+    right: -7px;
+    font-size: 12px;
 }
 
 #header-logo {
@@ -128,6 +147,11 @@ header .bg-body-tertiary{
 @media (max-width:768px) {
     #header-logo {
         margin: auto;
+        padding-bottom: 3%;
+    }
+    header #header-right-section{
+        display: none !important;
+
     }
 }
 
@@ -145,11 +169,6 @@ header .bg-body-tertiary{
     }
 }
 
-#logo-image{
-    left: 50%;
-    transform: translateX(-50%);
-}
-
 @media (max-width:768px) {
     #header-text {
         /* top: 80%; */
@@ -158,10 +177,7 @@ header .bg-body-tertiary{
     }
 }
 
-
-/* end of sharkawy part */
 /* end of nav bar */
-
 /* start of ali parts*/
 .cartButton{
     margin: 10px;
@@ -201,10 +217,7 @@ header .bg-body-tertiary{
 /* start of content part */
 
 
-#content {
-    padding: 5% 5%;
-    margin-bottom: 5%;
-}
+
 #content>div>div:first-of-type{
     padding-bottom:20px;
     padding-top: 2%;
@@ -243,7 +256,7 @@ header .bg-body-tertiary{
     /* flex-grow: 1; */
     padding: 10px;
     margin-right: 3%;
-    width: 60%;
+    width: 100%;
 }
 #content .formcontent .leftcontent input,
 #content .formcontent .leftcontent textarea{
@@ -257,13 +270,13 @@ header .bg-body-tertiary{
 }
 
 #content .formcontent .leftcontent input::placeholder{
-    color:#dfdada;
+    color:var(--paragrahcolor);
     font-size: var(--palaceholdersize);
     font-family: var(--textfont);
     transition: all 0.5s ease;  
 }
 #content .formcontent .leftcontent textarea::placeholder{
-    color:#dfdada;
+    color:var(--paragrahcolor);
     font-size: var(--palaceholdersize);
     font-family: var(--textfont);
     transition: all 0.5s ease;
@@ -284,7 +297,6 @@ header .bg-body-tertiary{
 #content .formcontent .leftcontent button[type="submit"]{
     margin-top: 3%;
     width: 100%;
-    font-size: 1.25rem;
 }
 
 
@@ -338,74 +350,14 @@ header .bg-body-tertiary{
     padding: 0 !important;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-@media all and (max-width:768px){
- 
-    #content>div>div:first-of-type a{
-        display: none !important;
-    }
-    #content>div>div:first-of-type #shopping-card{
-        display: block !important;
-        color: red;
-    }
-    #content>div>div:first-of-type #shopping-card p:first-of-type,
-    #content>div>div:first-of-type #shopping-card p:last-of-type{
-        display: none;
-    }
-
-    /*form*/
-    #content .formcontent{
-        flex-direction: column;
-    }
-    #content .formcontent .leftcontent{
-        width: 100%;
-        order: 2;
-    }
-    #content .formcontent .rightcontent{
-        order: 1;
-    }
-    #content .formcontent .rightcontent  .accordion-header {
-        display: block;
-
-    }
-    #content .formcontent .rightcontent  .accordion-header button{
-        color: var(--paragrahcolor);
-        padding: 10px 10px !important;
-    }
-
-}
-
-@keyframes  slidefromtopanimation {
-    form{
-        margin-top: -80px;
-    }
-    to{
-        margin-top: 0px;
-    }
-}
-
-
-/* end of checkout abdellatief part */
-
-
-/*footer*/
-
+label{ color: white;}
 
 footer {
     background-color: #f1f1f1;
-    margin: -.7rem;
+}
 
+footer {
+    background-color: #f1f1f1;
 }
 
 footer ul {
@@ -426,24 +378,6 @@ footer a:hover {
     text-decoration: none;
     color: black;
 }
-
-.logo,
-.about,
-.links,
-.contacts {
-    text-align: left;
-}
-
-@media all and (max-width:1000px) {
-
-    .logo,
-    .about,
-    .links,
-    .contacts {
-        text-align: center;
-    }
-}
-
 footer .cpyright {
     border-top: 2px solid #eee;
     display: flex;
@@ -468,75 +402,33 @@ footer .contacts li {
     color: var(--lightGray);
 }
 
-/* end of aya parts*/
-/* start of ali parts*/
 
-.cartButton{
-    margin: 10px;
-    padding: 10px;
-}
-.cartButton:hover{
-    background-color: var(--fontcolor);
-    color: var(--maincolor);
+.valid-feedback,
+.invalid-feedback {
+    text-shadow: 2px 2px 4px rgba(252, 249, 249, 0.301); /* Adjust the shadow properties as needed */
 }
 
-.QuantityValue{
-    width: 50px; 
-    border: 1px solid var(--paragrahcolor);
-    background-color: rgb(238, 231, 231);
-    appearance:textfield;
-    -webkit-appearance: textfield;
-    
+/* Optional: You can also add some extra styles to enhance the 3D effect */
+.valid-feedback {
+    color: #28a745; /* Green color for valid feedback */
 }
 
-
-.QuantityValue::-webkit-inner-spin-button,
-.QuantityValue::-webkit-outer-spin-button,
-.QuantityValue {
-    -webkit-appearance: none;
-    margin: 0;
+.invalid-feedback {
+    color: #dc3545; /* Red color for invalid feedback */
 }
+#userImgArea{
 
-.CartItemDetails{margin-left: 15%;
-text-align: center;}
-
-
-
-
-.Cart-Content{height: 100vh;
-    border-radius: 0%;
-    
-   }
-   .Cart-dialog{
-    margin: 0% 0% 0% 0%;
-    float: right;
+    border-radius: 50%;
+    overflow: hidden;
+    display: inline-block;
+    width: 15%;
+}
+#userImgArea img{
     width: 100%;
-   }
-
-
-   .Item{
-    margin-top: 10px;
-   }
-   
-
-   @media (max-width: 430px) {
-    .CartItemDetails {
-        margin-left: 3%;
-    
-    }}
-   @media (max-width: 375px) {
-   
-   
-    .CartItemDetails {
-        margin-left: 0%;
-    
-    }
-        .QuantityValue{
-            width: 30px; 
-          
-            
-        }
-        
-
+    object-fit: cover;
 }
-/* end of ali parts*/
+
+#logo-image{
+    left: 50%;
+    transform: translateX(-50%);
+}

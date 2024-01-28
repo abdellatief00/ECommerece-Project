@@ -19,16 +19,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style/cart.css">
-    <script src="javascript/test.js" defer></script>
     <script src="javascript/cart.js" type="module"></script>
-    <script src="javascript/navbar.js" type="module"></script>
+    <script src="javascript/UserModule.js" type="module"></script>
+    <script src="javascript/test.js"  type="module"></script>
+    <script src="javascript/Login&logut.js" defer></script>
+
+    <!-- <script src="javascript/navbar.js" type="module"></script> -->
 
 </head>
 <body>
 
     <div class="container-fluid">
        
-        <header class="d-flex justify-content-between position-relative p-3">
+        <header class="d-flex justify-content-between position-relative p-3" style=" background-color: rgba(245, 244, 244, 0.774); ">
 
             <a id="logo-image" href="../homepage.html" class="position-absolute d-none d-lg-block">
                 <img  src="../images/logo-header-regular.png" alt="Eyewear-logo">
@@ -73,35 +76,42 @@
                 </div>
             </nav>
     
-        <div id = "header-right-section" class="d-flex justify-content-between mt-3 flex-grow-0">
-            <div>
-                <form id = "header-search-form" role="search" class="d-flex">
-                    <input class="form-control me-2 d-none" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-            
+            <div id = "header-right-section" class="d-flex justify-content-between mt-3 flex-grow-0">
+                <div>
+                    <form id = "header-search-form" role="search" class="d-flex">
+                        <input class="form-control me-2 d-none" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                </div>
+                
+               
     
-            <div id="cart-icon" class="me-3 ms-3 mt-4 mt-lg-2 align-self-right">
-                <span>$0.00</span>
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span id="cart-items-count">0</span>
-            </div>
     
-            <button id="loginBtn" class="btn btn-outline-secondary border-0 align-self-start">
-                <i class="fa-solid fa-user"></i>
-                <!-- <img class="bg-white" src="images/miniProfile.png" style="width: 30px; height: 30px; border-radius: 50%;" alt=""> -->
-                <span>Login</span>
-            </button>
+                
     
-            <div class="navbar">
-                <button class="navbar-toggler align-self-start d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                <div id="cart-icon" class="me-3 ms-3 mt-4 mt-lg-2 align-self-right btn CartMenu"  data-bs-toggle="modal" data-bs-target="#ShoppingCart" data-bs-whatever="@mdo" >
+                    <span>$0.00</span>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-items-count">0</span>
+                </div>
+        
+                <button id="loginBtn" class="btn btn-outline-secondary border-0 align-self-start" data-bs-toggle="modal" data-bs-target="#LoginScreen" data-bs-whatever="@mdo">
+                    <i class="fa-solid fa-user"></i>
+                    <!-- <img class="bg-white" src="images/miniProfile.png" style="width: 30px; height: 30px; border-radius: 50%;" alt=""> -->
+                    <span>Login</span>
                 </button>
+    
+               
+    
+    
+                <div class="navbar">
+                    <button class="navbar-toggler align-self-start d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                      </button>
+                </div>
             </div>
-        </div>
-    </header>
-    <hr>
+        </header>
+    
     <!-- end of nav bar -->
         
 
@@ -175,7 +185,7 @@
                 <div class="modal-footer mt-auto" style="margin: 10px;">
                     <!-- <button type="button" class="btn w-100 border-dark fw-bold fs-5 cartButton"  >VIEW CART</button> --> 
                     <a href="Cart.html" class="btn w-100 border-dark fw-bold fs-5 cartButton">VIEW CART</a>
-                    <button type="button" class="btn w-100 border-dark fw-bold fs-5 cartButton">CHECKOUT</button>
+                    <a href="checkout.html" class="btn w-100 border-dark fw-bold fs-5 cartButton">CHECKOUT</a>
                 </div>
             </div>
         </div>

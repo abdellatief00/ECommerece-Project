@@ -1,14 +1,14 @@
 import { Cart ,user} from './modula.js';
 
-let cartarr = [];
-cartarr.push(new Cart(1,"prod1",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
-cartarr.push(new Cart(2,"prod2",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
-cartarr.push(new Cart(3,"prod3",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
-cartarr.push(new Cart(4,"prod44",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
-cartarr.push(new Cart(5,"prod80",3 , 200.00 ,"images/women/product-1-a.jpg").addJson());
 
 
-localStorage.setItem("cart",JSON.stringify(cartarr));
+if (!localStorage.getItem("cart")) {
+    let cartarr = [];
+
+    localStorage.setItem('cart', JSON.stringify(cartarr));
+   }
+
+//localStorage.setItem("cart",JSON.stringify(cartarr));
 
 // let one_user = new user("abdo","hamed","abdellatiefhamed00@gmail.com","1578aaa",50,"images/women/product-1-a.jpg",0).addjson();
 // window.localStorage.setItem("current_user",JSON.stringify(one_user));
@@ -136,32 +136,16 @@ document.getElementById("tableparts").addEventListener("click",function(e){
         setlocal(arr);
         showToast('Action Completed', 3000 , "#ea6060");
     }
-
-
-    /* adding more */
     else if(e.target.classList.contains("border-end")){
         let increaseamount = e.target;
         let prodid = increaseamount.parentElement.parentElement.parentElement.getAttribute("data-productId");
         let arr = getlocal();
         let ind = searchbyid(arr,prodid);
-
-        let prod =JSON.parse(window.localStorage.getItem('products'));
-        let prodind = searchbyid2(prod,prodid);
-        console.log(prodind);
-        let quant = prod[prodind].stockQuantity;
-        if(arr[ind].quantity>=quant){
-            showToast("can't add more the stock is empty" , 3000 , "orange");
-        }
-        else{
         arr[ind].quantity++;
         createProductTable(arr);
         setlocal(arr);
         showToast('Action Completed', 3000 , "#6cb36d");
-        }
     }
-
-
-
     else if(e.target.classList.contains("border-start")){
         let increaseamount = e.target;
         let prodid = increaseamount.parentElement.parentElement.parentElement.getAttribute("data-productId");
@@ -188,6 +172,8 @@ document.getElementById("tableparts").addEventListener("click",function(e){
     }
 });
 
+
+
 /* write a search function */
 function searchbyid(arr,_id){
     let ind = -1;
@@ -199,25 +185,11 @@ function searchbyid(arr,_id){
     }
     return ind;
 }
-function searchbyid2(arr,_id){
-    let ind = -1;
-    for(let i= 0 ; i <arr.length ; i++ ){
-        if(arr[i].id==_id){
-            ind = i;
-            break;
-        }
-    }
-    return ind;
-}
-
-
-
 /*get and set element from local stoage */
 function getlocal(key="cart"){
     let arr  = JSON.parse(window.localStorage.getItem(key)) || [];
     return arr;
 }
-
 function setlocal(arr, key="cart"){
     localStorage.setItem(key,JSON.stringify(arr));
     // window.dispatchEvent(new Event('storage'));
@@ -226,10 +198,10 @@ function setlocal(arr, key="cart"){
 
 /* update cart number */
 
-function updatecartnumber(arr){
-    let amount = arr.reduce((sum, product) => sum + product.quantity, 0);
-    document.getElementById("cart-items-count").innerText = amount;
-}
+// function updatecartnumber(arr){
+//     let amount = arr.reduce((sum, product) => sum + product.quantity, 0);
+//     document.getElementById("cart-items-count").innerText = amount;
+// }
 
 /* local storage chnage */
 /* it only fires when a change happens on the local storaege from different page */
