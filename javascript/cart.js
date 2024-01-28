@@ -1,7 +1,7 @@
 import { Cart ,user} from './modula.js';
 
 let cartarr = [];
-cartarr.push(new Cart(1,"prod1",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
+cartarr.push(new Cart(6,"prod1",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
 cartarr.push(new Cart(2,"prod2",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
 cartarr.push(new Cart(3,"prod3",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
 cartarr.push(new Cart(4,"prod44",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
@@ -82,7 +82,7 @@ function createProductTable(arr){
 
     document.getElementById('tableparts').innerHTML = table;
     updatecartnumber(arr);
-    
+    updatecartmoney(arr);
     }
 
 function createrow(product){
@@ -229,6 +229,11 @@ function setlocal(arr, key="cart"){
 function updatecartnumber(arr){
     let amount = arr.reduce((sum, product) => sum + product.quantity, 0);
     document.getElementById("cart-items-count").innerText = amount;
+}
+
+function updatecartmoney(arr){
+    let money = claculatetotal(arr);
+    document.querySelector('#cart-icon span').innerText = `$ ${money}`;
 }
 
 /* local storage chnage */

@@ -24,7 +24,7 @@ window.addEventListener('load',function(){
         createProductTable(arr);
         this.document.querySelector('#content .formcontent .rightcontent #accordionExample h2 button span').innerHTML = ` $${claculatetotal(arr)}`;
         document.querySelector("#content button[type =submit] .ordernumber").innerHTML = `$${claculatetotal(arr)}`;
-
+        document.querySelector('#cart-icon span').innerText = `$ ${claculatetotal(arr)}`;
 });
 
 
@@ -343,23 +343,7 @@ function isValidInput(input) {
     let currnet_user = JSON.parse(window.localStorage.getItem("current_user")) || false;
     if(document.querySelectorAll('#content form input[required].is-valid').length != document.querySelectorAll('#content form input[required]').length){
       e.preventDefault();
-      // let prod = JSON.parse(window.localStorage.getItem("products")) || [];
-      // let car = JSON.parse(window.localStorage.getItem("cart")) || [];
-      // let sellerprod = [];
-      // for(let i = 0; i < car.length ; i++){
-      //   let prodid = car[i].productId;
-      //   let sellerid = prod.find((ele)=>ele.id==prodid).sellerId;
-      //   sellerprod.push(sellerid);
-      // }
-      // sellerprod = uniqueArray(sellerprod);
-      // let obj = {};
-      // for(let i= 0 ; i < sellerprod.length  ; i++){
-      //   obj[sellerprod[i]] = "pending"
-      // }
-
-
-
-
+      showToast("enter a valid info" , 2500, "red");
     }
     else if(currnet_user==false){
       e.preventDefault();
@@ -467,4 +451,20 @@ const uniqueArray = (array) => {
   return Array.from(
       array.reduce((set, e) => set.add(e), new Set())
   )
+}
+
+
+
+function showToast(message, duration , color) {
+  var el =document.createElement('div');
+  el.className = "toast";
+  // var toast = document.querySelector('.toast');
+  el.style.animationName = "animationdropfromtop";
+  el.style.display = 'block';
+  el.innerText = message;
+  el.style.backgroundColor = color;
+  document.body.appendChild(el);
+  setTimeout(function () {
+      document.querySelector('.toast').remove();
+  }, duration);
 }
