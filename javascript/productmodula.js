@@ -331,19 +331,195 @@ product1.push(
   )
   .addJson()
 );
-
-setlocal(product1);
-
-// localStorage.setItem('products', JSON.stringify(product1));
-let storedProducts = JSON.parse(localStorage.getItem('products')) || [];
-
-
-
-
-function setlocal(arr , key = "products"){
-  window.localStorage.setItem(key,JSON.stringify(arr));
-}
-
+product.push(
+  new Product(
+    'Product 16',
+    'Description for Product 15',
+    ['images/men/product-15-a.jpg', 'images/men/product-15-b.jpg'],
+    100,
+    [{3:5}],
+    [{1: 4 }],
+    49.99,
+    '18',
+    '10% off',
+    'Round',
+    'Black',
+    'Plastic',
+    'UV Protection',
+    'High Index',
+    'Men'
+    
+  )
+  .addJson()
+);
+product.push(
+  new Product(
+    'Product 17',
+    'Description for Product 15',
+    ['images/men/product-15-a.jpg', 'images/men/product-15-b.jpg'],
+    100,
+    [{3:5}],
+    [{1: 4 }],
+    49.99,
+    '18',
+    '10% off',
+    'Round',
+    'Black',
+    'Plastic',
+    'UV Protection',
+    'High Index',
+    'Men'
+    
+  )
+  .addJson()
+);
+product.push(
+  new Product(
+    'Product 18',
+    'Description for Product 15',
+    ['images/men/product-15-a.jpg', 'images/men/product-15-b.jpg'],
+    100,
+    [{3:5}],
+    [{1: 4 }],
+    49.99,
+    '18',
+    '10% off',
+    'Round',
+    'Black',
+    'Plastic',
+    'UV Protection',
+    'High Index',
+    'Men'
+    
+  )
+  .addJson()
+);
+product.push(
+  new Product(
+    'Product 19',
+    'Description for Product 15',
+    ['images/men/product-15-a.jpg', 'images/men/product-15-b.jpg'],
+    100,
+    [{3:5}],
+    [{1: 4 }],
+    49.99,
+    '18',
+    '10% off',
+    'Round',
+    'Black',
+    'Plastic',
+    'UV Protection',
+    'High Index',
+    'Men'
+    
+  )
+  .addJson()
+);
+product.push(
+  new Product(
+    'Product 20',
+    'Description for Product 15',
+    ['images/men/product-15-a.jpg', 'images/men/product-15-b.jpg'],
+    100,
+    [{3:5}],
+    [{1: 4 }],
+    49.99,
+    '18',
+    '10% off',
+    'Round',
+    'Black',
+    'Plastic',
+    'UV Protection',
+    'High Index',
+    'Men'
+    
+  )
+  .addJson()
+);
+product.push(
+  new Product(
+    'Product 21',
+    'Description for Product 15',
+    ['images/men/product-15-a.jpg', 'images/men/product-15-b.jpg'],
+    100,
+    [{3:5}],
+    [{1: 4 }],
+    49.99,
+    '18',
+    '10% off',
+    'Round',
+    'Black',
+    'Plastic',
+    'UV Protection',
+    'High Index',
+    'Men'
+    
+  )
+  .addJson()
+);
+product.push(
+  new Product(
+    'Product 22',
+    'Description for Product 15',
+    ['images/men/product-15-a.jpg', 'images/men/product-15-b.jpg'],
+    100,
+    [{3:5}],
+    [{1: 4 }],
+    49.99,
+    '18',
+    '10% off',
+    'Round',
+    'Black',
+    'Plastic',
+    'UV Protection',
+    'High Index',
+    'Men'
+    
+  )
+  .addJson()
+);
+product.push(
+  new Product(
+    'Product 23',
+    'Description for Product 15',
+    ['images/men/product-15-a.jpg', 'images/men/product-15-b.jpg'],
+    100,
+    [{3:5}],
+    [{1: 4 }],
+    49.99,
+    '18',
+    '10% off',
+    'Round',
+    'Black',
+    'Plastic',
+    'UV Protection',
+    'High Index',
+    'Men'
+    
+  )
+  .addJson()
+);
+product.push(
+  new Product(
+    'Product 24',
+    'Description for Product 15',
+    ['images/men/product-15-a.jpg', 'images/men/product-15-b.jpg'],
+    100,
+    [{3:5}],
+    [{1: 4 }],
+    49.99,
+    '18',
+    '10% off',
+    'Round',
+    'Black',
+    'Plastic',
+    'UV Protection',
+    'High Index',
+    'Men'
+    
+  )
+  .addJson()
+);
 // Modify the existing product1 and update it in local storage
 //product1[0].images.push('images/product-09-a.jpg');
 localStorage.setItem('products', JSON.stringify(product));

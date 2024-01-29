@@ -9,11 +9,12 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <!-- <script src="javascript/test2.js" type="module"></script> -->
+    <script src="javascript/user.js" type="module"></script>
+    <script src="javascript/productmodula.js" type="module"></script>
     <link rel="stylesheet" href="style/bootstrap.min.css">
     <link rel="stylesheet" href="style/all.min.css">
     <link rel="stylesheet" href="style/dashboardStyle.css">
-    <script src="javascript/searchingaya.js" type="module"></script>
+    <!-- <script src="javascript/searchingaya.js" type="module"></script> -->
     <!-- <script src="javascript/user.js" type="module"></script> -->
 </head>
 
@@ -23,14 +24,15 @@
             <div class="row">
                 <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 sidebar" id="sidebar">
                     <div class="logo  p-xl-3 pb-xl-5">
+                
                         <img src="images/logo.png">
                     </div>
                     <div class=" navbar-collapse sidebar-links" id="navbarSupportedContent">
                         <ul class="navbar-nav ">
-                            <li class="nav-item ">
+                            <!-- <li class="nav-item ">
                                 <a class="nav-link px-xl-4 " href="Dashboard-Overview.html"><i class="fa-solid fa-table-cells-large pe-3"></i>
                                     <span class="sidebar-text">Overview</span></a>
-                            </li>
+                            </li> -->
                             <li class="nav-item active">
                                 <a class="nav-link px-xl-4" href="#"><i class="fa-solid fa-user-group pe-3"></i>
                                     <span class="sidebar-text">Users</span> </a>
@@ -42,12 +44,12 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link  px-xl-4" href="#"><i class="fa-solid fa-clipboard-list pe-3"></i>
+                                <a class="nav-link  px-xl-4" href="Dashboard-orders.html"><i class="fa-solid fa-clipboard-list pe-3"></i>
                                     <span class="sidebar-text">Orders</span></a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link  px-xl-4" href="#"><i class="fa-solid fa-ellipsis pe-3"></i>
-                                    <span class="sidebar-text">Other</span></a>
+                                    <span class="sidebar-text">charts</span></a>
                             </li>
                         </ul> <!-- end of navbar links -->
 
@@ -84,8 +86,8 @@
                                     <a href="#" class="py-xl-2 px-xl-3 py-lg-2 px-lg-3 py-md-2 px-md-3 py-1 px-2"><i class="fa-solid fa-moon"></i></a>
                                 </div>
                                 <div class="g-2">
-                                    <img src="images/admin-img.jpg" alt="">
-                                    <h6>Admin Admin</h6>
+                                    <img src="images/admin-img.jpg" alt="" id="userImg">
+                                    <h6 id="userName">Admin Admin</h6>
                                 </div>
                             </div>
                         </div> <!-- end of row of user and search -->
@@ -351,10 +353,6 @@
             </div> <!-- end of row -->
         </div> <!-- end of container-fluid -->
     </section>
-
-
-
-
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
