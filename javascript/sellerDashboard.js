@@ -233,6 +233,26 @@ window.addEventListener("load", function(){
     products = getProductsFromLocal();
     //orders = getOrdersFromLocal();
     //currentUser.role = "Seller";
+    currentUser = {
+        "id": 1,
+        "fname": "Abdellatif",
+        "lname": "Hamed",
+        "email": "tefa@Gmail.com",
+        "password": "123",
+        "age": 24,
+        "images": [
+            "images/tefa.png"
+        ],
+        "role": "Admin",
+        "orders": [
+            1,
+            2,
+            3
+        ],
+        "favorites": [
+            ""
+        ]
+    }
     console.log(products);
     createOptions(selectedProduct);
     if(currentUser.role === "Admin")
