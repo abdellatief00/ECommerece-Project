@@ -360,11 +360,12 @@ export class Product {
     #lname;
     #email;
     #password;
-    #images = [];
+    #image;
     #age;
     #role;
     #orders = [];
     #favorites = [];
+    #cart=[];
 
     set fname(_fname) {
         this.#fname = _fname;
@@ -404,11 +405,11 @@ export class Product {
         return this.#id;
     }
 
-    set images(_img) {
-        this.#images.push(_img);
+    set image(_img) {
+        this.#image=_img;
     }
-    get images() {
-        return this.#images;
+    get image() {
+        return this.#image;
     }
 
     set role(_role) {
@@ -417,16 +418,22 @@ export class Product {
     get role() {
         return this.#role;
     }
-
-    constructor(_fname, _lname, _email, _pass, _age, _img, _role) {
+    set cart(_cart) {
+        this.#cart.push(_cart);
+    }
+    get cart() {
+        return this.#cart;
+    }
+    constructor(_fname, _lname, _email, _pass, _age, _img, _role,_cart=[]) {
         this.fname = _fname;
         this.lname = _lname;
         this.email = _email;
         this.password = _pass;
         this.age = _age;
-        this.images = _img;
+        this.image = _img;
         this.#id = user.autoincreaseid();
         this.#role = _role;
+        this.#cart=_cart
     }
 
     addjson() {
@@ -437,10 +444,11 @@ export class Product {
             email: this.email,
             password: this.password,
             age: this.age,
-            images: this.images,
+            image: this.image,
             role: this.role,
             orders: this.#orders,
-            favorites: this.#favorites
+            favorites: this.#favorites,
+            cart:this.#cart
         };
     }
 
