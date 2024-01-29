@@ -87,9 +87,9 @@ function createProductTable(arr){
 
 function createrow(product){
     let row =`<tr class="textfont" data-productId = ${product.productId}>
-    <th scope="row"> <a href="#">
+    <th scope="row"> 
         <img src="${product.image}">
-    </a></th>
+    </th>
     <td data-title="Product">${product.productTitle}</td>
     <td data-title="price">$${product.price.toFixed(2)}</td>
     <td>
@@ -152,12 +152,19 @@ document.getElementById("tableparts").addEventListener("click",function(e){
         if(arr[ind].quantity>=quant){
             showToast("can't add more the stock is empty" , 3000 , "orange");
         }
+       
         else{
         arr[ind].quantity++;
         createProductTable(arr);
         setlocal(arr);
         showToast('Action Completed', 3000 , "#6cb36d");
         }
+    }
+    else if(e.target.closest('img')){
+        let prodid = e.target.parentElement.parentElement.getAttribute("data-productId");
+        console.log(typeof(parseInt(prodid)));
+        window.localStorage.setItem("currentProductId",parseInt(prodid));
+        window.location.assign("productDetails.html");
     }
 
 

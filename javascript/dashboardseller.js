@@ -4,7 +4,7 @@ import {Orders, Product,user} from './modula.js';
 // window.localStorage.setItem("current_user",JSON.stringify(one_user));
 
 let row_id;
-let current_user_id = getlocal('current_user').id;
+let current_user_id = getlocal('current_user').id || 0;
 let all_products  = getlocal();
 let current_products =  all_products.filter((ele)=>{return ele.sellerId==current_user_id});
 let searched = current_products.slice();

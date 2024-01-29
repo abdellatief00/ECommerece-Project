@@ -359,103 +359,103 @@ function createorders(){
 
 
 
-let user_orders_per_seller = createsellerorder();
-let searcheduser = user_orders_per_seller.slice();
+// let user_orders_per_seller = createsellerorder();
+// let searcheduser = user_orders_per_seller.slice();
 
 
-console.log(searcheduser)
+// console.log(searcheduser)
 
-function createsellerorder(){
-let seller_orders = [];
-for(let i = 0 ; i < allorders.length ; i++){
-    let here =Object.keys(allorders[i].state);
+// function createsellerorder(){
+// let seller_orders = [];
+// for(let i = 0 ; i < allorders.length ; i++){
+//     let here =Object.keys(allorders[i].state);
 
-    if(here.some((ele)=>ele==current_user_id)){
-        let carts = [];
-        allorders[i].cart.map(function(ele){
-            if(current_products.some((ple)=>ple.id==ele.productId)){
-                carts.push(ele);
-            }
-        })
-        let obj = {
-            id : allorders[i].orderNumber,
-            location : allorders[i].city + "-"+ allorders[i].country,
-            date : allorders[i].date,
-            name : allorders[i].name,
-            payment: allorders[i].paymentMethod,
-            email : allorders[i].email,
-            state : allorders[i].state[current_user_id] || "pending",
-            phone : allorders[i].phone,
-            cart : carts
-        }
-        seller_orders.push(obj);
-    }
-    }
-    return seller_orders;
-}
-
-
+//     if(here.some((ele)=>ele==current_user_id)){
+//         let carts = [];
+//         allorders[i].cart.map(function(ele){
+//             if(current_products.some((ple)=>ple.id==ele.productId)){
+//                 carts.push(ele);
+//             }
+//         })
+//         let obj = {
+//             id : allorders[i].orderNumber,
+//             location : allorders[i].city + "-"+ allorders[i].country,
+//             date : allorders[i].date,
+//             name : allorders[i].name,
+//             payment: allorders[i].paymentMethod,
+//             email : allorders[i].email,
+//             state : allorders[i].state[current_user_id] || "pending",
+//             phone : allorders[i].phone,
+//             cart : carts
+//         }
+//         seller_orders.push(obj);
+//     }
+//     }
+//     return seller_orders;
+// }
 
 
 
-function createbodyuser(arr){
-    let table = `${create_multi_row_order_user(arr)}`;
-    document.querySelector('#tbodyorder').innerHTML = table;
-}
-
-function createorderrowuser(arr){
-    let pend;
-    let clas;
-    if(arr.state=="pending"){pend = "pending"
-                            clas = "btn-primary"}
-    else{pend=  "delivery"
-        clas = "btn-info"}
-    let row = `<tr data-order=${arr.id} >
-    <td>${arr.id}</td>
-    <td>${arr.name}</td>
-    <th>${arr.phone}</th>
-    <td>$${calculatetotalamount(arr.cart).toFixed(2)}</td>
-    <td>${arr.location}</td>
-    <td>${arr.payment}</td>
-    <td><button type="button" class="btn ${clas}" value=${pend}>${pend}</button>
-    </td>
-    <td>
-        <button class="btn m-1" data-bs-toggle="modal" data-bs-target="#showordersall" data-row-index="0">
-            <svg class="svg-inline--fa fa-eye text-secondary cursorPointer" aria-hidden="true" focusable="false" data-prefix="far" data-icon="eye" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg="">
-            <path fill="currentColor" d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z">
-            </path></svg></button>
-    </td>
-</tr>`
-return row;
-}
-
-function create_multi_row_order_user(arr){
-    let max;
-    let min;
-    if(document.querySelector(".pagination .active")===null){
-        max = arr.length;
-        min = 0;
-    }
-    else{
-    max= parseInt(document.querySelector(".pagination .active").innerText)*5 || 0 ;
-    max = Math.min(max,arr.length);
-    min = parseInt(document.querySelector(".pagination .active").innerText)*5-5 ;
-    }
-    let rows = ``;
-    for(let i = min ; i < max ; i++){
-        rows += createorderrowuser(arr[i]);
-    }
-    return rows;
-}
 
 
-/*calculate the total amount in the order */
-function calculatetotalamount(arr){
-    let amount = 0;
-    for(let i = 0 ; i < arr.length ; i++){
-        amount += parseInt(arr[i].price)*parseInt(arr[i].quantity);
-    }
-    return amount;
-}
+// function createbodyuser(arr){
+//     let table = `${create_multi_row_order_user(arr)}`;
+//     document.querySelector('#tbodyorder').innerHTML = table;
+// }
 
-createbodyuser(searcheduser);
+// function createorderrowuser(arr){
+//     let pend;
+//     let clas;
+//     if(arr.state=="pending"){pend = "pending"
+//                             clas = "btn-primary"}
+//     else{pend=  "delivery"
+//         clas = "btn-info"}
+//     let row = `<tr data-order=${arr.id} >
+//     <td>${arr.id}</td>
+//     <td>${arr.name}</td>
+//     <th>${arr.phone}</th>
+//     <td>$${calculatetotalamount(arr.cart).toFixed(2)}</td>
+//     <td>${arr.location}</td>
+//     <td>${arr.payment}</td>
+//     <td><button type="button" class="btn ${clas}" value=${pend}>${pend}</button>
+//     </td>
+//     <td>
+//         <button class="btn m-1" data-bs-toggle="modal" data-bs-target="#showordersall" data-row-index="0">
+//             <svg class="svg-inline--fa fa-eye text-secondary cursorPointer" aria-hidden="true" focusable="false" data-prefix="far" data-icon="eye" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg="">
+//             <path fill="currentColor" d="M288 80c-65.2 0-118.8 29.6-159.9 67.7C89.6 183.5 63 226 49.4 256c13.6 30 40.2 72.5 78.6 108.3C169.2 402.4 222.8 432 288 432s118.8-29.6 159.9-67.7C486.4 328.5 513 286 526.6 256c-13.6-30-40.2-72.5-78.6-108.3C406.8 109.6 353.2 80 288 80zM95.4 112.6C142.5 68.8 207.2 32 288 32s145.5 36.8 192.6 80.6c46.8 43.5 78.1 95.4 93 131.1c3.3 7.9 3.3 16.7 0 24.6c-14.9 35.7-46.2 87.7-93 131.1C433.5 443.2 368.8 480 288 480s-145.5-36.8-192.6-80.6C48.6 356 17.3 304 2.5 268.3c-3.3-7.9-3.3-16.7 0-24.6C17.3 208 48.6 156 95.4 112.6zM288 336c44.2 0 80-35.8 80-80s-35.8-80-80-80c-.7 0-1.3 0-2 0c1.3 5.1 2 10.5 2 16c0 35.3-28.7 64-64 64c-5.5 0-10.9-.7-16-2c0 .7 0 1.3 0 2c0 44.2 35.8 80 80 80zm0-208a128 128 0 1 1 0 256 128 128 0 1 1 0-256z">
+//             </path></svg></button>
+//     </td>
+// </tr>`
+// return row;
+// }
+
+// function create_multi_row_order_user(arr){
+//     let max;
+//     let min;
+//     if(document.querySelector(".pagination .active")===null){
+//         max = arr.length;
+//         min = 0;
+//     }
+//     else{
+//     max= parseInt(document.querySelector(".pagination .active").innerText)*5 || 0 ;
+//     max = Math.min(max,arr.length);
+//     min = parseInt(document.querySelector(".pagination .active").innerText)*5-5 ;
+//     }
+//     let rows = ``;
+//     for(let i = min ; i < max ; i++){
+//         rows += createorderrowuser(arr[i]);
+//     }
+//     return rows;
+// }
+
+
+// /*calculate the total amount in the order */
+// function calculatetotalamount(arr){
+//     let amount = 0;
+//     for(let i = 0 ; i < arr.length ; i++){
+//         amount += parseInt(arr[i].price)*parseInt(arr[i].quantity);
+//     }
+//     return amount;
+// }
+
+// createbodyuser(searcheduser);

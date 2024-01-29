@@ -1,0 +1,367 @@
+
+    
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+ 
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300&family=Yeseva+One&display=swap" rel="stylesheet">
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;1,200;1,300;1,400&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Yeseva+One&display=swap" rel="stylesheet">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+     <link rel="stylesheet" href="style/SignUP.css">
+     <script src="javascript/modula.js" type="module" ></script>
+     <script src="javascript/SignUP.js" type="module" ></script>
+
+     <script src="javascript/test.js" type="module"></script>
+
+ </head>
+ <body  style="
+ background: url(images/sunglasses-photography.jpg); 
+ background-size: cover; 
+ background-repeat: no-repeat;
+ background-attachment: fixed;
+ background-size: 100% 100% ;
+
+
+ ">
+     <!-- beginign of container -->
+     <div class="container-fluid">
+ 
+          <!-- nav bar -->
+         
+        <section id="homepage-header">
+            
+            <!--Header-->
+    <header class="d-flex justify-content-between position-relative p-3" style=" background-color: rgba(240, 231, 231, 0.774); ">
+        <a id="logo-image" href="homepage.html" class="position-absolute d-none d-lg-block">
+            <img  src="/images/logo-header-regular.png" alt="Eyewear-logo">
+        </a>
+            
+            <nav class="navbar navbar-expand-lg bg-body-tertiary nav-underline  z-3 position-relative">
+                <div class="container-fluid1">
+                    <a class="navbar-brand d-lg-none" href="homepage.html">
+                        <img src="/images/logo-header-regular.png" alt="Eyewear-logo">
+                    </a>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mt-2 mb-2 mb-lg-0 fw-bold flex-grow">
+                      <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="homepage.html">Home</a>
+                      </li>
+
+                      <li class="nav-item">
+                        <a class="nav-link active" id="men-link" href="#">MEN</a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" id="women-link" href="woman.html">WOMEN</a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">ABOUT US</a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">CONTACT</a>
+                    </li>
+
+                    <li class="nav-item">
+                        
+                    </li>
+                      
+                    </ul>
+                    
+                  </div>
+
+                </div>
+            </nav>
+
+        <div id = "header-right-section" class="d-flex justify-content-between mt-3 flex-grow-0">
+            
+
+            
+
+            <div id="cart-icon" class="me-3 ms-3 mt-4 mt-lg-2 align-self-right btn CartMenu"  data-bs-toggle="modal" data-bs-target="#ShoppingCart" data-bs-whatever="@mdo" >
+                <span>$0.00</span>
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-items-count">0</span>
+            </div>
+    
+            <button id="loginBtn" class="btn btn-outline-secondary border-0 align-self-start" data-bs-toggle="modal" data-bs-target="#LoginScreen" data-bs-whatever="@mdo">
+                <i class="fa-solid fa-user"></i>
+                <!-- <img class="bg-white" src="images/miniProfile.png" style="width: 30px; height: 30px; border-radius: 50%;" alt=""> -->
+                <span>Login</span>
+            </button>
+
+            <div class="navbar">
+                <button class="navbar-toggler align-self-start d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+            </div>
+        </div>
+    </header>
+         <!-- end of nav bar -->
+        
+       <!-- login Start -->
+ <div>
+     <div class="modal fade " id="LoginScreen" tabindex="-1" aria-labelledby="Login_form" aria-hidden="true" data-bs-backdrop="static"  >
+             <div class="modal-dialog  modal-dialog-centered" >
+                 <div class="modal-content" style="background-color: rgb(238, 231, 231);">
+                     <div class="modal-header">
+                         <h1 class="modal-title fs-5" id="Login_form">Login</h1>
+                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                     </div>
+                     <div class="modal-body">
+                         <form action="">
+     
+                             
+                             <div class="mb-3">
+                                 <label for="Email">Email:</label>
+                                 <div class="input-group my-2">
+                                 <span class="fa fa-user input-group-prepend input-group-text" style="padding: 10px;"></span>
+                                 <input type="email" class="form-control" id="Email" name="Email" required>
+                                 </div>
+                             </div>
+                             <div class="mb-3">
+                                 <label for="Password" class="col-form-label">Password:</label>
+                                 <div class="input-group my-2">
+                                 <span class="fa fa-lock input-group-prepend input-group-text" style="padding: 10px;"></span>
+                                 <input type="password" class="form-control" id="Password" name="Password" required>
+                             </div>
+                      
+                     </div>
+                     <div class="modal-footer">
+                             <input type="submit" value="Login" class="btn btn-primary">
+                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+             </form>
+                 </div>
+             </div>
+         </div>
+     </div>
+     </div>
+     
+     <!-- end login -->
+ 
+        <!-- Cart start -->
+ 
+ <!-- end Cart -->
+ 
+     <!-- begining of checkout content -->
+ 
+ 
+     <div id="content" class="row" >
+        <div class="col-3" >
+        </div>
+         <div class="col-6"  style="padding-top: 30px; background-color: rgba(63, 55, 55, 0.884); " >
+             <h3 class="headfont" style="color: white;">SIGN UP</h3>
+                 
+                 <div class="formcontent d-flex  " 
+                 >
+                     <div class="leftcontent"  >
+                         <h3 class="headfont" style="color: white;">YOUR INFORMATION</h3>
+                         <form action="homepage.html" class="needs-validation"  >
+                             
+                             <div class="bilingdetails row">
+                                 
+                                 <div class="col-md-6">
+                                     <label for="inputEmail4" class="form-label fw-bold">First Name<abbr class=" text-warning">*</abbr></label>
+                                     <input type="text" class="form-control" id="inputEmail4" required>
+                                     <div class="valid-feedback">
+                                        Accepted.
+                                     </div>
+                                     <div class="invalid-feedback">
+                                         Please enter a valid first name.
+                                     </div>
+                                 </div>
+                                 <div class="col-md-6">
+                                     <label for="inputPassword4" class="form-label fw-bold">Last Name<abbr class=" text-warning">*</abbr></label>
+                                     <input type="text" class="form-control" id="inputPassword4" required>
+                                     <div class="valid-feedback">
+                                        Accepted.
+                                     </div>
+                                     <div class="invalid-feedback">
+                                         Please enter a valid last name.
+                                     </div>
+                                 </div>
+
+                                 <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label fw-bold">Email address&nbsp;<abbr class=" text-warning">*</abbr></label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Your email address"
+                                    data-original-placeholder = "Your email address" required>
+                                    <div class="valid-feedback">
+                                        Accepted.
+                                    </div>
+                                    <div class="invalid-feedback">
+                                       Wrong Email.... please enter your email address.
+                                    </div>
+                                </div>
+                                <!-- password section -->
+                                <div class="mb-3">
+                                    <label for="PassWord" class="form-label fw-bold">PassWord&nbsp;<abbr class=" text-warning">*</abbr></label>
+                                    <input type="password" class="form-control" id="PassWord" placeholder=" Enter Your PassWord"
+                                    data-original-placeholder = "Enter Your PassWord" required>
+                                    <div class="valid-feedback">
+                                        Accepted.
+                                    </div>
+                                    <div class="invalid-feedback">
+                                       Please enter a valid password with at least 8 characters and numbers and special characters(@$!%*?&#).
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="RePassWord" class="form-label fw-bold">Confirm PassWord&nbsp;<abbr class=" text-warning">*</abbr></label>
+                                        <input type="password" class="form-control" id="RePassWord" placeholder="Rewrite the value of PassWord"
+                                        data-original-placeholder = "Rewrite the value of PassWord" required>
+                                        <div class="valid-feedback">
+                                            matched the password.
+                                        </div>
+                                        <div class="invalid-feedback">
+                                           the Confirm password does not match password.
+                                        </div>
+                                    <!-- end password section -->
+                                </div>
+
+                                  
+                                   
+                                     <div class="col-md-6">
+                                         <label for="inputAge" class="form-label fw-bold">Age<abbr class=" text-warning">*</abbr></label>
+                                         <input type="number" class="form-control" id="inputAge" placeholder="Your Age"  min="16" required>
+                                         <div class="valid-feedback">
+                                            Accepted.
+                                         </div>
+                                         <div class="invalid-feedback">
+                                             Please enter a valid Age value from 16.
+                                         </div>
+                                     </div>
+                                    
+                                     
+                                     <div class="col-md-6" style="display: inline-block;">
+                                        <label for="inputImg" class="form-label fw-bold">YOur Image<abbr class=" text-warning">*</abbr></label>
+                                        <input type="file" class="form-control" id="inputImg" placeholder="Choose a personal Image"  required>
+                                        
+                                        <div class="valid-feedback">
+                                            Accepted.
+                                        </div>
+                                        <div class="invalid-feedback">
+                                            Please Please choose a personal Image with exetension (.jpg or .jpeg or .png).
+                                        </div>
+                                        <div id="userImgArea"> </div>
+                                    </div>
+                                
+                                    <br>
+
+                                    <label  class="form-label fw-bold">YOur Role<abbr class=" text-warning">*</abbr></label>
+
+                                      <div class="col-md-6 border "  style="padding: 10px; background-color: white;">
+
+                                    <div style="display: inline-block;" >
+                                    <input type="radio" name="UserRole" id="firstinputradio"  class="form-check-input ">
+                                    <label for="firstinputradio" class="form-label textfont ">normal  user</label>
+                                    </div>
+                                    &nbsp;|&nbsp;&nbsp;
+
+                                    <div style="display: inline-block;" >
+                                        <input type="radio" name="UserRole" id="secondinputradio"  class="form-check-input ">
+                                        <label for="secondinputradio" class="form-label textfont ">Seller</label>
+
+                                    </div>
+                                      </div>
+ 
+                                 <button type="submit" class="buttonshape ">Sign Up</button>
+                         </form>
+                         <!-- end of form -->
+                     </div>
+                    
+                 </div>
+                 </div>
+ 
+ 
+         </div>
+ 
+ 
+ 
+         
+     
+        
+     </div>
+ 
+      
+    
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+      <footer style=" background-color: rgba(240, 231, 231, 0.774); ">
+        <div class="container p-5">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 logo m-0">
+                    <a href="#logo"><img src="images/logo.png" alt="" class="mb-3"></a>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 about m-0">
+                    <h3 class="pb-3">About us</h3>
+                    <ul class="p-0">
+                        <li><a href="#"> Home</a></li>
+                        <li><a href="#"> Women</a></li>
+                        <li><a href="#"> Men</a></li>
+                        <li><a href="#"> About Us</a></li>
+                        <li><a href="#"> Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 links m-0 ">
+                    <h3 class="pb-3">Useful Links</h3>
+                    <ul class="p-0">
+                        <li><a href="#"> Privacy Policy</a></li>
+                        <li><a href="#"> Refund Policy</a></li>
+                        <li><a href="#"> Shipping Informations</a></li>
+                        <li><a href="#"> Terms & Conditions</a></li>
+                        <li><a href="#"> FAQ’s</a></li>
+                    </ul>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 contacts m-0">
+                    <h3 class="pb-3">Contact</h3>
+                    <ul class="p-0">
+                        <li>123 Fifth Avenue, New York, NY 10160</li>
+                        <li>contact@info.com </li>
+                        <li>929-242-6868</li>
+                    </ul>
+                </div>
+            </div> <!-- end of row -->
+            <div class="row cpyright p-4 mb-3 d-flex">
+                <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 p-4">
+                    <p>Copyright &copy; 2024 Eyewear Store | Powered by Eyewear Store</p>
+                </div>
+                <div class="offset-xl-3 col-xl-3 offset-lg-3 col-lg-3 col-md-6 col-sm-12 col-12 p-4">
+                    <a href="#facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#twitter"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+
+            </div> <!-- copyright -->
+        </div>
+    </footer>
+ 
+ 
+ 
+ 
+     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    </body>
+ </html>
