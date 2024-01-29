@@ -230,6 +230,12 @@ let selectedProduct = document.getElementById("productsOptions");
 
 window.addEventListener("load", function(){
     currentUser = getUserFromLocal();
+    if(currentUser === null || currentUser.role === "guest")
+    {
+        console.log("not allowed");
+        return;
+    }
+        
     products = getProductsFromLocal();
     //orders = getOrdersFromLocal();
     //currentUser.role = "Seller";
