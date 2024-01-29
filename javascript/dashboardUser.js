@@ -291,30 +291,16 @@ window.addEventListener('load', function () {
             let imgarr = [getfilelocation(allinp[5])];
             let role = document.getElementById("user-role").value == "user" ? 0 : 1;
             console.log(imgarr);
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> origin/donya
-=======
->>>>>>> origin/main
+
             allinp = Array.from(allinp);
-            let o = new userClass(allinp[0].value, allinp[1].value, allinp[2].value, allinp[3].value, allinp[4].value, imgarr, role);
-            //o.id = userClass.autoincreaseid();
-          console.log(o);
+   
 
             // usersfullData.push(item);
             users.push(o.addjson());
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
             let o = new userClass(allinp[0].value, allinp[1].value, allinp[2].value, allinp[3].value, allinp[4].value, imgarr, role).addjson();
             users.push(o);
->>>>>>> origin/aya
-=======
->>>>>>> origin/donya
-=======
->>>>>>> origin/main
+
             localStorage.setItem("users", JSON.stringify(users));
             users = JSON.parse(localStorage.getItem("users"));
             console.log(users);
