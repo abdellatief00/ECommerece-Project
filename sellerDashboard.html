@@ -38,17 +38,17 @@
                                     <span class="sidebar-text">Sellers</span> </a>
                             </li> -->
                             <li class="nav-item">
-                                <a class="nav-link px-xl-4 " href="Dashboard-products.html"><i class="fa-solid fa-bag-shopping pe-3"></i>
+                                <a class="nav-link px-xl-4 " href="Dashboard-seller.html"><i class="fa-solid fa-user-group pe-3"></i>
                                     <span class="sidebar-text">Products</span>
 
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link  px-xl-4" href="sellerorders.html"><i class="fa-solid fa-clipboard-list pe-3"></i>
+                                <a class="nav-link  px-xl-4" href="sellerorders.html"><i class="fa-solid fa-store pe-3"></i>
                                     <span class="sidebar-text">Orders</span></a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link  px-xl-4" href="#"><i class="fa-solid fa-clipboard-list pe-3"></i>
+                                <a class="nav-link  px-xl-4" href="#"><i class="fa-solid fa-bag-shopping pe-3"></i>
                                     <span class="sidebar-text">Cahrt</span></a>
                             </li>
                             <!-- <li class="nav-item">
@@ -110,7 +110,7 @@
                 </div>
                 <div class="col-xl col-lg-5 col-md-5 col-sm-5 col-5 mb-3 heigh">
                     <div class="inside bg-success">
-                        <h3>150</h3>
+                        <h3 id="itemsinstock">150</h3>
                         <p>Item In Stock</p>
                         <div class="icons">
                             <i class="fa-solid fa-signal"></i>
@@ -118,7 +118,7 @@
                         <a href="#" class="small-box-footer">More Info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <div class="col-xl col-lg-6 col-md-6 col-sm-5 col-5 mb-3 heigh">
+                <!-- <div class="col-xl col-lg-6 col-md-6 col-sm-5 col-5 mb-3 heigh">
                     <div class="inside bg-warning">
                         <h3>150</h3>
                         <p>User register</p>
@@ -127,10 +127,10 @@
                         </div>
                         <a href="#" class="small-box-footer">More Info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
-                </div>
-                <div class="col-xl col-lg-5 col-md-5 col-sm-5 col-5 mb-3 heigh">
+                </div> -->
+                <div class="col-xl col-lg-11 col-md-11 col-sm-10 col-10 mb-3 heigh">
                     <div class="inside bg-danger">
-                        <h3>150</h3>
+                        <h3 id='productnum'>150</h3>
                         <p>Products</p>
                         <div class="icons">
                             <i class="fa-solid fa-chart-pie"></i>
@@ -149,10 +149,10 @@
             <div class="row justify-content-end  pt-3">
                 <div class="col-xl-10 col-lg-11 col-md-11 col-10 third   move" >
                     <div class="d-flex justify-content-center">
-                    <select class="mb-2" id="productsOptions">
+                    <select class="mb-2" id="productsOptions" >
                         <option value="help">help</option>
                     </select>
-                    <p class="my-auto ms-1" >ladkl</p>
+                    <p class="my-auto ms-1" >products stats</p>
                     </div>
                     <div class="inside h-100"><canvas id="productChart" ></canvas></div></div>
             </div>

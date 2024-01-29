@@ -235,6 +235,22 @@ window.addEventListener("load", function(){
         console.log("not allowed");
         return;
     }
+
+    let allprod = JSON.parse(this.window.localStorage.getItem('products')) || [];
+    let allord = JSON.parse(this.window.localStorage.getItem('products')) || [];
+    let cou = 0;
+    for(let i = 0 ; i < allprod.length ; i++){
+        cou +=allprod[0].stock;
+    }
+    this.document.getElementById('items_in_stock').innerText = cou;
+
+    let allusers = JSON.parse(this.window.localStorage.getItem('users')) || [];
+    console.log(allusers);
+    this.document.getElementById('users-reg').innerText = allusers.length;  
+    this.document.getElementById('all-products').innerText = allprod.length;
+    this.document.getElementById('all_orders').innerText = allord.length;
+
+
         
     products = getProductsFromLocal();
     //orders = getOrdersFromLocal();
@@ -634,7 +650,8 @@ function drawChart(ctx, xAxisDate, yAxisQuantities, yAxisRevenue, label)
 function createOptions(selectDiv)
 {
     selectDiv.innerHTML = "";
-    let optionsProducts;
+    let optionsProducts ;
+    if(products.length==0){return;}
     if(currentUser.role === "Seller")
     {
         //optionsProducts = getSelllerProducts(currentUser.id);

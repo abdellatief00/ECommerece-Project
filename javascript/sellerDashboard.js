@@ -235,8 +235,20 @@ window.addEventListener("load", function(){
         console.log("not allowed");
         return;
     }
+
         
     products = getProductsFromLocal();
+    let sellerid = JSON.parse(this.window.localStorage.getItem('current_user'));
+    let sellerprod = getSelllerProducts(sellerid.id);
+    this.document.getElementById('productnum').innerText = sellerprod.length;
+    let cou = 0;
+    for(let i = 0 ; i < sellerprod.length ; i++){
+        cou +=sellerprod.stock;
+    }
+    this.document.getElementById('itemsinstock').innerText = cou;
+
+
+
     //orders = getOrdersFromLocal();
     //currentUser.role = "Seller";
     // currentUser = {
@@ -356,7 +368,7 @@ function getAndFormatOrders(roleId = "admin")
         }
         else
         {
-            if(getProductSellerId(+orders[i].cart[j].productId) === sellerId)
+            if(getProductSellerId(+orders[i].cart[j].productId) === roleId)
             {
                 ordersFormatted.push({
                     productId : orders[i].cart[j].productId,
@@ -635,6 +647,7 @@ function createOptions(selectDiv)
 {
     selectDiv.innerHTML = "";
     let optionsProducts;
+    if(products.length==0){return;}
     if(currentUser.role === "Seller")
     {
         //optionsProducts = getSelllerProducts(currentUser.id);
@@ -664,3 +677,5 @@ function getSelllerProducts(sellerId)
     }
     return sellerProducts;
 }
+
+
