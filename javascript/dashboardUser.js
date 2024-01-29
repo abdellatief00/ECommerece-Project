@@ -326,7 +326,7 @@ window.addEventListener('load', function () {
 
         return true;
     }
-
+1
     function getfilelocation(tar) {
         var input = tar;
 

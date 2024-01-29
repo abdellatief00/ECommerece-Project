@@ -1,6 +1,6 @@
-// import { Cart ,user} from './modula.js';
+import { Cart ,user} from './modula.js';
 // //import{Orders}from './modula.js';
-// let user1 = [];
+let user1 = [];
 
 // let orders =
 // [
@@ -224,9 +224,9 @@
 // ]
 // localStorage.setItem('orders', JSON.stringify(orders));
 
-// let one_user = new user("abdo","hamed","abdellatiefhamed00@gmail.com","1578aaa",50,"images/women/product-1-a.jpg",0).addjson();
-// window.localStorage.setItem("current_user",JSON.stringify(one_user));
-// // console.log(one_user);
+let one_user = new user("abdo","hamed","abdellatiefhamed00@gmail.com","1578aaa",50,"images/women/product-1-a.jpg",0).addjson();
+window.localStorage.setItem("current_user",JSON.stringify(one_user));
+// console.log(one_user);
 // user1.push(new user("abdo","hamed","abdellatiefhamed00@gmail.com","1578aaa",50,"images/women/product-1-a.jpg",0).addjson());
 // localStorage.setItem('user', JSON.stringify(user1));
 // console.log(one_user);

@@ -69,33 +69,6 @@ $(document).ready(function () {
         }
     }); //end of click event
 
-    let searchInput = document.getElementById("searchTerm");
-    let searchTypeSelect = document.getElementById("searchType");
-
-    searchInput.addEventListener("input", searching);
-
-    function searching() {
-        let searchTerm = searchInput.value.toLowerCase();
-        let searchType = searchTypeSelect.value;
-        let tr = document.querySelectorAll("tbody tr");
-
-        for (let i = 0; i < tr.length; i++) {
-            let node = tr[i];
-            let textContent = "";
-
-            // Choose the text content based on the selected search type
-            if (searchType === "id") {
-                textContent = node.children[1].textContent.toLowerCase(); // Assuming ID is in the first column
-            } else if (searchType === "name") {
-                textContent = node.children[2].textContent.toLowerCase(); // Assuming Name is in the third column
-            }
-
-            let show = textContent.indexOf(searchTerm) !== -1;
-            node.style.display = show ? "" : "none";
-        }
-    }
-
-
     if ($(window).width() <= 768) {
         // var sidebarShow = $("#sidebar").css("display");
         // var newMode = sidebarShow == "none" ? "block" : "none";
@@ -113,6 +86,8 @@ $(document).ready(function () {
         $("#sidebarToggle").removeAttr("data-bs-target");
         $("#sidebarToggle").removeAttr("aria-controls");
     }
+
+
 }); //load event
 
 function updateSidebarState() {
@@ -126,7 +101,6 @@ function updateSidebarState() {
         // Change icon to show text
         $(".nav-link .fa").removeClass("fa-bars").addClass("fa-table-cells-large");
     } else if ($(window).width() >= 768) {
-        // If screen width is greater than 768px, show the custom sidebar
         $("#sidebar").removeClass("collapsed");
         $("#content").removeClass("collapsed");
         $("#content").removeClass("offset-xl-1 col-xl-11 offset-lg-1 col-lg-11 offset-md-1 col-md-11");
@@ -139,19 +113,17 @@ function updateSidebarState() {
 
 ///////////////////////////////////////////////////////////////////////
 
+
 document.addEventListener("DOMContentLoaded", function () {
-    // Populate the favorites table on page load
     populateFavoritesTable();
 
-    // Add event listener for the search input
+    
     let search = document.querySelector("input[name=searchByName]");
     search.addEventListener("input", searching);
 
     function searching(e) {
-        // Get the target table (favorites table)
+        
         let targetTable = document.getElementById('tbodyFavorites');
-
-        // Get all rows in the table
         let tr = targetTable.querySelectorAll("tr");
         for (let i = 0; i < tr.length; i++) {
             let node = tr[i];
@@ -161,7 +133,6 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    // Function to populate the favorites table
     function populateFavoritesTable() {
         let User = JSON.parse(localStorage.getItem('current_user')) || {};
         let productIds = User.favorites || [];
@@ -172,7 +143,6 @@ document.addEventListener("DOMContentLoaded", function () {
             tbodyFavorites.innerHTML = '';
 
             productIds.forEach(function (productId) {
-                // Find the product details based on the stored IDs
                 let product = productsData.find(p => p.id === productId);
 
                 if (product) {
@@ -189,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     `;
                     tbodyFavorites.appendChild(row);
 
-                    // Add event listener to the image
+                   
                     let productImage = row.querySelector('.product-image');
                     productImage.addEventListener('click', function () {
                         redirectToProductDetails(product.id);
@@ -197,13 +167,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             });
         } else {
-            // If no favorite products, display a message
+            
             let row = document.createElement('tr');
             row.innerHTML = `<td colspan="5">No Favorite products</td>`;
             tbodyFavorites.appendChild(row);
         }
     }
-    // Function to redirect to product details page
+    
     function redirectToProductDetails(productId) {
 
         localStorage.setItem("currentProductId", productId);
@@ -211,30 +181,31 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 function removeFromFavorites(productId, deleteIcon) {
-    let User = JSON.parse(localStorage.getItem('current_user')) || {};
-    let productIds = User.favorites || [];
-
-    // Remove the productId from the favorites array
-    let updatedFavorites = productIds.filter(id => id !== productId);
-
-    // Update the user's favorites in local storage
-    User.favorites = updatedFavorites;
-    localStorage.setItem('current_user', JSON.stringify(User));
-    let usersData = JSON.parse(localStorage.getItem('user')) || [];
-            console.log(usersData);
+    // Show a confirmation dialog
+    if (confirm('Are you sure you want to remove this product from favorites?')) {
+        let User = JSON.parse(localStorage.getItem('current_user')) || {};
+        let productIds = User.favorites || [];
     
-            // Find the index of the current user in the array
-            let userIndex = usersData.findIndex(user => user.id === User.id);
+        let updatedFavorites = productIds.filter(id => id !== productId);
+        User.favorites = updatedFavorites;
+        localStorage.setItem('current_user', JSON.stringify(User));
+        let usersData = JSON.parse(localStorage.getItem('user')) || [];
+        
+        let userIndex = usersData.findIndex(user => user.id === User.id);
     
-            if (userIndex !== -1) {
-                // Update only the favorites in the array
-                usersData[userIndex].favorites = User.favorites;
-                localStorage.setItem('user', JSON.stringify(usersData));
-            }
-    // Remove the row from the table
-    let row = deleteIcon.closest('tr');
-    row.remove();
+        if (userIndex !== -1) {
+            usersData[userIndex].favorites = User.favorites;
+            localStorage.setItem('user', JSON.stringify(usersData));
+        }
+    
+        let row = deleteIcon.closest('tr');
+        row.remove();
+    } else {
+        return;
+        // User clicked cancel, do nothing
+    }
 }
+
 //#########################################################################   add to cart Ali
 function addToCart(productId){
 
