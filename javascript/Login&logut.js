@@ -16,16 +16,20 @@ debugger;
         document.getElementById("Password").value==userArray[index].password
         )
         {
-          
+          var products=JSON.parse(localStorage.getItem('products'));
+            var cart=JSON.parse(localStorage.getItem('cart'));
+            var userCart=userArray[index].cart;
+
+           cart.forEach(element => {userCart.findIndex(x=>x.id==element.id)==-1?cart.push(element):cart[cart.findIndex(x=>x.id==element.id)].quantity+=element.quantity;});
         localStorage.setItem("currentUser",JSON.stringify(userArray[index]));
-        var webSiteCart=[...JSON.parse(localStorage.getItem('cart')),...JSON.parse(userArray[index].cart)];
-        localStorage.setItem("cart",JSON.stringify(webSiteCart))
-      
+        localStorage.setItem("cart",JSON.stringify(cart))
             break;
         }
 
 
     }
+    
+    location.reload();
 
  }
 
@@ -68,7 +72,6 @@ debugger;
 
 
 function logoutFunc() {
-  debugger;
 
   for (let index = 0; index < userArray.length; index++) {
     if

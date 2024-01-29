@@ -1,5 +1,5 @@
 import { Cart } from './modula.js';
-import { createCartData } from './test.js';
+import { addToCart } from './test.js';
 document.addEventListener('DOMContentLoaded', function () {
     // Retrieve products and current user from local storage
     let storedProducts = JSON.parse(localStorage.getItem('products')) || [];
@@ -142,27 +142,16 @@ document.addEventListener('DOMContentLoaded', function () {
         addToCartButton.type = 'button';
         addToCartButton.textContent = 'Add to Cart';
 
+        if (product.stockQuantity > 0) {
+
         addToCartButton.addEventListener('click', function () {
-            if (product.stockQuantity > 0) {
-
-
-                let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-
-                let existingCartItem = cartItems.find(item => item.productId === product.id);
-                if (!existingCartItem)
-                cartItems.push(new Cart(product.id, product.productTitle, 1, product.price, product.images[0]).addJson());
-                else
-                existingCartItem.quantity = existingCartItem ? parseInt( existingCartItem.quantity) + 1+"" : 1;
-
-                console.log("cartItems",cartItems);
-                localStorage.setItem('cart', JSON.stringify(cartItems));
-                createCartData();
-
-                console.log(`Product added to cart: ${product.productTitle}`);
-            } else {
-                console.log(`Product is out of stock: ${product.productTitle}`);
-            }
+            addToCart(product)
         });
+    } 
+
+        else {
+            console.log(`Product is out of stock: ${product.productTitle}`);
+        }
 
         return addToCartButton;
     }
