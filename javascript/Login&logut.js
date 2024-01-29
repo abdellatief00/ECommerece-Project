@@ -1,37 +1,111 @@
 
 
-var userArray=JSON.parse(localStorage.getItem('Users'));
+// var userArray=JSON.parse(localStorage.getItem('Users'));
 
 
 
- function login(){
+//  function login(){
   
    
-debugger;
-    for (let index = 0; index < userArray.length; index++) {
-        if
-        (
-        userArray[index].email==document.getElementById("Email").value
-        &&
-        document.getElementById("Password").value==userArray[index].password
-        )
-        {
-          var products=JSON.parse(localStorage.getItem('products'));
-            var cart=JSON.parse(localStorage.getItem('cart'));
-            var userCart=userArray[index].cart;
 
-           cart.forEach(element => {userCart.findIndex(x=>x.id==element.id)==-1?cart.push(element):cart[cart.findIndex(x=>x.id==element.id)].quantity+=element.quantity;});
-        localStorage.setItem("currentUser",JSON.stringify(userArray[index]));
-        localStorage.setItem("cart",JSON.stringify(cart))
+//     for (let index = 0; index < userArray.length; index++) {
+//         if
+//         (
+//         userArray[index].email==document.getElementById("Email").value
+//         &&
+//         document.getElementById("Password").value==userArray[index].password
+//         )
+//         {
+//           var products=JSON.parse(localStorage.getItem('products'));
+//             var cart=JSON.parse(localStorage.getItem('cart'));
+//             var userCart=userArray[index].cart;
+
+//         //    cart.forEach(element => {userCart.findIndex(x=>x.id==element.id)==-1?cart.push(element):cart[cart.findIndex(x=>x.id==element.id)].quantity=parseInt(cart[cart.findIndex(x=>x.id==element.id)].quantity)+parseInt(element.quantity)+"";});
+       
+//         cart.forEach(element => {
+//             const existingIndex = cart.findIndex(x => parseInt(x.productId) == parseInt(element.productId));
+            
+//             if (existingIndex === -1) {
+//               // If the item doesn't exist in cart, add it
+//               cart.push(element);
+//             } else {
+//               // If the item exists, sum the quantities
+//               cart[existingIndex].quantity = String(
+//                 parseInt(cart[existingIndex].quantity) + parseInt(element.quantity)
+//               );
+//             }
+//           });
+       
+//         localStorage.setItem("currentUser",JSON.stringify(userArray[index]));
+//         localStorage.setItem("cart",JSON.stringify(cart))
+//             break;
+//         }
+
+
+//     }
+    
+//     location.reload();
+
+//  }
+
+function validateAndLogin() {
+    var emailInput = document.getElementById("Email").value;
+    var passwordInput = document.getElementById("Password").value;
+
+    // Reset error messages
+    document.getElementById("emailError").innerHTML = "";
+    document.getElementById("passwordError").innerHTML = "";
+
+    // Check if email and password are not empty
+    if (emailInput.trim() === "") {
+        document.getElementById("emailError").innerHTML = "Email is required.";
+        return;
+    }
+
+    if (passwordInput.trim() === "") {
+        document.getElementById("passwordError").innerHTML = "Password is required.";
+        return;
+    }
+
+    var userArray = JSON.parse(localStorage.getItem('Users'));
+    var products = JSON.parse(localStorage.getItem('products'));
+    var cart = JSON.parse(localStorage.getItem('cart'));
+
+    for (let index = 0; index < userArray.length; index++) {
+        if (
+            userArray[index].email === emailInput &&
+            userArray[index].password === passwordInput
+        ) {
+            var userCart = userArray[index].cart;
+
+            cart.forEach(element => {
+                const existingIndex = userCart.findIndex(x => parseInt(x.productId) === parseInt(element.productId));
+
+                if (existingIndex === -1) {
+                    // If the item doesn't exist in userCart, add it
+                    userCart.push(element);
+                } else {
+                    // If the item exists, sum the quantities
+                    const newQuantity = parseInt(userCart[existingIndex].quantity) + parseInt(element.quantity);
+
+                    // Check if the sum is less than or equal to product.stockQuantity
+                    if (newQuantity <= products.find(product => product.id === element.productId).stockQuantity) {
+                        userCart[existingIndex].quantity = String(newQuantity);
+                    } else {
+                        // If sum exceeds stockQuantity, set quantity to stockQuantity
+                        userCart[existingIndex].quantity = String(products.find(product => product.id === element.productId).stockQuantity);
+                    }
+                }
+            });
+
+            localStorage.setItem("currentUser", JSON.stringify(userArray[index]));
+            localStorage.setItem("cart", JSON.stringify(userCart));
             break;
         }
-
-
     }
-    
-    location.reload();
 
- }
+    location.reload();
+}
 
 
 

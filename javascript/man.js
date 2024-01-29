@@ -150,9 +150,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     } 
 
-        else {
-            console.log(`Product is out of stock: ${product.productTitle}`);
-        }
+        
 
         return addToCartButton;
     }
