@@ -146,7 +146,7 @@ let orders =
         "paymentMethod": "PayPal",
         "cart": [
             {
-                "productId": 16,
+                "productId": 15,
                 "quantity": 2
             },
             {
@@ -175,7 +175,7 @@ let orders =
                 "quantity": 4
             },
             {
-                "productId": 16,
+                "productId": 15,
                 "quantity": 3
             },
             {
@@ -223,19 +223,52 @@ let sellerId = "seller2";
 
 let sellerProductsOrders = [];
 let ordersByDateObj = {};
+let currentUser;
+let productsChart = document.getElementById('productChart').getContext('2d');
+let totalOrdersChart = document.getElementById('ordersChart').getContext('2d');
+let selectedProduct = document.getElementById("productsOptions");
 
 window.addEventListener("load", function(){
+    currentUser = getUserFromLocal();
     products = getProductsFromLocal();
-    sellerProductsOrders = getAndFormatOrders();
+    //orders = getOrdersFromLocal();
+    //currentUser.role = "Seller";
+    console.log(products);
+    createOptions(selectedProduct);
+    if(currentUser.role === "Admin")
+        sellerProductsOrders = getAndFormatOrders();
+    else if(currentUser.role == "Seller")
+        sellerProductsOrders = getAndFormatOrders(sellerId);
+    //sellerProductsOrders = getAndFormatOrders(currentUser.id);
+    
     //console.log("orders formatted", sellerProductsOrders);
     ordersByDateObj = formatOrdersByDate(sellerProductsOrders);
-    //console.log("after formatting by date",ordersByDateObj);
-    sortOrdersByDate(ordersByDateObj);
-    console.log("after sorting", ordersByDateObj)
-
+    ordersByDateObj = sortOrdersByDate(ordersByDateObj);
+    /* console.log("after formatting by date",ordersByDateObj);
+    console.log(sortOrdersByDate(ordersByDateObj));
+    console.log("after sorting", ordersByDateObj) */
+    //createOptions(selectedProduct);
     // getting orders for product with id = 3
-    let dummyProductObj = getProductOrdersObj(ordersByDateObj, 3);
-    
+    let dummyProductObj = getProductOrdersObj(ordersByDateObj, selectedProduct.value);
+    console.log("productObject" ,getDateArray(dummyProductObj));
+    drawChart(productsChart, getDateArray(dummyProductObj), getProductQuantities(dummyProductObj),
+    getProducTotaltPrice(dummyProductObj, +selectedProduct.value),
+    `product ${selectedProduct.value}`
+    );
+    selectedProduct.addEventListener("change", ()=>{
+        console.log("value from the dropdown", selectedProduct.value)
+        dummyProductObj = getProductOrdersObj(ordersByDateObj, +selectedProduct.value);
+        console.log("all products", ordersByDateObj);
+        console.log("selected product", dummyProductObj)
+        console.log("product orders Dates" ,getDateArray(dummyProductObj));
+    console.log("product orders quantities " ,getProductQuantities(dummyProductObj));
+    console.log("product orders totalPrices" ,getProducTotaltPrice(dummyProductObj, +selectedProduct.value));
+    drawChart(productsChart, getDateArray(dummyProductObj), getProductQuantities(dummyProductObj),
+    getProducTotaltPrice(dummyProductObj, +selectedProduct.value),
+    `product ${selectedProduct.value}`
+    );
+
+    })
     
 
     //======= uncomment and see the results =========
@@ -244,10 +277,14 @@ window.addEventListener("load", function(){
     // getDateArray extracts the dates for the graph x-axis
     // getProductQuantities and getProducTotaltPrice for the y-axis
     
-    console.log("product orders Dates" ,getDateArray(dummyProductObj));
+    /* console.log("product orders Dates" ,getDateArray(dummyProductObj));
     console.log("product orders quantities " ,getProductQuantities(dummyProductObj));
-    console.log("product orders totalPrices" ,getProducTotaltPrice(dummyProductObj, 3));
-
+    console.log("product orders totalPrices" ,getProducTotaltPrice(dummyProductObj, +selectedProduct.value));
+    console.log(selectedProduct.value);
+    drawChart(productsChart, getDateArray(dummyProductObj), getProductQuantities(dummyProductObj),
+    getProducTotaltPrice(dummyProductObj, +selectedProduct.value),
+    `product ${selectedProduct.value}`
+    ); */
     
 
     //======= uncomment and see the results =========
@@ -257,7 +294,12 @@ window.addEventListener("load", function(){
     console.log("orders total quantities", getTotalOrdersQuantities(ordersByDateObj));
     console.log("3 price", getProductPrice(3));
     console.log("orders total prices", getOrderTotalPrice(ordersByDateObj)); */
-    
+    console.log("seller products" ,getSelllerProducts(sellerId));
+    drawChart(totalOrdersChart, getDateArray(ordersByDateObj), getTotalOrdersQuantities(ordersByDateObj),
+    getOrderTotalPrice(ordersByDateObj),
+    "total orders"
+    );
+
     
 })
 
@@ -330,6 +372,8 @@ function sortOrdersByDate(obj)
     sortedArray.sort((a, b) => new Date(a.date) - new Date(b.date));
     obj = Object.fromEntries(sortedArray.map(({ date, orderProductQuantity }) => [date, orderProductQuantity]));
 
+    return obj;
+
 }
 //////////////////////////////////////////////////////////////////////
 
@@ -362,6 +406,7 @@ export function getOrderTotalPrice(obj)
         let totalPrice = 0;
         for(let product in obj[date])
         {
+            //console.log("productId from price", product, typeof(product));
             totalPrice += getProductPrice(+product) * obj[date][product];
         }
         orderTotalPrice.push(totalPrice);
@@ -424,7 +469,8 @@ function getProductIndex(productId)
 {
     for(let i=0; i<products.length; i++)
     {
-        if(products[i].id === productId)
+        //console.log("productId from Index", productId, typeof(+productId));
+        if(+products[i].id === +productId)
             return i;
     }
     return -1;
@@ -432,8 +478,13 @@ function getProductIndex(productId)
 
 function getProductPrice(productId)
 {
-    let product = products[getProductIndex(productId)];
-    return product.price;
+    //console.log("productId", productId, typeof(productId))
+    if(getProductIndex(productId) === -1)
+    {
+        console.log("the one that causes the error" ,productId)
+    }
+    let product = products[getProductIndex(+productId)];
+    return +product.price;
 }
 
 function getProductSellerId(productId)
@@ -459,10 +510,131 @@ function getProductsFromLocal()
 function getDateArray(obj)
 {
     let dateArr = [];
+    console.log("from date array", obj);
     for(let date in obj)
     {
         dateArr.push(date);
+        //console.log("after every push", dateArr);
     }
     return dateArr;
 }
 //////////////////////////////////////////////////////////////////////
+
+function settUserToLocal(user)
+{
+    localStorage.setItem("current_user", JSON.stringify(user));
+}
+
+function getUserFromLocal()
+{
+    return JSON.parse(localStorage.getItem("current_user"));
+}
+
+function drawChart(ctx, xAxisDate, yAxisQuantities, yAxisRevenue, label)
+{
+    if (ctx.chart) {
+        ctx.chart.destroy();
+    }
+    console.log(xAxisDate);
+    console.log(yAxisQuantities);
+    console.log(yAxisRevenue);
+    const options = {
+        responsive: true,
+        maintainAspectRatio: false,
+        title: {
+          display: true,
+          text: 'Wavy Line Chart with Chart.js'
+        },
+        legend: {
+          display: false
+        },
+        tooltips: {
+          enabled: true,
+          mode: 'index',
+          intersect: false
+        },
+        axes: {
+            xAxes: [{
+                ticks: {
+                  beginAtZero: true
+                }
+              }],
+          yAxes: [{
+            ticks: {
+              beginAtZero: true
+            }
+          }]
+        },
+        hover: {
+          mode: 'nearest',
+          intersect: true
+        }
+      };
+
+      const chartData = {
+        labels: xAxisDate,
+        datasets: [
+          {
+            label: `${label} revenue`,
+            data: yAxisRevenue,
+            borderColor: '#900000', // Red
+            borderWidth: 2,
+            fill: false,
+            pointRadius: 1,
+            cubicInterpolationMode: "monotone",
+            tension: 0.5 // Adjust waviness as desired
+          },
+           {
+            label: `${label} quantities`,
+            data: yAxisQuantities,
+            borderColor: '#004590', // Blue
+            borderWidth: 2,
+            fill: false,
+            pointRadius: 1,
+            cubicInterpolationMode: "monotone",
+            tension: 0.7
+          },
+        ]
+      };
+
+      ctx.chart = new Chart(ctx, {
+        type: 'line',
+        data: chartData,
+        options
+      });
+  
+}
+
+function createOptions(selectDiv)
+{
+    selectDiv.innerHTML = "";
+    let optionsProducts;
+    if(currentUser.role === "Seller")
+    {
+        //optionsProducts = getSelllerProducts(currentUser.id);
+        optionsProducts = getSelllerProducts("seller2");
+        console.log("seller options", optionsProducts);
+    }
+    else if(currentUser.role === "Admin")
+        optionsProducts = products;
+
+    for(let i=0; i<optionsProducts.length; i++)
+    {
+        let option = document.createElement("option");
+        option.value = optionsProducts[i].id;
+        option.innerText = optionsProducts[i].productTitle;
+
+        selectDiv.appendChild(option);
+    }
+}
+
+function getSelllerProducts(sellerId)
+{
+    let sellerProducts = [];
+    for(let i =0; i<products.length; i++)
+    {
+        if(products[i].sellerId === sellerId)
+            sellerProducts.push(products[i]);
+    }
+    return sellerProducts;
+}

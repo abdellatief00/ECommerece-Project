@@ -69,7 +69,7 @@ $(document).ready(function () {
         }
     }); //end of click event
 
-    let searchInput = document.getElementById("searchTerm");
+/*     let searchInput = document.getElementById("searchTerm");
     let searchTypeSelect = document.getElementById("searchType");
 
     searchInput.addEventListener("input", searching);
@@ -93,7 +93,7 @@ $(document).ready(function () {
             let show = textContent.indexOf(searchTerm) !== -1;
             node.style.display = show ? "" : "none";
         }
-    }
+    } */
 
 
     if ($(window).width() <= 768) {
