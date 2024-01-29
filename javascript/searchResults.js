@@ -1,6 +1,6 @@
 let searchResultProducts;
 let searchResultsSection = document.querySelector("#search-results-section");
-let productsPerPage = 2;
+let productsPerPage = 6;
 let currentPage = 1;
 let pagesPerBar = 3;
 let numOfPages;
