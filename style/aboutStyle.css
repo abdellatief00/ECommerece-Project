@@ -147,10 +147,10 @@ header .navbar-toggler {
         margin: auto;
         padding-bottom: 3%;
     }
-    header #header-right-section{
+/* header #header-right-section{
         display: none !important;
 
-    }
+    } */
 }
 
 @media (max-width:500px) {
