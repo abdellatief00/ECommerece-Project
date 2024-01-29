@@ -118,35 +118,20 @@
 .cursorPointer {
     cursor: pointer !important;
 }
-table tbody tr {
-    vertical-align: middle !important;
-}
 
 table img {
     max-width: 70px;
-    min-height: 70px;
-    border-radius: 5%;
-}
-table img:hover {
-    cursor: pointer;
+    border-radius: 50%;
 }
 
-table thead tr:hover{
-    cursor: pointer;
-}
 .entryRows {
     display: flex;
     justify-content: space-between;
 }
 
-#tbodyUsers tr td:nth-child(3) {
-    color: rgb(173, 21, 21);
-    
-    cursor: pointer;
-}
-#tbodyUsers tr td:nth-child(4) {
-    color: rgb(42, 115, 14);
-    
+#tbodyUsers tr td:nth-child(5) {
+    color: blue;
+    text-decoration: underline;
     cursor: pointer;
 }
 #tbodyUsers tr td{

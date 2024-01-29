@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="style/all.min.css">
     <link rel="stylesheet" href="style/homepage.css">
     <link rel="stylesheet" href="style/productDetailsPage.css">
-    <link rel="stylesheet" href="style/navbar.css">
-    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
+    
+    
     <script src="javascript/productDetails.js" type="module"></script>
 
     <!-- <script src="javascript/navbar.js" type="module"></script> -->
@@ -43,11 +43,11 @@
                       </li>
 
                       <li class="nav-item">
-                        <a class="nav-link" href="man.html">MEN</a>
+                        <a class="nav-link" href="html/man.html">MEN</a>
                     </li>
     
                     <li class="nav-item">
-                        <a class="nav-link" href="woman.html">WOMEN</a>
+                        <a class="nav-link" href="html/woman.html">WOMEN</a>
                     </li>
     
                     <li class="nav-item">
@@ -71,52 +71,9 @@
 
         <div id = "header-right-section" class="d-flex justify-content-between mt-3 flex-grow-0">
             <div>
-                <form id = "header-search-form" role="search" class="d-flex position-relative">
+                <form id = "header-search-form" role="search" class="d-flex">
                     <input class="form-control me-2 d-none" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
-                    <div id="search-results" class="d-flex flex-column position-absolute z-3 d-none">
-                        
-                            <div class="d-flex align-items-center">
-                            <img src="images/product-10-a.jpg" class="" alt="...">
-                            <div class="d-flex flex-column mx-2">
-                                <h6>Card title</h6>
-                                <div>
-                                    <span>$price</span> ● 
-                                    <span>category</span>
-                                </div>
-                            </div>
-                              
-                            </div>
-
-                            <div productId = 2 class="d-flex align-items-center">
-                                <img src="images/product-10-a.jpg" class="" alt="...">
-                                <div class="d-flex flex-column mx-2">
-                                    <h6>Card title</h6>
-                                    <div>
-                                        <span>$price</span> ● 
-                                        <span>category</span>
-                                    </div>
-                                </div>
-                                  
-                            </div>
-
-                            <div class="d-flex align-items-center search-result-item">
-                                <img src="images/product-10-a.jpg" class="" alt="...">
-                                <div class="d-flex flex-column mx-2">
-                                    <h6>Card title</h6>
-                                    <div>
-                                        <span>$price</span> ● 
-                                        <span>category</span>
-                                    </div>
-                                </div>
-                                  
-                            </div>
-
-                            <div style="background: rgb(181, 172, 172); text-align: center;">
-                                show all results &rarr;
-                            </div>
-                        
-                    </div>
                 </form>
             </div>
             
@@ -149,33 +106,8 @@
         <!--photo on the left-->
         <div id="product-photo" class="ms-5 me-5 mb-5">
             <div>
-                <img src="images/product-10-a.jpg" alt="" data-bs-toggle="picsModal" data-bs-target="#picsModal">
-        
-                <!-- Product images modal -->
-                <div class="modal fade border-0" id="picsModal" tabindex="-1" aria-labelledby="productImageModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-centered modal-md border-0">
-                        <div class="modal-content bg-transparent border-0">
-                            <div class="modal-header border-0">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body p-0">
-                                <div id="productImageCarousel" class="carousel slide" data-bs-ride="carousel">
-                                    <div class="carousel-inner">
-                                        <!-- Images will be dynamically added here -->
-                                    </div>
-                                    <button class="carousel-control-prev" type="button" data-bs-target="#productImageCarousel" data-bs-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Previous</span>
-                                    </button>
-                                    <button class="carousel-control-next" type="button" data-bs-target="#productImageCarousel" data-bs-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="visually-hidden">Next</span>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <img src="images/product-10-a.jpg" alt="">
+                <i class="fa-solid fa-magnifying-glass"></i>
             </div>
         </div>
 
@@ -202,8 +134,7 @@
             <!--Main Info section-->
             <section>
                 <h1>Product Name</h1>
-                <h3>$Price</h3>
-                &free shipping
+                <h3>$Price</h3>&free shipping
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet sed unde tenetur corporis eum facilis totam voluptates qui odit animi omnis sequi, minima quos sunt iste at nam eligendi quaerat?
                 </p>
@@ -226,24 +157,6 @@
                             Add To Cart
                         </button>
                     </div>
-
-                    <!--Not Enough items Modal-->
-                    <div class="modal" id="not-enough-items-modal" tabindex="-1">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title">Sorry</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                              <p>Not Enough items in the stock</p>
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
                 </div>
             </section>
 
@@ -279,9 +192,9 @@
                                     <div class="fw-bold">FRAME DESCRIPTION:</div>
                                     
                                     <ul class="list-unstyled">
-                                        <li>Shape: <span>Round</span></li>
-                                        <li>Color:  <span>Pink</span></li>
-                                        <li>Material: <span>Metal</span></li>
+                                        <li>Shape: Round</li>
+                                        <li>Color: Pink</li>
+                                        <li>Material: Metal</li>
                                     </ul>
                                 </div>
     
@@ -292,9 +205,9 @@
                                     <div class="fw-bold">LENS INFORMATION:</div>
                                     
                                     <ul class="list-unstyled">
-                                        <li>Class: <span>Round</span></li>
-                                        <li>Color: <span>Pink</span></li>
-                                        <li>Treatment: <span>3d</span></li>
+                                        <li>Class: 3P</li>
+                                        <li>Color: Pink</li>
+                                        <li>Treatment: Classic</li>
                                     </ul>
                                 </div>
                                 <hr>
@@ -312,32 +225,13 @@
                     <div class="accordion-item border-0 bg-white">
                         <h2 class="accordion-header" id="reviewsHeading">
                             <button class="accordion-button bg-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#reviewsCollapse" aria-expanded="true" aria-controls="reviewsCollapse">
-                                Reviews (<span>0</span>)
+                                Reviews (0)
                             </button>
                         </h2>
                         <div id="reviewsCollapse" class="accordion-collapse collapse show" aria-labelledby="reviewsHeading" data-bs-parent="#reviewsAccordion">
                             <div class="accordion-body">
                                 <p>No reviews yet. Be the first to review this product.</p>
                                 <!-- Add your review content here -->
-                                <div class="d-flex flex-column w-100 border border-secondary-subtle border-2 rounded-3 p-3 m-3">
-                                    <div class="d-flex align-items-center">
-                                        <img src="images/product-09-a.jpg" alt="" style="width: 50px; height: 50px; border-radius: 50%;" class="m-2">
-                                        <h6>userName</h6>
-                                    </div>
-                                    <div>
-                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem expedita, nobis ipsum quas velit rerum voluptatibus vero. Est quia temporibus adipisci minima quam at, hic, dolor voluptate, repudiandae aliquid quod!
-                                    </div>
-                                </div>
-
-                                <div class="d-flex flex-column w-100 border border-secondary-subtle border-2 rounded-3 p-3 m-3">
-                                    <div class="d-flex align-items-center">
-                                        <img src="images/product-09-a.jpg" alt="" style="width: 50px; height: 50px; border-radius: 50%;" class="m-2">
-                                        <h6>userName</h6>
-                                    </div>
-                                    <div>
-                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem expedita, nobis ipsum quas velit rerum voluptatibus vero. Est quia temporibus adipisci minima quam at, hic, dolor voluptate, repudiandae aliquid quod!
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -352,6 +246,8 @@
                         <div id="formCollapse" class="accordion-collapse collapse" aria-labelledby="formHeading" data-bs-parent="#reviewsAccordion">
                             <div class="accordion-body">
             
+                                <p>Be the first to review “Product Name”</p>
+            
                                 <form>
                                     <div class="mb-3">
                                         <label for="review" class="form-label">Your review *</label>
@@ -359,13 +255,13 @@
                                     </div>
             
                                     <div class="mb-3">
-                                        <label for="name" class="form-label">Name</label>
-                                        <input type="text" class="form-control" id="name" disabled>
+                                        <label for="name" class="form-label">Name *</label>
+                                        <input type="text" class="form-control" id="name" required>
                                     </div>
             
                                     <div class="mb-3">
-                                        <label for="email" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="email" disabled>
+                                        <label for="email" class="form-label">Email *</label>
+                                        <input type="email" class="form-control" id="email" required>
                                     </div>
             
                                     <button type="submit" class="btn btn-secondary">Submit Review</button>
@@ -520,10 +416,11 @@
     <section id="bottom-product-counter" class="d-flex align-items-center  justify-content-between d-none bg-white">
         <div>
             <img src="images/product-09-a.jpg" alt="" class="miniImage ">
-            <span>Product Name</span>
+            Product Name
         </div>
 
         <div>
+            
             <div class="d-flex align-items-center container-fluid">
                 <span>$price</span>
                 <div>
@@ -535,7 +432,7 @@
                 </div>
                 
                 <div class="mx-4">
-                    <button id="floatingAddToCart" class="btn btn-outline-secondary add-to-cart-btn">
+                    <button class="btn btn-outline-secondary add-to-cart-btn">
                         Add To Cart
                     </button>
                 </div>
@@ -621,13 +518,15 @@
         </div>
     </div>
     <!-- end Cart -->
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
 
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="javascript/all.min.js"></script>
-    
 </body>
 
 </html>

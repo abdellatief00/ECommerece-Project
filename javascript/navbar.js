@@ -1,4 +1,4 @@
-import { Product, Review, Cart } from "./modula.js";
+import { Product, Review, Rating, Cart } from "./modula.js";
 
 let searchForm = document.getElementById("header-search-form");
 let searchButton = searchForm.querySelector("button");

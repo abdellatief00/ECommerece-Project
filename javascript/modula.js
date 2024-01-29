@@ -2,7 +2,7 @@ export class Review {
   #userId;
   #reviewBody;
 
-  constructor(userId, reviewBody) {
+  constructor(userId, reviewBody, date) {
       this.#userId = userId;
       this.#reviewBody = reviewBody;
       
@@ -18,11 +18,11 @@ export class Review {
 
   toJSON() {
       return {
-        userId: this.#userId,   
-        reviewBody: this.#reviewBody,
+          [this.#userId]: {
+              reviewBody: this.#reviewBody,
+          }
       };
   }
-
 }
 
 export class Product {
@@ -44,7 +44,6 @@ export class Product {
   #treatment;
   #category;
   #date; // New property for the product date
-  #sold; // new property
   set product_title(_product_title) {
     this.#productTitle = _product_title;
   }
@@ -166,8 +165,7 @@ export class Product {
       lensClass,
       treatment,
       category,
-      date = new Date(),
-      _sold = 0
+      date,
   ) {
       this.#productTitle = productTitle;
       this.#productDescription = productDescription;
@@ -184,8 +182,7 @@ export class Product {
       this.#treatment = treatment;
       this.#category = category;
       this.#date = date || new Date(); // Default to the current date if not provided
-      this.#productId = Product.autoincreaseid();
-      this.#sold = 0;
+      this.#productId = ++Product.currentProductId;
   }
 
   addReview(userId, reviewBody) {
@@ -213,22 +210,13 @@ export class Product {
           price:this.#price,
           sellerId:this.#sellerId,
           date: this.#date.toISOString(), // Convert date to ISO string for serialization
-          sold : this.#sold
       };
-  }
-
-  static autoincreaseid(){
-    let lastid;
-    let user = JSON.parse(window.localStorage.getItem("products")) ||[]; // u can chage the name of the user how ever u want
-    if(user.length > 0){
-      lastid = user[user.length-1].id;
-    }
-    else {lastid =0}
-    return ++lastid;
   }
 }
   
+ 
   /* class for cart  abdellatief */
+
   export class Cart{
     #productId;
     #productTitle;
@@ -291,7 +279,9 @@ export class Product {
     }
   }
 
+
   /* class of orders */ 
+
   export class Orders{
     #orderNumber;
     #date;
@@ -299,41 +289,23 @@ export class Product {
     #paymentMethod;
     #cart;
     #userId;
-    #email;
-    #phone;
-    #city;
-    #country;
-    #name;
-    #state;
     static currentorderid = 0;
-    constructor(_total,_pay , _cart, user_id,_email,_phone,_city,_country,_fname , _lname ,_state = "pending"){
+    constructor(_total,_pay , _cart, user_id){
       this.#orderNumber = Orders.autoincreaseid();
       this.#date = new Date();
       this.#total  = _total;
       this.#paymentMethod = _pay;
       this.#cart = _cart;
       this.#userId = user_id;
-      this.#email = _email;
-      this.#phone = _phone;
-      this.#city = _city;
-      this.#country = _country;
-      this.#name = _fname+" "+_lname;
-      this.#state = _state ;
     }
     addJson(){
       return{
       orderNumber : this.#orderNumber,
-      date : this.#date,  
+      date : this.#date,
       total : this.#total,
       paymentMethod : this.#paymentMethod,
       cart : this.#cart,
-      userId : this.#userId,
-      email : this.#email,
-      city : this.#city,
-      country : this.#country,
-      name : this.#name,
-      phone : this.#phone,
-      state : this.#state
+      userId : this.#userId
       }
     }
 

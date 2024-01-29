@@ -31,21 +31,11 @@ body
 
 }
 
-#product-photo>div>img {
+#product-photo>div>img{
     width: 400px;
     height: 400px;
     position: relative;
     transform: scale(1);
-    transition: transform 0.5s ease-in-out;
-    cursor: pointer;
-}
-
-#product-photo>div>img:hover {
-    transform: scale(1.2);
-}
-
-#product-photo>div>img:active {
-    transform: scale(1); /* Optional: Return to normal size when clicked */
 }
 
 #product-preview-div{
@@ -92,6 +82,11 @@ body
         right: -90px;
         top: 40px;
     }
+}
+
+#logo-image{
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 /* @media (max-width: 991px){
