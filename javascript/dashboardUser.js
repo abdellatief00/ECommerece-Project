@@ -78,9 +78,6 @@ window.addEventListener('load', function () {
                         createdtd.innerText = users[i][key];
                         createdrow.appendChild(createdtd);
                          break;
-                         case "cart":
-                            console.log(users[i][key]);
-                         break;
                     default:
                         break;
                 }
