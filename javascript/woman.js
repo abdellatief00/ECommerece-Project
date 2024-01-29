@@ -187,9 +187,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function showProductDetails(product) {
         setCurrentProductIdToLocal(product.id);
         window.location.assign("productDetails.html");
-        //console.log('Product details popup:', product);
-        // Implement logic to display product details in a popup
-        // You can use a modal or any other UI component to display detailed product information
+        
     }
 
     // Function to view product image

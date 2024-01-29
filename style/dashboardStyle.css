@@ -151,15 +151,7 @@ table img {
         font-size: 1rem !important;
     }
 }
-
-@media (max-width: 768px) {
-    #sidebarToggle {
-        display: none;
-    }
-
-    .offset-xl-2 {
-        margin-left: 0 !important;
-    }
+@media screen {
     
 }
 

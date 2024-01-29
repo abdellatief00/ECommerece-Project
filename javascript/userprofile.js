@@ -127,7 +127,8 @@ document.addEventListener("DOMContentLoaded", function () {
        // document.getElementById('userPhone').textContent = userData.phone;
         document.getElementById('userEmail').textContent = userData.email;
         document.getElementById('userPassword').value = userData.password;
-        document.getElementById('userImage').src=userData.images[0];
+        document.getElementById('userImage').src=userData.image;
+        console.log(userData.image);
         //document.getElementById('userAddress')=userData.address;
     }
 });
