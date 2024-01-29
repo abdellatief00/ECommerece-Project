@@ -15,6 +15,7 @@
     <script src="javascript/productDetails.js" type="module"></script>
 
     <script src="javascript/navbar.js" type="module"></script>
+    <script src="javascript/test.js" type="module"></script>
 
 </head>
 <body class="d-flex flex-column justify-content-center">
@@ -33,9 +34,9 @@
                         <img src="images/logo-header-regular.png" alt="Eyewear-logo">
                     </a>
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mt-2 mb-2 mb-lg-0 fw-bold flex-grow">
+                    <ul class="navbar-nav me-auto mt-2 mb-2 mb-lg-0 fw-bold flex-grow" style="font-size: 12px;">
                       <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="homepage.html">Home</a>
+                        <a class="nav-link " aria-current="page" href="homepage.html">Home</a>
                       </li>
 
                       <li class="nav-item">
@@ -52,6 +53,10 @@
     
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">CONTACT</a>
+                    </li>
+
+                    <li class="nav-item">
+                        
                     </li>
 
                     <li class="nav-item">
@@ -135,6 +140,88 @@
             </div>
 
         </div>
+
+        <!-- login Start -->
+    <div class="modal fade " id="LoginScreen" tabindex="-1" aria-labelledby="Login_form" aria-hidden="true" data-bs-backdrop="static"  >
+            <div class="modal-dialog  modal-dialog-centered" >
+                <div class="modal-content" style="background-color: rgb(238, 231, 231);">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="Login_form">Login</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        
+                
+    
+                            
+                            <div class="mb-3">
+                                <label for="Email">Email:</label>
+                                <div class="input-group my-2">
+                                <span class="fa fa-user input-group-prepend input-group-text" style="padding: 10px;"></span>
+                                <input type="email" class="form-control" id="Email" name="Email" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="Password" class="col-form-label">Password:</label>
+                                <div class="input-group my-2">
+                                <span class="fa fa-lock input-group-prepend input-group-text" style="padding: 10px;"></span>
+                                <input type="password" class="form-control" id="Password" name="Password" required>
+                            </div>
+                            
+                            <a  class="  authButtons  border-0 align-self-start" href="SignUP.html">creat a new account</a>
+
+                    </div>
+                    <div class="modal-footer">
+
+                            <input type="submit" value="Login" class="btn btn-primary" data-bs-dismiss="modal">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
+
+                 
+            
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    <!-- end login -->
+    <!-- Cart start -->
+    <div class="modal fade  " id="ShoppingCart" tabindex="-1" aria-labelledby="ShoppingCartModalLabel" aria-hidden="true" >
+        <div class="modal-dialog Cart-dialog"  >
+            <div class="modal-content Cart-Content " style="background-color: rgb(238, 231, 231);" >
+                <div class="modal-header ">
+                    <h5 class="modal-title" id="ShoppingCartModalLabel">Shopping Cart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" >
+                    
+                    <div class="CartItems" >
+    
+                           
+                        
+    
+                        
+                    </div>
+    
+                </div>
+                <hr class="ms-3 me-3">
+    
+                <div class="ms-5 me-5">
+                                <span class="fs-4 fw-bold float-start">Subtotal:</span>
+                                <span class="fs-5 fw-bold float-end text-secondary total">$00.00</span>
+                            </div>
+                            <br>
+                <br>
+                <div class="modal-footer mt-auto" style="margin: 10px;">
+                    <!-- <button type="button" class="btn w-100 border-dark fw-bold fs-5 cartButton"  >VIEW CART</button> --> 
+                    <a href="Cart.html" class="btn w-100 border-dark fw-bold fs-5 cartButton">VIEW CART</a>
+                    <a href="checkout.html" class="btn w-100 border-dark fw-bold fs-5 cartButton">CHECKOUT</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end Cart -->
     </header>
     <hr>
 

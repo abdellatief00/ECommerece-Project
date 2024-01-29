@@ -18,9 +18,9 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="javascript/test.js" defer></script>
+    <script src="javascript/cartScript.js" type="module"></script>
     <script src="javascript/navbar.js" type="module"></script>
-    <script src="/javascript/man.js"></script>
+    <script src="javascript/man.js" type="module"></script>
     <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
     <!-- <script src="/javascript/productmodula.js" type="module"></script> -->
     
@@ -28,59 +28,75 @@
 <body>
 
 
-        <header class="d-flex justify-content-between position-relative p-3 ">
+    <header class="d-flex justify-content-between position-relative p-3 ">
 
-            <a id="logo-image" href="homepage.html" class="position-absolute d-none d-lg-block">
-                <img  src="images/logo-header-regular.png" alt="Eyewear-logo">
-            </a>
+        <a id="logo-image" href="homepage.html" class="position-absolute d-none d-lg-block">
+            <img  src="images/logo-header-regular.png" alt="Eyewear-logo">
+        </a>
+        
             
-                
-                <nav class="navbar navbar-expand-lg bg-body-tertiary nav-underline  z-3 position-relative">
-                    <div class="container-fluid">
-                        <a class="navbar-brand d-lg-none" href="homepage.html">
-                            <img src="images/logo-header-regular.png" alt="Eyewear-logo">
-                        </a>
-                      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mt-2 mb-2 mb-lg-0 fw-bold flex-grow">
-                          <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="homepage.html">Home</a>
-                          </li>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary nav-underline  z-3 position-relative">
+                <div class="container-fluid">
+                    <a class="navbar-brand d-lg-none" href="homepage.html">
+                        <img src="images/logo-header-regular.png" alt="Eyewear-logo">
+                    </a>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mt-2 mb-2 mb-lg-0 fw-bold flex-grow" style="font-size: 12px;">
+                      <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="homepage.html">Home</a>
+                      </li>
+
+                      <li class="nav-item">
+                        <a class="nav-link active" href="man.html">MEN</a>
+                    </li>
     
-                          <li class="nav-item">
-                            <a class="nav-link" href="man.html">MEN</a>
-                        </li>
-        
-                        <li class="nav-item">
-                            <a class="nav-link" href="woman.html">WOMEN</a>
-                        </li>
-        
-                        <li class="nav-item">
-                            <a class="nav-link " href="about.html">ABOUT US</a>
-                        </li>
-        
-                        <li class="nav-item">
-                            <a class="nav-link" href="contact.html">CONTACT</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="woman.html">WOMEN</a>
+                    </li>
     
-                        <li class="nav-item">
-                            
-                        </li>
-                          
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link " href="about.html">ABOUT US</a>
+                    </li>
+    
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">CONTACT</a>
+                    </li>
+
+                    <li class="nav-item">
                         
-                      </div>
-    
-                    </div>
-                </nav>
-    
-            <div id = "header-right-section" class="d-flex justify-content-between mt-3 flex-grow-0">
-                <div>
-                    <form id = "header-search-form" role="search" class="d-flex position-relative">
-                        <input class="form-control me-2 d-none" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
-                        <div id="search-results" class="d-flex flex-column position-absolute z-3 d-none">
-                            
-                                <div class="d-flex align-items-center">
+                    </li>
+
+                    <li class="nav-item">
+                        
+                    </li>
+                      
+                    </ul>
+                    
+                  </div>
+
+                </div>
+            </nav>
+
+        <div id = "header-right-section" class="d-flex justify-content-between mt-3 flex-grow-0">
+            <div>
+                <form id = "header-search-form" role="search" class="d-flex position-relative">
+                    <input class="form-control me-2 d-none" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <div id="search-results" class="d-flex flex-column position-absolute z-3 d-none">
+                        
+                            <div class="d-flex align-items-center">
+                            <img src="images/product-10-a.jpg" class="" alt="...">
+                            <div class="d-flex flex-column mx-2">
+                                <h6>Card title</h6>
+                                <div>
+                                    <span>$price</span> ● 
+                                    <span>category</span>
+                                </div>
+                            </div>
+                              
+                            </div>
+
+                            <div productId = 2 class="d-flex align-items-center">
                                 <img src="images/product-10-a.jpg" class="" alt="...">
                                 <div class="d-flex flex-column mx-2">
                                     <h6>Card title</h6>
@@ -90,61 +106,131 @@
                                     </div>
                                 </div>
                                   
-                                </div>
-    
-                                <div productId = 2 class="d-flex align-items-center">
-                                    <img src="images/product-10-a.jpg" class="" alt="...">
-                                    <div class="d-flex flex-column mx-2">
-                                        <h6>Card title</h6>
-                                        <div>
-                                            <span>$price</span> ● 
-                                            <span>category</span>
-                                        </div>
+                            </div>
+
+                            <div class="d-flex align-items-center search-result-item">
+                                <img src="images/product-10-a.jpg" class="" alt="...">
+                                <div class="d-flex flex-column mx-2">
+                                    <h6>Card title</h6>
+                                    <div>
+                                        <span>$price</span> ● 
+                                        <span>category</span>
                                     </div>
-                                      
                                 </div>
-    
-                                <div class="d-flex align-items-center search-result-item">
-                                    <img src="images/product-10-a.jpg" class="" alt="...">
-                                    <div class="d-flex flex-column mx-2">
-                                        <h6>Card title</h6>
-                                        <div>
-                                            <span>$price</span> ● 
-                                            <span>category</span>
-                                        </div>
-                                    </div>
-                                      
-                                </div>
-    
-                                <div style="background: rgb(181, 172, 172); text-align: center;">
-                                    show all results &rarr;
-                                </div>
-                            
-                        </div>
-                    </form>
-                </div>
-                
-                <div id="cart-icon" class="me-3 ms-3 mt-4 mt-lg-2 align-self-right">
-                    <span>$0.00</span>
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <span id="cart-items-count">0</span>
-                </div>
-    
-                <button id="loginBtn" class="btn btn-outline-secondary border-0 align-self-start">
-                    <i class="fa-solid fa-user"></i>
-                    <!-- <img class="bg-white" src="images/miniProfile.png" style="width: 30px; height: 30px; border-radius: 50%;" alt=""> -->
-                    <span>Login</span>
-                </button>
-    
-                <div class="navbar">
-                    <button class="navbar-toggler align-self-start d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                      </button>
-                </div>
-    
+                                  
+                            </div>
+
+                            <div style="background: rgb(181, 172, 172); text-align: center;">
+                                show all results &rarr;
+                            </div>
+                        
+                    </div>
+                </form>
             </div>
-        </header>
-        <hr>
+            
+            <div id="cart-icon" class="me-3 ms-3 mt-4 mt-lg-2 align-self-right">
+                <span>$0.00</span>
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span id="cart-items-count">0</span>
+            </div>
+
+            <button id="loginBtn" class="btn btn-outline-secondary border-0 align-self-start">
+                <i class="fa-solid fa-user"></i>
+                <!-- <img class="bg-white" src="images/miniProfile.png" style="width: 30px; height: 30px; border-radius: 50%;" alt=""> -->
+                <span>Login</span>
+            </button>
+
+            <div class="navbar">
+                <button class="navbar-toggler align-self-start d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+            </div>
+
+        </div>
+
+        <!-- login Start -->
+    <div class="modal fade " id="LoginScreen" tabindex="-1" aria-labelledby="Login_form" aria-hidden="true" data-bs-backdrop="static"  >
+            <div class="modal-dialog  modal-dialog-centered" >
+                <div class="modal-content" style="background-color: rgb(238, 231, 231);">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="Login_form">Login</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        
+                
+    
+                            
+                            <div class="mb-3">
+                                <label for="Email">Email:</label>
+                                <div class="input-group my-2">
+                                <span class="fa fa-user input-group-prepend input-group-text" style="padding: 10px;"></span>
+                                <input type="email" class="form-control" id="Email" name="Email" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="Password" class="col-form-label">Password:</label>
+                                <div class="input-group my-2">
+                                <span class="fa fa-lock input-group-prepend input-group-text" style="padding: 10px;"></span>
+                                <input type="password" class="form-control" id="Password" name="Password" required>
+                            </div>
+                            
+                            <a  class="  authButtons  border-0 align-self-start" href="SignUP.html">creat a new account</a>
+
+                    </div>
+                    <div class="modal-footer">
+
+                            <input type="submit" value="Login" class="btn btn-primary" data-bs-dismiss="modal">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
+
+                 
+            
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    <!-- end login -->
+    <!-- Cart start -->
+    <div class="modal fade  " id="ShoppingCart" tabindex="-1" aria-labelledby="ShoppingCartModalLabel" aria-hidden="true" >
+        <div class="modal-dialog Cart-dialog"  >
+            <div class="modal-content Cart-Content " style="background-color: rgb(238, 231, 231);" >
+                <div class="modal-header ">
+                    <h5 class="modal-title" id="ShoppingCartModalLabel">Shopping Cart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" >
+                    
+                    <div class="CartItems" >
+    
+                           
+                        
+    
+                        
+                    </div>
+    
+                </div>
+                <hr class="ms-3 me-3">
+    
+                <div class="ms-5 me-5">
+                                <span class="fs-4 fw-bold float-start">Subtotal:</span>
+                                <span class="fs-5 fw-bold float-end text-secondary total">$00.00</span>
+                            </div>
+                            <br>
+                <br>
+                <div class="modal-footer mt-auto" style="margin: 10px;">
+                    <!-- <button type="button" class="btn w-100 border-dark fw-bold fs-5 cartButton"  >VIEW CART</button> --> 
+                    <a href="Cart.html" class="btn w-100 border-dark fw-bold fs-5 cartButton">VIEW CART</a>
+                    <a href="checkout.html" class="btn w-100 border-dark fw-bold fs-5 cartButton">CHECKOUT</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end Cart -->
+    </header>
+    <hr>
         <section id="page-body" class="container-fluid mx-auto" >
         <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-inner">

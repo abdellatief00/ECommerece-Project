@@ -1,3 +1,4 @@
+import { addToCart } from "./cartScript.js";
 document.addEventListener('DOMContentLoaded', function () {
     // Retrieve products and current user from local storage
     let storedProducts = JSON.parse(localStorage.getItem('products')) || [];
@@ -138,14 +139,13 @@ document.addEventListener('DOMContentLoaded', function () {
         addToCartButton.classList.add('add-to-cart', 'btn', 'btn-primary');
         addToCartButton.type = 'button';
         addToCartButton.textContent = 'Add to Cart';
+        
+        if (product.stockQuantity > 0) {
 
-        addToCartButton.addEventListener('click', function () {
-            if (product.stockQuantity > 0) {
-                console.log(`Product added to cart: ${product.productTitle}`);
-            } else {
-                console.log(`Product is out of stock: ${product.productTitle}`);
-            }
-        });
+            addToCartButton.addEventListener('click', function () {
+                addToCart(product)
+            });
+        }
 
         return addToCartButton;
     }

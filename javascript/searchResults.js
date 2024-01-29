@@ -1,3 +1,5 @@
+import {updateCartInfo} from "./navbar.js";
+import {Cart} from "./modula.js"
 let searchResultProducts;
 let searchResultsSection = document.querySelector("#search-results-section");
 let productsPerPage = 6;
@@ -107,6 +109,10 @@ function createProductCard(product) {
     var addToCartButton = document.createElement("button");
     addToCartButton.className = "btn btn-outline-secondary w-100 bg-secondary-subtle border-0";
     addToCartButton.textContent = "Add To Cart";
+    addToCartButton.addEventListener("click",()=>
+    {
+        addToCart(product);
+    })
 
     cardBody.appendChild(buttonsContainer);
     cardBody.appendChild(cardTitle);
@@ -140,6 +146,74 @@ function viewProductImagesInModal(product) {
 
     let modal = new bootstrap.Modal(document.getElementById('picsModal'));
     modal.show();
+}
+
+function itemIndxInCart(_item)
+{
+    let cartItems = getCartFromlocal();
+    let indx = -1;
+    for(let i = 0; i<cartItems.length; i++){
+        if(cartItems[i].productId === _item.id)
+        {
+            indx = i;
+            break;
+        }
+    }
+    return indx;
+}
+
+function setCartTolocal(arr){
+    localStorage.setItem("cart",JSON.stringify(arr));
+}
+
+function getCartFromlocal(){
+    let arr  = JSON.parse(window.localStorage.getItem("cart")) || [];
+    return arr;
+}
+
+function addToCart(product)
+{
+    let cartItems = getCartFromlocal();
+    let currentProduct = product;
+    let addedQuantity = 1;
+    let indexInCart = itemIndxInCart(currentProduct);
+    let availableQuantity = currentProduct.stockQuantity;
+    console.log("available quantity",currentProduct.stockQuantity);
+    let totalQuantity = addedQuantity;
+    let notEnoughItemModal = document.getElementById("not-enough-items-modal");
+
+    if(indexInCart === -1)
+    {
+        //console.log("total quantity", totalQuantity);
+        if(totalQuantity > availableQuantity)
+        {
+            let modal = new bootstrap.Modal(notEnoughItemModal);
+            modal.show();
+            return;
+        }
+        cartItems.push(new Cart(currentProduct.id, currentProduct.productTitle, addedQuantity, currentProduct.price, currentProduct.images[0]).addJson());
+
+    }
+    else
+    {
+        totalQuantity += cartItems[indexInCart].quantity;
+        console.log("total quantity", totalQuantity);
+
+        if(totalQuantity > availableQuantity)
+        {
+            let modal = new bootstrap.Modal(notEnoughItemModal);
+            modal.show();
+            return;
+        }
+
+        cartItems[indexInCart].quantity += addedQuantity;
+
+    }
+
+    //currentProduct.stock_quantity -= addedQuantity;
+    setCartTolocal(cartItems);
+    updateCartInfo(cartItems);
+
 }
 
 function viewProductDetails(product)

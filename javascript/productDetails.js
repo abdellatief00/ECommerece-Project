@@ -1,5 +1,6 @@
 import { Product, Review, Cart } from "./modula.js";
 import { updateCartInfo } from "./navbar.js";
+import {createCartData} from "./cartScript.js"
 
 let nextProduct = document.getElementById("nextProduct");
 let prevProduct = document.getElementById("prevProduct");
@@ -49,7 +50,7 @@ window.addEventListener("load", function(){
     console.log("currentProductIndex",currentProductIndex);
     currentUser = getUserFromLocal();
     cartItems = getCartFromlocal();
-    setUserToLocal();
+    //setUserToLocal();
     console.log( "products",products);
 
     dispalyProductInfo();
@@ -460,6 +461,7 @@ function addToCart()
     //currentProduct.stock_quantity -= addedQuantity;
     setCartTolocal(cartItems);
     updateCartInfo(cartItems);
+    createCartData();
 
 }
 // ================================================================
