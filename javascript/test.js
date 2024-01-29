@@ -272,7 +272,7 @@ document.querySelector(".CartMenu").children[0].innerHTML=totalPrice+".00 $";
    
 
 }
-}
+
 export function createCartData(){
    // debugger;
     var cartItems=JSON.parse(localStorage.getItem("cart"));
