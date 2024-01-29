@@ -44,37 +44,46 @@ window.addEventListener('load', function () {
             createdtd.appendChild(checkCreatted);
             createdrow.appendChild(createdtd);
             for (let key in users[i]) {
-                let createdtd = document.createElement('td');
-                createdtd.setAttribute("data-row-index", i)
+                let createdtd;
                 switch (key) {
-                    case "images":
+                    case "image":
+                        createdtd = document.createElement('td');
+                        createdtd.setAttribute("data-row-index", i)
                         let imgTag = document.createElement("img");
                         imgTag.setAttribute("src", `${users[i][key]}`)
                         createdtd.appendChild(imgTag);
+                        createdrow.appendChild(createdtd);
                         break;
-                    case "role":
-                        if (users[i][key] == 2) {
-                            createdtd.innerHTML = `<span class="text-bg-primary p-2 rounded-2  text-center" data-row-index=${i}> User </span>`;
-
-                        } else if (users[i][key] == 1) {
-
-                            createdtd.innerHTML = `<span class=" btn text-bg-success p-2 text-center" data-bs-toggle="modal" data-bs-target="#specifcProductForSpecificSeller" data-row-index=${i}> Seller </span>`
-                        }
+                        case "role":
+                            createdtd = document.createElement('td');
+                            createdtd.setAttribute("data-row-index", i)
+                            if (users[i][key] == 2) {
+                                createdtd.innerHTML = `<span class="text-bg-primary p-2 rounded-2  text-center" data-row-index=${i}> User </span>`;
+                                
+                            } else if (users[i][key] == 1) {
+                                
+                                createdtd.innerHTML = `<span class=" btn text-bg-success p-2 text-center" data-bs-toggle="modal" data-bs-target="#specifcProductForSpecificSeller" data-row-index=${i}> Seller </span>`
+                            }
+                            createdrow.appendChild(createdtd);
 
                         break;
                     case "fname":
-                        createdtd.innerText = users[i][key];
-                        break;
                     case "lname":
+                    case "id":
+                    case "email":
+                    case "password":
+                    case "age":
+                        createdtd = document.createElement('td');
+                        createdtd.setAttribute("data-row-index", i)
                         createdtd.innerText = users[i][key];
-                        break;
-
+                        createdrow.appendChild(createdtd);
+                         break;
+                         case "cart":
+                            console.log(users[i][key]);
+                         break;
                     default:
-                        createdtd.innerText = users[i][key];
                         break;
                 }
-
-                createdrow.appendChild(createdtd);
             }
             //<i class="fa-regular fa-eye"></i>
             let lastcreatedtd = document.createElement('td');
