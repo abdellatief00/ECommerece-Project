@@ -10,7 +10,10 @@ window.addEventListener('load', function () {
     var currentUser = JSON.parse(localStorage.getItem("current_user"));
     document.getElementById("userName").innerText=currentUser.fname + " "+currentUser.lname ;
     document.getElementById("userImg").setAttribute("src",currentUser.images);
-
+    document.getElementById("userImg").addEventListener('click',function(){
+        window.location.href=`profileuser.html`;
+    });
+    
     var users = JSON.parse(localStorage.getItem("users"));
     var products = JSON.parse(localStorage.getItem("products"))
     let rowsNum = document.getElementById("rowsNum");

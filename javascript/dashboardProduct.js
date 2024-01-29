@@ -20,6 +20,7 @@ document.getElementById('userTable').addEventListener('click', function (event) 
         deleteAllBtn.disabled = checked.length <= 1;
     }
 });
+
 window.addEventListener("load", function () {
     let deleteAllBtn = document.getElementById("deleteAllBtn");
     deleteAllBtn.addEventListener("click", function () {
@@ -27,8 +28,11 @@ window.addEventListener("load", function () {
         document.getElementById("deleteRow").addEventListener("click", deleteRow)
 
     });
-
     
+
+    document.getElementById("userImg").addEventListener('click',function(){
+        window.location.href=`userprofile.html`;
+    });
     let checkAll = document.getElementById("checkAll");
     checkAll.addEventListener('click', function (e) {
         if (checkAll.checked) {

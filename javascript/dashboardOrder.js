@@ -4,6 +4,9 @@ window.addEventListener("load", function () {
     console.log(orders);
     const products = JSON.parse(localStorage.getItem("products")) || [];
     const tbodyOrders = document.getElementById("tbodyOrders");
+    document.getElementById("userImg").addEventListener('click',function(){
+        window.location.href=`userprofile.html`;
+    });
 
     // Sort orders by date (oldest to newest)
     const UserOrders = orders.sort((a, b) => new Date(a.date) - new Date(b.date));
