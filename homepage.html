@@ -21,98 +21,142 @@
     
     <link rel="stylesheet" href="style/all.min.css">
     <link rel="stylesheet" href="style/homepage.css">
+    <link rel="stylesheet" href="style/navbar.css">
     <script src="javascript/test.js" defer></script>
     <script src="javascript/navbar.js" type="module"></script>
     <!-- <script src="javascript/productmodula.js" type="module"></script> -->
     <script src="javascript/homepage.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
   </head>
     
 </head>
-<body>
-
-
-    <div class="container-fluid">
+<body class="d-flex flex-column justify-content-center mx-auto">
 
         <section id="homepage-header">
-            <div id="imgContainer" class="z-2">
+            <div id="imgContainer" class="z-2 ">
                 <img src="images/headerGlass.png" alt="" style="position: absolute;">
             </div>
             
             <!--Header-->
-    <header class="d-flex justify-content-between position-relative p-3">
-        <a id="logo-image" href="homepage.html" class="position-absolute d-none d-lg-block">
-            <img  src="images/logo-header-regular.png" alt="Eyewear-logo">
-        </a>
-            
-            <nav class="navbar navbar-expand-lg bg-body-tertiary nav-underline  z-3 position-relative">
-                <div class="container-fluid">
-                    <a class="navbar-brand d-lg-none" href="homepage.html">
-                        <img src="images/logo-header-regular.png" alt="Eyewear-logo">
-                    </a>
-                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mt-2 mb-2 mb-lg-0 fw-bold flex-grow">
-                      <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="homepage.html">Home</a>
-                      </li>
+            <header class="d-flex justify-content-between position-relative p-3 ">
 
-                      <li class="nav-item">
-                        <a class="nav-link" href="man.html">MEN</a>
-                    </li>
-    
-                    <li class="nav-item">
-                        <a class="nav-link" href="woman.html">WOMEN</a>
-                    </li>
-    
-                    <li class="nav-item">
-                        <a class="nav-link " href="about.html">ABOUT US</a>
-                    </li>
-    
-                    <li class="nav-item">
-                        <a class="nav-link" href="contact.html">CONTACT</a>
-                    </li>
-
-                    <li class="nav-item">
-                        
-                    </li>
-                      
-                    </ul>
+                <a id="logo-image" href="homepage.html" class="position-absolute d-none d-lg-block">
+                    <img  src="images/logo-header-regular.png" alt="Eyewear-logo">
+                </a>
+                
                     
-                  </div>
-
-                </div>
-            </nav>
-
-        <div id = "header-right-section" class="d-flex justify-content-between mt-3 flex-grow-0">
-            <div>
-                <form id = "header-search-form" role="search" class="d-flex">
-                    <input class="form-control me-2 d-none" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
+                    <nav class="navbar navbar-expand-lg bg-body-tertiary nav-underline  z-3 position-relative">
+                        <div class="container-fluid">
+                            <a class="navbar-brand d-lg-none" href="homepage.html">
+                                <img src="images/logo-header-regular.png" alt="Eyewear-logo">
+                            </a>
+                          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mt-2 mb-2 mb-lg-0 fw-bold flex-grow">
+                              <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="homepage.html">Home</a>
+                              </li>
+        
+                              <li class="nav-item">
+                                <a class="nav-link" href="man.html">MEN</a>
+                            </li>
             
+                            <li class="nav-item">
+                                <a class="nav-link" href="woman.html">WOMEN</a>
+                            </li>
+            
+                            <li class="nav-item">
+                                <a class="nav-link " href="about.html">ABOUT US</a>
+                            </li>
+            
+                            <li class="nav-item">
+                                <a class="nav-link" href="contact.html">CONTACT</a>
+                            </li>
+        
+                            <li class="nav-item">
+                                
+                            </li>
+                              
+                            </ul>
+                            
+                          </div>
+        
+                        </div>
+                    </nav>
+        
+                <div id = "header-right-section" class="d-flex justify-content-between mt-3 flex-grow-0">
+                    <div>
+                        <form id = "header-search-form" role="search" class="d-flex position-relative">
+                            <input class="form-control me-2 d-none" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                            <div id="search-results" class="d-flex flex-column position-absolute z-3 d-none">
+                                
+                                    <div class="d-flex align-items-center">
+                                    <img src="images/product-10-a.jpg" class="" alt="...">
+                                    <div class="d-flex flex-column mx-2">
+                                        <h6>Card title</h6>
+                                        <div>
+                                            <span>$price</span> ● 
+                                            <span>category</span>
+                                        </div>
+                                    </div>
+                                      
+                                    </div>
+        
+                                    <div productId = 2 class="d-flex align-items-center">
+                                        <img src="images/product-10-a.jpg" class="" alt="...">
+                                        <div class="d-flex flex-column mx-2">
+                                            <h6>Card title</h6>
+                                            <div>
+                                                <span>$price</span> ● 
+                                                <span>category</span>
+                                            </div>
+                                        </div>
+                                          
+                                    </div>
+        
+                                    <div class="d-flex align-items-center search-result-item">
+                                        <img src="images/product-10-a.jpg" class="" alt="...">
+                                        <div class="d-flex flex-column mx-2">
+                                            <h6>Card title</h6>
+                                            <div>
+                                                <span>$price</span> ● 
+                                                <span>category</span>
+                                            </div>
+                                        </div>
+                                          
+                                    </div>
+        
+                                    <div style="background: rgb(181, 172, 172); text-align: center;">
+                                        show all results &rarr;
+                                    </div>
+                                
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <div id="cart-icon" class="me-3 ms-3 mt-4 mt-lg-2 align-self-right">
+                        <span>$0.00</span>
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span id="cart-items-count">0</span>
+                    </div>
+        
+                    <button id="loginBtn" class="btn btn-outline-secondary border-0 align-self-start">
+                        <i class="fa-solid fa-user"></i>
+                        <!-- <img class="bg-white" src="images/miniProfile.png" style="width: 30px; height: 30px; border-radius: 50%;" alt=""> -->
+                        <span>Login</span>
+                    </button>
+        
+                    <div class="navbar">
+                        <button class="navbar-toggler align-self-start d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                          </button>
+                    </div>
+        
+                </div>
+            </header>
+            <hr>
 
-            <div id="cart-icon" class="me-3 ms-3 mt-4 mt-lg-2 align-self-right">
-                <span>$0.00</span>
-                <i class="fa-solid fa-cart-shopping"></i>
-                <span id="cart-items-count">0</span>
-            </div>
-
-            <button id="loginBtn" class="btn btn-outline-secondary border-0 align-self-start">
-                <i class="fa-solid fa-user"></i>
-                <!-- <img class="bg-white" src="images/miniProfile.png" style="width: 30px; height: 30px; border-radius: 50%;" alt=""> -->
-                <span>Login</span>
-            </button>
-
-            <div class="navbar">
-                <button class="navbar-toggler align-self-start d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-            </div>
-        </div>
-    </header>
-    <hr>
-
-            <div class="d-flex flex-column justify-content-center z-1" id="header-text">
+            <div class="d-flex flex-column justify-content-center z-1 container-fluid mx-auto" id="header-text">
                 <h5>ORIGINAL SUNGLASSES</h5>
                 <h2>Original Sunglasses</h2>
                 <p>
@@ -137,7 +181,7 @@
         </div>
         <!-- end of section one -->
         <!-- section two -->
-        <div class="row" id="sectionthree">
+        <div class="row container-fluid mx-auto" id="sectionthree">
             <div class="col-12 col-sm-12 col-md-6 col-lg-6  text-start align-self-center ">
                 <div class="">
                     <h1 class="headfont">Be different in your own way!</h1>
@@ -148,7 +192,7 @@
         </div>
         <!-- end of section three -->
 
-        <div class="row gap-3" id="sectionfour">
+        <div class="row gap-3 container-fluid mx-auto" id="sectionfour">
             <div class="col-12 col-md-6 col-lg-6 "></div>
             <div class="col-md col-lg d-flex justify-content-center align-items-center">
                 <div>
@@ -167,7 +211,7 @@
         <!--end of section three  -->
         <!--start section five  -->
 
-        <div class="row" id="sectionfive">
+        <div class="row container-fluid mx-auto" id="sectionfive">
             <div class="col-12 col-sm-12 col-lg-6 offset-lg-3  text-center">
                     <h6>Client's Review</h6>
                     <h1 class="headfont">Testimonials</h1>
@@ -185,7 +229,7 @@
         <!-- begingign of donya parts -->
 
 
-        <div id="div4">
+        <div id="div4" class="container-fluid mx-auto">
             <section id="div5">
                 <h6 class="headfont">HEADING TEXT HERE</h6>
                 <h2 class="headfont">HOW TO TAKE CARE OF YOUR EYEWEAR</h2>
@@ -203,7 +247,7 @@
 
 
         <!-- products part -->
-        <div id="products" class="">
+        <div id="products" class="container-fluid mx-auto">
             <div class="product ">
                 <div class="product-image" id="image1">
                     <div class="icons-product">
@@ -285,7 +329,7 @@
 
         <!-- end of donya parts -->
 
-        <section class="ProductFeatures">
+        <section class="ProductFeatures container-fluid mx-auto">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12 py-5 feature">
@@ -323,7 +367,7 @@
             </div>
         </section> <!-- end of features section -->
     
-        <footer>
+        <footer class="container-fluid mx-auto">
             <div class="container p-5">
                 <div class="row"> 
                     <div class="col-xl-3 col-lg-3 col-md-6 col-sm-12 col-12 logo m-0">

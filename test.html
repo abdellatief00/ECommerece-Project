@@ -4,13 +4,30 @@
 <head>
 <title>Multiple Wavy Lines Chart with Chart.js</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="javascript/sellerDashboard.js" type="module"></script>
 </head>
 <body>
-  <canvas id="myChart" height="300"></canvas>
-
-  <script>
-    const ctx = document.getElementById('myChart').getContext('2d');
-
+  <div>
+    <select name="products" id="productsOptions">
+      <option value="1">product 1</option>
+      <option value="3">product 3</option>
+      <option value="13">product 13</option>
+      <option value="4">product 4</option>
+      <option value="7">product 7</option>
+      <option value="8">product 8</option>
+    </select>
+  </div>
+  <div>
+    <canvas id="productChart" height="300px"></canvas>
+  </div>
+  <div>
+    <canvas id="ordersChart" height="300px"></canvas>
+  </div>
+  
+  
+  <!-- <script>
+    const ctx = document.getElementById('ordersChart').getContext('2d');
+    const ctx2 = document.getElementById('productChart').getContext('2d');
     const labels = [
     "2023-02-10",
     "2023-02-13",
@@ -65,7 +82,8 @@
           pointRadius: 1,
           cubicInterpolationMode: "monotone",
           tension: 0.7
-        }
+        },
+
       ]
     };
 
@@ -102,7 +120,13 @@
       data: chartData,
       options
     });
-  </script>
+
+    const myChart2 = new Chart(ctx2, {
+      type: 'line',
+      data: chartData,
+      options
+    });
+  </script> -->
 </body>
 </html>
 

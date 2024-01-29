@@ -112,7 +112,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to redirect to product details page
     function redirectToProductDetails(productId) {
         // Replace 'product-details.html' with the actual product details page URL
-        window.location.href = `product-details.html?id=${productId}`;
+        localStorage.setItem("currentProductId", productId);
+        window.location.href = 'productDetails.html';
     }
 });
 function removeFromFavorites(productId, deleteIcon) {
