@@ -20,17 +20,18 @@
     font-size: 1.1rem;
     font-weight: 500;
     color: #96999b;
-    
+
 
 }
-.navbar-nav .active,
+
+.nav-item.active,
 .nav-item:hover {
-    background-color: #eee;
+    /* background-color: #eee; */
     font-weight: 600;
     color: black;
 }
 
-
+/* Custom CSS for sidebar collapse */
 #sidebar {
     transition: all 0.3s;
 }
@@ -41,7 +42,10 @@
 
 .sidebar.collapsed {
     width: 90px;
+    /*Adjust the collapsed width as needed */
 }
+
+/* Custom CSS for sidebar collapse */
 .sidebar.collapsed .nav-link .sidebar-text {
     display: none;
 }
@@ -72,10 +76,25 @@
     margin-right: 0;
 }
 
-/* #content.collapsed {
-    margin-left: auto !important;
-  
-} */
+@media (min-width: 768px) {
+    #content.collapsed {
+        margin-left: 80px;
+
+    }
+}
+
+.offcanvas-start {
+    width: 250px;
+    /* Set the width as needed */
+    background-color: #eee;
+
+}
+
+.offcanvas-body {
+    padding: 10px;
+    /* Add padding as needed */
+}
+
 
 
 /* ********************** */
@@ -134,9 +153,13 @@ table img {
     text-decoration: underline;
     cursor: pointer;
 }
-#tbodyUsers tr td{
-   text-transform: capitalize;
+
+#tbodyUsers tr td {
+    text-transform: capitalize;
+
+    vertical-align: middle;
 }
+
 
 
 @media (max-width: 992px) {
@@ -148,20 +171,49 @@ table img {
         max-width: 40px;
     }
 
-    .notifications > a {
+    .notifications>a {
         font-size: 1rem !important;
     }
 }
 
-@media (max-width: 768px) {
-    /* #sidebarToggle {
+/* @media (max-width: 768px) {
+   /* #sidebarToggle {
         display: none;
     } */
-    .sidebar{
+/*  .sidebar{
         display: none;
     }
-    /* .offset-xl-2 {
+   .offset-xl-2 {
         margin-left: 0 !important;
-    } */
+    } 
     
+} */
+.toast {
+    display: none;
+    position: fixed;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ea6060;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: 50%;
+    text-align: center;
+    animation-name: animationdropfromtop;
+    animation-duration: 1s;
+}
+
+
+@keyframes animationdropfromtop {
+    from {
+        top: -20%
+    }
+
+    to {
+        top: 8%
+    }
+}
+#searchTerm, #searchType{
+    max-height: 40px;
 }

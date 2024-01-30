@@ -173,7 +173,7 @@ header .bg-body-tertiary {
 }
 
 .carousel-inner{
-    width:100%;
+    width: 100% !important;;
     height: 600px !important;
 
 }
@@ -340,8 +340,10 @@ max-height: 350px;
 }
 .carousel-item{
     height: 100%;
+    width: 100% !important;
 }
 .carousel-item img{
+    width: 100% !important;
     height: 100% !important;
 }
 /* Media query for small screens */
@@ -490,8 +492,7 @@ text-align: center;
 
 
 
-.Cart-Content{
-    /* height: 100vh; */
+.Cart-Content{height: 100vh;
     border-radius: 0%;
     
    }
@@ -520,6 +521,7 @@ text-align: center;
     }
         .QuantityValue{
             width: 30px; 
+          
             
         }
         

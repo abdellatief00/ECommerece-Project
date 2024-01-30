@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="style/bootstrap.min.css">
+    <link rel="stylesheet" href="style/all.min.css">
+    <link rel="stylesheet" href="style/dashboardStyle.css">
+</head>
+
+<body>
+    <section>
+        <div class="container-fluid">
+            <div class="row">
+                <!--sideBar-->
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-2 sidebar" id="sidebar">
+                    <div class="logo  p-xl-3 pb-xl-5">
+                        <img src="images/logo.png">
+                    </div>
+                    <div class=" navbar-collapse sidebar-links" id="navbarSupportedContent">
+                        <ul class="navbar-nav ">
+                            
+                            <li class="nav-item">
+                                <a class="nav-link px-xl-4" href="#"><i class="fa-solid fa-user-group pe-3"></i>
+                                    <span class="sidebar-text">Products</span> </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link  px-xl-4" href="sellerorders.html"><i class="fa-solid fa-store pe-3"></i>
+                                    <span class="sidebar-text">orders</span> </a>
+                            </li>
+                            <li class="nav-item active">
+                                <a class="nav-link px-xl-4 " href="Dashboard-Overview.html"><i class="fa-solid fa-bag-shopping pe-3"></i>
+                                    <span class="sidebar-text">charts</span>
+
+                                </a>
+                            </li>
+                            
+                        </ul> <!-- end of navbar links -->
+
+                    </div>
+                </div> <!-- end of sideBar -->
+
+                <div class="offset-xl-2 col-xl-10 offset-lg-2 col-lg-10 offset-md-2 col-md-10 offset-sm-0 col-sm-10"
+                    id="content">
+                    <div class="container-fluid">
+                        <div class="row adminSearchRow  justify-content-md-between justify-content-sm-between justify-content-between">
+                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-8 col-8 d-flex">
+                                <button class="btn btn-light my-auto mt-4" id="sidebarToggle">
+                                    <i class="fa-solid fa-bars"></i>
+                                </button>
+                                <div class="offset-xl-0  col-xl-4 pt-xl-4 col-lg-4 offset-lg-0 pt-lg-4 col-md-4 offset-md-0 pt-md-4 col-sm-2 offset-sm-0 pt-sm-4 col-4 pt-4  offset-2 ">
+
+                                    <a href="homepage.html" class="p-lg-4 pt-xl-5 p-sm-0 m-md-0 p-4 backBtn text-center">Home</a>
+
+                                </div> <!--  back button  -->
+                                
+                            </div> <!-- search -->
+
+                            <div
+                                class="adminImgANDNot col-xl-6 pt-xl-3 col-lg-6 pt-lg-3  col-md-6 pt-md-3 col-sm-4 col-4 d-flex text-center">
+                                <div class="notifications p-2 p-xl-3 p-lg-3">
+                                    <a href="#" class="py-2 px-3"><i class="fa-solid fa-moon"></i></a>
+                                </div>
+                                <div class="g-2">
+                                    <img src="images/admin-img.jpg" alt="">
+                                    <h6>Seller Seller</h6>
+                                </div>
+                            </div>
+                        </div> <!-- end of row of user and search -->
+                        
+                        <div class="row m-xl-2">
+
+
+    
+                    <!--table div  -->
+                            <!------------------------ modall----------------- -->
+                            <div class="modal fade modal-lg " id="addproduct" tabindex="-1" aria-labelledby="addproductLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="addproductLabel">Add new product</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="mb-1 col-12">
+                                                    <label for="user-fname"
+                                                        class="col-form-label">Product Title:</label>
+                                                    <input type="text" class="form-control" id="user-fname" aria-required="true" required>
+                                                </div>
+                                                <div class="mb-1 col-6">
+                                                    <label for="user-lname"
+                                                        class="col-form-label">stock quantity:</label>
+                                                    <input type="number" class="form-control" id="user-lname" aria-required="true" required>
+                                                </div>
+                                                <div class="mb-1 col-6">
+                                                    <label for="user-email" class="col-form-label">price:</label>
+                                                    <input type="number" class="form-control" id="user-email" required>
+                                                </div>
+                                                <div class="mb-1">
+                                                    <label for="textarea" class="col-form-label">description:</label>
+                                                    <textarea  class="form-control" id="textarea" required></textarea>
+                                                </div>
+                                                <div class="mb-1">
+                                                    <label for="categorychoose" class="col-form-label">category</label>
+                                                    <select name="entryNum" id="categorychoose"
+                                                    style="font-size: 18px;" required>
+                                                        <option value="Men" selected="selected">Men</option>
+                                                        <option value="Women">Women</option>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-1 col-6">
+                                                    <label for="user-pass" class="col-form-label">shape</label>
+                                                    <input type="text" class="form-control" id="user-pass" required>
+                                                </div>
+                                                <div class="mb-1 col-6">
+                                                    <label for="user-age" class="col-form-label">frame color:</label>
+                                                    <input type="text" class="form-control" id="user-age" required>
+                                                </div>
+                                                <div class="mb-1 col-6">
+                                                    <label for="user-material" class="col-form-label">material:</label>
+                                                    <input type="text" class="form-control" id="user-material" required>
+                                                </div>
+                                                <div class="mb-1 col-6">
+                                                    <label for="lenses" class="col-form-label">lense glass:</label>
+                                                    <input type="text" class="form-control" id="lenses" required>
+                                                </div>
+                                                <div class="mb-1">
+                                                    <label for="treatment" class="col-form-label">treatment:</label>
+                                                    <input type="text" class="form-control" id="treatment" required>
+                                                </div>
+                                                <div class="mb-1">
+                                                    <label for="user-image" class="col-form-label">Images:</label><br>
+                                                    <input type="file" id="user-image" accept="image/*" required>
+                                                    <input type="file" id="user-image2" accept="image/*" required>
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger"
+                                                data-bs-dismiss="modal">Cancel</button>
+                                                <button  type="button" class="btn btn-success" id="addproduct">Add Product </button>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div> <!--end of add user model -->
+                          
+                               <div class="modal fade" id="deleteConfirm" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteConfirmLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-dialog">
+                                        <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="deleteConfirmLabel">Confirm Deletion</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to delete this user?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                            <button type="button" class="btn btn-danger" id="deleteRow" data-bs-dismiss="modal">Delete</button>
+                                        </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                              </div> <!-- deleteConfirm Modal -->
+
+
+                            <div class="modal fade modal-lg" id="editproducts" tabindex="-1" aria-labelledby="edituserLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="edituserLabel">Edit products</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row">
+                                                <div class="mb-1 col-12">
+                                                    <label for="fname"
+                                                        class="col-form-label">Product Title:</label>
+                                                    <input type="text" class="form-control" id="fname" aria-required="true" required>
+                                                </div>
+                                                <div class="mb-1 col-6">
+                                                    <label for="lname"
+                                                        class="col-form-label">Stock Quantity:</label>
+                                                    <input type="number" class="form-control" id="lname" aria-required="true" required>
+                                                </div>
+                                                <div class="mb-1 col-6">
+                                                    <label for="email" class="col-form-label">price:</label>
+                                                    <input type="number" class="form-control" id="email" required>
+                                                </div>
+                                                <div class="mb-1">
+                                                    <label for="textarea2" class="col-form-label">description:</label>
+                                                    <textarea  class="form-control" id="textarea2" required></textarea>
+                                                </div>
+                                                <div class="mb-1">
+                                                    <label for="categorychoose2" class="col-form-label">Category:</label>
+                                                    <select name="entryNum" id="categorychoose2"
+                                                    style="font-size: 18px;" required>
+                                                        <option value="Men">Men</option>
+                                                        <option value="Women">Women</option>
+                                                    </select>
+                                                </div>
+                                                <div class="mb-1 col-6">
+                                                    <label for="age" class="col-form-label">Shape:</label>
+                                                    <input type="text" class="form-control" id="age"  required>
+                                                </div>
+                                                <div class="mb-1 col-6">
+                                                    <label for="age2" class="col-form-label">Frame color:</label>
+                                                    <input type="text" class="form-control" id="age2"  required>
+                                                </div>
+                                                <div class="mb-1 col-6">
+                                                    <label for="age3" class="col-form-label">lense Glasses:</label>
+                                                    <input type="text" class="form-control" id="age3"  required>
+                                                </div>
+                                                <div class="mb-1 col-6">
+                                                    <label for="age4" class="col-form-label">Treatments:</label>
+                                                    <input type="text" class="form-control" id="age4" required>
+                                                </div>
+                                                <div class="mb-3 col-6">
+                                                    <label for="image" class="col-form-label">Images:</label><br>
+                                                    <input type="file" id="imageedit" accept="image/*" >
+                                                    <input type="file" id="imageedit1" accept="image/*" >
+                                                    
+                                                </div>
+                                            </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger"
+                                                data-bs-dismiss="modal">Cancel</button>
+                                                <button  type="button" class="btn btn-success" id="editUser">Edit User</button>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                            <div class="modal fade modal-lg" id="showproducts" tabindex="-1" aria-labelledby="edituserLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="edituserLabel">Product details</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="mb-1">
+                                                    <label for="fname1"
+                                                        class="col-form-label">Product Title:</label>
+                                                    <input type="text" class="form-control" id="fname1" aria-required="true" disabled>
+                                                </div>
+                                                <div class="mb-1">
+                                                    <label for="lname1"
+                                                        class="col-form-label">Stock quantity:</label>
+                                                    <input type="text" class="form-control" id="lname1" aria-required="true" disabled>
+                                                </div>
+                                                <div class="mb-1">
+                                                    <label for="email1" class="col-form-label">price:</label>
+                                                    <input type="text" class="form-control" id="email1" disabled>
+                                                </div>
+                                                <div class="mb-1">
+                                                    <label for="pass1" class="col-form-label">category</label>
+                                                    <input type="text" class="form-control" id="pass1" disabled>
+                                                </div>
+                                                <div class="mb-1">
+                                                    <label for="age1" class="col-form-label">shape:</label>
+                                                    <input type="text" class="form-control" id="age1" min="19" disabled>
+                                                </div>
+                                                <div class="mb-1">
+                                                    <label for="image1" class="col-form-label">frame color:</label>
+                                                    <input type="text" class="form-control" id="image1" disabled >
+                                                    
+                                                </div>
+                                                <div class="mb-1">
+                                                    <label for="image2" class="col-form-label">lense glass:</label>
+                                                    <input type="text" class="form-control" id="image2" disabled >
+                                                </div>
+                                                <div class="mb-1">
+                                                    <label for="image3" class="col-form-label">treatment :</label>
+                                                    <input type="text" class="form-control" id="image3" disabled >
+                                                </div>
+                                                <div class="mb-1 d-flex justify-content-evenly"style="background-color:#f1f1f1;">
+                                                    <div><img src="/images/men/product-11-a.jpg" alt="" style="max-width: 70px;max-height: 70px;" id="fimage"></div>
+                                                    <div><img src="/images/men/product-11-a.jpg" alt=""style="max-width: 70px;max-height: 70px;" id="simage"></div>
+                                                </div>
+                                            </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-danger"
+                                                data-bs-dismiss="modal">Cancel</button>
+                                            </div>
+                                        </div>
+                                </div>
+                            </div>
+                        </div> <!-- row for table -->
+
+
+                    </div> <!-- container -->
+                </div> <!-- remain of cols -->
+            </div> <!-- end of row -->
+
+            <!-- main part -->
+            <div class="row justify-content-end mb-3 pt-5" >
+                <div class="offset-xl-2 col-xl col-lg-6 col-md-6 col-sm-5 col-5 mb-3 heigh">
+                    <div class="inside bg-info ">
+                        <h3>150</h3>
+                        <p>new order</p>
+                        <div class="icons">
+                            <i class="fa-solid fa-bag-shopping"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More Info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-xl col-lg-5 col-md-5 col-sm-5 col-5 mb-3 heigh">
+                    <div class="inside bg-success">
+                        <h3>150</h3>
+                        <p>Item In Stock</p>
+                        <div class="icons">
+                            <i class="fa-solid fa-signal"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More Info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-xl col-lg-6 col-md-6 col-sm-5 col-5 mb-3 heigh">
+                    <div class="inside bg-warning">
+                        <h3>150</h3>
+                        <p>User register</p>
+                        <div class="icons">
+                            <i class="fa-solid fa-user-plus"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More Info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+                <div class="col-xl col-lg-5 col-md-5 col-sm-5 col-5 mb-3 heigh">
+                    <div class="inside bg-danger">
+                        <h3>150</h3>
+                        <p>Products</p>
+                        <div class="icons">
+                            <i class="fa-solid fa-chart-pie"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">More Info <i class="fas fa-arrow-circle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="row justify-content-end ">
+                <div class="col-xl-10 col-lg-5 col-md-11 col-10 mb-3 seconed" ><div class="inside h-100 "><canvas id="myChart2" style="width: 100%; height: 400px;"></canvas></div></div>
+                
+            </div>
+
+            <div class="row justify-content-end  pt-3">
+                <div class="col-xl-10 col-lg-11 col-md-11 col-10 third" ><div class="inside h-100"><canvas id="myChart4" style="width: 100%; height: 250px;"></canvas></div></div>
+            </div>
+
+
+
+            <!-- end of main part -->
+        </div> <!-- end of container-fluid -->
+    </section>
+
+    <script src="
+    https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js
+    "></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
+    <script src="javascript/bootstrap.bundle.min.js"></script>
+    <script src="javascript/all.min.js"></script>
+    <script src="javascript/dashOver.js"></script>
+    <script src="javascript/charts.js"></script>
+</body>
+
+</html>

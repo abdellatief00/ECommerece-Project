@@ -165,3 +165,30 @@ table img {
     } */
     
 }
+
+
+.toast {
+    display: none;
+    position: fixed;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #ea6060;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    width: 50%;
+    text-align: center;
+    animation-name: animationdropfromtop;
+    animation-duration: 1s;
+  }
+
+
+@keyframes animationdropfromtop {
+    from{
+        top: -20%
+    }
+    to{
+        top:8%
+    }
+}

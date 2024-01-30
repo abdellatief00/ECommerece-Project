@@ -1,7 +1,8 @@
 
-import { Cart } from './modula.js';
-import { addToCart } from './test.js';
+// import { Cart } from './modula.js';
+// import { createCartData } from './test.js';
 
+import { addToCart } from "./cartScript.js";
 document.addEventListener('DOMContentLoaded', function () {
     // Retrieve products and current user from local storage
     let storedProducts = JSON.parse(localStorage.getItem('products')) || [];
@@ -69,11 +70,11 @@ document.addEventListener('DOMContentLoaded', function () {
             updateWishlistLinkColor(wishlistLink, product.id);
         });
 
-        const eyeLink = createProductLink('<i class="fa fa-eye" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top"></i>', function () {
-            showProductPopup(product);
+        const eyeLink = createProductLink('<i class="fa fa-eye" data-bs-toggle="tooltip" data-bs-placement="top" title="Product details"></i>', function () {
+            showProductDetails(product);
         });
 
-        const quickViewLink = createProductLink('<i class="fa fa-search" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top"></i>', function () {
+        const quickViewLink = createProductLink('<i class="fa fa-search" data-bs-toggle="tooltip" data-bs-placement="top" title="View"></i>', function () {
             viewProductImage(product);
         });
 
@@ -137,20 +138,18 @@ document.addEventListener('DOMContentLoaded', function () {
     }
     // Function to create "Add to Cart" button
     function createAddToCartButton(product) {
+        
         const addToCartButton = document.createElement('button');
         addToCartButton.classList.add('add-to-cart', 'btn', 'btn-primary');
         addToCartButton.type = 'button';
         addToCartButton.textContent = 'Add to Cart';
-    
-
+        
         if (product.stockQuantity > 0) {
 
-        addToCartButton.addEventListener('click', function () {
-            addToCart(product)
-        });
-    } 
-
-        
+            addToCartButton.addEventListener('click', function () {
+                addToCart(product)
+            });
+        }
 
         return addToCartButton;
     }
@@ -172,10 +171,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Function to show product popup
-    function showProductPopup(product) {
-        console.log('Product details popup:', product);
-        // Implement logic to display product details in a popup
-        // You can use a modal or any other UI component to display detailed product information
+    function showProductDetails(product) {
+        setCurrentProductIdToLocal(product.id);
+        window.location.assign("productDetails.html");
     }
 
     // Function to view product image
@@ -200,14 +198,13 @@ document.addEventListener('DOMContentLoaded', function () {
         const modal = new bootstrap.Modal(document.getElementById('productImageModal'));
         modal.show();
     }
-
     // Function to toggle favorite status
     function toggleFavorite(product) {
         if (currentUser) {
             currentUser.favorites = currentUser.favorites || [];
             const productId = product.id;
             const index = currentUser.favorites.indexOf(productId);
-
+    
             if (index === -1) {
                 currentUser.favorites.push(productId);
                 console.log(`Added product ${productId} to favorites.`);
@@ -215,8 +212,22 @@ document.addEventListener('DOMContentLoaded', function () {
                 currentUser.favorites.splice(index, 1);
                 console.log(`Removed product ${productId} from favorites.`);
             }
-
+    
+            // Update the currentUser in local storage
             localStorage.setItem('current_user', JSON.stringify(currentUser));
+    
+            // Get the entire array of users from local storage
+            let usersData = JSON.parse(localStorage.getItem('user')) || [];
+            console.log(usersData);
+    
+            // Find the index of the current user in the array
+            let userIndex = usersData.findIndex(user => user.id === currentUser.id);
+    
+            if (userIndex !== -1) {
+                // Update only the favorites in the array
+                usersData[userIndex].favorites = currentUser.favorites;
+                localStorage.setItem('user', JSON.stringify(usersData));
+            }
         }
     }
 
@@ -314,3 +325,7 @@ document.addEventListener('DOMContentLoaded', function () {
     sortAndRenderProducts(document.getElementById('orderby').value);
     updatePagingButtons();
 });
+function setCurrentProductIdToLocal(productId)
+{
+    localStorage.setItem("currentProductId", productId);
+}

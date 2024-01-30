@@ -419,8 +419,7 @@ text-align: center;}
 
 
 
-.Cart-Content{
-    /* height: 100vh; */
+.Cart-Content{height: 100vh;
     border-radius: 0%;
     
    }

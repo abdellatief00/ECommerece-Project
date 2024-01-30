@@ -1,5 +1,6 @@
 import { Cart } from './modula.js';
-import { addToCart } from './test.js';
+import { createCartData } from './cartScript.js';
+import { addToCart } from './cartScript.js';
 document.addEventListener('DOMContentLoaded', function () {
     // Retrieve products and current user from local storage
     let storedProducts = JSON.parse(localStorage.getItem('products')) || [];
@@ -68,11 +69,11 @@ document.addEventListener('DOMContentLoaded', function () {
             updateWishlistLinkColor(wishlistLink, product.id);
         });
 
-        const eyeLink = createProductLink('<i class="fa fa-eye" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top"></i>', function () {
-            showProductPopup(product);
+        const eyeLink = createProductLink('<i class="fa fa-eye" data-bs-toggle="tooltip" data-bs-placement="top" title="Product details"></i>', function () {
+            showProductDetails(product);
         });
 
-        const quickViewLink = createProductLink('<i class="fa fa-search" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top"></i>', function () {
+        const quickViewLink = createProductLink('<i class="fa fa-search" data-bs-toggle="tooltip" data-bs-placement="top" title="View"></i>', function () {
             viewProductImage(product);
         });
 
@@ -144,14 +145,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (product.stockQuantity > 0) {
 
-        addToCartButton.addEventListener('click', function () {
-            addToCart(product)
-        });
-    } 
-
-        else {
-            console.log(`Product is out of stock: ${product.productTitle}`);
-        }
+            addToCartButton.addEventListener('click', function () {
+                addToCart(product)
+            });
+        }
 
         return addToCartButton;
     }
@@ -173,10 +170,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     // Function to show product popup
-    function showProductPopup(product) {
-        console.log('Product details popup:', product);
-        // Implement logic to display product details in a popup
-        // You can use a modal or any other UI component to display detailed product information
+    function showProductDetails(product) {
+        setCurrentProductIdToLocal(product.id);
+        window.location.assign("productDetails.html");
+        
     }
 
     // Function to view product image
@@ -208,7 +205,7 @@ document.addEventListener('DOMContentLoaded', function () {
             currentUser.favorites = currentUser.favorites || [];
             const productId = product.id;
             const index = currentUser.favorites.indexOf(productId);
-
+    
             if (index === -1) {
                 currentUser.favorites.push(productId);
                 console.log(`Added product ${productId} to favorites.`);
@@ -216,10 +213,27 @@ document.addEventListener('DOMContentLoaded', function () {
                 currentUser.favorites.splice(index, 1);
                 console.log(`Removed product ${productId} from favorites.`);
             }
-
+    
+            // Update the currentUser in local storage
             localStorage.setItem('current_user', JSON.stringify(currentUser));
+    
+            // Get the entire array of users from local storage
+            let usersData = JSON.parse(localStorage.getItem('user')) || [];
+            console.log(usersData);
+    
+            // Find the index of the current user in the array
+            let userIndex = usersData.findIndex(user => user.id === currentUser.id);
+    
+            if (userIndex !== -1) {
+                // Update only the favorites in the array
+                usersData[userIndex].favorites = currentUser.favorites;
+                localStorage.setItem('user', JSON.stringify(usersData));
+            }
         }
     }
+    
+    
+    
 
     // Function to update wishlist link color
     function updateWishlistLinkColor(wishlistLink, productId) {
@@ -311,3 +325,8 @@ document.addEventListener('DOMContentLoaded', function () {
     sortAndRenderProducts(document.getElementById('orderby').value);
     updatePagingButtons();
 });
+
+function setCurrentProductIdToLocal(productId)
+{
+    localStorage.setItem("currentProductId", productId);
+}

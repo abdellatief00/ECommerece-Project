@@ -173,10 +173,14 @@ header .bg-body-tertiary {
 }
 
 .carousel-inner{
-    width:100%;
+    width:100% !important;
     height: 800px !important;
 
 }
+.carousel-item{
+    height: 100% !important;
+}
+
 .orderby{
     color: #666;
     height: auto;
@@ -275,18 +279,6 @@ header .bg-body-tertiary {
     bottom: 50%;
 
 }
-/*.stars {
-    margin-top: 5px;
-    font-size: .857em;
-    display: inline-block;
-    text-align: left;
-}*/
-
-/*.stars i{
-    color: transparent;
-    -webkit-text-stroke-width: 1px; 
-    -webkit-text-stroke-color: #555; 
-}*/
 
 .price {
     color: #0F1035;
@@ -494,8 +486,7 @@ text-align: center;
 
 
 
-.Cart-Content{
-    /* height: 100vh; */
+.Cart-Content{height: 100vh;
     border-radius: 0%;
     
    }

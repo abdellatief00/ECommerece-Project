@@ -12,6 +12,7 @@
     border: .5px solid gray;
     
 }
+
 #search-results>div{
     
     border-bottom: .5px solid rgb(214, 210, 210);
@@ -29,4 +30,29 @@
 
 .search-result-item{
     width: 100%;
+}
+
+@media (max-width:425px){
+    
+
+    #header-right-section{
+        font-size: 9px;
+    }
+
+    body > header > nav{
+        font-size: 10px;
+        width: 50%;
+    }
+
+    /* body > div > header > nav > div > a > img
+    {
+
+    } */
+}
+
+@media (max-width: 671px)
+{
+    #navbarSupportedContent{
+        width: 40px !important;
+    }
 }
