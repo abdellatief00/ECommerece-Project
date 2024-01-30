@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Close the confirmation modal
         if (logoutConfirmationModal) {
             logoutConfirmationModal.hide();
-            updateAndLogout(logoutButton);
+            updateAndLogout(confirmLogoutBtn);
         }
     });
 

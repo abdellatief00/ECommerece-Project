@@ -314,8 +314,6 @@ window.addEventListener('load', function () {
             console.log(imgarr);
             let o = new userClass(allinp[0].value, allinp[1].value, allinp[2].value, allinp[3].value, allinp[4].value, imgarr, role).addjson();
             users.push(o);
-            let o = new userClass(allinp[0].value, allinp[1].value, allinp[2].value, allinp[3].value, allinp[4].value, imgarr, role).addjson();
-            users.push(o);
             localStorage.setItem("users", JSON.stringify(users));
             users = JSON.parse(localStorage.getItem("users"));
             console.log(users);

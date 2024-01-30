@@ -629,4 +629,13 @@ text-align: center;}
         
 
 }
+
+@media (max-width:376px)
+{
+    #cart-icon{
+        margin: 0px !important;
+        margin-top: 20px !important;
+        margin-right: 5px !important;
+    }
+}
 /* end of ali parts*/
