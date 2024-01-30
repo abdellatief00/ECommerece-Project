@@ -105,7 +105,6 @@ window.addEventListener("load", function(){
 //==================================================================//
 // use these functions for admin to get all the orders 
 // or pass the seller id to get his orders
-
 function getAndFormatOrders(roleId = 0)
 {
     let ordersFormatted = [];

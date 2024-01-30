@@ -103,7 +103,6 @@ window.addEventListener("load", function(){
 //==================================================================//
 // use these functions for admin to get all the orders 
 // or pass the seller id to get his orders
-
 function getAndFormatOrders(roleId = 0)
 {
     let ordersFormatted = [];
@@ -197,6 +196,7 @@ export function getOrderTotalPrice(obj)
         let totalPrice = 0;
         for(let product in obj[date])
         {
+            //console.log("productId from price", product, typeof(product));
             totalPrice += getProductPrice(+product) * obj[date][product];
         }
         orderTotalPrice.push(totalPrice);
@@ -302,6 +302,7 @@ function getDateArray(obj)
     for(let date in obj)
     {
         dateArr.push(date);
+        //console.log("after every push", dateArr);
     }
     return dateArr;
 }

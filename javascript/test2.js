@@ -172,28 +172,6 @@ let arr = [
         "sold" : 0
     },
     {
-        "id": 6,
-        "productTitle": "BLOOM",
-        "productDescription": "Description for Product 6",
-        "images": [
-            "../images/women/product-6-a.jpg",
-            "../images/women/product-6-b.jpg"
-        ],
-        "stockQuantity": 100,
-        "offer": "10",
-        "shape": "Round",
-        "frameColor": "Black",
-        "material": "Plastic",
-        "lensClass": "UV Protection",
-        "treatment": "High Index",
-        "category": "Women",
-        "reviews": [],
-        "price": 400.99,
-        "sellerId": 3,
-        "date": "2023-11-23T12:00:00.000Z",
-        "sold" : 0
-    },
-    {
         "id": 7,
         "productTitle": "Product 7",
         "productDescription": "Description for Product 7",

@@ -249,7 +249,7 @@ function getProductsFromLocal()
 function claculateTotalPrice(arr){
     let total = 0;
     for(let i = 0 ; i < arr.length ; i++){
-        total += parseFloat(arr[i].price)*parseFloat(arr[i].quantity);
+        total += parseInt(arr[i].price)*parseInt(arr[i].quantity);
     }
     return total.toFixed(2);
 }

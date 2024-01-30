@@ -97,6 +97,7 @@ window.addEventListener('load', function () {
             editBtn.setAttribute("data-bs-target", "#editUserModal");
             editBtn.appendChild(editIcon);
             //lastcreatedtd.appendChild(editIcon);
+            //lastcreatedtd.appendChild(editIcon);
 
             editBtn.setAttribute('data-row-index', i);
             editBtn.addEventListener('click', function () {
@@ -257,6 +258,7 @@ window.addEventListener('load', function () {
             users[row_id].age = allinp[4].value;
             users[row_id].images = imgarr;
             users[row_id].role = document.getElementById("user-role").value == "user" ? 2 : 1;
+            users[row_id].role = document.getElementById("user-role").value == "user" ? 2 : 1;
 
             localStorage.setItem("users", JSON.stringify(users));
             users = JSON.parse(localStorage.getItem("users"));
@@ -310,6 +312,8 @@ window.addEventListener('load', function () {
             console.log(allinp[5]);
             let role = document.getElementById("user-role").value == "user" ? 2 : 1;
             console.log(imgarr);
+            let o = new userClass(allinp[0].value, allinp[1].value, allinp[2].value, allinp[3].value, allinp[4].value, imgarr, role).addjson();
+            users.push(o);
             let o = new userClass(allinp[0].value, allinp[1].value, allinp[2].value, allinp[3].value, allinp[4].value, imgarr, role).addjson();
             users.push(o);
             localStorage.setItem("users", JSON.stringify(users));
