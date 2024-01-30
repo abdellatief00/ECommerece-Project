@@ -145,6 +145,13 @@ header .bg-body-tertiary {
     margin-left: 140px;
 }
 
+
+
+@media(max-width: 992px) {
+    #navbarSupportedContent > ul{
+        background-color: #555;
+    }
+}
 @media (max-width:950px) {
     #header-text h2 {
         font-size: 60px;
