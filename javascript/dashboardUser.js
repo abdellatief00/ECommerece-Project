@@ -7,16 +7,22 @@ import {
 window.addEventListener('load', function () {
     let row_id;
     let userTable_tbody = document.getElementById('tbodyUsers');
+    var currentUser = JSON.parse(localStorage.getItem("current_user"));
+    document.getElementById("userName").innerText=currentUser.fname + " "+currentUser.lname ;
+    document.getElementById("userImg").setAttribute("src",currentUser.images);
+    document.getElementById("userImg").addEventListener('click',function(){
+        window.location.href=`profileuser.html`;
+    });
+    
     var users = JSON.parse(localStorage.getItem("users"));
     var products = JSON.parse(localStorage.getItem("products"))
     let rowsNum = document.getElementById("rowsNum");
+    
     DrawTable(users, rowsNum.value);
     rowsNum.addEventListener("change", function () {
         deleteTable();
         DrawTable(users, rowsNum.value);
     }) // end of number of rows
-
-
 
     function DrawTable(users, rowsNumValue) {
         let n;
@@ -47,7 +53,7 @@ window.addEventListener('load', function () {
                         createdtd.appendChild(imgTag);
                         break;
                     case "role":
-                        if (users[i][key] == 0) {
+                        if (users[i][key] == 2) {
                             createdtd.innerHTML = `<span class="text-bg-primary p-2 rounded-2  text-center" data-row-index=${i}> User </span>`;
 
                         } else if (users[i][key] == 1) {
@@ -62,7 +68,10 @@ window.addEventListener('load', function () {
                     case "lname":
                         createdtd.innerText = users[i][key];
                         break;
-
+                        case "cart":
+                        case "favorites":
+                        case "orders":
+                            break;
                     default:
                         createdtd.innerText = users[i][key];
                         break;
@@ -70,18 +79,17 @@ window.addEventListener('load', function () {
 
                 createdrow.appendChild(createdtd);
             }
-
-
             //<i class="fa-regular fa-eye"></i>
             let lastcreatedtd = document.createElement('td');
+            
             let editIcon = document.createElement('i');
             editIcon.setAttribute("class", "fa-regular fa-pen-to-square text-info cursorPointer");
-            lastcreatedtd.appendChild(editIcon);
             let editBtn = document.createElement('button');
             editBtn.setAttribute("class", "btn m-1");
             editBtn.setAttribute("data-bs-toggle", "modal");
             editBtn.setAttribute("data-bs-target", "#editUserModal");
             editBtn.appendChild(editIcon);
+            //lastcreatedtd.appendChild(editIcon);
 
             editBtn.setAttribute('data-row-index', i);
             editBtn.addEventListener('click', function () {
@@ -93,7 +101,7 @@ window.addEventListener('load', function () {
                 document.getElementById("pass").removeAttribute("type");
                 document.getElementById("pass").setAttribute("type", "text");
                 document.getElementById("age").value = users[index]["age"];
-                document.getElementById("role").value = users[index]["role"] == 0 ? "user" : "seller";
+                document.getElementById("role").value = users[index]["role"] == 2 ? "user" : users[index]["role"] == 1? "seller":"";
                 // document.getElementById("image").value = users[index].images[0];            
             }); // edit button
 
@@ -116,7 +124,7 @@ window.addEventListener('load', function () {
                     deleteBtn.toggleAttribute("disabled")
                 } else {
                     deleteBtn.toggleAttribute("disabled")
-                    // deleteBtn.setAttribute('disabled', true);
+                    
                 }
             });
             deleteBtn.addEventListener('click', function () {
@@ -159,7 +167,7 @@ window.addEventListener('load', function () {
     function deleteRow() {
         let indeces = [];
         // console.log(checked);
-        for (let i = 0; i < checked.length; i++) {
+        for (let i = 0; i < checked.length-1; i++) {
             indeces.push(checked[i].parentNode.parentNode.getAttribute("data-row-index"));
         }
         for (let i = indeces.length - 1; i >= 0; i--) {
@@ -176,6 +184,7 @@ window.addEventListener('load', function () {
         if (checkAll.checked) {
             let allItem = document.querySelectorAll("input[type=checkbox]");
             allItem.forEach(item => item.checked = true);
+            checked=allItem
             deleteAllBtn.removeAttribute("disabled")
         } else {
             let allItem = document.querySelectorAll("input[type=checkbox]");
@@ -193,6 +202,7 @@ window.addEventListener('load', function () {
     }
     document.getElementById('tbodyUsers').addEventListener('click', function (event) {
         let target = event.target;
+       
         if (target.tagName === 'SPAN' && target.classList.contains('text-bg-success')) {
             let rowIndex = target.parentNode.getAttribute('data-row-index');
             // console.log(rowIndex);
@@ -206,9 +216,9 @@ window.addEventListener('load', function () {
         else if (target.tagName === 'INPUT' && target.type === 'checkbox' && target.name === 'checkRow') {
             checked = Array.from(document.querySelectorAll("input[name=checkRow]:checked"));
             deleteAllBtn.disabled = checked.length <= 1;
-        }
-        if(target.closest ("button")){
-            row_id = target.parentNode.getAttribute('data-row-index');
+        }else if(target.closest("button")){
+            row_id = $(target).parents("tr").attr("data-row-index");
+            console.log(row_id);
         }
     });
 
@@ -230,7 +240,6 @@ window.addEventListener('load', function () {
         }else {
             
             let imgarr =allinp[5]? [getfilelocation(allinp[5])]:users[row_id].images;
-            console.log( users[row_id]);
             users[row_id].fname = allinp[0].value;
             console.log( users[row_id]);
             users[row_id].lname = allinp[1].value;
@@ -238,7 +247,7 @@ window.addEventListener('load', function () {
             users[row_id].password = allinp[3].value;
             users[row_id].age = allinp[4].value;
             users[row_id].images = imgarr;
-            users[row_id].role = document.getElementById("user-role").value == "user" ? 0 : 1;
+            users[row_id].role = document.getElementById("user-role").value == "user" ? 2 : 1;
 
             localStorage.setItem("users", JSON.stringify(users));
             users = JSON.parse(localStorage.getItem("users"));
@@ -288,16 +297,12 @@ window.addEventListener('load', function () {
         } else if (allinp[5].value == "") {
             showToast("Enter a valid image", 3000, "#ea6060");
         } else {
-            let imgarr = [getfilelocation(allinp[5])];
-            let role = document.getElementById("user-role").value == "user" ? 0 : 1;
+            let imgarr = getfilelocation(allinp[5]);
+            console.log(allinp[5]);
+            let role = document.getElementById("user-role").value == "user" ? 2 :1;
             console.log(imgarr);
-            allinp = Array.from(allinp);
-            let o = new userClass(allinp[0].value, allinp[1].value, allinp[2].value, allinp[3].value, allinp[4].value, imgarr, role);
-            //o.id = userClass.autoincreaseid();
-          console.log(o);
-
-            // usersfullData.push(item);
-            users.push(o.addjson());
+            let o = new userClass(allinp[0].value, allinp[1].value, allinp[2].value, allinp[3].value, allinp[4].value, imgarr, role).addjson();
+            users.push(o);
             localStorage.setItem("users", JSON.stringify(users));
             users = JSON.parse(localStorage.getItem("users"));
             console.log(users);

@@ -275,7 +275,9 @@ header .bg-body-tertiary{
 #content .fa-circle-xmark:hover{
     color: #424242;
 }
-
+.table img:hover{
+    cursor: pointer;;
+}
 
 /* seconed div */
 #tableparts .secondtable{

@@ -85,8 +85,7 @@ img{
 .arrow{
     color: black;
 }
-@media (max-width: 770px) {
-    #TableDiv{
-        width: 80% !important;
-    }
+.adminImgANDNot{
+    margin-top: 20px;
+    margin-left: 90% !important;
 }

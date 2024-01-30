@@ -175,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     
     function redirectToProductDetails(productId) {
-
+        // Replace 'product-details.html' with the actual product details page URL
         localStorage.setItem("currentProductId", productId);
         window.location.href = 'productDetails.html';
     }

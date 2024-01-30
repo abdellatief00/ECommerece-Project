@@ -1,14 +1,14 @@
 import { Cart ,user} from './modula.js';
 
-let cartarr = [];
-cartarr.push(new Cart(6,"prod1",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
-cartarr.push(new Cart(2,"prod2",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
-cartarr.push(new Cart(3,"prod3",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
-cartarr.push(new Cart(4,"prod44",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
-cartarr.push(new Cart(5,"prod80",3 , 200.00 ,"images/women/product-1-a.jpg").addJson());
+// let cartarr = [];
+// cartarr.push(new Cart(6,"prod1",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
+// cartarr.push(new Cart(2,"prod2",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
+// cartarr.push(new Cart(3,"prod3",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
+// cartarr.push(new Cart(4,"prod44",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
+// cartarr.push(new Cart(5,"prod80",3 , 200.00 ,"images/women/product-1-a.jpg").addJson());
 
 
-localStorage.setItem("cart",JSON.stringify(cartarr));
+// localStorage.setItem("cart",JSON.stringify(cartarr));
 
 // let one_user = new user("abdo","hamed","abdellatiefhamed00@gmail.com","1578aaa",50,"images/women/product-1-a.jpg",0).addjson();
 // window.localStorage.setItem("current_user",JSON.stringify(one_user));
@@ -87,9 +87,9 @@ function createProductTable(arr){
 
 function createrow(product){
     let row =`<tr class="textfont" data-productId = ${product.productId}>
-    <th scope="row"> <a href="#">
+    <th scope="row"> 
         <img src="${product.image}">
-    </a></th>
+    </th>
     <td data-title="Product">${product.productTitle}</td>
     <td data-title="price">$${product.price.toFixed(2)}</td>
     <td>
@@ -152,12 +152,19 @@ document.getElementById("tableparts").addEventListener("click",function(e){
         if(arr[ind].quantity>=quant){
             showToast("can't add more the stock is empty" , 3000 , "orange");
         }
+       
         else{
         arr[ind].quantity++;
         createProductTable(arr);
         setlocal(arr);
         showToast('Action Completed', 3000 , "#6cb36d");
         }
+    }
+    else if(e.target.closest('img')){
+        let prodid = e.target.parentElement.parentElement.getAttribute("data-productId");
+        console.log(typeof(parseInt(prodid)));
+        window.localStorage.setItem("currentProductId",parseInt(prodid));
+        window.location.assign("productDetails.html");
     }
 
 

@@ -69,33 +69,6 @@ $(document).ready(function () {
         }
     }); //end of click event
 
-/*     let searchInput = document.getElementById("searchTerm");
-    let searchTypeSelect = document.getElementById("searchType");
-
-    searchInput.addEventListener("input", searching);
-
-    function searching() {
-        let searchTerm = searchInput.value.toLowerCase();
-        let searchType = searchTypeSelect.value;
-        let tr = document.querySelectorAll("tbody tr");
-
-        for (let i = 0; i < tr.length; i++) {
-            let node = tr[i];
-            let textContent = "";
-
-            // Choose the text content based on the selected search type
-            if (searchType === "id") {
-                textContent = node.children[1].textContent.toLowerCase(); // Assuming ID is in the first column
-            } else if (searchType === "name") {
-                textContent = node.children[2].textContent.toLowerCase(); // Assuming Name is in the third column
-            }
-
-            let show = textContent.indexOf(searchTerm) !== -1;
-            node.style.display = show ? "" : "none";
-        }
-    } */
-
-
     if ($(window).width() <= 768) {
         // var sidebarShow = $("#sidebar").css("display");
         // var newMode = sidebarShow == "none" ? "block" : "none";

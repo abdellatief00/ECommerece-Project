@@ -1,33 +1,33 @@
 
 
-var userArray=JSON.parse(localStorage.getItem('Users'));
+// var userArray=JSON.parse(localStorage.getItem('Users'));
 
 
 
- function login(){
+//  function login(){
   
    
-debugger;
-    for (let index = 0; index < userArray.length; index++) {
-        if
-        (
-        userArray[index].email==document.getElementById("Email").value
-        &&
-        document.getElementById("Password").value==userArray[index].password
-        )
-        {
+// debugger;
+//     for (let index = 0; index < userArray.length; index++) {
+//         if
+//         (
+//         userArray[index].email==document.getElementById("Email").value
+//         &&
+//         document.getElementById("Password").value==userArray[index].password
+//         )
+//         {
           
-        localStorage.setItem("currentUser",JSON.stringify(userArray[index]));
-        var webSiteCart=[...JSON.parse(localStorage.getItem('cart')),...JSON.parse(userArray[index].cart)];
-        localStorage.setItem("cart",JSON.stringify(webSiteCart))
+//         localStorage.setItem("currentUser",JSON.stringify(userArray[index]));
+//         var webSiteCart=[...JSON.parse(localStorage.getItem('cart')),...JSON.parse(userArray[index].cart)];
+//         localStorage.setItem("cart",JSON.stringify(webSiteCart))
       
-            break;
-        }
+//             break;
+//         }
 
 
-    }
+//     }
 
- }
+//  }
 
 
 

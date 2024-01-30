@@ -80,3 +80,9 @@
 svg:not(:host).svg-inline--fa, svg:not(:root).svg-inline--fa:hover{
     cursor: pointer;
 }
+@media (max-width: 510px) {
+    #TableDiv{
+        margin: 30% !important;
+    }
+    
+}

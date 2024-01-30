@@ -1,4 +1,4 @@
-import {getTotalOrdersQuantities, getOrderTotalPrice} from "./sellerDashboard"; 
+// import {getTotalOrdersQuantities, getOrderTotalPrice} from "./sellerDashboard"; 
 const ctx = document.getElementById('myChart2');
 new Chart(ctx, {
     type: 'bar',

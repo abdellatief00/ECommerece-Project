@@ -221,7 +221,7 @@ userImag.addEventListener("change", function (e) {
 
 
   
-var userArray=JSON.parse(localStorage.getItem('Users'));
+var userArray=JSON.parse(localStorage.getItem('users'));
 
 // document.getElementsByTagName("body")[0].innerHTML+=`<img src=${userArray[2].images[0]}  >`;//getting the image from the array of images in the user object
 
@@ -299,7 +299,7 @@ if(role_noramlUser.checked)
     
 
     
-     localStorage.setItem('Users', JSON.stringify(newUserArray));
+     localStorage.setItem('users', JSON.stringify(newUserArray));
 
       e.target.disabled  = false;
        document.querySelectorAll('#content form')[0].submit();

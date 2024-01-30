@@ -1,22 +1,24 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Declare logoutConfirmationModal in a scope accessible by both event listeners
     let logoutConfirmationModal;
 
-    let logoutButton = document.querySelector('.logout-btn');
-    logoutButton.addEventListener('click', function () {
-        // Display the confirmation modal
-        logoutConfirmationModal = new bootstrap.Modal(document.getElementById('logoutConfirmationModal'));
-        logoutConfirmationModal.show();
+    let logoutButtons = document.querySelectorAll('.logout-btn, .logout-btn2');
+    let sidebar =document.getElementById('offcanvasSidebar');
+    logoutButtons.forEach(logoutButton => {
+        logoutButton.addEventListener('click', function () {
+            // Your existing code for handling the click event
+            if (sidebar.style.display === "block") {
+                sidebar.style.display = 'none';
+            }
+            logoutConfirmationModal = new bootstrap.Modal(document.getElementById('logoutConfirmationModal'));
+            logoutConfirmationModal.show();
+        });
     });
-
     // Add event listener for confirming logout
     let confirmLogoutBtn = document.getElementById('confirmLogoutBtn');
     confirmLogoutBtn.addEventListener('click', function () {
         // Close the confirmation modal
         if (logoutConfirmationModal) {
             logoutConfirmationModal.hide();
-
-            // Call the logout function directly and pass the logoutButton as a parameter
             updateAndLogout(logoutButton);
         }
     });

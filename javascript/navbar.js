@@ -1,4 +1,5 @@
-import { Product, Review, Rating, Cart } from "./modula.js";
+// import { Product, Review, Cart } from "./modula.js";
+// import {createCartData} from "./cartScript.js"
 
 let searchForm = document.getElementById("header-search-form");
 let searchButton = searchForm.querySelector("button");
@@ -11,8 +12,15 @@ let searchResultDiv = document.getElementById("search-results");
 let currentProductId = 2;
 let currentProductIndex;
 let cartItemsTotalPriceSpan = document.querySelector("#cart-icon > span:nth-child(1)");
+
 let cartItemsCountSpan = document.querySelector("#cart-items-count");
+let loginBtn = document.getElementById("loginBtn");
+let loginSubmit = document.querySelector("#LoginScreen > div > div > div.modal-body > div.modal-footer > input");
+let userNameSpan = document.querySelector("#loginBtn > span");
+let userCart = document.getElementById("ShoppingCart");
+let cartDiv = document.getElementById("cart-icon");
 let localCartItems;
+let currentUser;
 
 
 window.addEventListener("load", function(){
@@ -22,9 +30,16 @@ window.addEventListener("load", function(){
     localCartItems = getCartFromlocal();
     currentProductId = getCurrentProductIdFromLocal();
     currentProductIndex = getProductIndex(currentProductId);
+    currentUser = getCurrentUserFromLocal();
+    
+    if(currentUser !== null)
+    {
+        userNameSpan.innerText = currentUser.fname + " " + currentUser.lname;
+    }
     console.log( "currentProductIndex", currentProductIndex);
     changeItemsPlaces();
     updateCartInfo(localCartItems);
+    cartDiv.addEventListener("click", showCart);
     window.addEventListener('resize', changeItemsPlaces);
 
     //searchResultDiv.addEventListener("click", displayOneOrAllProducts);
@@ -32,6 +47,8 @@ window.addEventListener("load", function(){
     searchBtn.addEventListener("click", searchProductsByTitle);
     searchBox.addEventListener("input", searchProductsByTitle);
 
+    loginBtn.addEventListener("click", showLoginDialog);
+    loginSubmit.addEventListener("click", login);
     this.document.addEventListener("click", hideSearchBox);
     this.document.addEventListener("keydown", handleKeysActions);
 }
@@ -73,13 +90,32 @@ function handleKeysActions(e)
 function changeItemsPlaces()
 {
     let navbar = document.getElementById("navbarSupportedContent");
+    if(currentUser !== null)
+    {
+        if(currentUser.role === 0 || currentUser.role === 1)
+        {
+        
+
+            if(currentUser.role === 1)
+            navbar.querySelector("ul>li:nth-child(6)").innerHTML = `<a class="nav-link" href="Dashboard-seller.html">Dashboard</a>
+            `;
+
+            else if(currentUser.role === 0)
+            navbar.querySelector("ul>li:nth-child(6)").innerHTML = `<a class="nav-link" href="Dashboard-users.html">Dashboard</a>
+            `;
+            
+
+
+        }
+    }
+    
     let headerRightSection = document.querySelector("#header-right-section")
     let rightSectionFormDiv = headerRightSection.querySelector("div:nth-child(1)");
     let loginBtn = document.getElementById("loginBtn");
 
     if(window.innerWidth < 992)
     {
-        navbar.querySelector("ul>li:nth-child(6)").appendChild(loginBtn);
+        navbar.querySelector("ul>li:nth-child(7)").appendChild(loginBtn);
         //navbar.appendChild(loginBtn);
         navbar.appendChild(searchForm);
     }
@@ -190,10 +226,8 @@ function getCurrentProductIdFromLocal()
 
 function getProductIndex(productId)
 {
-    console.log("productId",productId);
     for(let i=0; i<products.length; i++)
     {
-        console.log("innerId",products[i].id);
         if(products[i].id === productId)
             return i;
     }
@@ -215,7 +249,7 @@ function getProductsFromLocal()
 function claculateTotalPrice(arr){
     let total = 0;
     for(let i = 0 ; i < arr.length ; i++){
-        total += parseFloat(arr[i].price)*parseFloat(arr[i].quantity);
+        total += parseInt(arr[i].price)*parseInt(arr[i].quantity);
     }
     return total.toFixed(2);
 }
@@ -266,4 +300,76 @@ return showAllDiv;
 function setSearchResultsToLocal(products)
 {
     localStorage.setItem("searchResults" ,JSON.stringify(products));
+}
+
+function showLoginDialog()
+{
+    if(currentUser !== null)
+    {
+        window.location.assign("profileuser.html");
+        return;
+    }
+
+
+    let loginScreen = document.getElementById("LoginScreen");
+    let modal = new bootstrap.Modal(loginScreen);
+    modal.show();
+}
+
+
+
+
+function login(){
+    var userArray=JSON.parse(localStorage.getItem('users'));
+    
+    for (let index = 0; index < userArray.length; index++) {
+        if
+        (
+        userArray[index].email==document.getElementById("Email").value
+        &&
+        document.getElementById("Password").value==userArray[index].password
+        )
+        {
+          var products=JSON.parse(localStorage.getItem('products'));
+            var cart=JSON.parse(localStorage.getItem('cart'));
+            var userCart=userArray[index].cart;
+
+            cart.forEach(element => {
+                const existingIndex = cart.findIndex(x => parseInt(x.productId) == parseInt(element.productId));
+                
+                if (existingIndex === -1) {
+                  // If the item doesn't exist in cart, add it
+                  cart.push(element);
+                } else {
+                  // If the item exists, sum the quantities
+                  cart[existingIndex].quantity = String(
+                    parseInt(cart[existingIndex].quantity) + parseInt(element.quantity)
+                  );
+                }
+              });
+
+        localStorage.setItem("current_user",JSON.stringify(userArray[index]));
+        localStorage.setItem("cart",JSON.stringify(cart))
+            break;
+        }
+    }
+    
+    location.reload();
+}
+
+function getCurrentUserFromLocal()
+{
+    return JSON.parse(localStorage.getItem("current_user"));
+}
+
+function showCart()
+{
+    let pageLocation = location.href.substring(location.href.lastIndexOf("/")+1,);
+    console.log(location.href.substring(location.href.lastIndexOf("/")+1,));
+    if(pageLocation === "checkout.html" || pageLocation === "cart.html" || pageLocation === "ordercomplete.html")
+    {
+        return;
+    }
+    let modal = new bootstrap.Modal(userCart);
+    modal.show();
 }
