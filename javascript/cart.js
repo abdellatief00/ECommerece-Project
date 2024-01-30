@@ -18,6 +18,16 @@ import { Cart ,user} from './modula.js';
 window,addEventListener("load",function(e){
     let arr = getlocal();
     createProductTable(arr);
+    if(getlocal().length==0){
+        let ele = `<div class="alert alert-primary" role="alert" style="width :100%">
+        Your cart is currently Empty
+        </div>
+        <div>
+        <a href="homepage.html" class="button-like-link">Return home</a>
+        </div>`
+        document.getElementById('tableparts').innerHTML = ele;
+        document.getElementById('tableparts').style.flexWrap = "wrap";
+    }
     setlocal(arr);
 
     showToast('Welcome to cart page!', 3000 , "#6cb36d");
