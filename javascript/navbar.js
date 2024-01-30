@@ -324,6 +324,7 @@ function validateLoginData(email, password) {
 }
 
 function login() {
+    
 
 
     var emailInput = document.getElementById("Email").value;//get email from login form
@@ -390,26 +391,29 @@ function login() {
             break;
         }
 
-                     else {
-            document.getElementById("emailError").innerHTML = "You may not  have an account .";
-            const authButtons = document.querySelector(".authButtons");
-
-            if (authButtons) {
-                // Apply styles to make it bigger and bold
-                authButtons.style.fontSize = "20px";  // Change the size as needed
-                authButtons.style.fontWeight = "bold";
-
-                // Focus on the element
-                authButtons.focus();
-            }
-            return;
-                             } //in this section we find that user is not exist in our system
+                  //in this section we find that user is not exist in our system
 
 
     }
 
     if (flag)//reload page if user is logged in
         location.reload();
+        else{
+            
+                document.getElementById("emailError").innerHTML = "You may not  have an account .";
+                const authButtons = document.querySelector(".authButtons");
+    
+                if (authButtons) {
+                    // Apply styles to make it bigger and bold
+                    authButtons.style.fontSize = "20px";  // Change the size as needed
+                    authButtons.style.fontWeight = "bold";
+    
+                    // Focus on the element
+                    authButtons.focus();
+                }
+                return;
+                                 
+        }
 
 
 }
