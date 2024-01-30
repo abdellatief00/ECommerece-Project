@@ -1,5 +1,6 @@
 import {updateCartInfo} from "./navbar.js";
-import {Cart} from "./modula.js"
+import {Cart} from "./modula.js";
+import {createCartData} from "./cartScript.js";
 let searchResultProducts;
 let searchResultsSection = document.querySelector("#search-results-section");
 let productsPerPage = 6;
@@ -126,7 +127,7 @@ function createProductCard(product) {
 }
 
 function viewProductImagesInModal(product) {
-    //console.log("inside the product images loader");
+    
     let carouselInner = document.querySelector('#productImageCarousel .carousel-inner');
     carouselInner.innerHTML = '';
 
@@ -178,13 +179,13 @@ function addToCart(product)
     let addedQuantity = 1;
     let indexInCart = itemIndxInCart(currentProduct);
     let availableQuantity = currentProduct.stockQuantity;
-    console.log("available quantity",currentProduct.stockQuantity);
+    
     let totalQuantity = addedQuantity;
     let notEnoughItemModal = document.getElementById("not-enough-items-modal");
 
     if(indexInCart === -1)
     {
-        //console.log("total quantity", totalQuantity);
+        
         if(totalQuantity > availableQuantity)
         {
             let modal = new bootstrap.Modal(notEnoughItemModal);
@@ -197,7 +198,6 @@ function addToCart(product)
     else
     {
         totalQuantity += cartItems[indexInCart].quantity;
-        console.log("total quantity", totalQuantity);
 
         if(totalQuantity > availableQuantity)
         {
@@ -213,6 +213,7 @@ function addToCart(product)
     //currentProduct.stock_quantity -= addedQuantity;
     setCartTolocal(cartItems);
     updateCartInfo(cartItems);
+    createCartData();
 
 }
 
@@ -224,7 +225,36 @@ function viewProductDetails(product)
 
 function AddToFavourites(product)
 {
-    console.log("Added to favorites");
+    let currentUser = JSON.parse(localStorage.getItem("current_user"));
+    if (currentUser) {
+        currentUser.favorites = currentUser.favorites || [];
+        const productId = product.id;
+        const index = currentUser.favorites.indexOf(productId);
+
+        if (index === -1) {
+            currentUser.favorites.push(productId);
+            console.log(`Added product ${productId} to favorites.`);
+        } else {
+            currentUser.favorites.splice(index, 1);
+            console.log(`Removed product ${productId} from favorites.`);
+        }
+
+        // Update the currentUser in local storage
+        localStorage.setItem('current_user', JSON.stringify(currentUser));
+
+        // Get the entire array of users from local storage
+        let usersData = JSON.parse(localStorage.getItem('user')) || [];
+        console.log(usersData);
+
+        // Find the index of the current user in the array
+        let userIndex = usersData.findIndex(user => user.id === currentUser.id);
+
+        if (userIndex !== -1) {
+            // Update only the favorites in the array
+            usersData[userIndex].favorites = currentUser.favorites;
+            localStorage.setItem('user', JSON.stringify(usersData));
+        }
+    }
 }
 
 function getSearchResultsFromLocal()

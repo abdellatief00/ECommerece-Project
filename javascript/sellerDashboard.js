@@ -10,13 +10,13 @@ let selectedProduct = document.getElementById("productsOptions");
 
 window.addEventListener("load", function(){
     currentUser = getUserFromLocal();
-    if(currentUser === null || currentUser.role === 2)
+    if(currentUser.role !== 1)
     {
         console.log("not allowed");
         return;
     }
     document.querySelector('.adminImgANDNot').children[1].children[0].src  = currentUser.images;
-    document.querySelector('.adminImgANDNot').children[1].children[1].innerText =currentUser.fname+" "+currentUser.lname
+    document.querySelector('.adminImgANDNot').children[1].children[1].innerText =currentUser.fname+" "+currentUser.lname;
 
         
     products = getProductsFromLocal();
@@ -30,15 +30,15 @@ window.addEventListener("load", function(){
     }
     this.document.getElementById('itemsinstock').innerText = cou.toFixed(0);
    
-    if(currentUser.role == 1)
+    if(currentUser.role === 1)
     {
         let allord = getAndFormatOrders(currentUser.id);
-        console.log(allord)
+        
         this.document.getElementById('allorders').innerText = allord.length;
     }
 
 
-    //orders = getOrdersFromLocal();
+   
     //currentUser.role = "Seller";
     // currentUser = {
     //     "id": 1,
@@ -68,28 +68,19 @@ window.addEventListener("load", function(){
         sellerProductsOrders = getAndFormatOrders(currentUser.id);
     //sellerProductsOrders = getAndFormatOrders(currentUser.id);
     
-    //console.log("orders formatted", sellerProductsOrders);
+    
     ordersByDateObj = formatOrdersByDate(sellerProductsOrders);
     ordersByDateObj = sortOrdersByDate(ordersByDateObj);
-    /* console.log("after formatting by date",ordersByDateObj);
-    console.log(sortOrdersByDate(ordersByDateObj));
-    console.log("after sorting", ordersByDateObj) */
-    //createOptions(selectedProduct);
-    // getting orders for product with id = 3
+    
     let dummyProductObj = getProductOrdersObj(ordersByDateObj, selectedProduct.value);
-    console.log("productObject" ,getDateArray(dummyProductObj));
+    
     drawChart(productsChart, getDateArray(dummyProductObj), getProductQuantities(dummyProductObj),
     getProducTotaltPrice(dummyProductObj, +selectedProduct.value),
     `product ${selectedProduct.value}`
     );
     selectedProduct.addEventListener("change", ()=>{
-        console.log("value from the dropdown", selectedProduct.value)
+        
         dummyProductObj = getProductOrdersObj(ordersByDateObj, +selectedProduct.value);
-        console.log("all products", ordersByDateObj);
-        console.log("selected product", dummyProductObj)
-        console.log("product orders Dates" ,getDateArray(dummyProductObj));
-    console.log("product orders quantities " ,getProductQuantities(dummyProductObj));
-    console.log("product orders totalPrices" ,getProducTotaltPrice(dummyProductObj, +selectedProduct.value));
     drawChart(productsChart, getDateArray(dummyProductObj), getProductQuantities(dummyProductObj),
     getProducTotaltPrice(dummyProductObj, +selectedProduct.value),
     `product ${selectedProduct.value}`
@@ -98,30 +89,7 @@ window.addEventListener("load", function(){
     })
     
 
-    //======= uncomment and see the results =========
-
-    // all the functions work on the bject and extracts the arrays
-    // getDateArray extracts the dates for the graph x-axis
-    // getProductQuantities and getProducTotaltPrice for the y-axis
     
-    /* console.log("product orders Dates" ,getDateArray(dummyProductObj));
-    console.log("product orders quantities " ,getProductQuantities(dummyProductObj));
-    console.log("product orders totalPrices" ,getProducTotaltPrice(dummyProductObj, +selectedProduct.value));
-    console.log(selectedProduct.value);
-    drawChart(productsChart, getDateArray(dummyProductObj), getProductQuantities(dummyProductObj),
-    getProducTotaltPrice(dummyProductObj, +selectedProduct.value),
-    `product ${selectedProduct.value}`
-    ); */
-    
-
-    //======= uncomment and see the results =========
-    // getting ORDERS quantities and total prices statistics
-
-    /* console.log("orders Dates" ,getDateArray(ordersByDateObj));
-    console.log("orders total quantities", getTotalOrdersQuantities(ordersByDateObj));
-    console.log("3 price", getProductPrice(3));
-    console.log("orders total prices", getOrderTotalPrice(ordersByDateObj)); */
-    // console.log("seller products" ,getSelllerProducts(sellerId));
     drawChart(totalOrdersChart, getDateArray(ordersByDateObj), getTotalOrdersQuantities(ordersByDateObj),
     getOrderTotalPrice(ordersByDateObj),
     "total orders"
@@ -135,11 +103,7 @@ window.addEventListener("load", function(){
 //==================================================================//
 // use these functions for admin to get all the orders 
 // or pass the seller id to get his orders
-// 1- first we choose all the orders by getAndFormatOrders
-// 2- then we format them as obj = {date : {
-//    aProductId : aQuantity,
-//    bProductId : bQuantity}} using formatOrdersByDate
-// 3 -sort the result object by date using sortOrdersByDate
+
 function getAndFormatOrders(roleId = 0)
 {
     let ordersFormatted = [];
@@ -233,7 +197,6 @@ export function getOrderTotalPrice(obj)
         let totalPrice = 0;
         for(let product in obj[date])
         {
-            //console.log("productId from price", product, typeof(product));
             totalPrice += getProductPrice(+product) * obj[date][product];
         }
         orderTotalPrice.push(totalPrice);
@@ -296,7 +259,6 @@ function getProductIndex(productId)
 {
     for(let i=0; i<products.length; i++)
     {
-        //console.log("productId from Index", productId, typeof(+productId));
         if(+products[i].id === +productId)
             return i;
     }
@@ -305,7 +267,6 @@ function getProductIndex(productId)
 
 function getProductPrice(productId)
 {
-    //console.log("productId", productId, typeof(productId))
     if(getProductIndex(productId) === -1)
     {
         console.log("the one that causes the error" ,productId)
@@ -341,7 +302,6 @@ function getDateArray(obj)
     for(let date in obj)
     {
         dateArr.push(date);
-        //console.log("after every push", dateArr);
     }
     return dateArr;
 }
@@ -362,9 +322,6 @@ function drawChart(ctx, xAxisDate, yAxisQuantities, yAxisRevenue, label)
     if (ctx.chart) {
         ctx.chart.destroy();
     }
-    console.log(xAxisDate);
-    console.log(yAxisQuantities);
-    console.log(yAxisRevenue);
     const options = {
         responsive: true,
         maintainAspectRatio: false,
@@ -404,17 +361,17 @@ function drawChart(ctx, xAxisDate, yAxisQuantities, yAxisRevenue, label)
           {
             label: `${label} revenue`,
             data: yAxisRevenue,
-            borderColor: '#900000', // Red
+            borderColor: '#900000', 
             borderWidth: 2,
             fill: false,
             pointRadius: 1,
             cubicInterpolationMode: "monotone",
-            tension: 0.5 // Adjust waviness as desired
+            tension: 0.5 
           },
            {
             label: `${label} quantities`,
             data: yAxisQuantities,
-            borderColor: '#004590', // Blue
+            borderColor: '#004590', 
             borderWidth: 2,
             fill: false,
             pointRadius: 1,
@@ -441,7 +398,6 @@ function createOptions(selectDiv)
     {
         //optionsProducts = getSelllerProducts(currentUser.id);
         optionsProducts = getSelllerProducts(currentUser.id);
-        console.log("seller options", optionsProducts);
     }
     else if(currentUser.role ===0)
         optionsProducts = products;
