@@ -3,7 +3,8 @@ import {user} from './modula.js';
 
 let item = [];
 //_fname,_lname,_email,_pass,_age,_img,_role
-item.push(new user("mahmoud","mohamed","addddd@gmail.com","222222",28,"admin-img.jpg",0).addjson()); 
+if(JSON.parse(localStorage.getItem("users")) === null)
+{item.push(new user("mahmoud","mohamed","addddd@gmail.com","222222",28,"admin-img.jpg",0).addjson()); 
 setlocal(item);
 item.push(new user("ayman","mohamed","ayman2234@gmail.com","22345",22,"admin-img.jpg",1).addjson());
 setlocal(item);
@@ -40,7 +41,8 @@ setlocal(item);
 item.push(new user("ali","ali","ahkddkdk@gmail.com","3792",22,"admin-img.jpg",2).addjson());
 setlocal(item);
 item.push(new user("ali","ali","ali345@gmail.com","56248",22,"admin-img.jpg",2).addjson());
-setlocal(item);
+setlocal(item);}
+
 
 
 
@@ -390,4 +392,5 @@ let arr = [
         "sold" : 0
     }
 ]
+if(JSON.parse(localStorage.getItem("products"))===null)
 window.localStorage.setItem("products",JSON.stringify(arr));
