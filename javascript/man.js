@@ -1,3 +1,7 @@
+
+// import { Cart } from './modula.js';
+// import { createCartData } from './test.js';
+
 import { addToCart } from "./cartScript.js";
 document.addEventListener('DOMContentLoaded', function () {
     // Retrieve products and current user from local storage
@@ -66,11 +70,11 @@ document.addEventListener('DOMContentLoaded', function () {
             updateWishlistLinkColor(wishlistLink, product.id);
         });
 
-        const eyeLink = createProductLink('<i class="fa fa-eye" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top"></i>', function () {
+        const eyeLink = createProductLink('<i class="fa fa-eye" data-bs-toggle="tooltip" data-bs-placement="top" title="Product details"></i>', function () {
             showProductDetails(product);
         });
 
-        const quickViewLink = createProductLink('<i class="fa fa-search" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top"></i>', function () {
+        const quickViewLink = createProductLink('<i class="fa fa-search" data-bs-toggle="tooltip" data-bs-placement="top" title="View"></i>', function () {
             viewProductImage(product);
         });
 
@@ -132,7 +136,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         return productInfoDiv;
     }
-
     // Function to create "Add to Cart" button
     function createAddToCartButton(product) {
         const addToCartButton = document.createElement('button');
@@ -170,8 +173,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function showProductDetails(product) {
         setCurrentProductIdToLocal(product.id);
         window.location.assign("productDetails.html");
-        // Implement logic to display product details in a popup
-        // You can use a modal or any other UI component to display detailed product information
     }
 
     // Function to view product image

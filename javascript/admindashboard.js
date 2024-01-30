@@ -18,18 +18,21 @@ window.addEventListener("load", function(){
     document.querySelector('.adminImgANDNot').children[1].children[0].src  = currentUser.images;
     document.querySelector('.adminImgANDNot').children[1].children[1].innerText =currentUser.fname+" "+currentUser.lname
 
-        
-    products = getProductsFromLocal();
-    let sellerid = JSON.parse(this.window.localStorage.getItem('current_user'));
-    let sellerprod = getSelllerProducts(sellerid.id);
+    
+    let allorders =JSON.parse( this.window.localStorage.getItem('orders')) ||[];
+    this.document.getElementById('all_orders').innerText = allorders.length;
 
-    this.document.getElementById('productnum').innerText = sellerprod.length;
-    let cou = 0;
-    for(let i = 0 ; i < sellerprod.length ; i++){
-        cou +=sellerprod[i].stockQuantity;
+    let all_prod = JSON.parse( this.window.localStorage.getItem('products')) ||[];
+    let cur  = 0;
+    for(let i = 0 ; i < all_prod.length ; i++){
+        cur += all_prod[i].stockQuantity
     }
-    this.document.getElementById('itemsinstock').innerText = cou.toFixed(0);
-   
+    this.document.getElementById('items_in_stock').innerText = cur.toFixed(0);
+
+    let allusers = JSON.parse( this.window.localStorage.getItem('users')) ||[];
+    this.document.getElementById('users-reg').innerText = allusers.length;
+    this.document.getElementById('all-products').innerText = all_prod.length;
+
     if(currentUser.role == 1)
     {
         let allord = getAndFormatOrders(currentUser.id);
@@ -78,7 +81,9 @@ window.addEventListener("load", function(){
     // getting orders for product with id = 3
     let dummyProductObj = getProductOrdersObj(ordersByDateObj, selectedProduct.value);
     console.log("productObject" ,getDateArray(dummyProductObj));
+    console.log("selected",selectedProduct.value );
     drawChart(productsChart, getDateArray(dummyProductObj), getProductQuantities(dummyProductObj),
+    
     getProducTotaltPrice(dummyProductObj, +selectedProduct.value),
     `product ${selectedProduct.value}`
     );
@@ -94,34 +99,8 @@ window.addEventListener("load", function(){
     getProducTotaltPrice(dummyProductObj, +selectedProduct.value),
     `product ${selectedProduct.value}`
     );
-
     })
     
-
-    //======= uncomment and see the results =========
-
-    // all the functions work on the bject and extracts the arrays
-    // getDateArray extracts the dates for the graph x-axis
-    // getProductQuantities and getProducTotaltPrice for the y-axis
-    
-    /* console.log("product orders Dates" ,getDateArray(dummyProductObj));
-    console.log("product orders quantities " ,getProductQuantities(dummyProductObj));
-    console.log("product orders totalPrices" ,getProducTotaltPrice(dummyProductObj, +selectedProduct.value));
-    console.log(selectedProduct.value);
-    drawChart(productsChart, getDateArray(dummyProductObj), getProductQuantities(dummyProductObj),
-    getProducTotaltPrice(dummyProductObj, +selectedProduct.value),
-    `product ${selectedProduct.value}`
-    ); */
-    
-
-    //======= uncomment and see the results =========
-    // getting ORDERS quantities and total prices statistics
-
-    /* console.log("orders Dates" ,getDateArray(ordersByDateObj));
-    console.log("orders total quantities", getTotalOrdersQuantities(ordersByDateObj));
-    console.log("3 price", getProductPrice(3));
-    console.log("orders total prices", getOrderTotalPrice(ordersByDateObj)); */
-    // console.log("seller products" ,getSelllerProducts(sellerId));
     drawChart(totalOrdersChart, getDateArray(ordersByDateObj), getTotalOrdersQuantities(ordersByDateObj),
     getOrderTotalPrice(ordersByDateObj),
     "total orders"

@@ -173,10 +173,14 @@ header .bg-body-tertiary {
 }
 
 .carousel-inner{
-    width:100%;
+    width:100% !important;
     height: 800px !important;
 
 }
+.carousel-item{
+    height: 100% !important;
+}
+
 .orderby{
     color: #666;
     height: auto;
@@ -275,18 +279,6 @@ header .bg-body-tertiary {
     bottom: 50%;
 
 }
-/*.stars {
-    margin-top: 5px;
-    font-size: .857em;
-    display: inline-block;
-    text-align: left;
-}*/
-
-/*.stars i{
-    color: transparent;
-    -webkit-text-stroke-width: 1px; 
-    -webkit-text-stroke-color: #555; 
-}*/
 
 .price {
     color: #0F1035;
@@ -458,3 +450,75 @@ footer .contacts li {
 
    
    
+/* start of ali parts*/
+
+.cartButton{
+    margin: 10px;
+    padding: 10px;
+}
+.cartButton:hover{
+    background-color: var(--fontcolor);
+    color: var(--maincolor);
+}
+
+.QuantityValue{
+    width: 50px; 
+    border: 1px solid var(--paragrahcolor);
+    background-color: rgb(238, 231, 231);
+    appearance:textfield;
+    -webkit-appearance: textfield;
+    
+}
+
+
+.QuantityValue::-webkit-inner-spin-button,
+.QuantityValue::-webkit-outer-spin-button,
+.QuantityValue {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.CartItemDetails{margin-left: 15%;
+    margin-top: 10px;
+text-align: center;
+}
+
+
+
+
+.Cart-Content{height: 100vh;
+    border-radius: 0%;
+    
+   }
+   .Cart-dialog{
+    margin: 0% 0% 0% 0%;
+    float: right;
+    width: 100%;
+   }
+
+
+   .Item{
+    margin-top: 10px;
+   }
+
+   @media (max-width: 430px) {
+    .CartItemDetails {
+        margin-left: 3%;
+    
+    }}
+   @media (max-width: 375px) {
+   
+   
+    .CartItemDetails {
+        margin-left: 0%;
+    
+    }
+        .QuantityValue{
+            width: 30px; 
+          
+            
+        }
+        
+
+}
+   /* end of ali parts*/

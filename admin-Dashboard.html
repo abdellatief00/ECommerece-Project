@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="style/bootstrap.min.css">
     <link rel="stylesheet" href="style/all.min.css">
     <link rel="stylesheet" href="style/dashboardStyle.css">
-    <script src="javascript/sellerDashboard.js" type="module"></script>
+    <script src="javascript/admindashboard.js" type="module"></script>
 </head>
 
 <body>
@@ -38,18 +38,22 @@
                                     <span class="sidebar-text">Sellers</span> </a>
                             </li> -->
                             <li class="nav-item">
-                                <a class="nav-link px-xl-4 " href="Dashboard-seller.html"><i class="fa-solid fa-user-group pe-3"></i>
+                                <a class="nav-link px-xl-4" href="Dashboard-users.html"><i class="fa-solid fa-user-group pe-3"></i>
+                                    <span class="sidebar-text">Users</span> </a>
+                                </li>
+                            <li class="nav-item ">
+                                <a class="nav-link px-xl-4" href="Dashboard-products.html"><i class="fa-solid fa-bag-shopping pe-3"></i>
                                     <span class="sidebar-text">Products</span>
 
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link  px-xl-4" href="sellerorders.html"><i class="fa-solid fa-store pe-3"></i>
+                                <a class="nav-link  px-xl-4" href="Dashboard-orders.html"><i class="fa-solid fa-clipboard-list pe-3"></i>
                                     <span class="sidebar-text">Orders</span></a>
                             </li>
                             <li class="nav-item active">
-                                <a class="nav-link  px-xl-4" href="#"><i class="fa-solid fa-bag-shopping pe-3"></i>
-                                    <span class="sidebar-text">Cahrt</span></a>
+                                <a class="nav-link  px-xl-4" href="#"><i class="fa-solid fa-ellipsis pe-3"></i>
+                                    <span class="sidebar-text">charts</span></a>
                             </li>
                             <!-- <li class="nav-item">
                                 <a class="nav-link  px-xl-4" href="#"><i class="fa-solid fa-ellipsis pe-3"></i>
@@ -100,8 +104,8 @@
             <div class="row justify-content-end mb-3 pt-5" >
                 <div class="offset-xl-2 col-xl col-lg-6 col-md-6 col-sm-5 col-5 mb-3 heigh">
                     <div class="inside bg-info ">
-                        <h3 id="allorders">150</h3>
-                        <p>new order</p>
+                        <h3  id="all_orders">150</h3>
+                        <p >new order</p>
                         <div class="icons">
                             <i class="fa-solid fa-bag-shopping"></i>
                         </div>
@@ -110,7 +114,7 @@
                 </div>
                 <div class="col-xl col-lg-5 col-md-5 col-sm-5 col-5 mb-3 heigh">
                     <div class="inside bg-success">
-                        <h3 id="itemsinstock">150</h3>
+                        <h3 id="items_in_stock">150</h3>
                         <p>Item In Stock</p>
                         <div class="icons">
                             <i class="fa-solid fa-signal"></i>
@@ -118,19 +122,19 @@
                         <a href="#" class="small-box-footer">More Info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <!-- <div class="col-xl col-lg-6 col-md-6 col-sm-5 col-5 mb-3 heigh">
+                <div class="col-xl col-lg-6 col-md-6 col-sm-5 col-5 mb-3 heigh">
                     <div class="inside bg-warning">
-                        <h3>150</h3>
+                        <h3 id="users-reg">150</h3>
                         <p>User register</p>
                         <div class="icons">
                             <i class="fa-solid fa-user-plus"></i>
                         </div>
                         <a href="#" class="small-box-footer">More Info <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
-                </div> -->
-                <div class="col-xl col-lg-11 col-md-11 col-sm-10 col-10 mb-3 heigh">
+                </div>
+                <div class="col-xl col-lg-5 col-md-5 col-sm-5 col-5 mb-3 heigh">
                     <div class="inside bg-danger">
-                        <h3 id='productnum'>150</h3>
+                        <h3 id="all-products">150</h3>
                         <p>Products</p>
                         <div class="icons">
                             <i class="fa-solid fa-chart-pie"></i>
@@ -149,10 +153,10 @@
             <div class="row justify-content-end  pt-3">
                 <div class="col-xl-10 col-lg-11 col-md-11 col-10 third   move" >
                     <div class="d-flex justify-content-center">
-                    <select class="mb-2" id="productsOptions" >
+                    <select class="mb-2" id="productsOptions">
                         <option value="help">help</option>
                     </select>
-                    <p class="my-auto ms-1" >products stats</p>
+                    <p class="my-auto ms-1" >ladkl</p>
                     </div>
                     <div class="inside h-100"><canvas id="productChart" ></canvas></div></div>
             </div>

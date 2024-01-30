@@ -2,7 +2,7 @@ export class Review {
   #userId;
   #reviewBody;
 
-  constructor(userId, reviewBody) {
+  constructor(userId, reviewBody, date) {
       this.#userId = userId;
       this.#reviewBody = reviewBody;
       
@@ -18,11 +18,10 @@ export class Review {
 
   toJSON() {
       return {
-        userId: this.#userId,   
-        reviewBody: this.#reviewBody,
+          userId: this.#userId,
+          reviewBody: this.#reviewBody
       };
   }
-
 }
 
 export class Product {
@@ -44,7 +43,7 @@ export class Product {
   #treatment;
   #category;
   #date; // New property for the product date
-  #sold; // new property
+  #sold;
   set product_title(_product_title) {
     this.#productTitle = _product_title;
   }
@@ -166,8 +165,8 @@ export class Product {
       lensClass,
       treatment,
       category,
-      date = new Date(),
-      _sold = 0
+      date,
+      sold =0
   ) {
       this.#productTitle = productTitle;
       this.#productDescription = productDescription;
@@ -216,19 +215,20 @@ export class Product {
           sold : this.#sold
       };
   }
-
   static autoincreaseid(){
     let lastid;
-    let user = JSON.parse(window.localStorage.getItem("products")) ||[]; // u can chage the name of the user how ever u want
-    if(user.length > 0){
-      lastid = user[user.length-1].id;
+    let order = JSON.parse(window.localStorage.getItem("products")) ||[];
+    if(order.length > 0){
+      lastid = order[order.length-1].id;
     }
     else {lastid =0}
     return ++lastid;
   }
 }
   
+ 
   /* class for cart  abdellatief */
+
   export class Cart{
     #productId;
     #productTitle;
@@ -291,6 +291,7 @@ export class Product {
     }
   }
 
+
   /* class of orders */ 
   export class Orders{
     #orderNumber;
@@ -348,8 +349,6 @@ export class Product {
     }
   }
 
-
-
   /* class users */
   //#region  User type
 
@@ -360,11 +359,12 @@ export class Product {
     #lname;
     #email;
     #password;
-    #images = [];
+    #image;
     #age;
     #role;
     #orders = [];
     #favorites = [];
+    #cart=[];
 
     set fname(_fname) {
         this.#fname = _fname;
@@ -404,11 +404,11 @@ export class Product {
         return this.#id;
     }
 
-    set images(_img) {
-        this.#images.push(_img);
+    set image(_img) {
+        this.#image=_img;
     }
-    get images() {
-        return this.#images;
+    get image() {
+        return this.#image;
     }
 
     set role(_role) {
@@ -417,16 +417,22 @@ export class Product {
     get role() {
         return this.#role;
     }
-
-    constructor(_fname, _lname, _email, _pass, _age, _img, _role) {
+    set cart(_cart) {
+        this.#cart.push(_cart);
+    }
+    get cart() {
+        return this.#cart;
+    }
+    constructor(_fname, _lname, _email, _pass, _age, _img, _role,_cart=[]) {
         this.fname = _fname;
         this.lname = _lname;
         this.email = _email;
         this.password = _pass;
         this.age = _age;
-        this.images = _img;
+        this.image = _img;
         this.#id = user.autoincreaseid();
         this.#role = _role;
+        this.#cart=_cart
     }
 
     addjson() {
@@ -437,10 +443,11 @@ export class Product {
             email: this.email,
             password: this.password,
             age: this.age,
-            images: this.images,
+            image: this.image,
             role: this.role,
             orders: this.#orders,
-            favorites: this.#favorites
+            favorites: this.#favorites,
+            cart:this.#cart
         };
     }
 

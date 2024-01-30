@@ -1,14 +1,14 @@
 import { Cart ,user} from './modula.js';
 
-let cartarr = [];
-cartarr.push(new Cart(6,"prod1",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
-cartarr.push(new Cart(2,"prod2",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
-cartarr.push(new Cart(3,"prod3",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
-cartarr.push(new Cart(4,"prod44",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
-cartarr.push(new Cart(5,"prod80",3 , 200.00 ,"images/women/product-1-a.jpg").addJson());
+// let cartarr = [];
+// cartarr.push(new Cart(6,"prod1",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
+// cartarr.push(new Cart(2,"prod2",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
+// cartarr.push(new Cart(3,"prod3",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
+// cartarr.push(new Cart(4,"prod44",3 , 135.00 ,"images/women/product-1-a.jpg").addJson());
+// cartarr.push(new Cart(5,"prod80",3 , 200.00 ,"images/women/product-1-a.jpg").addJson());
 
 
-localStorage.setItem("cart",JSON.stringify(cartarr));
+// localStorage.setItem("cart",JSON.stringify(cartarr));
 
 // let one_user = new user("abdo","hamed","abdellatiefhamed00@gmail.com","1578aaa",50,"images/women/product-1-a.jpg",0).addjson();
 // window.localStorage.setItem("current_user",JSON.stringify(one_user));

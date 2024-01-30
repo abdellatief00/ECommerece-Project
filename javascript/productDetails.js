@@ -186,8 +186,9 @@ function dispalyProductInfo(){
     let pLColor = pLensInfo.querySelector("li:nth-child(2)>span");
     let pLTreatment = pLensInfo.querySelector("li:nth-child(3)>span");
 
+    console.log(pFShape);
     let currP = products[currentProductIndex];
-     
+    console.log(currP);
     category.innerText = currP.category;
     pImage.src = currP.images[0];
     pName.innerText = currP.productTitle;
@@ -336,7 +337,8 @@ function addReview(e)
     //console.log(products[currentProductIndex].reviews);
     reviewsCountSpan.innerText = products[currentProductIndex].reviews.length;
     setProductsToLocal();
-    createReviewDiv(currentUser.images[0], currentUser.fname + " " + currentUser.lname, reviewText);
+    console.log(currentUser);
+    createReviewDiv(currentUser.image ||"images/product-09-a.jpg" , currentUser.fname + " " + currentUser.lname, reviewText);
 }
 
 function createReviewDiv(userImg, userName, review)
@@ -364,7 +366,7 @@ function displaProductReviews()
     let currentProduct = products[currentProductIndex];
     let reviews = currentProduct.reviews;
     let reviewsCountSpan = document.querySelector("#reviewsHeading > button > span");
-
+    console.log(reviews);
     console.log(reviews);
     if(reviews.length > 0)
     {
@@ -382,7 +384,9 @@ function displaProductReviews()
     for(let i=0; i<reviews.length; i++)
     {
         console.log(`review ${i}`, reviews[i]);
-        createReviewDiv("images/product-09-a.jpg", "userNamePlaceholder", reviews[i].reviewBody);
+        let reviewUser = getUserById(reviews[i].userId);
+            if(reviewUser !== "no user")
+                createReviewDiv(reviewUser.image ||"images/product-09-a.jpg", (reviewUser.fname+" "+reviewUser.lname)|| "userName", reviews[i].reviewBody);
     }
 }
 
@@ -395,11 +399,19 @@ function updateReviewFormInfo()
         reviewFormName.value = currentUser.fname + " " + currentUser.lname;
         reviewFormMail.value = currentUser.email;
     }
-    else
+}
+
+function getUserById(userId)
+{
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    for(let i=0; i<users.length; i++)
     {
-        reviewFormName.value = currentUser.fname + " " + currentUser.lname;
-        reviewFormMail.value = currentUser.email;
+        if(users[i].id === userId)
+        {
+            return users[i];
+        }
     }
+    return "no user";
 }
 // ================================================================
 

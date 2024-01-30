@@ -15,7 +15,7 @@ window.addEventListener("load",function(){
     changeactive(searched);
     createtablebody(searched);
 
-    document.querySelector('.adminImgANDNot').children[1].children[0].src  = getlocal('current_user').images[0];
+    document.querySelector('.adminImgANDNot').children[1].children[0].src  = getlocal('current_user').images;
     document.querySelector('.adminImgANDNot').children[1].children[1].innerText =getlocal('current_user').fname+" "+getlocal('current_user').lname
 
 });
@@ -54,11 +54,13 @@ function createtablebody(arr){
 }
 
 function createproductrow(arr){
+    let sold= 0;
+    if(arr.sold!=undefined){sold = arr.sold}
     let row = `<tr data-productId = ${arr.id}>
     <td>${arr.id}</td>
     <td>${arr.productTitle}</td>
     <td>${Math.floor(arr.stockQuantity)}</td>
-    <td>${arr.sold}</td>
+    <td>${sold}</td>
     <td>$${parseFloat(arr.price).toFixed(2)}</td>
     <td>${arr.category}</td>
     <td>${arr.shape}</td>
@@ -446,4 +448,3 @@ document.querySelector('thead').addEventListener('click',function(e){
         sortascending(val);
     }
 })
-

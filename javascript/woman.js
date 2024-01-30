@@ -1,3 +1,6 @@
+import { Cart } from './modula.js';
+import { createCartData } from './cartScript.js';
+import { addToCart } from './cartScript.js';
 document.addEventListener('DOMContentLoaded', function () {
     // Retrieve products and current user from local storage
     let storedProducts = JSON.parse(localStorage.getItem('products')) || [];
@@ -66,11 +69,11 @@ document.addEventListener('DOMContentLoaded', function () {
             updateWishlistLinkColor(wishlistLink, product.id);
         });
 
-        const eyeLink = createProductLink('<i class="fa fa-eye" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top"></i>', function () {
+        const eyeLink = createProductLink('<i class="fa fa-eye" data-bs-toggle="tooltip" data-bs-placement="top" title="Product details"></i>', function () {
             showProductDetails(product);
         });
 
-        const quickViewLink = createProductLink('<i class="fa fa-search" data-bs-toggle="tooltip" data-bs-placement="top" title="Tooltip on top"></i>', function () {
+        const quickViewLink = createProductLink('<i class="fa fa-search" data-bs-toggle="tooltip" data-bs-placement="top" title="View"></i>', function () {
             viewProductImage(product);
         });
 
@@ -140,13 +143,12 @@ document.addEventListener('DOMContentLoaded', function () {
         addToCartButton.type = 'button';
         addToCartButton.textContent = 'Add to Cart';
 
-        addToCartButton.addEventListener('click', function () {
-            if (product.stockQuantity > 0) {
-                console.log(`Product added to cart: ${product.productTitle}`);
-            } else {
-                console.log(`Product is out of stock: ${product.productTitle}`);
-            }
-        });
+        if (product.stockQuantity > 0) {
+
+            addToCartButton.addEventListener('click', function () {
+                addToCart(product)
+            });
+        }
 
         return addToCartButton;
     }
@@ -171,9 +173,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function showProductDetails(product) {
         setCurrentProductIdToLocal(product.id);
         window.location.assign("productDetails.html");
-        //console.log('Product details popup:', product);
-        // Implement logic to display product details in a popup
-        // You can use a modal or any other UI component to display detailed product information
+        
     }
 
     // Function to view product image

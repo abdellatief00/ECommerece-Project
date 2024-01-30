@@ -1,5 +1,5 @@
-import { Product, Review, Cart } from "./modula.js";
-import {createCartData} from "./cartScript.js"
+// import { Product, Review, Cart } from "./modula.js";
+// import {createCartData} from "./cartScript.js"
 
 let searchForm = document.getElementById("header-search-form");
 let searchButton = searchForm.querySelector("button");
@@ -92,17 +92,20 @@ function changeItemsPlaces()
     let navbar = document.getElementById("navbarSupportedContent");
     if(currentUser !== null)
     {
-        if(currentUser.role === 0 || currentUser.role === 1 || currentUser.role === "0")
+        if(currentUser.role === 0 || currentUser.role === 1)
         {
-            let dashBoard = document.createElement("li");
-            dashBoard.className = "nav-item";
+        
 
-            dashBoard.innerHTML = `
-            <a class="nav-link" href="Dashboard-seller.html">Dashboard</a>
-            `;
-
+            if(currentUser.role === 1)
             navbar.querySelector("ul>li:nth-child(6)").innerHTML = `<a class="nav-link" href="Dashboard-seller.html">Dashboard</a>
             `;
+
+            else if(currentUser.role === 0)
+            navbar.querySelector("ul>li:nth-child(6)").innerHTML = `<a class="nav-link" href="Dashboard-users.html">Dashboard</a>
+            `;
+            
+
+
         }
     }
     
@@ -223,10 +226,8 @@ function getCurrentProductIdFromLocal()
 
 function getProductIndex(productId)
 {
-    console.log("productId",productId);
     for(let i=0; i<products.length; i++)
     {
-        console.log("innerId",products[i].id);
         if(products[i].id === productId)
             return i;
     }
@@ -248,7 +249,7 @@ function getProductsFromLocal()
 function claculateTotalPrice(arr){
     let total = 0;
     for(let i = 0 ; i < arr.length ; i++){
-        total += parseFloat(arr[i].price)*parseFloat(arr[i].quantity);
+        total += parseInt(arr[i].price)*parseInt(arr[i].quantity);
     }
     return total.toFixed(2);
 }
@@ -304,7 +305,11 @@ function setSearchResultsToLocal(products)
 function showLoginDialog()
 {
     if(currentUser !== null)
+    {
         window.location.assign("profileuser.html");
+        return;
+    }
+
 
     let loginScreen = document.getElementById("LoginScreen");
     let modal = new bootstrap.Modal(loginScreen);
@@ -315,7 +320,7 @@ function showLoginDialog()
 
 
 function login(){
-    var userArray=JSON.parse(localStorage.getItem('Users'));
+    var userArray=JSON.parse(localStorage.getItem('users'));
     
     for (let index = 0; index < userArray.length; index++) {
         if
