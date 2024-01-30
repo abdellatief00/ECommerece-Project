@@ -127,6 +127,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
     UserOrders.forEach((order, index) => {
         const orderNumber = index + 1; // Order number starts from 1 for the oldest order
+        let state="delivery"; // Order number starts from 1 for the oldest order
+        let currentState=Object.keys(order.state);    
+        for (let i = 0; i < currentState.length; i++) {
+            if(order.state[currentState[i]]=="pending"){
+                state="pending";
+                break;
+            }
+            
+        }
 
         const row = document.createElement("tr");
         row.innerHTML = `
@@ -134,7 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
             <td>${order.paymentMethod}</td>
             <td>${order.total}</td>
             <td>${new Date(order.date).toLocaleString()}</td>
-            <td>${order.state["10"]}</td>
+            <td>${state}</td>
         `;
 
         const buttonCell = document.createElement("td");
@@ -183,7 +192,9 @@ function generateProductTable(cart, products) {
                         <th>Quantity</th>
                         <th>Category</th>
                         <th>Price</th>
+                        <th>State</th>
                         <th>Product Image</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -191,12 +202,22 @@ function generateProductTable(cart, products) {
     
         cart.forEach(item => {
             const productDetails = products.find(product => product.id === item.productId) || {};
+            // let state="delivery"; // Order number starts from 1 for the oldest order
+            // let currentState=Object.keys(order.state);    
+            // for (let i = 0; i < currentState.length; i++) {
+            //     if(order.state[currentState[i]]=="pending"){
+            //     state="pending";
+            //     break;
+            // }
+            
+//         }
             html += `
                 <tr>
                     <td>${productDetails.productTitle}</td>
                     <td>${item.quantity}</td>
                     <td>${productDetails.category}</td>
                     <td>${productDetails.price}</td>
+                    
                     <td><img src="${productDetails.images[0]}"></td>
                 </tr>`;
         });

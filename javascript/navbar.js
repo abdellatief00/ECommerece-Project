@@ -134,11 +134,11 @@ function searchProductsByTitle()
     searchResultDiv.innerHTML = "";
 
     const fuzzy = new Fuse(products, {
-        // Configure Fuse for fuzzy matching with adjustments for "MR"
-        keys: ["productTitle"], // Search within the "product_title" field
-        threshold: 0.4 , // Higher threshold for stricter matching, ensuring "MR" is distinct
-        location: 0, // Prioritize matches at the beginning of the title
-        distance: 25, // Allow for some typos and variations, but not too generous
+        
+        keys: ["productTitle"], 
+        threshold: 0.4 , 
+        location: 0, 
+        distance: 50,
         maxPatternLength: 32, // Limit pattern length for performance
         includeScore: true, // Access scores for sorting results
       });
