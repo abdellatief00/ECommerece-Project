@@ -100,8 +100,11 @@ function loadUserData() {
         userData.image = " ";
     }
 
-    $('#userImage').attr('src', userData.image || '');
-    console.log(userData.image);
+    // $('#userImage').attr('src', userData.image);
+    // console.log(userData.image);
+   var imgUser= document.getElementById("userImage");
+   imgUser.setAttribute("src",userData.image);
+
 }
 
 $(document).on('click', '#togglecurrentpass', function () {
