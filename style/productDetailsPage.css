@@ -65,6 +65,10 @@ body
     box-shadow: 0px -10px 10px rgba(78, 74, 74, 0.5);
 }
 
+#navbarSupportedContent > ul > li > a{
+    font-size: 10px !important;
+}
+
 @media (max-width:500px) {
     #product-photo>div>img{
         width: 200px;
@@ -131,7 +135,7 @@ text-align: center;}
 
 
 
-.Cart-Content{height: 100vh;
+.Cart-Content{/* height: 100vh; */
     border-radius: 0%;
     
    }
@@ -167,4 +171,4 @@ text-align: center;}
         
 
 }
-/* end of ali parts*/
+/* end of ali parts*/

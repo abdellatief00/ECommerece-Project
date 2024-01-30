@@ -1,225 +1,226 @@
 let products = [];
-let orders =
-[
-    {
-        "orderNumber": 177,
-        "date": "2024-01-03T18:51:12.911Z",
-        "total": 66.78610152647282,
-        "paymentMethod": "Credit Card",
-        "cart": [
-            {
-                "productId": 12,
-                "quantity": 3
-            },
-            {
-                "productId": 6,
-                "quantity": 2
-            },
-            {
-                "productId": 15,
-                "quantity": 3
-            },
-            {
-                "productId": 14,
-                "quantity": 4
-            }
-        ],
-        "userId": 503
-    },
-    {
-        "orderNumber": 489,
-        "date": "2023-02-10T18:51:12.912Z",
-        "total": 51.24107419954016,
-        "paymentMethod": "Credit Card",
-        "cart": [
-            {
-                "productId": 13,
-                "quantity": 2
-            },
-            {
-                "productId": 6,
-                "quantity": 3
-            },
-            {
-                "productId": 3,
-                "quantity": 1
-            },
-            {
-                "productId": 3,
-                "quantity": 3
-            }
-        ],
-        "userId": 264
-    },
-    {
-        "orderNumber": 751,
-        "date": "2023-12-15T18:51:12.912Z",
-        "total": 16.800541146849234,
-        "paymentMethod": "PayPal",
-        "cart": [
-            {
-                "productId": 14,
-                "quantity": 3
-            },
-            {
-                "productId": 8,
-                "quantity": 2
-            }
-        ],
-        "userId": 702
-    },
-    {
-        "orderNumber": 750,
-        "date": "2023-09-07T17:51:12.912Z",
-        "total": 17.0898882484283,
-        "paymentMethod": "Credit Card",
-        "cart": [
-            {
-                "productId": 10,
-                "quantity": 2
-            },
-            {
-                "productId": 5,
-                "quantity": 4
-            }
-        ],
-        "userId": 825
-    },
-    {
-        "orderNumber": 858,
-        "date": "2024-02-22T18:51:12.912Z",
-        "total": 6.883951274391054,
-        "paymentMethod": "PayPal",
-        "cart": [
-            {
-                "productId": 8,
-                "quantity": 4
-            },
-            {
-                "productId": 7,
-                "quantity": 3
-            },
-            {
-                "productId": 5,
-                "quantity": 1
-            },
-            {
-                "productId": 8,
-                "quantity": 4
-            }
-        ],
-        "userId": 190
-    },
-    {
-        "orderNumber": 800,
-        "date": "2023-05-04T17:51:12.912Z",
-        "total": 57.682764030949784,
-        "paymentMethod": "PayPal",
-        "cart": [
-            {
-                "productId": 2,
-                "quantity": 1
-            },
-            {
-                "productId": 3,
-                "quantity": 4
-            },
-            {
-                "productId": 3,
-                "quantity": 3
-            },
-            {
-                "productId": 3,
-                "quantity": 5
-            },
-            {
-                "productId": 8,
-                "quantity": 2
-            }
-        ],
-        "userId": 310
-    },
-    {
-        "orderNumber": 962,
-        "date": "2023-02-13T18:51:12.913Z",
-        "total": 2.3060128672778513,
-        "paymentMethod": "PayPal",
-        "cart": [
-            {
-                "productId": 15,
-                "quantity": 2
-            },
-            {
-                "productId": 8,
-                "quantity": 1
-            },
-            {
-                "productId": 3,
-                "quantity": 1
-            },
-            {
-                "productId": 8,
-                "quantity": 2
-            }
-        ],
-        "userId": 999
-    },
-    {
-        "orderNumber": 591,
-        "date": "2023-05-21T17:51:12.913Z",
-        "total": 41.48830848925671,
-        "paymentMethod": "PayPal",
-        "cart": [
-            {
-                "productId": 14,
-                "quantity": 4
-            },
-            {
-                "productId": 15,
-                "quantity": 3
-            },
-            {
-                "productId": 3,
-                "quantity": 2
-            },
-            {
-                "productId": 3,
-                "quantity": 2
-            }
-        ],
-        "userId": 495
-    },
-    {
-        "orderNumber": 677,
-        "date": "2024-08-14T17:51:12.913Z",
-        "total": 19.746920910764977,
-        "paymentMethod": "Credit Card",
-        "cart": [
-            {
-                "productId": 13,
-                "quantity": 3
-            },
-            {
-                "productId": 2,
-                "quantity": 3
-            },
-            {
-                "productId": 4,
-                "quantity": 2
-            },
-            {
-                "productId": 3,
-                "quantity": 2
-            },
-            {
-                "productId": 10,
-                "quantity": 4
-            }
-        ],
-        "userId": 714
-    }
-]
-let sellerId = "seller2";
+let orders =JSON.parse(window.localStorage.getItem("orders")) || [];
+// let orders =
+// [
+//     {
+//         "orderNumber": 177,
+//         "date": "2024-01-03T18:51:12.911Z",
+//         "total": 66.78610152647282,
+//         "paymentMethod": "Credit Card",
+//         "cart": [
+//             {
+//                 "productId": 12,
+//                 "quantity": 3
+//             },
+//             {
+//                 "productId": 6,
+//                 "quantity": 2
+//             },
+//             {
+//                 "productId": 15,
+//                 "quantity": 3
+//             },
+//             {
+//                 "productId": 14,
+//                 "quantity": 4
+//             }
+//         ],
+//         "userId": 503
+//     },
+//     {
+//         "orderNumber": 489,
+//         "date": "2023-02-10T18:51:12.912Z",
+//         "total": 51.24107419954016,
+//         "paymentMethod": "Credit Card",
+//         "cart": [
+//             {
+//                 "productId": 13,
+//                 "quantity": 2
+//             },
+//             {
+//                 "productId": 6,
+//                 "quantity": 3
+//             },
+//             {
+//                 "productId": 3,
+//                 "quantity": 1
+//             },
+//             {
+//                 "productId": 3,
+//                 "quantity": 3
+//             }
+//         ],
+//         "userId": 264
+//     },
+//     {
+//         "orderNumber": 751,
+//         "date": "2023-12-15T18:51:12.912Z",
+//         "total": 16.800541146849234,
+//         "paymentMethod": "PayPal",
+//         "cart": [
+//             {
+//                 "productId": 14,
+//                 "quantity": 3
+//             },
+//             {
+//                 "productId": 8,
+//                 "quantity": 2
+//             }
+//         ],
+//         "userId": 702
+//     },
+//     {
+//         "orderNumber": 750,
+//         "date": "2023-09-07T17:51:12.912Z",
+//         "total": 17.0898882484283,
+//         "paymentMethod": "Credit Card",
+//         "cart": [
+//             {
+//                 "productId": 10,
+//                 "quantity": 2
+//             },
+//             {
+//                 "productId": 5,
+//                 "quantity": 4
+//             }
+//         ],
+//         "userId": 825
+//     },
+//     {
+//         "orderNumber": 858,
+//         "date": "2024-02-22T18:51:12.912Z",
+//         "total": 6.883951274391054,
+//         "paymentMethod": "PayPal",
+//         "cart": [
+//             {
+//                 "productId": 8,
+//                 "quantity": 4
+//             },
+//             {
+//                 "productId": 7,
+//                 "quantity": 3
+//             },
+//             {
+//                 "productId": 5,
+//                 "quantity": 1
+//             },
+//             {
+//                 "productId": 8,
+//                 "quantity": 4
+//             }
+//         ],
+//         "userId": 190
+//     },
+//     {
+//         "orderNumber": 800,
+//         "date": "2023-05-04T17:51:12.912Z",
+//         "total": 57.682764030949784,
+//         "paymentMethod": "PayPal",
+//         "cart": [
+//             {
+//                 "productId": 2,
+//                 "quantity": 1
+//             },
+//             {
+//                 "productId": 3,
+//                 "quantity": 4
+//             },
+//             {
+//                 "productId": 3,
+//                 "quantity": 3
+//             },
+//             {
+//                 "productId": 3,
+//                 "quantity": 5
+//             },
+//             {
+//                 "productId": 8,
+//                 "quantity": 2
+//             }
+//         ],
+//         "userId": 310
+//     },
+//     {
+//         "orderNumber": 962,
+//         "date": "2023-02-13T18:51:12.913Z",
+//         "total": 2.3060128672778513,
+//         "paymentMethod": "PayPal",
+//         "cart": [
+//             {
+//                 "productId": 15,
+//                 "quantity": 2
+//             },
+//             {
+//                 "productId": 8,
+//                 "quantity": 1
+//             },
+//             {
+//                 "productId": 3,
+//                 "quantity": 1
+//             },
+//             {
+//                 "productId": 8,
+//                 "quantity": 2
+//             }
+//         ],
+//         "userId": 999
+//     },
+//     {
+//         "orderNumber": 591,
+//         "date": "2023-05-21T17:51:12.913Z",
+//         "total": 41.48830848925671,
+//         "paymentMethod": "PayPal",
+//         "cart": [
+//             {
+//                 "productId": 14,
+//                 "quantity": 4
+//             },
+//             {
+//                 "productId": 15,
+//                 "quantity": 3
+//             },
+//             {
+//                 "productId": 3,
+//                 "quantity": 2
+//             },
+//             {
+//                 "productId": 3,
+//                 "quantity": 2
+//             }
+//         ],
+//         "userId": 495
+//     },
+//     {
+//         "orderNumber": 677,
+//         "date": "2024-08-14T17:51:12.913Z",
+//         "total": 19.746920910764977,
+//         "paymentMethod": "Credit Card",
+//         "cart": [
+//             {
+//                 "productId": 13,
+//                 "quantity": 3
+//             },
+//             {
+//                 "productId": 2,
+//                 "quantity": 3
+//             },
+//             {
+//                 "productId": 4,
+//                 "quantity": 2
+//             },
+//             {
+//                 "productId": 3,
+//                 "quantity": 2
+//             },
+//             {
+//                 "productId": 10,
+//                 "quantity": 4
+//             }
+//         ],
+//         "userId": 714
+//     }
+// ]
+// let sellerId = "seller2";
 
 let sellerProductsOrders = [];
 let ordersByDateObj = {};
@@ -230,29 +231,37 @@ let selectedProduct = document.getElementById("productsOptions");
 
 window.addEventListener("load", function(){
     currentUser = getUserFromLocal();
-    if(currentUser === null || currentUser.role === "guest")
+    if(currentUser === null || currentUser.role === 2)
     {
         console.log("not allowed");
         return;
     }
+    document.querySelector('.adminImgANDNot').children[1].children[0].src  = currentUser.images;
+    document.querySelector('.adminImgANDNot').children[1].children[1].innerText =currentUser.fname+" "+currentUser.lname
 
-    let allprod = JSON.parse(this.window.localStorage.getItem('products')) || [];
-    let allord = JSON.parse(this.window.localStorage.getItem('products')) || [];
-    let cou = 0;
-    for(let i = 0 ; i < allprod.length ; i++){
-        cou +=allprod[0].stock;
+    
+    let allorders =JSON.parse( this.window.localStorage.getItem('orders')) ||[];
+    this.document.getElementById('all_orders').innerText = allorders.length;
+
+    let all_prod = JSON.parse( this.window.localStorage.getItem('products')) ||[];
+    let cur  = 0;
+    for(let i = 0 ; i < all_prod.length ; i++){
+        cur += all_prod[i].stockQuantity
     }
-    this.document.getElementById('items_in_stock').innerText = cou;
+    this.document.getElementById('items_in_stock').innerText = cur.toFixed(0);
 
-    let allusers = JSON.parse(this.window.localStorage.getItem('users')) || [];
-    console.log(allusers);
-    this.document.getElementById('users-reg').innerText = allusers.length;  
-    this.document.getElementById('all-products').innerText = allprod.length;
-    this.document.getElementById('all_orders').innerText = allord.length;
+    let allusers = JSON.parse( this.window.localStorage.getItem('users')) ||[];
+    this.document.getElementById('users-reg').innerText = allusers.length;
+    this.document.getElementById('all-products').innerText = all_prod.length;
+
+    if(currentUser.role == 1)
+    {
+        let allord = getAndFormatOrders(currentUser.id);
+        console.log(allord)
+        this.document.getElementById('allorders').innerText = allord.length;
+    }
 
 
-        
-    products = getProductsFromLocal();
     //orders = getOrdersFromLocal();
     //currentUser.role = "Seller";
     // currentUser = {
@@ -275,12 +284,12 @@ window.addEventListener("load", function(){
     //         ""
     //     ]
     // }
-    console.log(products);
+    // console.log(products);
     createOptions(selectedProduct);
-    if(currentUser.role === "Admin")
+    if(currentUser.role === 0)
         sellerProductsOrders = getAndFormatOrders();
-    else if(currentUser.role == "Seller")
-        sellerProductsOrders = getAndFormatOrders(sellerId);
+    else if(currentUser.role == 1)
+        sellerProductsOrders = getAndFormatOrders(currentUser.id);
     //sellerProductsOrders = getAndFormatOrders(currentUser.id);
     
     //console.log("orders formatted", sellerProductsOrders);
@@ -336,7 +345,7 @@ window.addEventListener("load", function(){
     console.log("orders total quantities", getTotalOrdersQuantities(ordersByDateObj));
     console.log("3 price", getProductPrice(3));
     console.log("orders total prices", getOrderTotalPrice(ordersByDateObj)); */
-    console.log("seller products" ,getSelllerProducts(sellerId));
+    // console.log("seller products" ,getSelllerProducts(sellerId));
     drawChart(totalOrdersChart, getDateArray(ordersByDateObj), getTotalOrdersQuantities(ordersByDateObj),
     getOrderTotalPrice(ordersByDateObj),
     "total orders"
@@ -355,14 +364,14 @@ window.addEventListener("load", function(){
 //    aProductId : aQuantity,
 //    bProductId : bQuantity}} using formatOrdersByDate
 // 3 -sort the result object by date using sortOrdersByDate
-function getAndFormatOrders(roleId = "admin")
+function getAndFormatOrders(roleId = 0)
 {
     let ordersFormatted = [];
     for(let i = 0; i<orders.length; i++)
 {
     for(let j=0; j<orders[i].cart.length; j++)
     {
-        if(roleId === "admin")
+        if(roleId === 0)
         {
             ordersFormatted.push({
                 productId : orders[i].cart[j].productId,
@@ -372,7 +381,7 @@ function getAndFormatOrders(roleId = "admin")
         }
         else
         {
-            if(getProductSellerId(+orders[i].cart[j].productId) === sellerId)
+            if(getProductSellerId(+orders[i].cart[j].productId) === roleId)
             {
                 ordersFormatted.push({
                     productId : orders[i].cart[j].productId,
@@ -650,15 +659,15 @@ function drawChart(ctx, xAxisDate, yAxisQuantities, yAxisRevenue, label)
 function createOptions(selectDiv)
 {
     selectDiv.innerHTML = "";
-    let optionsProducts ;
+    let optionsProducts;
     if(products.length==0){return;}
-    if(currentUser.role === "Seller")
+    if(currentUser.role === 1)
     {
         //optionsProducts = getSelllerProducts(currentUser.id);
-        optionsProducts = getSelllerProducts("seller2");
+        optionsProducts = getSelllerProducts(currentUser.id);
         console.log("seller options", optionsProducts);
     }
-    else if(currentUser.role === "Admin")
+    else if(currentUser.role ===0)
         optionsProducts = products;
 
     for(let i=0; i<optionsProducts.length; i++)
@@ -681,3 +690,5 @@ function getSelllerProducts(sellerId)
     }
     return sellerProducts;
 }
+
+

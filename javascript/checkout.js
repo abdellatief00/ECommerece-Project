@@ -95,7 +95,7 @@ function claculatetotal(arr){
   for(let i = 0 ; i < arr.length ; i++){
       total += parseFloat(arr[i].price)*parseFloat(arr[i].quantity);
   }
-  return total.toFixed(2);
+  return parseFloat(total.toFixed(2));
 }
 
 

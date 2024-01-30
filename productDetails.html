@@ -10,15 +10,12 @@
     <link rel="stylesheet" href="style/all.min.css">
     <link rel="stylesheet" href="style/homepage.css">
     <link rel="stylesheet" href="style/productDetailsPage.css">
-    
-    
+    <link rel="stylesheet" href="style/navbar.css">
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
     <script src="javascript/productDetails.js" type="module"></script>
 
     <script src="javascript/navbar.js" type="module"></script>
-    <script src="javascript/UserModule.js" type="module"></script>
-    <!-- <script src="javascript/test.js"  type="module"></script>
-    <script src="javascript/Login&logut.js" defer></script> -->
-
+    <script src="javascript/test.js" type="module"></script>
 
 </head>
 <body class="d-flex flex-column justify-content-center">
@@ -37,17 +34,17 @@
                         <img src="images/logo-header-regular.png" alt="Eyewear-logo">
                     </a>
                   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mt-2 mb-2 mb-lg-0 fw-bold flex-grow">
+                    <ul class="navbar-nav me-auto mt-2 mb-2 mb-lg-0 fw-bold flex-grow" style="font-size: 12px;">
                       <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="homepage.html">Home</a>
+                        <a class="nav-link " aria-current="page" href="homepage.html">Home</a>
                       </li>
 
                       <li class="nav-item">
-                        <a class="nav-link" href="html/man.html">MEN</a>
+                        <a class="nav-link" href="man.html">MEN</a>
                     </li>
     
                     <li class="nav-item">
-                        <a class="nav-link" href="html/woman.html">WOMEN</a>
+                        <a class="nav-link" href="woman.html">WOMEN</a>
                     </li>
     
                     <li class="nav-item">
@@ -56,6 +53,10 @@
     
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">CONTACT</a>
+                    </li>
+
+                    <li class="nav-item">
+                        
                     </li>
 
                     <li class="nav-item">
@@ -71,32 +72,156 @@
 
         <div id = "header-right-section" class="d-flex justify-content-between mt-3 flex-grow-0">
             <div>
-                <form id = "header-search-form" role="search" class="d-flex">
+                <form id = "header-search-form" role="search" class="d-flex position-relative">
                     <input class="form-control me-2 d-none" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
+                    <div id="search-results" class="d-flex flex-column position-absolute z-3 d-none">
+                        
+                            <div class="d-flex align-items-center">
+                            <img src="images/product-10-a.jpg" class="" alt="...">
+                            <div class="d-flex flex-column mx-2">
+                                <h6>Card title</h6>
+                                <div>
+                                    <span>$price</span> ● 
+                                    <span>category</span>
+                                </div>
+                            </div>
+                              
+                            </div>
+
+                            <div productId = 2 class="d-flex align-items-center">
+                                <img src="images/product-10-a.jpg" class="" alt="...">
+                                <div class="d-flex flex-column mx-2">
+                                    <h6>Card title</h6>
+                                    <div>
+                                        <span>$price</span> ● 
+                                        <span>category</span>
+                                    </div>
+                                </div>
+                                  
+                            </div>
+
+                            <div class="d-flex align-items-center search-result-item">
+                                <img src="images/product-10-a.jpg" class="" alt="...">
+                                <div class="d-flex flex-column mx-2">
+                                    <h6>Card title</h6>
+                                    <div>
+                                        <span>$price</span> ● 
+                                        <span>category</span>
+                                    </div>
+                                </div>
+                                  
+                            </div>
+
+                            <div style="background: rgb(181, 172, 172); text-align: center;">
+                                show all results &rarr;
+                            </div>
+                        
+                    </div>
                 </form>
             </div>
             
-            <div id="cart-icon" class="me-3 ms-3 mt-4 mt-lg-2 align-self-right btn CartMenu"  data-bs-toggle="modal" data-bs-target="#ShoppingCart" data-bs-whatever="@mdo" >
+            <div id="cart-icon" class="me-3 ms-3 mt-4 mt-lg-2 align-self-right">
                 <span>$0.00</span>
                 <i class="fa-solid fa-cart-shopping"></i>
                 <span id="cart-items-count">0</span>
-                
             </div>
-    
-            <button id="loginBtn" class="btn btn-outline-secondary border-0 align-self-start" data-bs-toggle="modal" data-bs-target="#LoginScreen" data-bs-whatever="@mdo">
+
+            <button id="loginBtn" class="btn btn-outline-secondary border-0 align-self-start">
                 <i class="fa-solid fa-user"></i>
                 <!-- <img class="bg-white" src="images/miniProfile.png" style="width: 30px; height: 30px; border-radius: 50%;" alt=""> -->
                 <span>Login</span>
             </button>
 
             <div class="navbar">
-                <button class="navbar-toggler align-self-start d-lg-none " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler align-self-start d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                   </button>
             </div>
 
         </div>
+
+        <!-- login Start -->
+    <div class="modal fade " id="LoginScreen" tabindex="-1" aria-labelledby="Login_form" aria-hidden="true" data-bs-backdrop="static"  >
+            <div class="modal-dialog  modal-dialog-centered" >
+                <div class="modal-content" style="background-color: rgb(238, 231, 231);">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="Login_form">Login</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        
+                
+    
+                            
+                            <div class="mb-3">
+                                <label for="Email">Email:</label>
+                                <div class="input-group my-2">
+                                <span class="fa fa-user input-group-prepend input-group-text" style="padding: 10px;"></span>
+                                <input type="email" class="form-control" id="Email" name="Email" required>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="Password" class="col-form-label">Password:</label>
+                                <div class="input-group my-2">
+                                <span class="fa fa-lock input-group-prepend input-group-text" style="padding: 10px;"></span>
+                                <input type="password" class="form-control" id="Password" name="Password" required>
+                            </div>
+                            
+                            <a  class="  authButtons  border-0 align-self-start" href="SignUP.html">creat a new account</a>
+
+                    </div>
+                    <div class="modal-footer">
+
+                            <input type="submit" value="Login" class="btn btn-primary" data-bs-dismiss="modal">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+
+
+                 
+            
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    <!-- end login -->
+    <!-- Cart start -->
+    <div class="modal fade  " id="ShoppingCart" tabindex="-1" aria-labelledby="ShoppingCartModalLabel" aria-hidden="true" >
+        <div class="modal-dialog Cart-dialog"  >
+            <div class="modal-content Cart-Content " style="background-color: rgb(238, 231, 231);" >
+                <div class="modal-header ">
+                    <h5 class="modal-title" id="ShoppingCartModalLabel">Shopping Cart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" >
+                    
+                    <div class="CartItems" >
+    
+                           
+                        
+    
+                        
+                    </div>
+    
+                </div>
+                <hr class="ms-3 me-3">
+    
+                <div class="ms-5 me-5">
+                                <span class="fs-4 fw-bold float-start">Subtotal:</span>
+                                <span class="fs-5 fw-bold float-end text-secondary total">$00.00</span>
+                            </div>
+                            <br>
+                <br>
+                <div class="modal-footer mt-auto" style="margin: 10px;">
+                    <!-- <button type="button" class="btn w-100 border-dark fw-bold fs-5 cartButton"  >VIEW CART</button> --> 
+                    <a href="Cart.html" class="btn w-100 border-dark fw-bold fs-5 cartButton">VIEW CART</a>
+                    <a href="checkout.html" class="btn w-100 border-dark fw-bold fs-5 cartButton">CHECKOUT</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end Cart -->
     </header>
     <hr>
 
@@ -106,8 +231,33 @@
         <!--photo on the left-->
         <div id="product-photo" class="ms-5 me-5 mb-5">
             <div>
-                <img src="images/product-10-a.jpg" alt="">
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <img src="images/product-10-a.jpg" alt="" data-bs-toggle="picsModal" data-bs-target="#picsModal">
+        
+                <!-- Product images modal -->
+                <div class="modal fade border-0" id="picsModal" tabindex="-1" aria-labelledby="productImageModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-md border-0">
+                        <div class="modal-content bg-transparent border-0">
+                            <div class="modal-header border-0">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body p-0">
+                                <div id="productImageCarousel" class="carousel slide" data-bs-ride="carousel">
+                                    <div class="carousel-inner">
+                                        <!-- Images will be dynamically added here -->
+                                    </div>
+                                    <button class="carousel-control-prev" type="button" data-bs-target="#productImageCarousel" data-bs-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Previous</span>
+                                    </button>
+                                    <button class="carousel-control-next" type="button" data-bs-target="#productImageCarousel" data-bs-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="visually-hidden">Next</span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -134,7 +284,8 @@
             <!--Main Info section-->
             <section>
                 <h1>Product Name</h1>
-                <h3>$Price</h3>&free shipping
+                <h3>$Price</h3>
+                &free shipping
                 <p>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet sed unde tenetur corporis eum facilis totam voluptates qui odit animi omnis sequi, minima quos sunt iste at nam eligendi quaerat?
                 </p>
@@ -157,6 +308,24 @@
                             Add To Cart
                         </button>
                     </div>
+
+                    <!--Not Enough items Modal-->
+                    <div class="modal" id="not-enough-items-modal" tabindex="-1">
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title">Sorry</h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                              <p>Not Enough items in the stock</p>
+                            </div>
+                            <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                 </div>
             </section>
 
@@ -192,9 +361,9 @@
                                     <div class="fw-bold">FRAME DESCRIPTION:</div>
                                     
                                     <ul class="list-unstyled">
-                                        <li>Shape: Round</li>
-                                        <li>Color: Pink</li>
-                                        <li>Material: Metal</li>
+                                        <li>Shape: <span>Round</span></li>
+                                        <li>Color:  <span>Pink</span></li>
+                                        <li>Material: <span>Metal</span></li>
                                     </ul>
                                 </div>
     
@@ -205,9 +374,9 @@
                                     <div class="fw-bold">LENS INFORMATION:</div>
                                     
                                     <ul class="list-unstyled">
-                                        <li>Class: 3P</li>
-                                        <li>Color: Pink</li>
-                                        <li>Treatment: Classic</li>
+                                        <li>Class: <span>Round</span></li>
+                                        <li>Color: <span>Pink</span></li>
+                                        <li>Treatment: <span>3d</span></li>
                                     </ul>
                                 </div>
                                 <hr>
@@ -225,13 +394,32 @@
                     <div class="accordion-item border-0 bg-white">
                         <h2 class="accordion-header" id="reviewsHeading">
                             <button class="accordion-button bg-white border-0" type="button" data-bs-toggle="collapse" data-bs-target="#reviewsCollapse" aria-expanded="true" aria-controls="reviewsCollapse">
-                                Reviews (0)
+                                Reviews (<span>0</span>)
                             </button>
                         </h2>
                         <div id="reviewsCollapse" class="accordion-collapse collapse show" aria-labelledby="reviewsHeading" data-bs-parent="#reviewsAccordion">
                             <div class="accordion-body">
                                 <p>No reviews yet. Be the first to review this product.</p>
                                 <!-- Add your review content here -->
+                                <div class="d-flex flex-column w-100 border border-secondary-subtle border-2 rounded-3 p-3 m-3">
+                                    <div class="d-flex align-items-center">
+                                        <img src="images/product-09-a.jpg" alt="" style="width: 50px; height: 50px; border-radius: 50%;" class="m-2">
+                                        <h6>userName</h6>
+                                    </div>
+                                    <div>
+                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem expedita, nobis ipsum quas velit rerum voluptatibus vero. Est quia temporibus adipisci minima quam at, hic, dolor voluptate, repudiandae aliquid quod!
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-column w-100 border border-secondary-subtle border-2 rounded-3 p-3 m-3">
+                                    <div class="d-flex align-items-center">
+                                        <img src="images/product-09-a.jpg" alt="" style="width: 50px; height: 50px; border-radius: 50%;" class="m-2">
+                                        <h6>userName</h6>
+                                    </div>
+                                    <div>
+                                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem expedita, nobis ipsum quas velit rerum voluptatibus vero. Est quia temporibus adipisci minima quam at, hic, dolor voluptate, repudiandae aliquid quod!
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -246,8 +434,6 @@
                         <div id="formCollapse" class="accordion-collapse collapse" aria-labelledby="formHeading" data-bs-parent="#reviewsAccordion">
                             <div class="accordion-body">
             
-                                <p>Be the first to review “Product Name”</p>
-            
                                 <form>
                                     <div class="mb-3">
                                         <label for="review" class="form-label">Your review *</label>
@@ -255,13 +441,13 @@
                                     </div>
             
                                     <div class="mb-3">
-                                        <label for="name" class="form-label">Name *</label>
-                                        <input type="text" class="form-control" id="name" required>
+                                        <label for="name" class="form-label">Name</label>
+                                        <input type="text" class="form-control" id="name" disabled>
                                     </div>
             
                                     <div class="mb-3">
-                                        <label for="email" class="form-label">Email *</label>
-                                        <input type="email" class="form-control" id="email" required>
+                                        <label for="email" class="form-label">Email</label>
+                                        <input type="email" class="form-control" id="email" disabled>
                                     </div>
             
                                     <button type="submit" class="btn btn-secondary">Submit Review</button>
@@ -332,11 +518,10 @@
     <section id="bottom-product-counter" class="d-flex align-items-center  justify-content-between d-none bg-white">
         <div>
             <img src="images/product-09-a.jpg" alt="" class="miniImage ">
-            Product Name
+            <span>Product Name</span>
         </div>
 
         <div>
-            
             <div class="d-flex align-items-center container-fluid">
                 <span>$price</span>
                 <div>
@@ -348,7 +533,7 @@
                 </div>
                 
                 <div class="mx-4">
-                    <button class="btn btn-outline-secondary add-to-cart-btn">
+                    <button id="floatingAddToCart" class="btn btn-outline-secondary add-to-cart-btn">
                         Add To Cart
                     </button>
                 </div>
@@ -428,7 +613,7 @@
                 <div class="modal-footer mt-auto" style="margin: 10px;">
                     <!-- <button type="button" class="btn w-100 border-dark fw-bold fs-5 cartButton"  >VIEW CART</button> --> 
                     <a href="Cart.html" class="btn w-100 border-dark fw-bold fs-5 cartButton">VIEW CART</a>
-                    <a href="checkout.html" class="btn w-100 border-dark fw-bold fs-5 cartButton">CHECKOUT</a>
+                    <button type="button" class="btn w-100 border-dark fw-bold fs-5 cartButton">CHECKOUT</button>
                 </div>
             </div>
         </div>
@@ -437,8 +622,10 @@
 
 
 
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <script src="javascript/all.min.js"></script>
+    
 </body>
 
 </html>

@@ -78,13 +78,17 @@ function generateProductTable(cart, products) {
         cart.forEach(item => {
             const productDetails = products.find(product => product.id === item.productId) || {};
             console.log(productDetails);
+            let img = ``;
+            if(productDetails.images[0]!=undefined){img = productDetails.images[0]}
+            else{img= `../images/women/product-13-a.jpg`}
+            console.log(productDetails.images[0]);
             html += `
                 <tr>
                     <td>${productDetails.productTitle}</td>
                     <td>${item.quantity}</td>
                     <td>${productDetails.category}</td>
                     <td>${productDetails.price}</td>
-                    <td><img src="${productDetails.images[0]}"></td>
+                    <td><img src="${img}"></td>
                 </tr>`;
         });
     

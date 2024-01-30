@@ -18,7 +18,7 @@ window.addEventListener('load',function(){
     createlis();
     changeactive();
     createtablebody(seller_orders);
-    document.querySelector('.adminImgANDNot').children[1].children[0].src  = getlocal('current_user').images[0];
+    document.querySelector('.adminImgANDNot').children[1].children[0].src  = getlocal('current_user').images;
     document.querySelector('.adminImgANDNot').children[1].children[1].innerText =getlocal('current_user').fname+" "+getlocal('current_user').lname
 
     });
@@ -142,7 +142,7 @@ document.querySelector("table tbody").addEventListener('click',function(e){
             }
             return ele;
         });
-        console.log(allorders);
+        // console.log(allorders);
         allorders[ind].state[current_user_id] = stat;
         setlocal(allorders,"orders");
         createtablebody(searched);
