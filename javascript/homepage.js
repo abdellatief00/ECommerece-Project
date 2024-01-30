@@ -280,7 +280,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const productContainer = document.getElementById('products');
 
     if (!productContainer) {
-        console.error("Product container not found in HTML. Make sure you have an element with id 'products'.");
+        // console.error("Product container not found in HTML. Make sure you have an element with id 'products'.");
         return;
     }
 

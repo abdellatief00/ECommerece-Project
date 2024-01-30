@@ -157,6 +157,15 @@ function removeproduct(_id){
     let ind1 = searchbyid(current_products,_id);
     let ind2 = searchbyid(all_products,_id);
 
+    let cart = getlocal('cart');
+    for(let i = 0 ; i < cart.length ; i++){
+        if(_id==cart[i].productId){
+            cart.splice(i,1);
+            break;
+        }
+    }
+    setlocal(cart,'cart');
+
     all_products.splice(ind2,1);
     current_products.splice(ind1,1);
 
