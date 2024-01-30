@@ -192,7 +192,6 @@ function generateProductTable(cart, products) {
                         <th>Quantity</th>
                         <th>Category</th>
                         <th>Price</th>
-                        <th>State</th>
                         <th>Product Image</th>
                         
                     </tr>
