@@ -45,13 +45,10 @@ window.addEventListener("load", function(){
 
     // getting data from the localStorage
     getProductsFromLocal();
-    console.log("currentProductId",getCurrentProductIdFromLocal());
     currentProductIndex = getProductIndex(getCurrentProductIdFromLocal());
-    console.log("currentProductIndex",currentProductIndex);
     currentUser = getUserFromLocal();
     cartItems = getCartFromlocal();
     //setUserToLocal();
-    console.log( "products",products);
 
     dispalyProductInfo();
     updateReviewFormInfo();
@@ -186,9 +183,8 @@ function dispalyProductInfo(){
     let pLColor = pLensInfo.querySelector("li:nth-child(2)>span");
     let pLTreatment = pLensInfo.querySelector("li:nth-child(3)>span");
 
-    console.log(pFShape);
+
     let currP = products[currentProductIndex];
-    console.log(currP);
     category.innerText = currP.category;
     pImage.src = currP.images[0];
     pName.innerText = currP.productTitle;
@@ -244,7 +240,6 @@ function displayPreviousProduct(e)
 function getProductIndex(productId)
 {
     // let products1 =JSON.parse(window.localStorage.getItem('products'));
-    console.log(productId, typeof(productId)); 
     for(let i=0; i<products.length; i++)
     {
         if(+products[i].id === +productId)
@@ -254,7 +249,6 @@ function getProductIndex(productId)
 }
 
 function viewProductImage() {
-    console.log("inside the product images loader");
     let currentProduct = products[currentProductIndex];
     const carouselInner = document.querySelector('#productImageCarousel .carousel-inner');
     carouselInner.innerHTML = '';
@@ -334,10 +328,8 @@ function addReview(e)
     let newReview = new Review(currentUser.id, reviewText).toJSON();
 
     products[currentProductIndex].reviews.push(newReview);
-    //console.log(products[currentProductIndex].reviews);
     reviewsCountSpan.innerText = products[currentProductIndex].reviews.length;
     setProductsToLocal();
-    console.log(currentUser);
     createReviewDiv(currentUser.image ||"images/product-09-a.jpg" , currentUser.fname + " " + currentUser.lname, reviewText);
 }
 
@@ -366,8 +358,6 @@ function displaProductReviews()
     let currentProduct = products[currentProductIndex];
     let reviews = currentProduct.reviews;
     let reviewsCountSpan = document.querySelector("#reviewsHeading > button > span");
-    console.log(reviews);
-    console.log(reviews);
     if(reviews.length > 0)
     {
         reviewDiv.innerHTML = "";
@@ -383,7 +373,6 @@ function displaProductReviews()
 
     for(let i=0; i<reviews.length; i++)
     {
-        console.log(`review ${i}`, reviews[i]);
         let reviewUser = getUserById(reviews[i].userId);
             if(reviewUser !== "no user")
                 createReviewDiv(reviewUser.image ||"images/product-09-a.jpg", (reviewUser.fname+" "+reviewUser.lname)|| "userName", reviews[i].reviewBody);
@@ -436,13 +425,13 @@ function addToCart()
     let addedQuantity = +document.querySelector("#countDisplay").value;
     let indexInCart = itemIndxInCart(currentProduct);
     let availableQuantity = currentProduct.stockQuantity;
-    console.log("available quantity",currentProduct.stockQuantity);
+    
     let totalQuantity = addedQuantity;
     let notEnoughItemModal = document.getElementById("not-enough-items-modal");
 
     if(indexInCart === -1)
     {
-        console.log("total quantity", totalQuantity);
+        
         if(totalQuantity > availableQuantity)
         {
             let modal = new bootstrap.Modal(notEnoughItemModal);
@@ -456,7 +445,6 @@ function addToCart()
     else
     {
         totalQuantity += cartItems[indexInCart].quantity;
-        console.log("total quantity", totalQuantity);
 
         if(totalQuantity > availableQuantity)
         {
