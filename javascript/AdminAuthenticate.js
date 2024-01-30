@@ -1,8 +1,13 @@
-let loggedUser=JSON.parse(localStorage.getItem("currentUser"));
+let loggedUser=JSON.parse(localStorage.getItem("current_user"));//get the current user from local storage
 
-if(loggedUser){if (loggedUser.role !== "0") {
-    window.location.href = 'homepage.html';
- }}
- else{
-    window.location.href = 'homepage.html';
+if(loggedUser)//if the user is logged in
+{
+   if (parseInt(loggedUser.role) != 0) //if the user is not an admin
+   {
+    window.location.href = 'homepage.html';//redirect to homepage
+ }
+}
+ else//if the user is not logged in
+ {
+    window.location.href = 'homepage.html';//redirect to homepage
  }

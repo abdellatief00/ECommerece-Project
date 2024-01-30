@@ -150,6 +150,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 addToCart(product)
             });
         }
+        else {
+        addToCartButton.removeEventListener('click', function () {addToCart(product)});
+                            addToCartButton.disabled = true;
+    }    
 
         return addToCartButton;
     }
