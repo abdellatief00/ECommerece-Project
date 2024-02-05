@@ -7,45 +7,63 @@ if(JSON.parse(localStorage.getItem("users")) === null)
 {item.push(new user("mahmoud","mohamed","addddd@gmail.com","222222",28,"images/admin-img.jpg",0).addjson()); 
 setlocal(item);
 item.push(new user("ayman","mohamed","ayman2234@gmail.com","22345",22,"admin-img.jpg",1).addjson());
+
 setlocal(item);
+
 item.push(new user("ali","mohamed","ahkddkdk@gmail.com","2254",22,"admin-img.jpg",1).addjson());
 setlocal(item);
+
 item.push(new user("ahmed","mohamed","ahmed222@gmail.com","7854",22,"admin-img.jpg",2).addjson());
 setlocal(item);
+
 item.push(new user("donya","khaled","donya234@gmail.com","5478",22,"admin-img.jpg",2).addjson());
 setlocal(item);
+
 item.push(new user("ali","khaled","ahkddkdk@gmail.com","8457",22,"admin-img.jpg",2).addjson());
 setlocal(item);
+
 item.push(new user("ali","khaled","aly25@gmail.com","7584",22,"admin-img.jpg",2).addjson());
 setlocal(item);
+
 item.push(new user("ali","khaled","ali326@gmail.com","9632",22,"admin-img.jpg",2).addjson());
 setlocal(item);
+
 item.push(new user("ali","samir","ali928@gmail.com","2365",22,"admin-img.jpg",2).addjson());
 setlocal(item);
+
 item.push(new user("nasr","samir","naser223@gmail.com","32658",22,"admin-img.jpg",2).addjson());
 setlocal(item);
+
 item.push(new user("nadia","samir","nadia889@gmail.com","2568",22,"admin-img.jpg",2).addjson());
 setlocal(item);
+
 item.push(new user("ali","samir","ahkddkdk@gmail.com","9658",22,"admin-img.jpg",2).addjson());
 setlocal(item);
+
 item.push(new user("ayman","eyad","ayman@gmail.com","5896",22,"admin-img.jpg",2).addjson());
 setlocal(item);
+
 item.push(new user("sara","eyad","sara223@gmail.com","8965",22,"admin-img.jpg",2).addjson());
 setlocal(item);
+
 item.push(new user("eman","eyad","eman@gmail.com","9658",22,"admin-img.jpg",2).addjson());
 setlocal(item);
+
 item.push(new user("ali","eyad","alidkdk@gmail.com","9586",22,"admin-img.jpg",2).addjson());
 setlocal(item);
+
 item.push(new user("abdullah","ali","ahkddkdk@gmail.com","9273",22,"admin-img.jpg",2).addjson());
 setlocal(item);
-item.push(new user("ali","ali","ahkddkdk@gmail.com","3792",22,"admin-img.jpg",2).addjson());
-setlocal(item);
+
 item.push(new user("ali","ali","ali345@gmail.com","56248",22,"admin-img.jpg",2).addjson());
 setlocal(item);}
 
 
 
 
+
+
+// item[2].images.push("lol");
 // item[2].images.push("lol");
 // localStorage.setItem("users",JSON.stringify(item));
 // console.log(item);

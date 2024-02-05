@@ -1,3 +1,4 @@
+import { productExist,getAndFormatOrders, formatOrdersByDate, sortOrdersByDate, getTotalOrdersQuantities, getOrderTotalPrice, getProductOrdersObj, getProductQuantities, getProducTotaltPrice, getProductIndex, getProductPrice, getProductSellerId, getProductsFromLocal, getDateArray, getUserFromLocal, drawChart, createOptions, getSelllerProducts } from "./admindashboard.js";
 let products = [];
 let orders =JSON.parse(window.localStorage.getItem("orders")) || [];
 
@@ -37,30 +38,6 @@ window.addEventListener("load", function(){
         this.document.getElementById('allorders').innerText = allord.length;
     }
 
-
-   
-    //currentUser.role = "Seller";
-    // currentUser = {
-    //     "id": 1,
-    //     "fname": "Abdellatif",
-    //     "lname": "Hamed",
-    //     "email": "tefa@Gmail.com",
-    //     "password": "123",
-    //     "age": 24,
-    //     "images": [
-    //         "images/tefa.png"
-    //     ],
-    //     "role": "Admin",
-    //     "orders": [
-    //         1,
-    //         2,
-    //         3
-    //     ],
-    //     "favorites": [
-    //         ""
-    //     ]
-    // }
-    // console.log(products);
     createOptions(selectedProduct);
     if(currentUser.role === 0)
         sellerProductsOrders = getAndFormatOrders();
@@ -72,12 +49,11 @@ window.addEventListener("load", function(){
     ordersByDateObj = formatOrdersByDate(sellerProductsOrders);
     ordersByDateObj = sortOrdersByDate(ordersByDateObj);
     
-    let dummyProductObj = getProductOrdersObj(ordersByDateObj, selectedProduct.value);
+    let dummyProductObj = getProductOrdersObj(ordersByDateObj, +selectedProduct.value);
     
-    drawChart(productsChart, getDateArray(dummyProductObj), getProductQuantities(dummyProductObj),
-    getProducTotaltPrice(dummyProductObj, +selectedProduct.value),
-    `product ${selectedProduct.value}`
-    );
+    console.log("val",selectedProduct.value);
+    drawChart(productsChart, getDateArray(dummyProductObj), getProductQuantities(dummyProductObj),getProducTotaltPrice(dummyProductObj, +selectedProduct.value),`product ${+selectedProduct.value}`);
+    
     selectedProduct.addEventListener("change", ()=>{
         
         dummyProductObj = getProductOrdersObj(ordersByDateObj, +selectedProduct.value);
@@ -97,7 +73,7 @@ window.addEventListener("load", function(){
 
     
 })
-
+/* 
 //==================================================================//
 //						orders formatting Functions					//
 //==================================================================//
@@ -110,16 +86,18 @@ function getAndFormatOrders(roleId = 0)
 {
     for(let j=0; j<orders[i].cart.length; j++)
     {
-        if(roleId === 0)
+        if(productExist(orders[i].cart[j].productId))
         {
+            if(roleId === 0)
+            {
             ordersFormatted.push({
                 productId : orders[i].cart[j].productId,
                 quantity : orders[i].cart[j].quantity,
                 date : orders[i].date.substring(0, 10)
             })
-        }
+            }
         else
-        {
+            {
             if(getProductSellerId(+orders[i].cart[j].productId) === roleId)
             {
                 ordersFormatted.push({
@@ -127,6 +105,7 @@ function getAndFormatOrders(roleId = 0)
                     quantity : orders[i].cart[j].quantity,
                     date : orders[i].date.substring(0, 10)
                 })
+            }
             }
         }
     }
@@ -181,7 +160,7 @@ export function getTotalOrdersQuantities(obj)
         let totalQuantity = 0;
         for(let product in obj[date])
         {
-            totalQuantity += obj[date][product];
+            totalQuantity += +obj[date][product];
         }
         totalOrderQuantities.push(totalQuantity);
     }
@@ -197,7 +176,7 @@ export function getOrderTotalPrice(obj)
         for(let product in obj[date])
         {
             //console.log("productId from price", product, typeof(product));
-            totalPrice += getProductPrice(+product) * obj[date][product];
+            totalPrice += getProductPrice(+product) * +obj[date][product];
         }
         orderTotalPrice.push(totalPrice);
     }
@@ -424,4 +403,4 @@ function getSelllerProducts(sellerId)
     return sellerProducts;
 }
 
-
+ */
