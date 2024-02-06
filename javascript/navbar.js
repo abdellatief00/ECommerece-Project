@@ -314,44 +314,134 @@ function showLoginDialog()
 
 
 
+//#region  login and login validation
+function validateLoginData(email, password) {
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-function login(){
-    var userArray=JSON.parse(localStorage.getItem('users'));
+
+    // Check if email and password are not empty
+    if (email.trim() === "" && password.trim() === "") {
+        document.getElementById("emailError").innerHTML = "Email is required.";
+        document.getElementById("passwordError").innerHTML = "Password is required.";
+        return 0;
+    }
+    else
+    {
+        if (email.trim() === "") {
+            document.getElementById("emailError").innerHTML = "Email is required.";
+            return 0;
+        }
+        else if (!emailRegex.test(email)) {
+            document.getElementById("emailError").innerHTML = "Invalid email address";
+            return 0;
+        }
     
-    for (let index = 0; index < userArray.length; index++) {
-        if
-        (
-        userArray[index].email==document.getElementById("Email").value
-        &&
-        document.getElementById("Password").value==userArray[index].password
-        )
-        {
-          var products=JSON.parse(localStorage.getItem('products'));
-            var cart=JSON.parse(localStorage.getItem('cart'));
-            var userCart=userArray[index].cart;
-
-            cart.forEach(element => {
-                const existingIndex = cart.findIndex(x => parseInt(x.productId) == parseInt(element.productId));
-                
-                if (existingIndex === -1) {
-                  // If the item doesn't exist in cart, add it
-                  cart.push(element);
-                } else {
-                  // If the item exists, sum the quantities
-                  cart[existingIndex].quantity = String(
-                    parseInt(cart[existingIndex].quantity) + parseInt(element.quantity)
-                  );
-                }
-              });
-
-        localStorage.setItem("current_user",JSON.stringify(userArray[index]));
-        localStorage.setItem("cart",JSON.stringify(cart))
-            break;
+        if (password.trim() === "") {
+            document.getElementById("passwordError").innerHTML = "Password is required.";
+            return 0;
         }
     }
     
-    location.reload();
+
+    return 1;
 }
+
+function login() {
+    
+
+
+    var emailInput = document.getElementById("Email").value;//get email from login form
+    var passwordInput = document.getElementById("Password").value;//get password from login form
+
+    // Reset error messages
+    document.getElementById("emailError").innerHTML = "";//reset error messages
+    document.getElementById("passwordError").innerHTML = "";//reset error messages
+
+
+
+    if (!validateLoginData(emailInput, passwordInput))    return;      //validate login data
+
+       
+
+
+
+    var userArray = JSON.parse(localStorage.getItem('users'));//get users from local storage
+    var products = JSON.parse(localStorage.getItem('products'));//get products from local storage
+    var cart = JSON.parse(localStorage.getItem('cart'));//get cart from local storage
+    var flag = 0;//flag to check if user is exist in our system or not
+
+    for (let index = 0; index < userArray.length; index++) {
+
+        if (userArray[index].email === emailInput && userArray[index].password !== passwordInput)
+         {
+            document.getElementById("passwordError").innerHTML = "Password is incorrect.";
+            return;
+        }//in this section we find that user is exist in our system but password is incorrect
+
+
+        if 
+        (
+            userArray[index].email === emailInput &&
+            userArray[index].password === passwordInput
+        ) //this section we find that user is exist in our system
+        
+        {
+            flag = 1;
+            var userCart = userArray[index].cart;//get cart of logged in user
+
+            cart.forEach(element => {
+                const existingIndex = userCart.findIndex(x => parseInt(x.productId) === parseInt(element.productId));
+
+                if (existingIndex === -1) {
+                    // If the item doesn't exist in userCart, add it
+                    userCart.push(element);
+                } else {
+                    // If the item exists, sum the quantities
+                    const newQuantity = parseInt(userCart[existingIndex].quantity) + parseInt(element.quantity);
+
+                    // Check if the sum is less than or equal to product.stockQuantity
+                    if (newQuantity <= products.find(product => product.id === element.productId).stockQuantity) {
+                        userCart[existingIndex].quantity = String(newQuantity);
+                    } else {
+                        // If sum exceeds stockQuantity, set quantity to stockQuantity
+                        userCart[existingIndex].quantity = String(products.find(product => product.id === element.productId).stockQuantity);
+                    }
+                }
+            });//loop on cart in local storage and merge it with cart in user object
+
+            localStorage.setItem("current_user", JSON.stringify(userArray[index]));//set current user in local storage after login is success
+            localStorage.setItem("cart", JSON.stringify(cart))//update cart in local storage after login is success by merging cart in local storage with cart in user object
+            break;
+        }
+
+                  //in this section we find that user is not exist in our system
+
+
+    }
+
+    if (flag)//reload page if user is logged in
+        location.reload();
+        else{
+            
+                document.getElementById("emailError").innerHTML = "You may not  have an account .";
+                const authButtons = document.querySelector(".authButtons");
+    
+                if (authButtons) {
+                    // Apply styles to make it bigger and bold
+                    authButtons.style.fontSize = "20px";  // Change the size as needed
+                    authButtons.style.fontWeight = "bold";
+    
+                    // Focus on the element
+                    authButtons.focus();
+                }
+                return;
+                                 
+        }
+
+
+}
+
+//#endregion
 
 function getCurrentUserFromLocal()
 {

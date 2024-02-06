@@ -39,7 +39,7 @@ const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,
         // Check if the new password and confirm password match
         if (newPassword !== confirmNewPassword) {
             displayError(errorSpan, 'New password and confirm password do not match!');
-            clearSuccessMessage(successSpan);
+            //clearSuccessMessage(successSpan);
             return;
         }
 

@@ -3,6 +3,7 @@
  <!DOCTYPE html>
  <html lang="en">
  <head>
+    <script src="javascript/SignUpAuthenticate.js"></script>
      <meta charset="UTF-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Document</title>
@@ -25,18 +26,19 @@
      <script src="javascript/modula.js" type="module" ></script>
      <script src="javascript/SignUP.js" type="module" ></script>
      <script src="javascript/navbar.js" type="module"></script>
+     <script src="javascript/cartScript.js" type="module"></script>
+
      <script src="https://cdn.jsdelivr.net/npm/fuse.js/dist/fuse.min.js"></script>
 
  </head>
- <body  style="
+ <body  
+ style="
  background: url(images/sunglasses-photography.jpg); 
  background-size: cover; 
  background-repeat: no-repeat;
  background-attachment: fixed;
  background-size: 100% 100% ;
-
-
- ">
+">
      <!-- beginign of container -->
      <div class="container-fluid">
  
@@ -45,7 +47,7 @@
         <section id="homepage-header">
             
             <!--Header-->
-            <header class="d-flex justify-content-between position-relative p-3 ">
+            <header class="d-flex justify-content-between position-relative p-3 " style=" background-color: rgba(240, 231, 231, 0.774); ">
 
                 <a id="logo-image" href="homepage.html" class="position-absolute d-none d-lg-block">
                     <img  src="images/logo-header-regular.png" alt="Eyewear-logo">
@@ -153,7 +155,6 @@
         
                     <button id="loginBtn" class="btn btn-outline-secondary border-0 align-self-start">
                         <i class="fa-solid fa-user"></i>
-                        <!-- <img class="bg-white" src="images/miniProfile.png" style="width: 30px; height: 30px; border-radius: 50%;" alt=""> -->
                         <span>Login</span>
                     </button>
         
@@ -165,8 +166,9 @@
         
                 </div>
         
+               
                 <!-- login Start -->
-            <div class="modal fade " id="LoginScreen" tabindex="-1" aria-labelledby="Login_form" aria-hidden="true" data-bs-backdrop="static"  >
+                <div class="modal fade " id="LoginScreen" tabindex="-1" aria-labelledby="Login_form" aria-hidden="true" data-bs-backdrop="static"  >
                     <div class="modal-dialog  modal-dialog-centered" >
                         <div class="modal-content" style="background-color: rgb(238, 231, 231);">
                             <div class="modal-header">
@@ -185,19 +187,23 @@
                                         <input type="email" class="form-control" id="Email" name="Email" required>
                                         </div>
                                     </div>
+                                    <div id="emailError" class="text-danger"></div>
+
                                     <div class="mb-3">
                                         <label for="Password" class="col-form-label">Password:</label>
                                         <div class="input-group my-2">
                                         <span class="fa fa-lock input-group-prepend input-group-text" style="padding: 10px;"></span>
                                         <input type="password" class="form-control" id="Password" name="Password" required>
                                     </div>
+                                    <div id="passwordError" class="text-danger"></div>
+
                                     
-                                    <a  class="  authButtons  border-0 align-self-start" href="SignUP.html">creat a new account</a>
+                                    <a  class="  authButtons  border-0 align-self-start" href="SignUP.html">Creat a new account</a>
         
                             </div>
                             <div class="modal-footer">
         
-                                    <input type="submit" value="Login" class="btn btn-primary" data-bs-dismiss="modal">
+                                    <input type="submit" value="Login" class="btn btn-primary" >
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
         
         
@@ -235,10 +241,9 @@
                                         <span class="fs-4 fw-bold float-start">Subtotal:</span>
                                         <span class="fs-5 fw-bold float-end text-secondary total">$00.00</span>
                                     </div>
-                                    <br>
+                        <br>
                         <br>
                         <div class="modal-footer mt-auto" style="margin: 10px;">
-                            <!-- <button type="button" class="btn w-100 border-dark fw-bold fs-5 cartButton"  >VIEW CART</button> --> 
                             <a href="Cart.html" class="btn w-100 border-dark fw-bold fs-5 cartButton">VIEW CART</a>
                             <a href="checkout.html" class="btn w-100 border-dark fw-bold fs-5 cartButton">CHECKOUT</a>
                         </div>
@@ -247,54 +252,11 @@
             </div>
             <!-- end Cart -->
             </header>
-            <hr>
          <!-- end of nav bar -->
         
-       <!-- login Start -->
- <div>
-     <div class="modal fade " id="LoginScreen" tabindex="-1" aria-labelledby="Login_form" aria-hidden="true" data-bs-backdrop="static"  >
-             <div class="modal-dialog  modal-dialog-centered" >
-                 <div class="modal-content" style="background-color: rgb(238, 231, 231);">
-                     <div class="modal-header">
-                         <h1 class="modal-title fs-5" id="Login_form">Login</h1>
-                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                     </div>
-                     <div class="modal-body">
-                         <form action="">
+
+ 
      
-                             
-                             <div class="mb-3">
-                                 <label for="Email">Email:</label>
-                                 <div class="input-group my-2">
-                                 <span class="fa fa-user input-group-prepend input-group-text" style="padding: 10px;"></span>
-                                 <input type="email" class="form-control" id="Email" name="Email" required>
-                                 </div>
-                             </div>
-                             <div class="mb-3">
-                                 <label for="Password" class="col-form-label">Password:</label>
-                                 <div class="input-group my-2">
-                                 <span class="fa fa-lock input-group-prepend input-group-text" style="padding: 10px;"></span>
-                                 <input type="password" class="form-control" id="Password" name="Password" required>
-                             </div>
-                      
-                     </div>
-                     <div class="modal-footer">
-                             <input type="submit" value="Login" class="btn btn-primary">
-                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-             </form>
-                 </div>
-             </div>
-         </div>
-     </div>
-     </div>
-     
-     <!-- end login -->
- 
-        <!-- Cart start -->
- 
- <!-- end Cart -->
- 
-     <!-- begining of checkout content -->
  
  
      <div id="content" class="row" >
@@ -313,7 +275,7 @@
                                  
                                  <div class="col-md-6">
                                      <label for="inputEmail4" class="form-label fw-bold">First Name<abbr class=" text-warning">*</abbr></label>
-                                     <input type="text" class="form-control" id="inputEmail4" required>
+                                     <input type="text" class="form-control" id="inputEmail4" placeholder="Your first Name"required>
                                      <div class="valid-feedback">
                                         Accepted.
                                      </div>
@@ -323,7 +285,7 @@
                                  </div>
                                  <div class="col-md-6">
                                      <label for="inputPassword4" class="form-label fw-bold">Last Name<abbr class=" text-warning">*</abbr></label>
-                                     <input type="text" class="form-control" id="inputPassword4" required>
+                                     <input type="text" class="form-control" id="inputPassword4"  placeholder="Your last Name"required>
                                      <div class="valid-feedback">
                                         Accepted.
                                      </div>
@@ -356,7 +318,7 @@
                                     </div>
                                     <div class="mb-3">
                                         <label for="RePassWord" class="form-label fw-bold">Confirm PassWord&nbsp;<abbr class=" text-warning">*</abbr></label>
-                                        <input type="password" class="form-control" id="RePassWord" placeholder="Rewrite the value of PassWord"
+                                        <input type="password" class="form-control" id="RePassWord" placeholder="Rewrite your PassWord"
                                         data-original-placeholder = "Rewrite the value of PassWord" required>
                                         <div class="valid-feedback">
                                             matched the password.

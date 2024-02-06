@@ -7,44 +7,14 @@ if (!localStorage.getItem("cart")) {
     localStorage.setItem('cart', JSON.stringify(cartarr));
    }
 
+
+
+
 createCartData()
 
 
-// var cartItemObj={
-//     "id": "1",
-//     "name": "Sunglasses",
-//     "price": "135.00 $",
-//     "image": "images/product-09-a.jpg",
-//     "quantity": "1"
-// }
 
-// var cartItems = [
-//     {
-//         "id": "1",
-//         "name": "Sunglasses",
-//         "price": "135.00 $",
-//         "image": "images/product-09-a.jpg",
-//         "quantity": "1"
-//     }
-//     ,
-//     {
-//         "id": "2",
-//         "name": "Sunglasses",
-//         "price": "150.00 $",
-//         "image": "images/product-10-a.jpg",
-//         "quantity": "2"
-//     },
-//     {
-//         "id": "3",
-//         "name": "Sunglasses",
-//         "price": "200.00 $",
-//         "image": "images/product-11-a.jpg",
-//         "quantity": "4"
-//     }];
 
-//     localStorage.setItem("cart", JSON.stringify(cartItems));
-
-var cartItems=JSON.parse(localStorage.getItem("cart"));
 
 function drawCartItem(cartItemObj,order) {
     var cartItemsbody=document.getElementsByClassName("CartItems")[0];
@@ -77,7 +47,7 @@ function drawCartItem(cartItemObj,order) {
 
     `;
 
-    cartItemsbody.appendChild(cartItem);
+    cartItemsbody.appendChild(cartItem);//adding the cart item to the cart body
   
 
     }
@@ -86,83 +56,38 @@ function drawCartItem(cartItemObj,order) {
 
 
 
-    var decrementButton=document.querySelector(".Item"+cartItemObj.productId).children[1].children[1].children[0];
+    var decrementButton=document.querySelector(".Item"+cartItemObj.productId).children[1].children[1].children[0];//getting the decrement button
     
     decrementButton.addEventListener("click",
     function () {
-        var cartItems=JSON.parse(localStorage.getItem("cart"));
-   
-    
-        var itemPrice=0; //we will get from jesons
-        itemPrice=parseInt(cartItemObj.price);
-        var price = document.querySelector(".Item"+cartItemObj.productId).children[2].children[1];
-       
-        var inputElement = document.querySelector(".Item"+cartItemObj.productId).children[1].children[1].children[1];;
-        if (inputElement) {
-            inputElement.stepDown();
-        }
-        price.innerHTML = (itemPrice * Number(inputElement.value))+".00 $";
-       
-var products=JSON.parse(localStorage.getItem('products'));
-var product=products.find(item=>item.id===cartItemObj.productId)
-addToCart(product,-1)
- cartItems=JSON.parse(localStorage.getItem("cart"));
-if(parseInt(cartItems[order].quantity)==0)
-removeItem(order);
-    
+         decrementValue(cartItemObj,order) 
     
     
     }
-    );
+    );//adding a listener to the decrement button
 
 
 
 
 
 
-    var incrementButton=document.querySelector(".Item"+cartItemObj.productId).children[1].children[1].children[2];
+    var incrementButton=document.querySelector(".Item"+cartItemObj.productId).children[1].children[1].children[2];//getting the increment button
     incrementButton.addEventListener("click",
     function () {
-        var cartItems=JSON.parse(localStorage.getItem("cart"));
-
-        var itemPrice=0; //we will get from jesons
-        itemPrice=parseInt(cartItemObj.price);
-
-     
-        var price = document.querySelector(".Item"+cartItemObj.productId).children[2].children[1];
-     
-        var inputElement = document.querySelector(".Item"+cartItemObj.productId).children[1].children[1].children[1];;
-         if (inputElement) {
-             inputElement.stepUp();
-         }
-     price.innerHTML = (itemPrice * Number(inputElement.value))+".00 $";
-     
-     var products=JSON.parse(localStorage.getItem('products'));
-     var product=products.find(item=>item.id===cartItemObj.productId)
-     addToCart(product)
-      cartItems=JSON.parse(localStorage.getItem("cart"));
-     if(parseInt(cartItems[order].quantity)==0)
-     removeItem(order);
-    })
+        incrementValue(cartItemObj,order) 
+        
+    })//adding a listener to the increment button
 
 
 
 
 
 
-var deleteButton=document.querySelector(".Item"+cartItemObj.productId).children[2].children[2];
-console.log(deleteButton);
+var deleteButton=document.querySelector(".Item"+cartItemObj.productId).children[2].children[2];//getting the delete button
 deleteButton.addEventListener("click",
 function () {
-    var cartItems=JSON.parse(localStorage.getItem("cart"));
-
-    cartItems.splice(order,1);
-         localStorage.setItem("cart", JSON.stringify(cartItems));
-
-    var cartBody=document.getElementsByClassName("CartItems")[0];
-    cartBody.innerHTML="";
-    createCartData();
-})
+    removeItem(order);
+})//adding a listener to the delete button
 
 
  }
@@ -171,14 +96,28 @@ function () {
 
 
 function loadCartItems(cartItems) {
-    var cartItemsbody=document.getElementsByClassName("CartItems")[0];
-    cartItemsbody.innerHTML=``;
+
+    var cartItemsbody=document.querySelector(".CartItems");//getting the cart body
+
+
+    if(cartItems.length>5) //if the cart items are more than 5  we will add a scroll bar
+    {
+        var cartItemsbodyDrawSection=document.querySelector(".Cart-Content");//getting the cart body draw section
+
+        cartItemsbodyDrawSection.style.overflowY="scroll";//adding the scroll bar to the cart body draw section
     
-    for (let index = 0; index < cartItems.length; index++) {
-        drawCartItem(cartItems[index],index);
+    }
+
+    if(cartItemsbody)//if the cart body exists
+    {
+    cartItemsbody.innerHTML=``;//clearing the cart body
+    
+    for (let index = 0; index < cartItems.length; index++) //looping through the cart items
+    {
+        drawCartItem(cartItems[index],index);//drawing the cart item
         
     }
-    
+}
 } 
 
 
@@ -188,58 +127,75 @@ function loadCartItems(cartItems) {
 
 
 function removeItem(order) {
-    var  cartItems=JSON.parse(localStorage.getItem("cart"));
+    var  cartItems=JSON.parse(localStorage.getItem("cart"));//getting the cart items from the local storage
 
-    cartItems.splice(order,1);
-         localStorage.setItem("cart", JSON.stringify(cartItems));
+    cartItems.splice(order,1);//removing the item from the cart items array
+         localStorage.setItem("cart", JSON.stringify(cartItems));//updating the local storage
 
-    var cartBody=document.getElementsByClassName("CartItems")[0];
-    cartBody.innerHTML="";
-    createCartData()
+    var cartBody=document.getElementsByClassName("CartItems")[0];//getting the cart body
+    cartBody.innerHTML="";//clearing the cart body
+    createCartData()//reloading the cart data
     
 
-}
+}//end of remove item function that removes the item from the cart 
 
-function incrementValue(order) {
-    var cartItems=JSON.parse(localStorage.getItem("cart"));
 
-   var itemPrice=0; //we will get from jesons
-   var realPrice=parseInt(cartItems[order].price);
-   itemPrice=realPrice;
 
-    var price = document.getElementsByClassName("Price")[order];
 
-    var inputElement = document.getElementsByClassName("Price")[order].parentNode.parentNode.children[1].children[1].children[1];
-    if (inputElement) {
-        inputElement.stepUp();
-    }
-price.innerHTML = (itemPrice * Number(inputElement.value))+".00 $";
 
-cartItems[order].quantity=inputElement.value;
-localStorage.setItem("cart", JSON.stringify(cartItems));
 
-}
+function incrementValue(cartItemObj,order) {
+    var cartItems=JSON.parse(localStorage.getItem("cart"));//getting the cart items from the local storage
+
+    var itemPrice=parseInt(cartItemObj.price); //we will get from jesons
+    
+
+ 
+    var price = document.querySelector(".Item"+cartItemObj.productId).children[2].children[1];//getting the price span
+ 
+    var inputElement = document.querySelector(".Item"+cartItemObj.productId).children[1].children[1].children[1];//getting the input element
+     if (inputElement) {
+         inputElement.stepUp();//incrementing the input value
+     }
+ price.innerHTML = (itemPrice * Number(inputElement.value))+".00 $";//updating the price span
+ 
+ var products=JSON.parse(localStorage.getItem('products'));//getting the products from the local storage
+ var product=products.find(item=>item.id===cartItemObj.productId)//getting the product from the products array
+ addToCart(product)//adding the product to the cart
+  cartItems=JSON.parse(localStorage.getItem("cart"));//getting the cart items from the local storage
+
+
+
+
+
+}//end of increment value function that increments the value of the item in the cart
 
 
 
 function decrementValue(cartItemObj,order) {
-    var cartItems=JSON.parse(localStorage.getItem("cart"));
+    var cartItems=JSON.parse(localStorage.getItem("cart"));//getting the cart items from the local storage
    
     
-    var itemPrice=0; //we will get from jesons
-    itemPrice=parseInt(cartItemObj.price);
-    var price = document.querySelector(".Item"+cartItemObj.productId).children[2].children[1];
+    var itemPrice=parseInt(cartItemObj.price); //we will get from jesons
+ 
+    var price = document.querySelector(".Item"+cartItemObj.productId).children[2].children[1];//getting the price span
    
-    var inputElement = document.querySelector(".Item"+cartItemObj.productId).children[1].children[1].children[1];;
+    var inputElement = document.querySelector(".Item"+cartItemObj.productId).children[1].children[1].children[1];//getting the input element
     if (inputElement) {
-        inputElement.stepDown();
+        inputElement.stepDown();////decrementing the input value
     }
-    price.innerHTML = (itemPrice * Number(inputElement.value))+".00 $";
+    price.innerHTML = (itemPrice * Number(inputElement.value))+".00 $";//   updating the price span
    
-    cartItems[order].quantity=inputElement.value;
-localStorage.setItem("cart", JSON.stringify(cartItems));
+var products=JSON.parse(localStorage.getItem('products'));//getting the products from the local storage
+var product=products.find(item=>item.id===cartItemObj.productId)//getting the product from the products array
+addToCart(product,-1)//decrement the item quantity from the cart
+cartItems=JSON.parse(localStorage.getItem("cart"));//getting the cart items from the local storage
 
-}
+
+if(parseInt(cartItems[order].quantity)==0)//if the quantity of the item is 0
+removeItem(order);//remove the item from the cart
+
+}//end of decrement value function that decrements the value of the item in the cart
 
 
 
@@ -254,31 +210,39 @@ localStorage.setItem("cart", JSON.stringify(cartItems));
 
 
  function totalprice() {
-var cartItems=JSON.parse(localStorage.getItem("cart"));
-// console.log(cartItems);
+var cartItems=JSON.parse(localStorage.getItem("cart"));//getting the cart items from the local storage
+
+
 var eachItemPrice=0;
 var eachItemnNumber=0;
-var totalPrice=0
-var itemsNumber=0
-for (let index = 0; index < cartItems.length; index++) {
-    eachItemPrice=parseInt(cartItems[index].price)*parseInt(cartItems[index].quantity);
-    // console.log(eachItemPrice);
+var totalPrice=0;
+var itemsNumber=0;
+//
 
-    // console.log(cartItems[index].querySelector('input').value);
-        eachItemnNumber=parseInt(cartItems[index].quantity);
-    itemsNumber+=eachItemnNumber;
+
+
+
+for (let index = 0; index < cartItems.length; index++) //looping through the cart items
+{
+    eachItemPrice=parseInt(cartItems[index].price)*parseInt(cartItems[index].quantity);//getting the price of the item
+
+
+
+    eachItemnNumber=parseInt(cartItems[index].quantity);//getting the quantity of the item
+
+    itemsNumber+=eachItemnNumber;//adding the quantity of the item to the total items number
     
-    totalPrice+=eachItemPrice;
+    totalPrice+=eachItemPrice;//adding the price of the item to the total price
 }
 
-// console.log(totalPrice);
-// console.log(itemsNumber);
-// console.log(document.querySelector(".CartMenu").children[0].children[0].innerHTML)
-if ( document.querySelector(".total")) {
+
+if ( document.querySelector(".total")&&document.querySelector("#cart-items-count")) //if the total price span exists and the items number span exists we will update them with the total price and the items number
+{
     document.querySelector(".total").innerHTML=totalPrice+".00 $";
+    document.querySelector("#cart-items-count").innerHTML=itemsNumber+"";
+
 
 }
-document.querySelector("#cart-items-count").innerHTML=itemsNumber+"";
 //document.querySelector(".CartMenu").children[0].innerHTML=totalPrice+".00 $";  
 
    
@@ -287,27 +251,33 @@ document.querySelector("#cart-items-count").innerHTML=itemsNumber+"";
 
 export function createCartData(){
 
-   // debugger;
-    var cartItems=JSON.parse(localStorage.getItem("cart"));
-    var cartItemsbody=document.querySelector(".CartItems");
+    var cartItems=JSON.parse(localStorage.getItem("cart"));//getting the cart items from the local storage
+
+    var cartItemsbody=document.querySelector(".CartItems");//getting the cart body
+    if(cartItemsbody)//if the cart body exists we will catch the view cart button and the checkout button
+    {
     var viewCartBtn= cartItemsbody.parentElement.parentElement.children[6].children[0];
     var checkOutBtn=cartItemsbody.parentElement.parentElement.children[6].children[1];
 
-    if (cartItems.length) {
-        loadCartItems(cartItems);
-    totalprice();
-    viewCartBtn.classList.remove("disabled") ;
-      checkOutBtn.classList.remove("disabled");
+
+    if (cartItems.length) //if the cart items array is not empty
+    {
+        loadCartItems(cartItems);//loading the cart items
+    totalprice();//calculating the total price
+    viewCartBtn.classList.remove("disabled") ; //removing the disabled class from the view cart button
+      checkOutBtn.classList.remove("disabled");//removing the disabled class from the checkout button
         
     }
 
-   else{
-    totalprice();
-    var cartItemsbody=document.querySelector(".CartItems").innerHTML=`
-    <P style="    text-align: center; color: gray; font-size: 1.95rem!important;">Empty cart.... no items</p>`;
-   viewCartBtn.classList.add("disabled");
-checkOutBtn.classList.add("disabled");
+   else{ //if the cart items array is empty
+    totalprice();//calculating the total price
+
+    var cartItemsbody=document.querySelector(".CartItems").innerHTML=`<P style="    text-align: center; color: gray; font-size: 1.95rem!important;">Empty cart.... no items</p>`;//adding a message to the cart body
+   viewCartBtn.classList.add("disabled");//adding the disabled class to the view cart button
+checkOutBtn.classList.add("disabled");//adding the disabled class to the checkout button
    }
+    }
+   
 
 }
 
@@ -317,44 +287,25 @@ checkOutBtn.classList.add("disabled");
 
 
 
-export function addToCart(product,addingQuantity=1){
-//     var cartItemsbody=document.querySelector(".CartItems");
-//     var viewCartBtn= cartItemsbody.parentElement.parentElement.children[6].children[0];
-//     var checkOutBtn=cartItemsbody.parentElement.parentElement.children[6].children[1];
-//     var productList=JSON.parse(localStorage.getItem("products"));
-//     var cart=JSON.parse(localStorage.getItem("cart"));
-//    cart.array.forEach(element => {
-    
-//     var productIndex= productList.findIndex(item=>item.id==element.productId);
-//         if(productList[productIndex].stock_quantity===element.quantity||element.quantity>productList[productIndex].stock_quantity)
-//         {console.log("product is out of stock")
-//         viewCartBtn.classList.add("disabled");
-//         checkOutBtn.classList.add("disabled");
-    
-//     }
-//     else{console.log("adding accepted")
-//     viewCartBtn.classList.remove("disabled");
-//     checkOutBtn.classList.remove("disabled");
-// }
-
-        
-        
-//     });
+export function addToCart(product,addingQuantity=1)
+{
+ 
 var products=JSON.parse(localStorage.getItem('products'));
 var locationOfProduct=products.findIndex(item=>item.id===product.id)
 let cartItemsTotalPriceSpan = document.querySelector("#cart-icon > span:nth-child(1)");
 let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
- //debugger;
+ 
                 let existingCartItem = cartItems.find(item => item.productId === product.id);
                 if (!existingCartItem)
                 cartItems.push(new Cart(product.id, product.productTitle, addingQuantity, product.price, product.images[0]).addJson());
                 else if(existingCartItem.quantity<product.stockQuantity||(addingQuantity==-1&&existingCartItem.quantity>0))
                 existingCartItem.quantity=parseInt( existingCartItem.quantity) + addingQuantity+"" 
 
-                console.log("cartItems",cartItems);
                 localStorage.setItem('cart', JSON.stringify(cartItems));
+                if( document.querySelector(".CartItems")){
                 createCartData();
                 cartItemsTotalPriceSpan.innerText = claculateTotalPrice(cartItems);
+                }
 localStorage.setItem('products', JSON.stringify(products));
 
             if (parseInt(products[locationOfProduct].stockQuantity)===0) {
