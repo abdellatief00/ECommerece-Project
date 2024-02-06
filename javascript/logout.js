@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // Close the confirmation modal
         if (logoutConfirmationModal) {
             logoutConfirmationModal.hide();
-            updateAndLogout(logoutButton);
+            updateAndLogout(confirmLogoutBtn);
         }
     });
 
@@ -45,6 +45,8 @@ function updateAndLogout(logoutButton) {
     // Replace 'current_user' and 'users' with your actual local storage keys
     let currentUser = JSON.parse(localStorage.getItem('current_user')) || {};
     let usersData = JSON.parse(localStorage.getItem('user')) || [];
+    let cart  = [];
+    window.localStorage.setItem("cart",cart);
 
     let userIndex = usersData.findIndex(user => user.id === currentUser.id);
     if (userIndex !== -1) {

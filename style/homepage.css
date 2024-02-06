@@ -146,8 +146,10 @@ header .bg-body-tertiary {
 }
 
 @media(max-width: 992px) {
-    #navbarSupportedContent > ul{
-        background-color: #909090;
+    #navbarSupportedContent{
+        background-color: #cac1c1;
+        border-radius: 5px;
+        padding: 5px;
     }
 }
 
@@ -178,6 +180,15 @@ header .bg-body-tertiary {
 
     #imgContainer img {
         display: none;
+    }
+}
+
+@media (max-width:376px)
+{
+    #cart-icon{
+        margin: 0px !important;
+        margin-top: 20px !important;
+        margin-right: 5px !important;
     }
 }
 

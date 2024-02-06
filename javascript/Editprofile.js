@@ -1,95 +1,6 @@
-function saveDataToLocalStorage(key, data) {
-    localStorage.setItem(key, JSON.stringify(data));
-}
 
-$(document).ready(function () {
-    $(window).resize(function () {
-        updateSidebarState();
-        if ($(window).width() <= 768) {
-            $("#sidebar").css("display", "none");
-            $("#sidebarToggle").attr("data-bs-toggle", "offcanvas");
-            $("#sidebarToggle").attr("data-bs-target", "#offcanvasSidebar");
-            $("#sidebarToggle").attr("aria-controls", "offcanvasSidebar");
-        } else {
-            var sidebarShow = $("#sidebar").css("display");
-            var newMode = sidebarShow == "none" ? "block" : "";
-            $("#sidebar").css("display", newMode);
-            $("#sidebarToggle").removeAttr("data-bs-toggle");
-            $("#sidebarToggle").removeAttr("data-bs-target");
-            $("#sidebarToggle").removeAttr("aria-controls");
-        }
-    });
-
-    $("#darkMood").on("click", function () {
-        var currentMode = $("body").attr("data-bs-theme");
-        var newMode = currentMode === "light" ? "dark" : "light";
-        $("body").attr("data-bs-theme", newMode);
-
-        if (newMode === "dark") {
-            $("#sidebar").attr("data-bs-theme", newMode);
-            $("#sidebar, .offcanvas-start").css("background-color", "#212529");
-            $(".nav-item").hover(function () {
-                $(this).css("color", "white")
-            }, function () {
-                $(this).css("color", "#96999b");
-                $(".nav-item.active").css("color", "white");
-            });
-        } else {
-            $("#sidebar").attr("data-bs-theme", newMode);
-            $("#sidebar, .offcanvas-start").css("background-color", "#eee");
-            $(".nav-item").hover(function () {
-                $(this).css("color", "black")
-            }, function () {
-                $(this).css("color", "#96999b");
-                $(".nav-item.active").css("color", "black");
-            });
-        }
-    });
-
-    $("#sidebarToggle").click(function () {
-        if ($(window).width() >= 780) {
-            $("#sidebar").toggleClass("collapsed");
-            $("#content").toggleClass("collapsed");
-            $("#content").toggleClass("offset-xl-1 col-xl-11 offset-lg-1 col-lg-11 offset-md-1 col-md-11 offset-xl-2 col-xl-10 offset-lg-2 col-lg-10 offset-md-2 col-md-10");
-            if ($("#sidebar").hasClass("collapsed")) {
-                $(".nav-link .fa").toggleClass("fa-bars fa-table-cells-large");
-            } else {
-                $(".nav-link .fa").toggleClass("fa-table-cells-large fa-bars");
-            }
-        }
-    });
-
-    if ($(window).width() <= 768) {
-        $("#sidebar").css("display", "none");
-        $("#sidebarToggle").attr("data-bs-toggle", "offcanvas");
-        $("#sidebarToggle").attr("data-bs-target", "#offcanvasSidebar");
-        $("#sidebarToggle").attr("aria-controls", "offcanvasSidebar");
-    } else {
-        var sidebarShow = $("#sidebar").css("display");
-        var newMode = sidebarShow == "none" ? "block" : "";
-        $("#sidebar").css("display", newMode);
-        $("#sidebarToggle").removeAttr("data-bs-toggle");
-        $("#sidebarToggle").removeAttr("data-bs-target");
-        $("#sidebarToggle").removeAttr("aria-controls");
-    }
-});
-
-function updateSidebarState() {
-    if ($(window).width() <= 1200) {
-        $("#sidebar").addClass("collapsed");
-        $("#content").addClass("collapsed");
-        $("#content").toggleClass("offset-xl-1 col-xl-11 offset-lg-1 col-lg-11 offset-md-1 col-md-11 offset-xl-2 col-xl-10 offset-lg-2 col-lg-10 offset-md-2 col-md-10");
-        $(".nav-link .fa").toggleClass("fa-bars fa-table-cells-large");
-    } else if ($(window).width() >= 768) {
-        $("#sidebar").removeClass("collapsed");
-        $("#content").removeClass("collapsed");
-        $("#content").toggleClass("offset-xl-1 col-xl-11 offset-lg-1 col-lg-11 offset-md-1 col-md-11 offset-xl-2 col-xl-10 offset-lg-2 col-lg-10 offset-md-2 col-md-10");
-        $(".nav-link .fa").toggleClass("fa-table-cells-large fa-bars");
-    }
-}
-
+const userData = JSON.parse(localStorage.getItem('current_user')) || {};
 function loadUserData() {
-    const userData = JSON.parse(localStorage.getItem('current_user')) || {};
     $('#Fname').val(userData.fname || '');
     $('#Lname').val(userData.lname || '');
     $('#Age').val(userData.age || '');
@@ -101,7 +12,6 @@ function loadUserData() {
     }
 
     $('#userImage').attr('src', userData.image || '');
-    console.log(userData.image);
 }
 
 $(document).on('click', '#togglecurrentpass', function () {
@@ -135,7 +45,9 @@ function togglePasswordVisibility(inputField, icon) {
 function saveDataToLocalStorage(key, data) {
     localStorage.setItem(key, JSON.stringify(data));
 }
-
+const usernameRegex = /^[a-zA-Z]{3}[a-zA-Z0-9_-]{0,13}$/;
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
 $('.Tform').submit(function (event) {
     event.preventDefault();
 
@@ -146,29 +58,77 @@ $('.Tform').submit(function (event) {
     const newPassword = $('#newpass').val();
     const confirmNewPassword = $('#cnewpass').val();
     const profileImageInput = document.getElementById('newImage');
+    const currentpassword=$('#currentpass').val();
     const nImage = getfilelocation(profileImageInput);
     console.log(nImage);
 
-    const errorSpan = $('#passwordError');
-    const successSpan = $('#successMessage');
-
-    if (!newFname.trim() || !newLname.trim() || !newAge || isNaN(newAge) || !newEmail.trim()) {
-        displayError(errorSpan, 'Please fill in all required fields with valid data.');
+    let usersData = JSON.parse(localStorage.getItem('users')) || [];
+    if(userData.password!=currentpassword){
+        displayError($('#currentpass'), 'Password is wrong');
         return;
+    }else{
+        clearError($('#currentpass'));
+    }
+    if (!usernameRegex.test(newFname) || !usernameRegex.test(newLname)) {
+        displayError($('#Fname'), 'Invalid username. It must be 3 to 16 characters long and can only contain letters, underscore, or hyphen.');
+        return;
+    }else{
+        clearError($('#Fname'));
+    }
+    if (!emailRegex.test(newEmail)) {
+        displayError($('#Email'), 'Invalid Email');
+        return;
+    }else{
+        clearError($('#Email'));
+    }
+    if (!passwordRegex.test(newPassword)) {
+        displayError($('#newpass'), 'Password must be at least 6 characters long.');
+        return;
+    }else{
+        clearError($('#newpass'));
     }
 
-    if (newPassword.length < 6) {
-        displayError(errorSpan, 'Password must be at least 6 characters long.');
+    if (newAge<15) {
+        displayError($('#Age'), 'Age must be greater than 15.');
         return;
+    }else{
+        clearError($('#Age'));
     }
 
     if (newPassword !== confirmNewPassword) {
-        displayError(errorSpan, 'New password and confirm password do not match!');
+        displayError($('#cnewpass'), 'New password and confirm password do not match!');
         return;
+    }else{
+        clearError($('#cnewpass'));
+    }
+    if (isUsernameTaken(newFname)) {
+        displayError($('#Fname'), 'Username is already exist. Please choose another.');
+        return;
+    }else{
+        clearError($('#Fname'));
     }
 
-    clearError(errorSpan);
+    // Check if email is already in use
+    if (isEmailTaken(newEmail)) {
+        displayError($('#Email'), 'Email is already in use. Please use a different email.');
+        return;
+    }else{
+        clearError($('#Email'));
+    }
+    
+    
+    function isUsernameTaken(username, currentUserId) {
+        const otherUsers = JSON.parse(localStorage.getItem('users')) || [];
+        return otherUsers.some(user => user.fname === username && user.id !== currentUserId);
+    }
+    
+    // Function to check if an email is already taken by another user (excluding current user)
+    function isEmailTaken(email, currentUserId) {
+        const otherUsers = JSON.parse(localStorage.getItem('users')) || [];
+        return otherUsers.some(user => user.email === email && user.id !== currentUserId);
+    }
 
+    
     const currentUserData = JSON.parse(localStorage.getItem('current_user')) || {};
     currentUserData.fname = newFname;
     currentUserData.lname = newLname;
@@ -186,60 +146,41 @@ $('.Tform').submit(function (event) {
 
     saveDataToLocalStorage('current_user', currentUserData);
 
-    displaySuccess(successSpan, 'User data saved successfully!');
+    //displaySuccess(successSpan, 'User data saved successfully!');
 
-    let usersData = JSON.parse(localStorage.getItem('user')) || [];
+    
     let userIndex = usersData.findIndex(user => user.id === currentUserData.id);
 
     if (userIndex !== -1) {
         usersData[userIndex].password = currentUserData.password;
-        localStorage.setItem('user', JSON.stringify(usersData));
+        localStorage.setItem('users', JSON.stringify(usersData));
     }
 
     redirectToProfile();
 });
+let newErrorMessage;
+function displayError(field, message) {
+    field.addClass('fielderror'); 
+    newErrorMessage = field.siblings('.error-message');
+   // field.siblings('.error-message').remove();
+   if (newErrorMessage.length > 0) {
+    newErrorMessage.text(message);
+    } else {
+        // Create a new error message
+        newErrorMessage = $('<span class="error-message"></span>').text(message);
+        newErrorMessage.css('color', 'red');
+        field.after(newErrorMessage);
+    }
 
-function clearError(errorSpan) {
-    errorSpan.text('');
 }
 
-function displayError(errorSpan, message) {
-    errorSpan.text(message);
-}
-
-function displaySuccess(successSpan, message) {
-    successSpan.text(message);
+function clearError(field) {
+   field.removeClass('fielderror');
+    field.siblings('.error-message').remove();
 }
 
 function redirectToProfile() {
     window.location.href = 'profileuser.html';
-}
-
-function redirectToProductDetails(productId) {
-    localStorage.setItem("currentProductId", productId);
-    window.location.href = 'productDetails.html';
-}
-
-function removeFromFavorites(productId, deleteIcon) {
-    if (confirm("Are you sure you want to remove this product from favorites?")) {
-        let User = JSON.parse(localStorage.getItem('current_user')) || {};
-        let productIds = User.favorites || [];
-    
-        let updatedFavorites = productIds.filter(id => id !== productId);
-        User.favorites = updatedFavorites;
-        localStorage.setItem('current_user', JSON.stringify(User));
-        let usersData = JSON.parse(localStorage.getItem('user')) || [];
-    
-        let userIndex = usersData.findIndex(user => user.id === User.id);
-    
-        if (userIndex !== -1) {
-            usersData[userIndex].favorites = User.favorites;
-            localStorage.setItem('user', JSON.stringify(usersData));
-        }
-   
-        let row = deleteIcon.closest('tr');
-        row.remove();
-    }
 }
 
 function getfilelocation(tar){

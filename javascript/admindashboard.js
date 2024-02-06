@@ -1,226 +1,5 @@
 let products = [];
 let orders =JSON.parse(window.localStorage.getItem("orders")) || [];
-// let orders =
-// [
-//     {
-//         "orderNumber": 177,
-//         "date": "2024-01-03T18:51:12.911Z",
-//         "total": 66.78610152647282,
-//         "paymentMethod": "Credit Card",
-//         "cart": [
-//             {
-//                 "productId": 12,
-//                 "quantity": 3
-//             },
-//             {
-//                 "productId": 6,
-//                 "quantity": 2
-//             },
-//             {
-//                 "productId": 15,
-//                 "quantity": 3
-//             },
-//             {
-//                 "productId": 14,
-//                 "quantity": 4
-//             }
-//         ],
-//         "userId": 503
-//     },
-//     {
-//         "orderNumber": 489,
-//         "date": "2023-02-10T18:51:12.912Z",
-//         "total": 51.24107419954016,
-//         "paymentMethod": "Credit Card",
-//         "cart": [
-//             {
-//                 "productId": 13,
-//                 "quantity": 2
-//             },
-//             {
-//                 "productId": 6,
-//                 "quantity": 3
-//             },
-//             {
-//                 "productId": 3,
-//                 "quantity": 1
-//             },
-//             {
-//                 "productId": 3,
-//                 "quantity": 3
-//             }
-//         ],
-//         "userId": 264
-//     },
-//     {
-//         "orderNumber": 751,
-//         "date": "2023-12-15T18:51:12.912Z",
-//         "total": 16.800541146849234,
-//         "paymentMethod": "PayPal",
-//         "cart": [
-//             {
-//                 "productId": 14,
-//                 "quantity": 3
-//             },
-//             {
-//                 "productId": 8,
-//                 "quantity": 2
-//             }
-//         ],
-//         "userId": 702
-//     },
-//     {
-//         "orderNumber": 750,
-//         "date": "2023-09-07T17:51:12.912Z",
-//         "total": 17.0898882484283,
-//         "paymentMethod": "Credit Card",
-//         "cart": [
-//             {
-//                 "productId": 10,
-//                 "quantity": 2
-//             },
-//             {
-//                 "productId": 5,
-//                 "quantity": 4
-//             }
-//         ],
-//         "userId": 825
-//     },
-//     {
-//         "orderNumber": 858,
-//         "date": "2024-02-22T18:51:12.912Z",
-//         "total": 6.883951274391054,
-//         "paymentMethod": "PayPal",
-//         "cart": [
-//             {
-//                 "productId": 8,
-//                 "quantity": 4
-//             },
-//             {
-//                 "productId": 7,
-//                 "quantity": 3
-//             },
-//             {
-//                 "productId": 5,
-//                 "quantity": 1
-//             },
-//             {
-//                 "productId": 8,
-//                 "quantity": 4
-//             }
-//         ],
-//         "userId": 190
-//     },
-//     {
-//         "orderNumber": 800,
-//         "date": "2023-05-04T17:51:12.912Z",
-//         "total": 57.682764030949784,
-//         "paymentMethod": "PayPal",
-//         "cart": [
-//             {
-//                 "productId": 2,
-//                 "quantity": 1
-//             },
-//             {
-//                 "productId": 3,
-//                 "quantity": 4
-//             },
-//             {
-//                 "productId": 3,
-//                 "quantity": 3
-//             },
-//             {
-//                 "productId": 3,
-//                 "quantity": 5
-//             },
-//             {
-//                 "productId": 8,
-//                 "quantity": 2
-//             }
-//         ],
-//         "userId": 310
-//     },
-//     {
-//         "orderNumber": 962,
-//         "date": "2023-02-13T18:51:12.913Z",
-//         "total": 2.3060128672778513,
-//         "paymentMethod": "PayPal",
-//         "cart": [
-//             {
-//                 "productId": 15,
-//                 "quantity": 2
-//             },
-//             {
-//                 "productId": 8,
-//                 "quantity": 1
-//             },
-//             {
-//                 "productId": 3,
-//                 "quantity": 1
-//             },
-//             {
-//                 "productId": 8,
-//                 "quantity": 2
-//             }
-//         ],
-//         "userId": 999
-//     },
-//     {
-//         "orderNumber": 591,
-//         "date": "2023-05-21T17:51:12.913Z",
-//         "total": 41.48830848925671,
-//         "paymentMethod": "PayPal",
-//         "cart": [
-//             {
-//                 "productId": 14,
-//                 "quantity": 4
-//             },
-//             {
-//                 "productId": 15,
-//                 "quantity": 3
-//             },
-//             {
-//                 "productId": 3,
-//                 "quantity": 2
-//             },
-//             {
-//                 "productId": 3,
-//                 "quantity": 2
-//             }
-//         ],
-//         "userId": 495
-//     },
-//     {
-//         "orderNumber": 677,
-//         "date": "2024-08-14T17:51:12.913Z",
-//         "total": 19.746920910764977,
-//         "paymentMethod": "Credit Card",
-//         "cart": [
-//             {
-//                 "productId": 13,
-//                 "quantity": 3
-//             },
-//             {
-//                 "productId": 2,
-//                 "quantity": 3
-//             },
-//             {
-//                 "productId": 4,
-//                 "quantity": 2
-//             },
-//             {
-//                 "productId": 3,
-//                 "quantity": 2
-//             },
-//             {
-//                 "productId": 10,
-//                 "quantity": 4
-//             }
-//         ],
-//         "userId": 714
-//     }
-// ]
-// let sellerId = "seller2";
 
 let sellerProductsOrders = [];
 let ordersByDateObj = {};
@@ -230,12 +9,16 @@ let totalOrdersChart = document.getElementById('ordersChart').getContext('2d');
 let selectedProduct = document.getElementById("productsOptions");
 
 window.addEventListener("load", function(){
+
     currentUser = getUserFromLocal();
+    products = getProductsFromLocal();
+
     if(currentUser === null || currentUser.role === 2)
     {
         console.log("not allowed");
         return;
     }
+
     document.querySelector('.adminImgANDNot').children[1].children[0].src  = currentUser.images;
     document.querySelector('.adminImgANDNot').children[1].children[1].innerText =currentUser.fname+" "+currentUser.lname
 
@@ -248,7 +31,8 @@ window.addEventListener("load", function(){
     for(let i = 0 ; i < all_prod.length ; i++){
         cur += all_prod[i].stockQuantity
     }
-    this.document.getElementById('items_in_stock').innerText = cur.toFixed(0);
+    console.log(cur);
+    this.document.getElementById('items_in_stock').innerText = parseInt(cur).toFixed(0);
 
     let allusers = JSON.parse( this.window.localStorage.getItem('users')) ||[];
     this.document.getElementById('users-reg').innerText = allusers.length;
@@ -257,95 +41,35 @@ window.addEventListener("load", function(){
     if(currentUser.role == 1)
     {
         let allord = getAndFormatOrders(currentUser.id);
-        console.log(allord)
+        
         this.document.getElementById('allorders').innerText = allord.length;
     }
 
-
-    //orders = getOrdersFromLocal();
-    //currentUser.role = "Seller";
-    // currentUser = {
-    //     "id": 1,
-    //     "fname": "Abdellatif",
-    //     "lname": "Hamed",
-    //     "email": "tefa@Gmail.com",
-    //     "password": "123",
-    //     "age": 24,
-    //     "images": [
-    //         "images/tefa.png"
-    //     ],
-    //     "role": "Admin",
-    //     "orders": [
-    //         1,
-    //         2,
-    //         3
-    //     ],
-    //     "favorites": [
-    //         ""
-    //     ]
-    // }
-    // console.log(products);
+    // create the options for a single product chart
     createOptions(selectedProduct);
     if(currentUser.role === 0)
         sellerProductsOrders = getAndFormatOrders();
-    else if(currentUser.role == 1)
+    else if(currentUser.role === 1)
         sellerProductsOrders = getAndFormatOrders(currentUser.id);
-    //sellerProductsOrders = getAndFormatOrders(currentUser.id);
     
-    //console.log("orders formatted", sellerProductsOrders);
     ordersByDateObj = formatOrdersByDate(sellerProductsOrders);
     ordersByDateObj = sortOrdersByDate(ordersByDateObj);
-    /* console.log("after formatting by date",ordersByDateObj);
-    console.log(sortOrdersByDate(ordersByDateObj));
-    console.log("after sorting", ordersByDateObj) */
-    //createOptions(selectedProduct);
-    // getting orders for product with id = 3
-    let dummyProductObj = getProductOrdersObj(ordersByDateObj, selectedProduct.value);
-    console.log("productObject" ,getDateArray(dummyProductObj));
-    drawChart(productsChart, getDateArray(dummyProductObj), getProductQuantities(dummyProductObj),
-    getProducTotaltPrice(dummyProductObj, +selectedProduct.value),
-    `product ${selectedProduct.value}`
-    );
+    
+    let dummyProductObj = getProductOrdersObj(ordersByDateObj, +selectedProduct.value);
+    
+    console.log("val",selectedProduct.value);
+    drawChart(productsChart, getDateArray(dummyProductObj), getProductQuantities(dummyProductObj),getProducTotaltPrice(dummyProductObj, +selectedProduct.value),`product ${+selectedProduct.value}`);
+    
     selectedProduct.addEventListener("change", ()=>{
-        console.log("value from the dropdown", selectedProduct.value)
-        dummyProductObj = getProductOrdersObj(ordersByDateObj, +selectedProduct.value);
-        console.log("all products", ordersByDateObj);
-        console.log("selected product", dummyProductObj)
-        console.log("product orders Dates" ,getDateArray(dummyProductObj));
-    console.log("product orders quantities " ,getProductQuantities(dummyProductObj));
-    console.log("product orders totalPrices" ,getProducTotaltPrice(dummyProductObj, +selectedProduct.value));
+        
+        let dummyProductObj = getProductOrdersObj(ordersByDateObj, +selectedProduct.value);
+        
     drawChart(productsChart, getDateArray(dummyProductObj), getProductQuantities(dummyProductObj),
     getProducTotaltPrice(dummyProductObj, +selectedProduct.value),
     `product ${selectedProduct.value}`
     );
-
     })
-    
-
-    //======= uncomment and see the results =========
-
-    // all the functions work on the bject and extracts the arrays
-    // getDateArray extracts the dates for the graph x-axis
-    // getProductQuantities and getProducTotaltPrice for the y-axis
-    
-    /* console.log("product orders Dates" ,getDateArray(dummyProductObj));
-    console.log("product orders quantities " ,getProductQuantities(dummyProductObj));
-    console.log("product orders totalPrices" ,getProducTotaltPrice(dummyProductObj, +selectedProduct.value));
-    console.log(selectedProduct.value);
-    drawChart(productsChart, getDateArray(dummyProductObj), getProductQuantities(dummyProductObj),
-    getProducTotaltPrice(dummyProductObj, +selectedProduct.value),
-    `product ${selectedProduct.value}`
-    ); */
-    
-
-    //======= uncomment and see the results =========
-    // getting ORDERS quantities and total prices statistics
-
-    /* console.log("orders Dates" ,getDateArray(ordersByDateObj));
-    console.log("orders total quantities", getTotalOrdersQuantities(ordersByDateObj));
-    console.log("3 price", getProductPrice(3));
-    console.log("orders total prices", getOrderTotalPrice(ordersByDateObj)); */
-    // console.log("seller products" ,getSelllerProducts(sellerId));
+    console.log(ordersByDateObj)
     drawChart(totalOrdersChart, getDateArray(ordersByDateObj), getTotalOrdersQuantities(ordersByDateObj),
     getOrderTotalPrice(ordersByDateObj),
     "total orders"
@@ -354,33 +78,31 @@ window.addEventListener("load", function(){
     
 })
 
+
 //==================================================================//
 //						orders formatting Functions					//
 //==================================================================//
 // use these functions for admin to get all the orders 
 // or pass the seller id to get his orders
-// 1- first we choose all the orders by getAndFormatOrders
-// 2- then we format them as obj = {date : {
-//    aProductId : aQuantity,
-//    bProductId : bQuantity}} using formatOrdersByDate
-// 3 -sort the result object by date using sortOrdersByDate
-function getAndFormatOrders(roleId = 0)
+export function getAndFormatOrders(roleId = 0)
 {
     let ordersFormatted = [];
     for(let i = 0; i<orders.length; i++)
 {
     for(let j=0; j<orders[i].cart.length; j++)
     {
-        if(roleId === 0)
+        if(productExist(orders[i].cart[j].productId))
         {
+            if(roleId === 0)
+            {
             ordersFormatted.push({
                 productId : orders[i].cart[j].productId,
                 quantity : orders[i].cart[j].quantity,
                 date : orders[i].date.substring(0, 10)
             })
-        }
+            }
         else
-        {
+            {
             if(getProductSellerId(+orders[i].cart[j].productId) === roleId)
             {
                 ordersFormatted.push({
@@ -389,13 +111,15 @@ function getAndFormatOrders(roleId = 0)
                     date : orders[i].date.substring(0, 10)
                 })
             }
+            }
         }
+        
     }
 }
 return ordersFormatted;
 }
 
-function formatOrdersByDate(obj)
+export function formatOrdersByDate(obj)
 {
     let dateFormattedObj = {};
     for (let i = 0; i < obj.length; i++) {
@@ -416,7 +140,7 @@ function formatOrdersByDate(obj)
     return dateFormattedObj;
 }
 
-function sortOrdersByDate(obj)
+export function sortOrdersByDate(obj)
 {
     let sortedArray = Object.entries(obj).map(([date, orderProductQuantity]) => ({ date, orderProductQuantity }));
 
@@ -442,10 +166,11 @@ export function getTotalOrdersQuantities(obj)
         let totalQuantity = 0;
         for(let product in obj[date])
         {
-            totalQuantity += obj[date][product];
+            totalQuantity += +obj[date][product];
         }
         totalOrderQuantities.push(totalQuantity);
     }
+    console.log(totalOrderQuantities);
     return totalOrderQuantities; 
 }
 
@@ -457,7 +182,7 @@ export function getOrderTotalPrice(obj)
         let totalPrice = 0;
         for(let product in obj[date])
         {
-            //console.log("productId from price", product, typeof(product));
+            
             totalPrice += getProductPrice(+product) * obj[date][product];
         }
         orderTotalPrice.push(totalPrice);
@@ -472,7 +197,7 @@ export function getOrderTotalPrice(obj)
 
 // getProductOrdersObj is for formatting the product Obj 
 // the object passed to it must be an orders formatted object also
-function getProductOrdersObj(obj, productId)
+export function getProductOrdersObj(obj, productId)
 {
     let productOrdersObj = {};
     for(let date in obj)
@@ -491,7 +216,7 @@ function getProductOrdersObj(obj, productId)
 }
 // the obj passed to these two functions must be result from
 // getProductOrdersObj
-function getProductQuantities(obj)
+export function getProductQuantities(obj)
 {
     let quantitiesArr = [];
     for(let date in obj)
@@ -501,7 +226,7 @@ function getProductQuantities(obj)
     return quantitiesArr;
 }
 
-function getProducTotaltPrice(obj, productId)
+export function getProducTotaltPrice(obj, productId)
 {
     let pricesArr = [];
     for(let date in obj)
@@ -516,29 +241,26 @@ function getProducTotaltPrice(obj, productId)
 //						product Info Functions  					//
 //==================================================================//
 
-function getProductIndex(productId)
+export function getProductIndex(productId)
 {
     for(let i=0; i<products.length; i++)
     {
-        //console.log("productId from Index", productId, typeof(+productId));
+        
         if(+products[i].id === +productId)
             return i;
     }
     return -1;
 }
 
-function getProductPrice(productId)
+export function getProductPrice(productId)
 {
-    //console.log("productId", productId, typeof(productId))
-    if(getProductIndex(productId) === -1)
-    {
-        console.log("the one that causes the error" ,productId)
-    }
+    if(!products[getProductIndex(+productId)])
+    return 0;
     let product = products[getProductIndex(+productId)];
     return +product.price;
 }
 
-function getProductSellerId(productId)
+export function getProductSellerId(productId)
 {
     for(let i=0; i<products.length; i++)
     {
@@ -549,7 +271,7 @@ function getProductSellerId(productId)
     }
 }
 
-function getProductsFromLocal()
+export function getProductsFromLocal()
 {
     return JSON.parse(localStorage.getItem("products")) || [];
 }
@@ -558,37 +280,32 @@ function getProductsFromLocal()
 //==================================================================//
 //						object formatting Functions					//
 //==================================================================//
-function getDateArray(obj)
+export function getDateArray(obj)
 {
     let dateArr = [];
-    console.log("from date array", obj);
     for(let date in obj)
     {
         dateArr.push(date);
-        //console.log("after every push", dateArr);
     }
     return dateArr;
 }
 //////////////////////////////////////////////////////////////////////
 
-function settUserToLocal(user)
+/* function settUserToLocal(user)
 {
     localStorage.setItem("current_user", JSON.stringify(user));
-}
+} */
 
-function getUserFromLocal()
+export function getUserFromLocal()
 {
     return JSON.parse(localStorage.getItem("current_user"));
 }
 
-function drawChart(ctx, xAxisDate, yAxisQuantities, yAxisRevenue, label)
+export function drawChart(ctx, xAxisDate, yAxisQuantities, yAxisRevenue, label)
 {
     if (ctx.chart) {
         ctx.chart.destroy();
     }
-    console.log(xAxisDate);
-    console.log(yAxisQuantities);
-    console.log(yAxisRevenue);
     const options = {
         responsive: true,
         maintainAspectRatio: false,
@@ -656,16 +373,16 @@ function drawChart(ctx, xAxisDate, yAxisQuantities, yAxisRevenue, label)
   
 }
 
-function createOptions(selectDiv)
+export function createOptions(selectDiv)
 {
     selectDiv.innerHTML = "";
     let optionsProducts;
+    
     if(products.length==0){return;}
     if(currentUser.role === 1)
     {
         //optionsProducts = getSelllerProducts(currentUser.id);
         optionsProducts = getSelllerProducts(currentUser.id);
-        console.log("seller options", optionsProducts);
     }
     else if(currentUser.role ===0)
         optionsProducts = products;
@@ -680,7 +397,7 @@ function createOptions(selectDiv)
     }
 }
 
-function getSelllerProducts(sellerId)
+export function getSelllerProducts(sellerId)
 {
     let sellerProducts = [];
     for(let i =0; i<products.length; i++)
@@ -689,6 +406,16 @@ function getSelllerProducts(sellerId)
             sellerProducts.push(products[i]);
     }
     return sellerProducts;
+}
+
+export function productExist(productId)
+{
+    for(let i=0; i<products.length; i++)
+    {
+        if(products[i].id === productId)
+            return true;
+    }
+    return false;
 }
 
 

@@ -1,118 +1,4 @@
-$(document).ready(function () {
-    $(window).resize(function () {
-        updateSidebarState();
-        if ($(window).width() <= 768) {
-            
-            $("#sidebar").css("display", "none");
-            $("#sidebarToggle").attr("data-bs-toggle", "offcanvas");
-            $("#sidebarToggle").attr("data-bs-target", "#offcanvasSidebar");
-            $("#sidebarToggle").attr("aria-controls", "offcanvasSidebar");
-        } else {
-            var sidebarShow = $("#sidebar").css("display");
-            var newMode = sidebarShow == "none" ? "block" : "";
-            $("#sidebar").css("display", newMode);
-            $("#sidebarToggle").removeAttr("data-bs-toggle");
-            $("#sidebarToggle").removeAttr("data-bs-target");
-            $("#sidebarToggle").removeAttr("aria-controls");
-        }
-    });
-    $("#darkMood").on("click", function () {
-
-        var currentMode = $("body").attr("data-bs-theme");
-        var newMode = currentMode === "light" ? "dark" : "light";
-        $("body").attr("data-bs-theme", newMode);
-
-        if (newMode === "dark") {
-            $("#sidebar").attr("data-bs-theme", newMode);
-
-            $("#sidebar").css("background-color", "#212529");
-            $(".offcanvas-start").css("background-color", "#212529");
-            $(".nav-item").hover(function () {
-                $(this).css("color", "white")
-
-            }, function () {
-                $(this).css("color", "#96999b");
-                $(".nav-item.active").css("color", "white");
-            });
-            $(".nav-item.active").css("color", "white");
-        } else {
-            $("#sidebar").attr("data-bs-theme", newMode);
-            $("#sidebar").css("background-color", "#eee");
-            $(".offcanvas-start").css("background-color", "#eee");
-            $(".nav-item").hover(function () {
-                $(this).css("color", "black")
-
-            }, function () {
-                $(this).css("color", "#96999b");
-                $(".nav-item.active").css("color", "black");
-            });
-            $(".nav-item.active").css("color", "black");
-        }
-
-
-    });
-
-    $("#sidebarToggle").click(function () {
-        if ($(window).width() >= 780) {
-
-            $("#sidebar").toggleClass("collapsed");
-            $("#content").toggleClass("collapsed");
-            $("#content").removeClass("offset-xl-2 col-xl-10 offset-lg-2 col-lg-10 offset-md-2 col-md-10");
-            $("#content").addClass("offset-xl-1 col-xl-11 offset-lg-1 col-lg-11 offset-md-1 col-md-11");
-            if ($("#sidebar").hasClass("collapsed")) {
-                $(".nav-link .fa").removeClass("fa-bars").addClass("fa-table-cells-large");
-            } else {
-                $(".nav-link .fa").removeClass("fa-table-cells-large").addClass("fa-bars");
-                $("#content").removeClass("offset-xl-1 col-xl-11 offset-lg-1 col-lg-11 offset-md-1 col-md-11");
-                $("#content").addClass("offset-xl-2 col-xl-10 offset-lg-2 col-lg-10 offset-md-2 col-md-10");
-            }
-        }
-    }); //end of click event
-
-    if ($(window).width() <= 768) {
-        // var sidebarShow = $("#sidebar").css("display");
-        // var newMode = sidebarShow == "none" ? "block" : "none";
-        // $("#sidebar").css("display", newMode);
-        $("#sidebar").css("display", "none");
-        $("#sidebarToggle").attr("data-bs-toggle", "offcanvas");
-        $("#sidebarToggle").attr("data-bs-target", "#offcanvasSidebar");
-        $("#sidebarToggle").attr("aria-controls", "offcanvasSidebar");
-        ///data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar" aria-controls="offcanvasSidebar"
-    } else {
-        var sidebarShow = $("#sidebar").css("display");
-        var newMode = sidebarShow == "none" ? "block" : "";
-        $("#sidebar").css("display", newMode);
-        $("#sidebarToggle").removeAttr("data-bs-toggle");
-        $("#sidebarToggle").removeAttr("data-bs-target");
-        $("#sidebarToggle").removeAttr("aria-controls");
-    }
-
-
-}); //load event
-
-function updateSidebarState() {
-    if ($(window).width() <= 1200) {
-        // If screen width is 768px or less, hide the custom sidebar
-        $("#sidebar").addClass("collapsed");
-        $("#content").addClass("collapsed");
-        $("#content").removeClass("offset-xl-2 col-xl-10 offset-lg-2 col-lg-10 offset-md-2 col-md-10");
-        $("#content").addClass("offset-xl-1 col-xl-11 offset-lg-1 col-lg-11 offset-md-1 col-md-11");
-        // $("#content").addClass("collapsed");
-        // Change icon to show text
-        $(".nav-link .fa").removeClass("fa-bars").addClass("fa-table-cells-large");
-    } else if ($(window).width() >= 768) {
-        $("#sidebar").removeClass("collapsed");
-        $("#content").removeClass("collapsed");
-        $("#content").removeClass("offset-xl-1 col-xl-11 offset-lg-1 col-lg-11 offset-md-1 col-md-11");
-        $("#content").addClass("offset-xl-2 col-xl-10 offset-lg-2 col-lg-10 offset-md-2 col-md-10");
-        // Change icon to hide text
-        $(".nav-link .fa").removeClass("fa-table-cells-large").addClass("fa-bars");
-    }
-
-}
-
-///////////////////////////////////////////////////////////////////////
-
+import { addToCart } from "./cartScript.js";
 
 document.addEventListener("DOMContentLoaded", function () {
     populateFavoritesTable();
@@ -153,12 +39,13 @@ document.addEventListener("DOMContentLoaded", function () {
                         <td>${product.offer}$</td>
                         <td>${product.category}</td>
                         <td><img src="${product.images[0]}" alt="" style="max-width: 50px; max-height: 50px; cursor: pointer;" class="product-image"></td>
-                        <td><i class="fa-solid fa-cart-plus" onclick="addToCart(${product.id})"></i></td>
-                        <td><i class="fa-solid fa-trash" onclick="removeFromFavorites(${product.id}, this)"></i></td>
+                        <td><i class="fa-solid fa-cart-plus" ></i></td>
+                        <td><i class="fa-solid fa-trash"></i></td>
             
                     `;
                     tbodyFavorites.appendChild(row);
-
+                    row.children[5].addEventListener('click', function () {addToCart(product);});
+                    row.children[6].addEventListener('click',function(){removeFromFavorites(product.productId,this)})
                    
                     let productImage = row.querySelector('.product-image');
                     productImage.addEventListener('click', function () {
@@ -189,13 +76,13 @@ function removeFromFavorites(productId, deleteIcon) {
         let updatedFavorites = productIds.filter(id => id !== productId);
         User.favorites = updatedFavorites;
         localStorage.setItem('current_user', JSON.stringify(User));
-        let usersData = JSON.parse(localStorage.getItem('user')) || [];
+        let usersData = JSON.parse(localStorage.getItem('users')) || [];
         
         let userIndex = usersData.findIndex(user => user.id === User.id);
     
         if (userIndex !== -1) {
             usersData[userIndex].favorites = User.favorites;
-            localStorage.setItem('user', JSON.stringify(usersData));
+            localStorage.setItem('users', JSON.stringify(usersData));
         }
     
         let row = deleteIcon.closest('tr');
@@ -204,9 +91,4 @@ function removeFromFavorites(productId, deleteIcon) {
         return;
         // User clicked cancel, do nothing
     }
-}
-
-//#########################################################################   add to cart Ali
-function addToCart(productId){
-
 }

@@ -134,6 +134,17 @@ table img {
     text-decoration: underline;
     cursor: pointer;
 }
+#tbodyUsers tr td:nth-child(4) {
+    color: green;
+    cursor: pointer;
+}
+#tbodyUsers tr td:nth-child(3) {
+    color: red;
+    cursor: pointer;
+}
+tbody tr{
+    vertical-align: middle;
+}
 #tbodyUsers tr td{
    text-transform: capitalize;
 }

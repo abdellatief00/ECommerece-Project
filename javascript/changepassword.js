@@ -1,35 +1,4 @@
-$(document).ready(function () {
-    // Toggle Sidebar function
-    $("#sidebarToggle").click(function () {
-        $("#sidebar").toggleClass("collapsed");
-        $("#content").toggleClass("collapsed");
-        if ($("#sidebar").hasClass("collapsed")) {
-            $(".nav-link .fa").removeClass("fa-bars").addClass("fa-table-cells-large");
-        } else {
-            $(".nav-link .fa").removeClass("fa-table-cells-large").addClass("fa-bars");
-        }
-    });
-
-    // Update Sidebar State function
-    function updateSidebarState() {
-        const sidebar = $("#sidebar");
-        const content = $("#content");
-        const navLinkIcon = $(".nav-link .fa");
-
-        if ($(window).width() <= 1200) {
-            sidebar.addClass("collapsed");
-            content.addClass("collapsed");
-            navLinkIcon.removeClass("fa-bars").addClass("fa-table-cells-large");
-        } else {
-            sidebar.removeClass("collapsed");
-            content.removeClass("collapsed");
-            navLinkIcon.removeClass("fa-table-cells-large").addClass("fa-bars");
-        }
-    }
-
-    // Event listener for window resize
-    $(window).resize(updateSidebarState);
-
+const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
     // Event listener when the DOM is fully loaded
     document.addEventListener("DOMContentLoaded", function () {
         const userData = JSON.parse(localStorage.getItem('current_user'));
@@ -47,17 +16,24 @@ $(document).ready(function () {
     // Event listener for form submission
     $('.Tform').submit(function (event) {
         event.preventDefault();
-
+        const userData = JSON.parse(localStorage.getItem('current_user'));
         const newPassword = $('#newpass').val();
         const confirmNewPassword = $('#cnewpass').val();
+        const currentpassword=$('#currentpass').val();
         const errorSpan = $('#passwordError');
-        const successSpan = $('#successMessage');
 
-        // Check if the new password meets the minimum length requirement
-        if (newPassword.length < 6) {
-            displayError(errorSpan, 'Password must be at least 6 characters long.');
-            clearSuccessMessage(successSpan);
+        if(userData.password!=currentpassword){
+            displayError($('#currentpass'), 'Password is wrong');
             return;
+        }else{
+            clearError($('#currentpass'));
+        }
+        
+        if (!passwordRegex.test(newPassword)) {
+            displayError($('#newpass'), 'Invalid password');
+            return;
+        }else{
+            clearError($('#newpass'));
         }
 
         // Check if the new password and confirm password match
@@ -95,11 +71,8 @@ $(document).ready(function () {
     function updateProfileData(userData) {
         document.getElementById('userFullName').textContent = `${userData.fname} ${userData.lname}`;
         document.getElementById('userAge').textContent = userData.age;
-        document.getElementById('userPrimaryPhone').textContent = userData.phone;
-        document.getElementById('userSecondaryPhone').textContent = userData.secondaryPhone;
-        document.getElementById('userEmail').textContent = userData.email;
-        document.getElementById('currentpass').value = userData.password;
-        document.getElementById('userImage').src = userData.images[0];
+        document.getElementById('userEmail').textContent = userData.email;;
+        document.getElementById('userImage').src = userData.image;
     }
 
     // Helper function to toggle password visibility
@@ -109,20 +82,30 @@ $(document).ready(function () {
         icon.toggleClass('fa-eye fa-eye-slash');
     }
 
-    // Helper function to display error message
-    function displayError(element, message) {
-        element.text(message);
+    let newErrorMessage;
+function displayError(field, message) {
+    field.addClass('fielderror'); 
+    newErrorMessage = field.siblings('.error-message');
+   // field.siblings('.error-message').remove();
+   if (newErrorMessage.length > 0) {
+    newErrorMessage.text(message);
+    } else {
+        // Create a new error message
+        newErrorMessage = $('<span class="error-message"></span>').text(message);
+        newErrorMessage.css('color', 'red');
+        field.after(newErrorMessage);
     }
 
-    // Helper function to clear error message
-    function clearError(element) {
-        element.text('');
-    }
+}
 
-    // Helper function to display success message
-    function displaySuccess(element, message) {
-        element.text(message);
-    }
+function clearError(field) {
+   field.removeClass('fielderror');
+    field.siblings('.error-message').remove();
+}
+
+function redirectToProfile() {
+    window.location.href = 'profileuser.html';
+}
 
     // Helper function to clear success message
     function clearSuccessMessage(element) {
@@ -133,4 +116,4 @@ $(document).ready(function () {
     function redirectToProfile() {
         window.location.href = 'profileuser.html';
     }
-});
+

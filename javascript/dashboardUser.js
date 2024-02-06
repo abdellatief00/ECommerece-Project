@@ -8,16 +8,16 @@ window.addEventListener('load', function () {
     let row_id;
     let userTable_tbody = document.getElementById('tbodyUsers');
     var currentUser = JSON.parse(localStorage.getItem("current_user"));
-    document.getElementById("userName").innerText=currentUser.fname + " "+currentUser.lname ;
-    document.getElementById("userImg").setAttribute("src",currentUser.images);
-    document.getElementById("userImg").addEventListener('click',function(){
-        window.location.href=`profileuser.html`;
+    document.getElementById("userName").innerText = currentUser.fname + " " + currentUser.lname;
+    document.getElementById("userImg").setAttribute("src", currentUser.images);
+    document.getElementById("userImg").addEventListener('click', function () {
+        window.location.href = `profileuser.html`;
     });
-    
+
     var users = JSON.parse(localStorage.getItem("users"));
     var products = JSON.parse(localStorage.getItem("products"))
     let rowsNum = document.getElementById("rowsNum");
-    
+
     DrawTable(users, rowsNum.value);
     rowsNum.addEventListener("change", function () {
         deleteTable();
@@ -32,11 +32,14 @@ window.addEventListener('load', function () {
             n = users.length
         }
         for (let i = 0; i < n; i++) {
+            if(users[i]["role"]==0){
+                continue;
+            }
             let createdrow = document.createElement('tr');
             createdrow.setAttribute("data-row-index", i);
             let createdtd = document.createElement('td');
             let checkCreatted = document.createElement('input');
-            // <input type="checkbox" name="checkRow" id="checkRow1">
+
             checkCreatted.setAttribute("type", "checkbox");
             checkCreatted.setAttribute("name", "checkRow");
             checkCreatted.setAttribute("id", `checkRow${i}`);
@@ -44,15 +47,20 @@ window.addEventListener('load', function () {
             createdtd.appendChild(checkCreatted);
             createdrow.appendChild(createdtd);
             for (let key in users[i]) {
-                let createdtd = document.createElement('td');
-                createdtd.setAttribute("data-row-index", i)
+                
+                let createdtd;
                 switch (key) {
-                    case "images":
+                    case "image":
+                        createdtd = document.createElement('td');
+                        createdtd.setAttribute("data-row-index", i)
                         let imgTag = document.createElement("img");
                         imgTag.setAttribute("src", `${users[i][key]}`)
                         createdtd.appendChild(imgTag);
+                        createdrow.appendChild(createdtd);
                         break;
                     case "role":
+                        createdtd = document.createElement('td');
+                        createdtd.setAttribute("data-row-index", i)
                         if (users[i][key] == 2) {
                             createdtd.innerHTML = `<span class="text-bg-primary p-2 rounded-2  text-center" data-row-index=${i}> User </span>`;
 
@@ -60,28 +68,27 @@ window.addEventListener('load', function () {
 
                             createdtd.innerHTML = `<span class=" btn text-bg-success p-2 text-center" data-bs-toggle="modal" data-bs-target="#specifcProductForSpecificSeller" data-row-index=${i}> Seller </span>`
                         }
+                        createdrow.appendChild(createdtd);
 
                         break;
                     case "fname":
-                        createdtd.innerText = users[i][key];
-                        break;
                     case "lname":
+                    case "id":
+                    case "email":
+                    case "password":
+                    case "age":
+                        createdtd = document.createElement('td');
+                        createdtd.setAttribute("data-row-index", i)
                         createdtd.innerText = users[i][key];
+                        createdrow.appendChild(createdtd);
                         break;
-                        case "cart":
-                        case "favorites":
-                        case "orders":
-                            break;
                     default:
-                        createdtd.innerText = users[i][key];
                         break;
                 }
-
-                createdrow.appendChild(createdtd);
             }
             //<i class="fa-regular fa-eye"></i>
             let lastcreatedtd = document.createElement('td');
-            
+
             let editIcon = document.createElement('i');
             editIcon.setAttribute("class", "fa-regular fa-pen-to-square text-info cursorPointer");
             let editBtn = document.createElement('button');
@@ -89,6 +96,7 @@ window.addEventListener('load', function () {
             editBtn.setAttribute("data-bs-toggle", "modal");
             editBtn.setAttribute("data-bs-target", "#editUserModal");
             editBtn.appendChild(editIcon);
+            //lastcreatedtd.appendChild(editIcon);
             //lastcreatedtd.appendChild(editIcon);
 
             editBtn.setAttribute('data-row-index', i);
@@ -101,7 +109,7 @@ window.addEventListener('load', function () {
                 document.getElementById("pass").removeAttribute("type");
                 document.getElementById("pass").setAttribute("type", "text");
                 document.getElementById("age").value = users[index]["age"];
-                document.getElementById("role").value = users[index]["role"] == 2 ? "user" : users[index]["role"] == 1? "seller":"";
+                document.getElementById("role").value = users[index]["role"] == 2 ? "user" : users[index]["role"] == 1 ? "seller" : "";
                 // document.getElementById("image").value = users[index].images[0];            
             }); // edit button
 
@@ -124,7 +132,7 @@ window.addEventListener('load', function () {
                     deleteBtn.toggleAttribute("disabled")
                 } else {
                     deleteBtn.toggleAttribute("disabled")
-                    
+
                 }
             });
             deleteBtn.addEventListener('click', function () {
@@ -139,6 +147,7 @@ window.addEventListener('load', function () {
     let searchInput = document.getElementById("searchTerm");
     let searchTypeSelect = document.getElementById("searchType");
     searchInput.addEventListener("input", searching);
+
     function searching() {
         let searchTerm = searchInput.value.toLowerCase();
         let searchType = searchTypeSelect.value;
@@ -149,9 +158,9 @@ window.addEventListener('load', function () {
             let textContent = "";
 
             if (searchType === "id") {
-                textContent = node.children[1].textContent.toLowerCase(); 
+                textContent = node.children[1].textContent.toLowerCase();
             } else if (searchType === "name") {
-                textContent = node.children[2].textContent.toLowerCase(); 
+                textContent = node.children[2].textContent.toLowerCase();
             }
 
             let show = textContent.indexOf(searchTerm) !== -1;
@@ -159,18 +168,19 @@ window.addEventListener('load', function () {
         }
     }
     let deleteAllBtn = document.getElementById("deleteAllBtn");
-    deleteAllBtn.addEventListener("click",function(){
+    deleteAllBtn.addEventListener("click", function () {
         document.getElementById("deleteRow").addEventListener("click", deleteRow)
 
     });
     var checked = [];
+    document.getElementById("deleteRow").addEventListener("click", deleteRow);
     function deleteRow() {
         let indeces = [];
-        // console.log(checked);
-        for (let i = 0; i < checked.length-1; i++) {
+        console.log("deltet fun");
+        for (let i = 0; i < checked.length; i++) {
             indeces.push(checked[i].parentNode.parentNode.getAttribute("data-row-index"));
         }
-        for (let i = indeces.length - 1; i >= 0; i--) {
+        for (let i = indeces.length -1 ; i >= 0; i--) {
             users.splice(indeces[i], 1);
         }
         localStorage.setItem("users", JSON.stringify(users));
@@ -184,7 +194,7 @@ window.addEventListener('load', function () {
         if (checkAll.checked) {
             let allItem = document.querySelectorAll("input[type=checkbox]");
             allItem.forEach(item => item.checked = true);
-            checked=allItem
+            checked = allItem
             deleteAllBtn.removeAttribute("disabled")
         } else {
             let allItem = document.querySelectorAll("input[type=checkbox]");
@@ -202,7 +212,7 @@ window.addEventListener('load', function () {
     }
     document.getElementById('tbodyUsers').addEventListener('click', function (event) {
         let target = event.target;
-       
+
         if (target.tagName === 'SPAN' && target.classList.contains('text-bg-success')) {
             let rowIndex = target.parentNode.getAttribute('data-row-index');
             // console.log(rowIndex);
@@ -216,7 +226,7 @@ window.addEventListener('load', function () {
         else if (target.tagName === 'INPUT' && target.type === 'checkbox' && target.name === 'checkRow') {
             checked = Array.from(document.querySelectorAll("input[name=checkRow]:checked"));
             deleteAllBtn.disabled = checked.length <= 1;
-        }else if(target.closest("button")){
+        } else if (target.closest("button")) {
             row_id = $(target).parents("tr").attr("data-row-index");
             console.log(row_id);
         }
@@ -229,7 +239,7 @@ window.addEventListener('load', function () {
         if (!isvalidvisaname(allinp[0].value)) {
             showToast2("enter a valid First name", 3000, "#ea6060");
         } else if (!isvalidvisaname(allinp[1].value)) {
-           // console.log(allinp[1].value);
+            // console.log(allinp[1].value);
             showToast2("enter a valid Last name", 3000, "#ea6060");
         } else if (!validateEmail(allinp[2], 'Email is required and must be a valid email address!')) {
             e.preventDefault();
@@ -237,16 +247,17 @@ window.addEventListener('load', function () {
             showToast2("enter a valid Password, and must contain(a-z | A-Z | @$!%*?&) and greater than or equal 8 letters or numbers", 3000, "#ea6060");
         } else if (allinp[4].value < 19) {
             showToast2("Enter a valid age, and must be greater than or equal 19 years old", 3000, "#ea6060");
-        }else {
-            
-            let imgarr =allinp[5]? [getfilelocation(allinp[5])]:users[row_id].images;
+        } else {
+
+            let imgarr = allinp[5] ? [getfilelocation(allinp[5])] : users[row_id].images;
             users[row_id].fname = allinp[0].value;
-            console.log( users[row_id]);
+            console.log(users[row_id]);
             users[row_id].lname = allinp[1].value;
             users[row_id].email = allinp[2].value;
             users[row_id].password = allinp[3].value;
             users[row_id].age = allinp[4].value;
             users[row_id].images = imgarr;
+            users[row_id].role = document.getElementById("user-role").value == "user" ? 2 : 1;
             users[row_id].role = document.getElementById("user-role").value == "user" ? 2 : 1;
 
             localStorage.setItem("users", JSON.stringify(users));
@@ -299,7 +310,7 @@ window.addEventListener('load', function () {
         } else {
             let imgarr = getfilelocation(allinp[5]);
             console.log(allinp[5]);
-            let role = document.getElementById("user-role").value == "user" ? 2 :1;
+            let role = document.getElementById("user-role").value == "user" ? 2 : 1;
             console.log(imgarr);
             let o = new userClass(allinp[0].value, allinp[1].value, allinp[2].value, allinp[3].value, allinp[4].value, imgarr, role).addjson();
             users.push(o);
@@ -331,7 +342,8 @@ window.addEventListener('load', function () {
 
         return true;
     }
-1
+    1
+
     function getfilelocation(tar) {
         var input = tar;
 

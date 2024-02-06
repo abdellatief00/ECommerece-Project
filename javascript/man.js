@@ -267,57 +267,70 @@ document.addEventListener('DOMContentLoaded', function () {
         const prevButton = document.getElementById('prev-page');
         const nextButton = document.getElementById('next-page');
 
+
         prevButton.classList.toggle('disabled', currentPage === 1);
-        nextButton.classList.toggle('disabled', currentPage === Math.ceil(storedProducts.length / productsPerPage));
-    }
+        prevButton.disabled = currentPage === 1;
 
+        nextButton.classList.toggle('disabled', currentPage === menTotalPages || menTotalPages === 0);
+        nextButton.disabled = currentPage === menTotalPages || menTotalPages === 0;
+    }
+    let menProducts = storedProducts.filter(product => product.category === categoryFilter);
+    let menTotalPages = Math.ceil(menProducts.length / productsPerPage);
     // Function to sort and render products
-    function sortAndRenderProducts(selectedOption) {
-        let sortedProducts;
+function sortAndRenderProducts(selectedOption) {
+    let sortedProducts;
 
-        switch (selectedOption) {
-            case 'rating':
-                sortedProducts = storedProducts.sort((a, b) => calculateAverageRating(b.rating) - calculateAverageRating(a.rating));
-                break;
+    // Filter products based on the category 'Men'
+     
 
-            case 'date':
-                sortedProducts = storedProducts.sort((a, b) => new Date(b.date) - new Date(a.date));
-                break;
+    switch (selectedOption) {
+        case 'date':
+            sortedProducts = menProducts.sort((a, b) => new Date(b.date) - new Date(a.date));
+            break;
 
-            case 'price':
-                sortedProducts = storedProducts.sort((a, b) => a.price - b.price);
-                break;
+        case 'price':
+            sortedProducts = menProducts.sort((a, b) => a.price - b.price);
+            break;
 
-            case 'price-desc':
-                sortedProducts = storedProducts.sort((a, b) => b.price - a.price);
-                break;
+        case 'price-desc':
+            sortedProducts = menProducts.sort((a, b) => b.price - a.price);
+            break;
 
-            default:
-            case 'menu-order':
-                sortedProducts = storedProducts;
-                break;
-        }
-
-        renderProducts(sortedProducts, currentPage);
-        updatePagingButtons();
+        default:
+        case 'menu-order':
+            sortedProducts = menProducts;
+            break;
     }
+
+    renderProducts(sortedProducts, currentPage);
+
+   
+
+    updatePagingButtons();
+}
 
     // Event listener for the "Sort By" dropdown
     document.getElementById('orderby').addEventListener('change', function () {
         const selectedOption = this.value;
         sortAndRenderProducts(selectedOption);
     });
-
+    
     // Event listener for the "Next" button
     document.getElementById('next-page').addEventListener('click', function () {
-        currentPage++;
+        if(currentPage < menTotalPages){
+           console.log(menTotalPages);
+            currentPage++;
         sortAndRenderProducts(document.getElementById('orderby').value);
+        }
+        
     });
 
     // Event listener for the "Previous" button
     document.getElementById('prev-page').addEventListener('click', function () {
-        currentPage--;
-        sortAndRenderProducts(document.getElementById('orderby').value);
+        if(currentPage>1){
+            currentPage--;
+            sortAndRenderProducts(document.getElementById('orderby').value);
+        }
     });
 
     // Initial rendering of products

@@ -13,14 +13,22 @@ window.addEventListener("load", function () {
 
     UserOrders.forEach((order, index) => {
         const orderNumber = index + 1; // Order number starts from 1 for the oldest order
-        
+        let state="delivery"; // Order number starts from 1 for the oldest order
+        let currentState=Object.keys(order.state);    
+        for (let i = 0; i < currentState.length; i++) {
+            if(order.state[currentState[i]]=="pending"){
+                state="pending";
+                break;
+            }
+            
+        }
         const row = document.createElement("tr");
         row.innerHTML = `
             <td>${orderNumber}</td>
             <td>${order.paymentMethod}</td>
             <td>${+order.total.toFixed(3)}</td>
             <td>${new Date(order.date).toLocaleString()}</td>
-            <td>"{order.state["10"] || "stattte here"}"</td>
+            <td>${state}</td>
         `;
 
         const buttonCell = document.createElement("td");
@@ -77,6 +85,7 @@ function generateProductTable(cart, products) {
     
         cart.forEach(item => {
             const productDetails = products.find(product => product.id === item.productId) || {};
+            
             console.log(productDetails);
             let img = ``;
             if(productDetails.images[0]!=undefined){img = productDetails.images[0]}

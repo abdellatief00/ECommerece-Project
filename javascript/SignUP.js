@@ -225,9 +225,9 @@ var userArray=JSON.parse(localStorage.getItem('users'));
 
 // document.getElementsByTagName("body")[0].innerHTML+=`<img src=${userArray[2].images[0]}  >`;//getting the image from the array of images in the user object
 
-var newUserArray = [];
+var newUserArray = userArray || [];
 
-if (userArray) {
+/* if (userArray) {
   userArray.forEach((existingUser) => {
     // Create a new user object by copying and modifying each existing user
     const newUser = new user(
@@ -243,7 +243,7 @@ if (userArray) {
     // Add the modified user to the new array
     newUserArray.push(newUser.addjson());
   });
-}
+} */
 
 // function isValidInputForm(e)
 // {

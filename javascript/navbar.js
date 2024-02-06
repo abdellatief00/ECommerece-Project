@@ -26,7 +26,6 @@ let currentUser;
 window.addEventListener("load", function(){
 
     getProductsFromLocal();
-    //console.log("localproduct",getCurrentProductIdFromLocal()); 
     localCartItems = getCartFromlocal();
     currentProductId = getCurrentProductIdFromLocal();
     currentProductIndex = getProductIndex(currentProductId);
@@ -36,7 +35,6 @@ window.addEventListener("load", function(){
     {
         userNameSpan.innerText = currentUser.fname + " " + currentUser.lname;
     }
-    console.log( "currentProductIndex", currentProductIndex);
     changeItemsPlaces();
     updateCartInfo(localCartItems);
     cartDiv.addEventListener("click", showCart);
@@ -136,11 +134,11 @@ function searchProductsByTitle()
     searchResultDiv.innerHTML = "";
 
     const fuzzy = new Fuse(products, {
-        // Configure Fuse for fuzzy matching with adjustments for "MR"
-        keys: ["productTitle"], // Search within the "product_title" field
-        threshold: 0.4 , // Higher threshold for stricter matching, ensuring "MR" is distinct
-        location: 0, // Prioritize matches at the beginning of the title
-        distance: 25, // Allow for some typos and variations, but not too generous
+        
+        keys: ["productTitle"], 
+        threshold: 0.4 , 
+        location: 0, 
+        distance: 50,
         maxPatternLength: 32, // Limit pattern length for performance
         includeScore: true, // Access scores for sorting results
       });
@@ -151,8 +149,6 @@ function searchProductsByTitle()
     searchResultProducts = fuzzyResults.map(element => {
         return element.item; 
     });
-
-    console.log(searchResultProducts);
 
     let resultsDisplayCount = Math.min(3, searchResultProducts.length);
 
@@ -365,7 +361,6 @@ function getCurrentUserFromLocal()
 function showCart()
 {
     let pageLocation = location.href.substring(location.href.lastIndexOf("/")+1,);
-    console.log(location.href.substring(location.href.lastIndexOf("/")+1,));
     if(pageLocation === "checkout.html" || pageLocation === "cart.html" || pageLocation === "ordercomplete.html")
     {
         return;

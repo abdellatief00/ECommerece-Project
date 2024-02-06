@@ -1,12 +1,11 @@
-import { Cart } from './modula.js';
-import { createCartData } from './cartScript.js';
-import { addToCart } from './cartScript.js';
+
+
+import { addToCart } from "./cartScript.js";
 document.addEventListener('DOMContentLoaded', function () {
     // Retrieve products and current user from local storage
     let storedProducts = JSON.parse(localStorage.getItem('products')) || [];
     let currentUser = JSON.parse(localStorage.getItem('current_user')) || null;
-    
-    // Constants and initialization
+     // Constants and initialization
     const productsPerPage = 5;
     let currentPage = 1;
     const categoryFilter = 'Women';
@@ -135,14 +134,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
         return productInfoDiv;
     }
-
     // Function to create "Add to Cart" button
     function createAddToCartButton(product) {
         const addToCartButton = document.createElement('button');
         addToCartButton.classList.add('add-to-cart', 'btn', 'btn-primary');
         addToCartButton.type = 'button';
         addToCartButton.textContent = 'Add to Cart';
-
+        
         if (product.stockQuantity > 0) {
 
             addToCartButton.addEventListener('click', function () {
@@ -173,7 +171,6 @@ document.addEventListener('DOMContentLoaded', function () {
     function showProductDetails(product) {
         setCurrentProductIdToLocal(product.id);
         window.location.assign("productDetails.html");
-        
     }
 
     // Function to view product image
@@ -198,7 +195,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const modal = new bootstrap.Modal(document.getElementById('productImageModal'));
         modal.show();
     }
-
     // Function to toggle favorite status
     function toggleFavorite(product) {
         if (currentUser) {
@@ -231,9 +227,6 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         }
     }
-    
-    
-    
 
     // Function to update wishlist link color
     function updateWishlistLinkColor(wishlistLink, productId) {
@@ -272,60 +265,68 @@ document.addEventListener('DOMContentLoaded', function () {
         const prevButton = document.getElementById('prev-page');
         const nextButton = document.getElementById('next-page');
 
+
         prevButton.classList.toggle('disabled', currentPage === 1);
-        nextButton.classList.toggle('disabled', currentPage === Math.ceil(storedProducts.length / productsPerPage));
-    }
+        prevButton.disabled = currentPage === 1;
 
+        nextButton.classList.toggle('disabled', currentPage === womenTotalPages || womenTotalPages === 0);
+        nextButton.disabled = currentPage === womenTotalPages || womenTotalPages === 0;
+    }
+    let womenProducts = storedProducts.filter(product => product.category === categoryFilter);
+    let womenTotalPages = Math.ceil(womenProducts.length / productsPerPage);
     // Function to sort and render products
-    function sortAndRenderProducts(selectedOption) {
-        let sortedProducts;
+function sortAndRenderProducts(selectedOption) {
+    let sortedProducts;
 
-        switch (selectedOption) {
-            case 'date':
-                sortedProducts = storedProducts.sort((a, b) => new Date(b.date) - new Date(a.date));
-                break;
+    switch (selectedOption) {
+        case 'date':
+            sortedProducts = womenProducts.sort((a, b) => new Date(b.date) - new Date(a.date));
+            break;
 
-            case 'price':
-                sortedProducts = storedProducts.sort((a, b) => a.price - b.price);
-                break;
+        case 'price':
+            sortedProducts = womenProducts.sort((a, b) => a.price - b.price);
+            break;
 
-            case 'price-desc':
-                sortedProducts = storedProducts.sort((a, b) => b.price - a.price);
-                break;
+        case 'price-desc':
+            sortedProducts = womenProducts.sort((a, b) => b.price - a.price);
+            break;
 
-            default:
-            case 'menu-order':
-                sortedProducts = storedProducts;
-                break;
-        }
-
-        renderProducts(sortedProducts, currentPage);
-        updatePagingButtons();
+        default:
+        case 'menu-order':
+            sortedProducts = womenProducts;
+            break;
     }
+    updatePagingButtons();
+    renderProducts(sortedProducts, currentPage);
+}
 
     // Event listener for the "Sort By" dropdown
     document.getElementById('orderby').addEventListener('change', function () {
         const selectedOption = this.value;
         sortAndRenderProducts(selectedOption);
     });
-
+    
     // Event listener for the "Next" button
     document.getElementById('next-page').addEventListener('click', function () {
-        currentPage++;
+        if(currentPage < womenTotalPages){
+            currentPage++;
         sortAndRenderProducts(document.getElementById('orderby').value);
+        }
+        
     });
 
     // Event listener for the "Previous" button
     document.getElementById('prev-page').addEventListener('click', function () {
-        currentPage--;
-        sortAndRenderProducts(document.getElementById('orderby').value);
+        if(currentPage>1){
+            currentPage--;
+            sortAndRenderProducts(document.getElementById('orderby').value);
+        }
     });
-
+    updatePagingButtons();
     // Initial rendering of products
     sortAndRenderProducts(document.getElementById('orderby').value);
-    updatePagingButtons();
+   
 });
-
 function setCurrentProductIdToLocal(productId)
 {
     localStorage.setItem("currentProductId", productId);
